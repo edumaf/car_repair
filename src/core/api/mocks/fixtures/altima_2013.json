@@ -1,0 +1,269 @@
+{
+  "decode": {
+    "vin": "1N4AL3AP4DC900001",
+    "year": 2013,
+    "make": "Nissan",
+    "model": "Altima",
+    "trim": null,
+    "body": "Sedan/Saloon",
+    "powertrain": "gas",
+    "engineDesc": "2.5L 4-cyl",
+    "drive": "2WD",
+    "plantCountry": "UNITED STATES (USA)",
+    "decodeWarnings": []
+  },
+  "recalls": [
+    {
+      "campaign": "20V315000",
+      "component": "LATCHES/LOCKS/LINKAGES:HOOD:LATCH",
+      "summary": "Nissan North America, Inc. (Nissan) is recalling certain model year 2013-2018 Nissan Altima vehicles.  If the primary hood latch is inadvertently released, there is an increased likelihood that the secondary hood latch may corrode over time.",
+      "consequence": "Corrosion to the secondary latch may cause it to bind and remain in the unlatched position when the hood is closed.  If the primary latch is inadvertently released again and the secondary latch is not engaged, the hood could unexpectedly open while driving, increasing the risk of a vehicle crash.",
+      "remedy": "Nissan will notify owners, and dealers will install a stronger release spring in the hood release lever, a warning label near the secondary hood latch, and an Owners Manual addendum card with instructions on how to lubricate and maintain the secondary hood latch mechanism, free of charge.  Owner notification letters were mailed June 30, 2021.  Owners may contact Nissan customer service at 1-800-867-7669.  Note: Recall 16V-029 remains open for any unremedied 2013-2015 Altimas and this recall applies to all vehicles covered by 16V-029 even if those repairs have already been performed.",
+      "reportDate": "2020-05-28",
+      "parkIt": false,
+      "parkOutside": false
+    },
+    {
+      "campaign": "16V911000",
+      "component": "AIR BAGS:SENSOR:OCCUPANT CLASSIFICATION",
+      "summary": "Nissan North America, Inc. (Nissan) is recalling certain model year 2013-2015 Altima vehicles manufactured January 3, 2013, to July 29, 2013, 2015-2016 Rogue vehicles manufactured October 14, 2014, to August 12, 2016, and 2016 Maxima vehicles manufactured June 4, 2015, to August 19, 2015.  An incorrect Occupant Classification System (OCS) Electronic Control Unit (ECU) may have been installed in the front passenger seat.  The incorrect ECU and seat combination may misclassify the front passenger seat occupant.",
+      "consequence": "If the front passenger seat occupant is misclassified, the air bag may deploy incorrectly in the event of a crash, increasing the risk of injury.",
+      "remedy": "Nissan will notify owners, and dealers will replace the ECU and update the OCS software free of charge.  The recall began February 13, 2017.  Owners may contact Nissan customer service at 1-800-647-7261.",
+      "reportDate": "2016-12-19",
+      "parkIt": false,
+      "parkOutside": false
+    },
+    {
+      "campaign": "16V244000",
+      "component": "AIR BAGS:SENSOR:OCCUPANT CLASSIFICATION",
+      "summary": "Nissan North America, Inc. (Nissan) is recalling certain model year 2016-2017 Nissan Maxima, 2013-2016 Nissan Altima, NV200, LEAF, Sentra, and Pathfinder, 2014-2016 Nissan NV200 Taxi, Infiniti QX60, QX60 Hybrid, and Q50 Hybrid, 2014-2017 Nissan Rogue and Infiniti Q50, 2015-2016 Nissan Murano, Murano Hybrid, and Chevrolet City Express, 2014-2015 Nissan Pathfinder Hybrid, and 2013 Infiniti JX35 vehicles.  In these vehicles, the front seat passenger Occupant Classification System (OCS) may incorrectly classify an adult passenger as a child or classify the seat as empty despite it being occupied.  As a result, the passenger frontal air bag may be turned off and not deploy in the event of a crash.",
+      "consequence": "If the passenger frontal air bag does not deploy as intended in the event of a crash, the passenger is at an increased risk of injury.",
+      "remedy": "Nissan will notify their owners.  Chevrolet City Express owners will be notified by General Motors.  Dealers will reprogram the Air Bag Control Unit (ACU) and OCS Electronic Control Unit (ECU) in Altima, Maxima, Murano, Rogue, and Sentra vehicles, and replace the OCS ECU in LEAF, NV200, NV200 Taxi, Pathfinder, Infiniti Q50, JX35, and QX60 and Chevrolet City Express vehicles, free of charge.  Interim notices were sent to owners on May 31, 2016.  Owners will receive a second notice when remedy parts become available.  Owners may contact Nissan customer service at 1-800-867-7669, Infiniti customer service at 1-888-833-3216 or Chevrolet customer service at 1-800-222-1020.",
+      "reportDate": "2016-04-26",
+      "parkIt": false,
+      "parkOutside": false
+    },
+    {
+      "campaign": "16V029000",
+      "component": "LATCHES/LOCKS/LINKAGES:HOOD:LATCH",
+      "summary": "Nissan North America, Inc. (Nissan) is recalling certain model year 2013-2015 Nissan Altima vehicles manufactured March 6, 2012, to December 31, 2014.  In the affected vehicles, the secondary hood latch may bind and remain in the unlatched position when the hood is closed.",
+      "consequence": "If the primary latch is inadvertently released and the secondary latch is not engaged, the hood could unexpectedly open while driving, increasing the risk of a vehicle crash.",
+      "remedy": "These vehicles were previously included in recalls 14V-565 and 15V-116, however the previous remedy plan may not have been performed consistently to remove the safety risk.  To correct this issue, Nissan will re-notify all affected owners and dealers will replace the hood latch with a new one, free of charge.  The recall began on February 17, 2016.   Owners may contact Nissan customer service at 1-800-647-7261.  Note: This recall supersedes recalls 14V-565 and 15V-116.",
+      "reportDate": "2016-01-22",
+      "parkIt": false,
+      "parkOutside": false
+    },
+    {
+      "campaign": "15V681000",
+      "component": "AIR BAGS:FRONTAL",
+      "summary": "Nissan North America, Inc. (Nissan) is recalling certain model year 2013-2015 Altima and Pathfinder vehicles, 2013-2014 Nissan Sentra vehicles, 2013 Infiniti JX35 vehicles, 2014-2015 Infiniti QX60 vehicles and 2014 Infiniti QX60 Hybrid vehicles.  The affected vehicles received an incorrect occupant classification system (OCS) control unit during a repair.  These OCS control units may incorrectly classify the front passenger seat as empty, when it is occupied by an adult.",
+      "consequence": "If the OCS does not detect an adult occupant in the passenger seat, the passenger air bag would be deactivated.  Failure of the passenger airbag to deploy during a crash (where deployment is warranted) could increase the risk of injury to the passenger.",
+      "remedy": "Nissan will notify owners, and dealers will update the OCS software, free of charge.  The recall began on November 30, 2015.  Owners may contact Nissan at 1-800-647-7261.",
+      "reportDate": "2015-10-20",
+      "parkIt": false,
+      "parkOutside": false
+    },
+    {
+      "campaign": "15V486000",
+      "component": "FUEL SYSTEM, GASOLINE",
+      "summary": "Nissan North America, Inc. (Nissan) notified the agency on July 31, 2015, that they are recalling certain model year 2016 Nissan Maxima vehicles manufactured February 10, 2015, to August 18, 2015.  On October 14, 2015, Nissan expanded the recall to cover an additional 41,388 vehicles, including certain model year 2013-2015 Altima 3.5 vehicles equipped with a V6 engine manufactured March 30, 2012, to August 18, 2015 as well as the vehicles covered by the July 31, 2015 notification.  In the affected vehicles, due to an improperly installed o-ring that may not have been seated correctly at the time of assembly, fuel may leak during a crash from the area where the fuel sending unit attaches to the fuel tank.",
+      "consequence": "If fuel leaks from between the fuel sending unit and the tank, it may increase the risk of a fire in the event of a crash.",
+      "remedy": "Nissan will notify owners, and dealers will install a retainer ring between the fuel tank and the fuel sending unit. The recall began on September 28, 2015. Owners may contact Nissan customer service at 1-800-647-7261.",
+      "reportDate": "2015-08-04",
+      "parkIt": false,
+      "parkOutside": false
+    },
+    {
+      "campaign": "15V116000",
+      "component": "LATCHES/LOCKS/LINKAGES:HOOD:LATCH",
+      "summary": "Nissan North America, Inc. (Nissan) is recalling certain model year 2013-2015 Nissan Altima vehicles manufactured March 1, 2013, to December 31, 2014.  In the affected vehicles, the secondary hood latch may bind and remain in the unlatched position when the hood is closed.",
+      "consequence": "If the primary latch is inadvertently released and the secondary latch is not engaged, the hood could unexpectedly open while driving, increasing the risk of a vehicle crash.",
+      "remedy": "Nissan will notify owners, and dealers will be instructed to modify the bend angle of the hood actuation lever to eliminate potential interference with the hood inner panel.  In addition, dealers will clean and lubricate the latch joint as needed.  If significant corrosion is observed, the latch assembly will be replaced. This repairs will be performed free of charge.  The recall began March 31, 2015.  Owners may contact Nissan customer service at 1-800-647-7261.  Note: This recall is an expansion of recall 14V-565.",
+      "reportDate": "2015-02-27",
+      "parkIt": false,
+      "parkOutside": false
+    },
+    {
+      "campaign": "14V565000",
+      "component": "LATCHES/LOCKS/LINKAGES:HOOD:LATCH",
+      "summary": "Nissan North America, Inc. (Nissan) is recalling certain model year 2013 Nissan Altima vehicles manufactured March 6, 2012, to February 28, 2013.  In the affected vehicles, interference between the hood inner panel and the secondary latch lever, in combination with debris and corrosion, may cause the secondary hood latch to bind and remain in the unlatched position when the hood is closed.",
+      "consequence": "If the primary latch is inadvertently released and the secondary latch is not engaged, the hood could unexpectedly open while driving, increasing the risk of a vehicle crash.",
+      "remedy": "Nissan will notify owners, and dealers will be instructed to modify the bend angle of the hood actuation lever to eliminate potential interference with the hood inner panel.  In addition, dealers will clean and lubricate the latch joint as needed.  If significant corrosion is observed, the latch assembly will be replaced. This repairs will be performed free of charge.  The recall began on October 20, 2014.  Owners may contact Nissan customer service at 1-800-647-7261.",
+      "reportDate": "2014-09-15",
+      "parkIt": false,
+      "parkOutside": false
+    },
+    {
+      "campaign": "14V138000",
+      "component": "ELECTRICAL SYSTEM:SOFTWARE",
+      "summary": "Nissan North America, Inc. (Nissan) is recalling certain model year 2013-2014 Altima, LEAF, Pathfinder, and Sentra, model year 2013 NV200 (aka Taxi) and Infiniti JX35 and model year 2014 Infiniti Q50 and QX60 vehicles.  In the affected vehicles, the occupant classification system (OCS) software may incorrectly classify the passenger seat as empty, when it is occupied by an adult.",
+      "consequence": "If the OCS does not detect an adult occupant in the passenger seat, the passenger airbag would be deactivated.  Failure of the passenger airbag to deploy during a crash (where deployment is warranted) could increase the risk of injury to the passenger.",
+      "remedy": "Nissan will notify owners, and dealers will update the OCS software, free of charge.  The recall began on April 14, 2014.  Owners may contact Nissan at 1-800-647-7261.",
+      "reportDate": "2014-03-25",
+      "parkIt": false,
+      "parkOutside": false
+    },
+    {
+      "campaign": "13V158000",
+      "component": "TIRES:TEMPORARY/EMERGENCY SPARE TIRE",
+      "summary": "Nissan North America is recalling certain model year 2013 Altima vehicles manufactured March 21, 2012, through March 26, 2013.  The spare tires may have been significantly over- or under-inflated.",
+      "consequence": "Tires that are significantly over- or under-inflated may fail without warning, increasing the risk of a crash.",
+      "remedy": "Nissan will notify owners, and dealers will inspect and adjust the spare tire pressure, as necessary, free of charge.  The recall began on April 29, 2013.  Owners may contact Nissan at 1-800-647-7261.",
+      "reportDate": "2013-04-24",
+      "parkIt": false,
+      "parkOutside": false
+    },
+    {
+      "campaign": "13V069000",
+      "component": "AIR BAGS",
+      "summary": "Nissan is recalling certain model year 2013 Altima, LEAF, Pathfinder, Sentra, and Infiniti JX35 vehicles.  Sensors within the passenger Occupant Detection System (ODS) may have been manufactured out of specification.  This may cause the system to malfunction and permanently suppress the passenger airbag.",
+      "consequence": "If the vehicle is involved in a crash necessitating airbag deployment and the passenger airbag is suppressed, there may be an increased risk of personal injury.",
+      "remedy": "Nissan will notify owners, and dealers will inspect the ODS sensors and replace them as neccessary, free of charge.  The recall began on May 6, 2013.  Owners may contact Nissan Customer Service at 1-800-647-7261.",
+      "reportDate": "2013-03-01",
+      "parkIt": false,
+      "parkOutside": false
+    },
+    {
+      "campaign": "12V494000",
+      "component": "STEERING",
+      "summary": "Nissan is recalling certain model year 2012-2013 Altima vehicles manufactured from May 10, 2012, through July 26, 2012.  These vehicles may have been equipped with transverse link bolts and power steering rack bolts that were not torqued to proper specification.",
+      "consequence": "The affected bolts could become loose and fall out which may lead to a loss of vehicle control, increasing the risk of a vehicle crash.",
+      "remedy": "Nissan will notify owners, and dealers will tighten the bolts to the proper torque specifications.  The safety recall is expected to begin during November 2012.  Owners may contact Nissan Customer Service at 1-800-647-7261.",
+      "reportDate": "2012-10-10",
+      "parkIt": false,
+      "parkOutside": false
+    }
+  ],
+  "complaints": {
+    "total": 2315,
+    "crashes": 63,
+    "fires": 9,
+    "injuries": 48,
+    "deaths": 1,
+    "groups": [
+      {
+        "group": "airbags",
+        "count": 514,
+        "samples": [
+          "Airbag and seat belt warning lights won't turn off one each on instrument cluster RED, and one ORANGEYELLOW center of dash next to hazard lights button",
+          "The contact's brother owned a 2013 Nissan Altima. The contact stated that while her brother was driving at an undisclosed speed from a stop sign, another vehicle in the left lane crashed into the…",
+          "Passenger airbag light on. I don’t even drive the car much. Out of no where it turned in."
+        ]
+      },
+      {
+        "group": "transmission",
+        "count": 506,
+        "samples": [
+          "The contact owns a 2013 Nissan Altima. The contact stated that the vehicle was parked; however, while attempting to move the gear shifter, the gear shifter failed to shift as intended. The contact…",
+          "The car feels unbalanced and shifting is bad",
+          "The contact owns a 2013 Nissan Altima. The contact stated that while attempting to accelerate from a stop sign, the vehicle accelerated to approximately 15 MPH and then unexpectedly decelerated. The…"
+        ]
+      },
+      {
+        "group": "lighting_visibility",
+        "count": 488,
+        "samples": [
+          "I own a 2013 Nissan Altima 2.5 SV with approximately 130,000 miles. My vehicle has a serious water leak affecting both sides of the interior. Rainwater enters around both sun visors, soaks the…",
+          "The contact owns a 2013 Nissan Altima. The contact stated that while driving on several occasions at various speeds, the headlights were very dim, making it difficult to see while driving at night…",
+          "The headlight housings metallic coatings for reflectivity are failing and reduce the efficacy of the headlights. There has been a class action lawsuit against Nissan for this but many, like myself…"
+        ]
+      },
+      {
+        "group": "suspension",
+        "count": 290,
+        "samples": [
+          "On the morning of XXX, while driving at approximately 15-20 mph, the traction control warning light illuminated on my 2013 Nissan Altima (approximately 80,000 miles). I drove the short distance…",
+          "Driver side rear lower control arm broke/rusted through. Was able to get the vehicle home prior to an catastrophic incident. See pictures attached. Warning light came on the dash at the time of the…",
+          "The car feels unbalanced and shifting is bad"
+        ]
+      },
+      {
+        "group": "structure",
+        "count": 193,
+        "samples": [
+          "On XXX, at approximately 5:00 a.m., my son was driving my 2013 Nissan Altima 2.5 SL (VIN [XXX]) to work at approximately 55 mph when the hood unexpectedly flew open while the vehicle was moving. The…",
+          "My 2013 Nissan Altima SV is subject to NHTSA safety recall 16V-244 for a defective hood latch that can corrode, bind, or fail. I brought my vehicle to a Nissan dealership to have the recall…",
+          "The hood flew open upon entering the freeway. Could not see anymore going 60 mph. Had to pull over and bend the fenders back to close the hood. Afraid this will happen again. The latch was recalled…"
+        ]
+      },
+      {
+        "group": "engine",
+        "count": 166,
+        "samples": [
+          "The contact's friend owns a 2013 Nissan Altima. The contact stated that when the vehicle was parked, the check engine warning light illuminated and remained illuminated for an extended period. The…",
+          "Front end suspension need replacing confirmed by Nissan Dealership when rear suspension recall was done. Loud noise when in reverse or backing out with or without acceleration, transmission mount…",
+          "Sometimes when I'm driving the car starts idling as if I'm going fast that's how it sounds and I'm making a turn and it's sounds like it's accelerated but it won't go as much as I step on the gas it…"
+        ]
+      },
+      {
+        "group": "electrical",
+        "count": 159,
+        "samples": [
+          "Front passenger door lock actuator fails to unlock door when driver's, passengers or key fob to unlock is activated. All other doors (3) work as they should. This creates a safety issue as the door…",
+          "Tire Pressure light is on but no issues with air pressure.",
+          "Shifter Lock does not release when brake is pressed. Unable to shift out of Park. Need to manually press the shift relesae override to shift."
+        ]
+      },
+      {
+        "group": "steering",
+        "count": 94,
+        "samples": [
+          "Heard a loud pop noise from the rear of the car while backing up, steering was unstable while driving. Looked under the car and discover the right rear control arm is broken.",
+          "Fuel System: Car hesitates and cut off after pumping fuel.\\n' + 'Outer Tie rods torn rubber, vehicle never been realigned, but tires were worn on both front sides. \\n' + 'Takata Air bag light has…",
+          "The contact owns a 2013 Nissan Altima. The contact stated that the dealer had previously repaired the vehicle under Voluntary Service Campaign: P9324 (Rear Lower Link); however, the failure recurred…"
+        ]
+      },
+      {
+        "group": "brakes",
+        "count": 58,
+        "samples": [
+          "While driving my vehicle when trying to accelerate it wouldn’t go above 20mph had to hit the brakes then vehicle would just accelerate real fast I was in traffic with my kids thank god we wasn’t…",
+          "My car will not got out of gear without pressing the shift lock release button.",
+          "ODI#11431173.....Bought the car may 19 2021 picked it up on may 22.2021 brought it back with issue's 3 days later unprofessional argument place because their blaming me trying to say the car was…"
+        ]
+      },
+      {
+        "group": "driver_assist",
+        "count": 52,
+        "samples": [
+          "The contact owns a 2013 Nissan Altima. The contact stated that while driving at an undisclosed speed with the cruise control activated, the vehicle unexpectedly decelerated. During the failure…",
+          "The contact owns a 2013 Nissan Altima. The contact stated that while attempting to accelerate from a stop, the RPM became elevated, and the vehicle started accelerating unintendedly. The contact…",
+          "The headlights has a recall but the dealership told me if the previous owner didn't fix it, it didn't do me any justice. I have to drive with bright lights on at night because the headlights are…"
+        ]
+      },
+      {
+        "group": "fuel",
+        "count": 49,
+        "samples": [
+          "Fuel System: Car hesitates and cut off after pumping fuel.\\n' + 'Outer Tie rods torn rubber, vehicle never been realigned, but tires were worn on both front sides. \\n' + 'Takata Air bag light has…",
+          "Sometimes when I'm driving the car starts idling as if I'm going fast that's how it sounds and I'm making a turn and it's sounds like it's accelerated but it won't go as much as I step on the gas it…",
+          "I have taken the car to 3 mechanics for 4-5 incidents knowing that the mechanics were indeed certified in professionally fixing the issue. I was driving the car and made a proper left turn, yielding…"
+        ]
+      },
+      {
+        "group": "tires_wheels",
+        "count": 38,
+        "samples": [
+          "Rear left wheel busted off of car while driving. Flew up into the back end of car totaling the vehicle. We were very lucky no one was hurt.",
+          "Tire Pressure light is on but no issues with air pressure.",
+          "Heard a loud pop noise from the rear of the car while backing up, steering was unstable while driving. Looked under the car and discover the right rear control arm is broken."
+        ]
+      },
+      {
+        "group": "climate",
+        "count": 10,
+        "samples": [
+          "THE HEADLIGHTS AND EXTERIOR LIGHTS ARE EXTREEMELY DIM ON THIS VEHICLE. SAFETY HAZARD, ESPECIALLY AT NIGHT",
+          "MY 2013 NISSAN ALTIMA SV TRANSMISSION SHUTTERED WHILE ON THE HIGHWAY. I WAS IN BUSY TRAFFIC AND ALMOST CAUSE AN ACCIDENT. NISSAN SHOULD BE ASHAMED OF THEIRSELVES....MAKING A VEHICLE WITH A…",
+          "TL* THE CONTACT OWNS A 2013 NISSAN ALTIMA. THE CONTACT STATED THAT THE VENT CONTROLS FAILED TO FUNCTION WHEN USING THE AIR CONDITIONER AND HOT AIR BLEW OUT OF THE VENTS. THE VEHICLE WAS INSPECTED BY…"
+        ]
+      }
+    ],
+    "ungrouped": 153
+  },
+  "safety": {
+    "overall": 5,
+    "vehicleDescription": "2013 Nissan Altima 4 DR FWD"
+  },
+  "fetchedAt": 1794819120252
+}

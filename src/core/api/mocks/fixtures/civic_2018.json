@@ -1,0 +1,207 @@
+{
+  "decode": {
+    "vin": "2HGFC2F78JH900001",
+    "year": 2018,
+    "make": "Honda",
+    "model": "Civic",
+    "trim": "EX",
+    "body": "Sedan/Saloon",
+    "powertrain": "gas",
+    "engineDesc": "2.0L 4-cyl",
+    "drive": "2WD",
+    "plantCountry": "CANADA",
+    "decodeWarnings": []
+  },
+  "recalls": [
+    {
+      "campaign": "26V332000",
+      "component": "AIR BAGS:SENSOR:OCCUPANT CLASSIFICATION:FRONT PASSENGER",
+      "summary": "Honda (American Honda Motor Co.) is recalling certain 2018-2021, 2023 Acura TLX, 2019-2024 RDX, 2017-2020, 2022-2026 MDX, 2017-2021, 2023, 2025 Honda Ridgeline, 2017-2022 Pilot, 2019-2021 Passport, 2018-2026 Odyssey, 2019-2022 Insight, 2019-2021 HR-V, 2018-2020 Fit, 2020-2022 CR-V Hybrid, 2017-2022 CR-V, 2017-2018, 2021 Civic Type R, 2017-2021 Civic hatchback, 2016-2020 Civic coupe, 2016-2022 Civic, 2017-2022 Accord Hybrid, and 2016-2022 Accord vehicles. The front passenger seat weight sensor may crack and short circuit, which can cause the air bags to deploy unintentionally during a crash.",
+      "consequence": "Air bags that deploy unintentionally during a crash increase the risk of injury.",
+      "remedy": "Dealers will replace the seat weight sensors, free of charge. Owner notification letters were mailed July 7, 2026. Owners may contact Honda's customer service at 1-888-234-2138. Honda's numbers for this recall are BOL, WO9, OOA, WOM, XOH, NOC, POD, BOE, UOF, POB, EOG, AOI, QO8, TOJ, DO7, and SOK. This recall expands previous NHTSA recall number 24V064. Vehicle Identification Numbers (VINs) involved in this recall will be searchable on NHTSA.gov beginning May 29, 2026.",
+      "reportDate": "2026-05-22",
+      "parkIt": false,
+      "parkOutside": false
+    },
+    {
+      "campaign": "23V858000",
+      "component": "FUEL SYSTEM, GASOLINE:DELIVERY:FUEL PUMP",
+      "summary": "Honda (American Honda Motor Co.) is recalling certain 2013-2023 Honda Accord, Civic Coupe, Civic Sedan, Civic Hatchback, Civic Type R, CR-V, HR-V, Ridgeline, Odyssey, Acura ILX, MDX, MDX Hybrid, RDX, RLX, TLX, 2019-2022 Honda Insight, Passport, 2020 Honda CR-V Hybrid, 2018-2019 Honda Clarity PHEV, Fit, and 2015-2020 Honda Accord Hybrid, Pilot, Acura NSX vehicles.  The fuel pump inside the fuel tank may fail.",
+      "consequence": "Fuel pump failure can cause an engine stall while driving, increasing the risk of a crash.",
+      "remedy": "Dealers will replace the fuel pump module, free of charge.  Owner letters were mailed September 6, 2024.  Owners may contact Honda customer service at 1-888-234-2138.  Honda's numbers for this recall are KGC and KGD.  This recall is an expansion of NHTSA recall numbers 21V-215 and 20V-314.",
+      "reportDate": "2023-12-19",
+      "parkIt": false,
+      "parkOutside": false
+    },
+    {
+      "campaign": "20V314000",
+      "component": "FUEL SYSTEM, GASOLINE:DELIVERY:FUEL PUMP",
+      "summary": "Honda (American Honda Motor Co.) is recalling certain 2018-2019 Acura NSX, 2019 Acura RDX, RLX and RLX Sport Hybrid, 2018-2019 Honda Accord, Civic Hatchback, Civic Type R and HR-V, 2019-2020 Insight and 2019 Fit vehicles.  The low-pressure fuel pump inside the fuel tank may fail.",
+      "consequence": "If the fuel pump fails, the engine can stall while driving, increasing the risk of a crash.",
+      "remedy": "Honda will notify owners and dealers will replace the fuel pump assembly, free of charge.  The recall began July 22, 2020.  Owners may contact Honda customer service at 1-888-234-2138.",
+      "reportDate": "2020-05-28",
+      "parkIt": false,
+      "parkOutside": false
+    },
+    {
+      "campaign": "18V817000",
+      "component": "EQUIPMENT:OTHER:OWNERS/SERVICE/OTHER MANUAL",
+      "summary": "Honda (American Honda Motor Co.) is recalling certain 2017-2018 Honda Civic Hatchback and Civic Type R vehicles.  The owners guide in these vehicles may not have been included or  if included, the owner's guide may not have been properly provided required information.  As such, these vehicles fail to comply with the requirements of Federal Motor Vehicle Safety Standard (FMVSS) number 225, \"Child Restraint Anchorage Systems.\"",
+      "consequence": "If the information is missing or improper, it can increase the risk of injury or a crash.",
+      "remedy": "Honda will notify owners, and dealers will replace the owners information kit, free of charge.  The recall began January 9, 2019.  Owners may contact Honda customer service at 1-888-234-2138.  Honda's number for this recall is O3A.",
+      "reportDate": "2018-11-16",
+      "parkIt": false,
+      "parkOutside": false
+    },
+    {
+      "campaign": "18V663000",
+      "component": "STEERING:ELECTRIC POWER ASSIST SYSTEM",
+      "summary": "Honda (American Honda Motor Co.) is recalling certain 2017-2018 Honda Civic and CR-V vehicles.  The magnet that controls the\r\ntorque sensor output signal for the electronic power steering system may not be properly secured, allowing the magnet to become dislodged.  During a full lock turn, the dislodged magnet may cause steering assist to be applied in the opposite direction.",
+      "consequence": "The unintended steering input reduces vehicle maneuverability and increases the risk of a crash.",
+      "remedy": "Honda will notify owners, and dealers will replace the steering gearbox assembly, free of charge.  The recall began November 9, 2018.  Owners may contact Honda customer service at 1-888-234-2138.  Honda's numbers for this recall are C2N, P2O.",
+      "reportDate": "2018-09-27",
+      "parkIt": false,
+      "parkOutside": false
+    },
+    {
+      "campaign": "18V421000",
+      "component": "EQUIPMENT:OTHER:LABELS",
+      "summary": "Honda (American Honda Motor Co.) is recalling certain 2018 Honda Civic vehicles.  The manufacturing date area of the certification labels may have random characters which can affect the owner's ability to determine if a safety recall includes their vehicle.",
+      "consequence": "If the owner is not able to verify if their vehicle is involved in safety recall, it can increase the risk of injury or crash.",
+      "remedy": "Honda will notify owners, and dealers will replace the certification label, free of charge.  The recall began August 7, 2018.  Owners may contact Honda customer service at 1-888-234-2138.  Honda's number for this recall is U23.",
+      "reportDate": "2018-06-20",
+      "parkIt": false,
+      "parkOutside": false
+    }
+  ],
+  "complaints": {
+    "total": 596,
+    "crashes": 25,
+    "fires": 4,
+    "injuries": 21,
+    "deaths": 1,
+    "groups": [
+      {
+        "group": "steering",
+        "count": 224,
+        "samples": [
+          "The electric power steering (EPS) system failed/malfunctioned this past week. When going over 35 mph my steering wheel would become \"knotchy/jerky\" and lock up and be difficult to turn. As a result…",
+          "The contact owns a 2018 Honda Civic. The contact stated while driving at high speeds, the steering wheel became difficult to maneuver. There was no warning light illuminated. The contact stated that…",
+          "We have noticed a clicking noise and her steering has begun to stick. Took to Honda and they told us they have been seeing this issue and even sent video telling us they see this is an ongoing…"
+        ]
+      },
+      {
+        "group": "fuel",
+        "count": 159,
+        "samples": [
+          "I own a 2018 Honda Civic that is subject to an open fuel pump recall. My vehicle suddenly became completely inoperable. When attempting to start the car, all of the dashboard lights come on, but the…",
+          "The contact owns a 2018 Honda Civic. The contact stated that she was informed at the State inspection that the vehicle had failed inspection due to the recall of NHTSA Campaign Number…",
+          "Honda issued a recall for the fuel pump system. Initially, when the recall came out, I contacted them about the recall they stated that the parts were on back order and they had a waiting list of…"
+        ]
+      },
+      {
+        "group": "electrical",
+        "count": 51,
+        "samples": [
+          "The electric power steering (EPS) system failed/malfunctioned this past week. When going over 35 mph my steering wheel would become \"knotchy/jerky\" and lock up and be difficult to turn. As a result…",
+          "HONDA RECALL THE 2018 CIVIC FOR AC COMPRESSOR SHAFT SEAL AND THE DEALER REPAIR THE AC SYSTEM 3 TIMES AND THE PROBLEM WAS NOT FIX. ALSO HAS A RECALL FOR A FUEL PUMP MOTOR BUT IM NOT SURE IS WAS…",
+          "Car battery died 3 times. Bought new battery after it being towed 2 times. 500. Door handle had to be replaced labor and costs over one thousand dollars. September 2024 bought used. This should be a…"
+        ]
+      },
+      {
+        "group": "engine",
+        "count": 50,
+        "samples": [
+          "1.Component or System Failure: •What component or system failed or malfunctioned, and is it available for inspection upon request? •The air conditioning (AC) system in my 2018 Honda Civic has…",
+          "The contact owns a 2018 Honda Civic. The contact stated that the vehicle was difficult to start and was jump-started several times. Several unknown warning lights were illuminated. The vehicle was…",
+          "Engine failure while driving down the highway. Was able to safely get off the highway without being able to accelerate. Car was towed to the Honda dealership where all the maintenance has been done…"
+        ]
+      },
+      {
+        "group": "brakes",
+        "count": 23,
+        "samples": [
+          "The contact owns a 2018 Honda Civic. The contact stated while driving at various speeds, the parking brake was inadvertently applied for several seconds, jolting the vehicle forward. Additionally…",
+          "All dashboard warning light turn on flashing at the same time causing confusing and unsecured driving",
+          "The contact owns a 2018 Honda Civic. The contact stated that while driving at an undisclosed speed, the vehicle hesitated to respond while depressing the accelerator pedal. The contact heard an…"
+        ]
+      },
+      {
+        "group": "airbags",
+        "count": 20,
+        "samples": [
+          "This was such a strange occurance. After pulling off from a stop sign attempting a right turn, my vehicle stalled, readjusted, then stalled again. I was driving on a cobblestone road while it was…",
+          "Passenger airbag deployed with no impact, crash, or anything forceful to have activated it. Passenger airbag cracked windshield glass and injured passenger. An airbag issue was not included in any…",
+          "The contact owns a 2018 Honda Civic. The contact stated that while driving at 3 MPH, the front driver's side air bag unexpectedly deployed. There was no impact on the vehicle that could have caused…"
+        ]
+      },
+      {
+        "group": "structure",
+        "count": 19,
+        "samples": [
+          "The paint has started peeling. For a 2018 car and maintained regularly, this is not acceptable.",
+          "Bumper loose, No A/C only for first day! Car shakes at stop. Low power when pressing gas peddle.",
+          "Paint on hood started chipping away few months back. Now entire car hood paint is peeled off and starting to get corrosion perforation. Some parts of hood shows material fatigue and potential to…"
+        ]
+      },
+      {
+        "group": "lighting_visibility",
+        "count": 16,
+        "samples": [
+          "When i tried to open my gas tank on the neighborhood station to put gas it got locked and cannot be opened, the other drivers tried to help me and the station attendant. But to no avail I have to…",
+          "See attached document for complaint.",
+          "The contact owns a 2018 Honda Civic. The contact stated while driving at an undisclosed speed, the passenger's side headlight failed to illuminate intermittently and was dimmed. The contact stated…"
+        ]
+      },
+      {
+        "group": "driver_assist",
+        "count": 14,
+        "samples": [
+          "I was driving today and for no reason at all the cars anti collision system automatically braked hard and could have caused an accident if someone was driving behind me. There was no one, objects or…",
+          "March 5th 2020 I finally recorded a message that had been appearing in my dash board during late night drives. Message read as \"Adaptive Cruise Control Problem\" \"Collision Mitigation System Problem\"…",
+          "The contact owns a 2018 Honda Civic. The contact stated that the vehicle occasionally hesitated while accelerating. The failure has progressed over time. There were no warning lights illuminated…"
+        ]
+      },
+      {
+        "group": "transmission",
+        "count": 14,
+        "samples": [
+          "This was such a strange occurance. After pulling off from a stop sign attempting a right turn, my vehicle stalled, readjusted, then stalled again. I was driving on a cobblestone road while it was…",
+          "The contact owns a 2018 Honda Civic. The contact stated that while driving at an undisclosed speed, the vehicle hesitated to respond while depressing the accelerator pedal. The contact heard an…",
+          "I got a new alternator because I thought it was draining the battery. A few weeks later I didn’t drive my car for 3 days and the engine would not start but all the lights would turn on. I got it…"
+        ]
+      },
+      {
+        "group": "tires_wheels",
+        "count": 9,
+        "samples": [
+          "UNKNOWN",
+          "The TRMS system constantly displays low tire pressure. I correct the tire pressure and reset the TRMS every time but it happens again and again. . The dealer has also reset the TRMS system, and in a…",
+          "Driving at 70mph I got a low tire pressure alert followed shortly thereafter by the left rear tire separating entirely from the rim and started rolling down the highway as I pulled off the side of…"
+        ]
+      },
+      {
+        "group": "suspension",
+        "count": 4,
+        "samples": [
+          "My steering wheel was sticking. At speeds above 45 it was much more noticeable. When I was driving in a strait line and had to move the steering slightly the steering wheel would stick. It would…",
+          "The car had damage because in the carfax they gave me on the left side of the car the shock absorbers fail and I always had that problem also The moldings the first time I cleaned it also fell apart…",
+          "CRASH MITIGATION SYSTEM WOULD STATE MALFUNCTION OF SYSTEM GOING DOWN THE INTERSTATE AND NOT WORK AND CRUISE CONTROL WOULD NOT WORK WHEN I USED THE BRAKES.WOULD HAVE TO PULL OVER TO SIDE OF ROAD AND…"
+        ]
+      },
+      {
+        "group": "climate",
+        "count": 1,
+        "samples": [
+          "AC compressor and condenser are both broken or have leaked. They should cover both, not just one part. A lot of people with civic owners are complaining with the same issue. Honda should cover all…"
+        ]
+      }
+    ],
+    "ungrouped": 80
+  },
+  "safety": {
+    "overall": 5,
+    "vehicleDescription": "2018 Honda Civic 2 DR FWD"
+  },
+  "fetchedAt": 1794819109381
+}

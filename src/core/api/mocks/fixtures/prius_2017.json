@@ -1,0 +1,168 @@
+{
+  "decode": {
+    "vin": "JTDKBRFU3H3900001",
+    "year": 2017,
+    "make": "Toyota",
+    "model": "Prius",
+    "trim": "One/Two",
+    "body": "Hatchback/Liftback/Notchback",
+    "powertrain": "hybrid",
+    "engineDesc": "1.8L 4-cyl hybrid",
+    "drive": "FWD",
+    "plantCountry": "JAPAN",
+    "decodeWarnings": []
+  },
+  "recalls": [
+    {
+      "campaign": "18V579000",
+      "component": "ELECTRICAL SYSTEM:WIRING",
+      "summary": "Toyota Motor Engineering & Manufacturing (Toyota) is recalling certain 2016-2018 Toyota Prius vehicles.  A portion of the engine wire harness connected to the hybrid Power Control Unit (PCU), could contact the cover at this connection and wear, causing an electrical short circuit.",
+      "consequence": "An electrical short can increase the risk of a fire.",
+      "remedy": "Toyota will notify owners, and dealers will inspect the engine wire harness assembly and replace it if damage is found.  A protective sleeve or protective tape will be included to prevent any future damage.  These repairs will be performed free of charge.  The recall began October 30, 2018.  Owners may contact Toyota customer service at 1-888-270-9371.  Toyota's number for this recall is J0T.",
+      "reportDate": "2018-09-05",
+      "parkIt": false,
+      "parkOutside": false
+    },
+    {
+      "campaign": "17V295000",
+      "component": "TIRES:TEMPORARY/EMERGENCY SPARE TIRE",
+      "summary": "Gulf States Toyota, Inc. (Gulf States) is recalling certain 2017 4Runner , 86, Avalon, Camry, Camry Hybrid, Corolla, Corolla iM, Highlander, Highlander Hybrid, Prius, Prius C, RAV4, RAV4 Hybrid, Sienna  and Yaris vehicles.  The spare tire air pressure was not adjusted to the proper pressure as stated on the Tire Pressure Label.",
+      "consequence": "A spare tire that is not inflated to the proper value may not perform as intended, increasing the risk of a crash.",
+      "remedy": "Gulf States will notify owners, and dealers will inspect the spare tires, adjusting their pressure as necessary, free of charge.  The recall began June 15, 2017.  Owners may contact Gulf States customer service at 1-800-444-1074.  Toyota's number for this recall is 17R2.",
+      "reportDate": "2017-05-02",
+      "parkIt": false,
+      "parkOutside": false
+    },
+    {
+      "campaign": "16V741000",
+      "component": "PARKING BRAKE",
+      "summary": "Toyota Motor Engineering & Manufacturing (Toyota) is recalling certain model year 2016-2017 Prius vehicles manufactured August 6, 2015, to October 3, 2016.  The affected vehicles are equipped with a foot-operated parking brake system that has a parking brake cable that may disengage.",
+      "consequence": "If the parking brake cable disengages from the mechanism and the transmission is left in a gear other than 'Park' while the ignition is on and the driver leaves the vehicle, the vehicle may roll unexpectedly, increasing the risk of a crash.",
+      "remedy": "Toyota will notify owners, and dealers will install a clip at the parking brake cable end to prevent the cable from disengaging, free of charge.  The recall began November 10, 2016.  Owners may contact Toyota customer service at 1-888-270-9371.  Toyota's number for this recall is G01.",
+      "reportDate": "2016-10-14",
+      "parkIt": false,
+      "parkOutside": false
+    }
+  ],
+  "complaints": {
+    "total": 91,
+    "crashes": 12,
+    "fires": 2,
+    "injuries": 7,
+    "deaths": 0,
+    "groups": [
+      {
+        "group": "lighting_visibility",
+        "count": 19,
+        "samples": [
+          "Windshield cracked from bottom to top and across while sitting and there was no evidence of a rock or chip that would cause that. Air temp was about 95 degrees. No rain, no impact, car was sitting…",
+          "MY WINDSHIELD CRACKED FOR NO REASON, WHILE IT WAS PARKED. THIS IS THE SECOND CRACK I GOTTEN ON MY WINDSHIELD FROM OWNING IT FOR 2 YEARS. THIS IS HIGHLY UNUSUAL, I DON'T DRIVE MY CAR VERY FAR, AND IT…",
+          "TL* THE CONTACT OWNS A 2017 TOYOTA PRIUS. WHILE DRIVING ON THE HIGHWAY, THE WIPER BLADE ON THE DRIVER'S SIDE DETACHED FROM THE VEHICLE IN THE MIDDLE OF A RAIN STORM. THE CONTACT PULLED OVER, EXITED…"
+        ]
+      },
+      {
+        "group": "brakes",
+        "count": 14,
+        "samples": [
+          "On 9/14/22 I was almost a hundred miles from my home in Sherrill, NY on Rte 81 south, approaching the bridge in Binghamton, NY when I heard a loud ringing noise. At first I thought it was my phone…",
+          "MY 2 YEAR CHECK UP W/14,932 MILES I WAS ADVISED MY FRONT ROTORS NEED TO BE REPLACED DUE TO POOR PAD CONTACT AND REAR ROTORS ARE GROOVED HEAVILY AND NEED TO BE REPLACED AS WELL. I WAS SHOCKED. I DID…",
+          "TL* THE CONTACT OWNS A 2017 TOYOTA PRIUS. THE CONTACT STATED THAT WHILE HIS DAUGHTER WAS DRIVING AT APPROXIMATELY 19 MPH AND APPROACHING A TRAFFIC LIGHT, THE BRAKE PEDAL WAS DEPRESSED AND THE…"
+        ]
+      },
+      {
+        "group": "driver_assist",
+        "count": 13,
+        "samples": [
+          "On 10/16/23 I was turning slowly into a parking spot and my car suddenly accelerated without my pressing the accelerator. I slammed on the break and the car stopped. It was frightening because I…",
+          "I had just changed from the right-hand lane to the center lane of a six-lane expressway when my vehicle lost power and i was able to move over to the right hand shoulder of the road. The accelerator…",
+          "For the second time (first in 2019) I was seconds and maybe two feet from stopping the car to park when, with my foot on the brake, the car suddenly and without warning lunged forward at what seemed…"
+        ]
+      },
+      {
+        "group": "engine",
+        "count": 13,
+        "samples": [
+          "The catalytic converter heat exchanger failed internally, causing coolant to leak into the exhaust system. Symptoms included white smoke from exhaust and coolant loss with no visible ground leak…",
+          "The contact owns a 2017 Toyota Prius. The contact stated that while driving approximately 25-30 MPH, the vents were blowing out cold air. The check engine warning light was illuminated. The contact…",
+          "Dear NHTSA, I am seeking assistance and compensation for ongoing warranty and repair issues with my Toyota Prius. Key Incident Timeline: •March 21, 2024: Dashboard message “Grille Shutter…"
+        ]
+      },
+      {
+        "group": "fuel",
+        "count": 12,
+        "samples": [
+          "The catalytic converter heat exchanger failed internally, causing coolant to leak into the exhaust system. Symptoms included white smoke from exhaust and coolant loss with no visible ground leak…",
+          "During hot temperatures and after coming to a full stop, the car stalls/hesitates significantly (5-6seconds) when pushing the gas pedal. The car eventually proceeds but the issue reoccurs. It can…",
+          "Dear NHTSA, I am seeking assistance and compensation for ongoing warranty and repair issues with my Toyota Prius. Key Incident Timeline: •March 21, 2024: Dashboard message “Grille Shutter…"
+        ]
+      },
+      {
+        "group": "electrical",
+        "count": 11,
+        "samples": [
+          "Odometer Fraud. The contact purchased a 2017 Toyota Prius. It was discovered when the contact listed the vehicle for sale that there was a mileage discrepancy. The vehicle was as a private sale. At…",
+          "For the past year or so we have had issues with the vehicle not starting properly. If we leave the radio, wipers, heater, or air conditioner in the ON position when we shut the car off, or a window…",
+          "EVEN THOUGH THIS VEHICLE HAS NOTHING TO DO WITH THIS CASE, I CONSIDER THAT IT IS VERY RELEVANT THAT I EXPRESS MY CONCERNS WITH THIS VEHICLE DUE TO THE FACT THAT I TRADED IN MY 2015 TOYOTA PRIUS FOR…"
+        ]
+      },
+      {
+        "group": "steering",
+        "count": 7,
+        "samples": [
+          "THE COVERING ON THE STEERING WHEEL AT THE HAND LOCATIONS HAS EXCESSIVE WEAR AND THE PLASTIC IS ROUGH ON SKIN. THE MANUFACTURE WILL NOT WARRANTY THE STEERING WHEEL COVER BECAUSE OF BEING OUT OF…",
+          "TL* THE CONTACT OWNS A 2017 TOYOTA PRIUS. WHILE TRAVELING APPROXIMATELY 20 MPH AND ATTEMPTING TO TURN, THE STEERING ABILITY BECAME VERY DIFFICULT WITHOUT WARNING. THE VEHICLE WAS TAKEN TO DMARK…",
+          "TL* THE CONTACT OWNED A 2017 TOYOTA PRIUS. WHILE DRIVING 40 MPH, THE STEERING WHEEL BECAME DIFFICULT TO TURN AND THE CONTACT LOST CONTROL. AS A RESULT, THE VEHICLE CRASHED INTO A STORE. THE AIR BAGS…"
+        ]
+      },
+      {
+        "group": "structure",
+        "count": 7,
+        "samples": [
+          "Standing at a red light and someone rear ended",
+          "The rear quarter panel is peeling off",
+          "TAKATA RECALL POSSIBLY. WET PAVEMENT, TRAFFIC SLOWED ON INTERSTATE TO ABOUT 45 MPH, TAILGATING SMALL PICKUP HIT MY REAR CRUMPLE ZONE, SHOVED ME INTO A SMALL SUV THAT CRUSHED MY FRONT CRUMPLE ZONE…"
+        ]
+      },
+      {
+        "group": "tires_wheels",
+        "count": 5,
+        "samples": [
+          "WHILE DRIVING ON I-75 THERE SEEMS TO BE A SPARK CAUSED FUEL TO LEAK AND BURN BACK TIRE AND THE TIRE ROLLED OFF THE FREEWAY PUTTING ALL THE FIVE PASSENGERS INTO A HAZARDOUS SITUATION ON THE I-75…",
+          "TL* THE CONTACT OWNS A 2017 TOYOTA PRIUS. WHILE THE BRAKE PEDAL WAS DEPRESSED, THE REAR WHEELS SEIZED. AS A RESULT, THE CONTACT LOST CONTROL OF THE VEHICLE AND CRASHED INTO A DITCH. THE AIR BAGS…",
+          "ON I-75 @70 MILES/HR, WITH AROUND 800 MILEAGE NEW PRIUS, TOYO TIRE OF THE REAR TIRE POPPED OUT AND ROLLED ON THE I-75 WITHOUT ANY WARNING LIGHTS BUT WITH SOME GAS SMELL, PUTTING ALL THE OCCUPANTS TO…"
+        ]
+      },
+      {
+        "group": "transmission",
+        "count": 4,
+        "samples": [
+          "The contact owns a 2017 Toyota Prius. The contact stated while the contact's wife was driving at an undisclosed speed, the accelerator pedal was depressed. The accelerator pedal was depressed…",
+          "I WAS GOING TO MAKE A RIGHT TURN AND THE CAR WOULD NOT ACCELERATE RIGHT AWAY EVEN THOUGH IT WAS IN \"D\" MY HUSBAND SAID HE EXPERIENCED THE SAME THING TWICE WHILE DRIVING THIS CAR.",
+          "TL* THE CONTACT OWNS A 2017 TOYOTA PRIUS. WHILE THE VEHICLE WAS PARKED, IT ROLLED WITHOUT WARNING. THE CONTACT WAS ABLE TO CATCH UP WITH THE VEHICLE BEFORE IT STRUCK A POLICE VEHICLE. THE OFFICER…"
+        ]
+      },
+      {
+        "group": "airbags",
+        "count": 3,
+        "samples": [
+          "MY VEHICLE WAS REAR-ENDED AND SHOVED INTO A THIRD VEHICLE. WE WERE ON AN INTERSTATE HIGHWAY WITH WET PAVEMENT, AND TRAFFIC WAS SLOWING. WE WERE TRAVELING STRAIGHT. THE AIRBAGS DID NOT DEPLOY, AND MY…",
+          "TAKATA RECALL POSSIBLY. WET PAVEMENT, TRAFFIC SLOWED ON INTERSTATE TO ABOUT 45 MPH, TAILGATING SMALL PICKUP HIT MY REAR CRUMPLE ZONE, SHOVED ME INTO A SMALL SUV THAT CRUSHED MY FRONT CRUMPLE ZONE…",
+          "TL* THE CONTACT OWNS A 2017 TOYOTA PRIUS. WHILE THE BRAKE PEDAL WAS DEPRESSED, THE REAR WHEELS SEIZED. AS A RESULT, THE CONTACT LOST CONTROL OF THE VEHICLE AND CRASHED INTO A DITCH. THE AIR BAGS…"
+        ]
+      },
+      {
+        "group": "suspension",
+        "count": 1,
+        "samples": [
+          "2017 TOYOTA PRIUS TWO. CONSUMER WRITES IN REGARDS TO SWAYING AND WOBBLING WHILE VEHICLE IS IN MOTION. *LD *TR"
+        ]
+      }
+    ],
+    "ungrouped": 6
+  },
+  "safety": {
+    "overall": 5,
+    "vehicleDescription": "2017 Toyota Prius 5 HB FWD"
+  },
+  "fetchedAt": 1794819123053
+}
