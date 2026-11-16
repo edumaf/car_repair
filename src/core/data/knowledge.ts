@@ -2,12 +2,18 @@
 // Add new data/models/*.json files to MODEL_FILES (a test fails if one is missing).
 import obdJson from '../../../data/obd_codes.json';
 import symptomsJson from '../../../data/symptoms.json';
+import asiaUs from '../../../data/models/asia_us.json';
+import fordGerman from '../../../data/models/ford_german.json';
+import frenchOpel from '../../../data/models/french_opel.json';
 import vwGroup from '../../../data/models/vw_group.json';
 import type { CarModel, ModelsFile, ObdCode, ObdFile, Symptom, SymptomsFile } from './knowledgeSchema';
 
 /** File name (without .json) → contents. Keep in sync with data/models/. */
 export const MODEL_FILES: Record<string, unknown> = {
   vw_group: vwGroup,
+  french_opel: frenchOpel,
+  ford_german: fordGerman,
+  asia_us: asiaUs,
 };
 
 const modelFiles = Object.values(MODEL_FILES) as ModelsFile[];

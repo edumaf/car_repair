@@ -1,0 +1,6437 @@
+{
+ "_meta": {
+  "version": 1,
+  "note": "Drafted by AI from general automotive knowledge (commonly reported issues), 2026-11-16. NOT a diagnosis and not exhaustive. A mechanic must review before launch. VIN model codes (positions 7-8) are pre-fill hints only; the user always confirms the model."
+ },
+ "models": [
+  {
+   "id": "dacia_logan_1",
+   "make": "Dacia",
+   "model": "Logan",
+   "generation": "1st gen (incl. MCV)",
+   "years": [
+    2004,
+    2012
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "sedan",
+    "estate",
+    "van"
+   ],
+   "engines": [
+    {
+     "id": "mpi14",
+     "name": "1.4 MPI (75 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "mpi16",
+     "name": "1.6 MPI 8v/16v (87-105 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "dci15",
+     "name": "1.5 dCi (68-90 hp)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Very simple and cheap to fix",
+    "Huge boot (MCV seats 7)",
+    "Parts everywhere in Romania"
+   ],
+   "problems": [
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "mpi14",
+      "mpi16",
+      "dci15"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt + water pump change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "ignition_coils",
+     "title": "Ignition coil failures",
+     "engines": [
+      "mpi14",
+      "mpi16"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Misfire, shaking, check-engine light"
+     ],
+     "what_to_check": [
+      "Check for a smooth idle and pulling power"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "id": "dci15_bearings",
+     "title": "Crankshaft bearing wear on 1.5 dCi if oil changes were stretched",
+     "engines": [
+      "dci15"
+     ],
+     "frequency": "occasional",
+     "severity": "critical",
+     "symptoms": [
+      "Knocking from the engine",
+      "Oil-pressure warning"
+     ],
+     "what_to_check": [
+      "Ask for oil changes every 10,000-15,000 km",
+      "Listen for knocking when warm"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "engine_replacement"
+    },
+    {
+     "id": "rust",
+     "title": "Rust (sills, rear wheel arches and underbody) on older or salted-road cars",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Bubbling paint",
+      "Holes"
+     ],
+     "what_to_check": [
+      "Check the sills, rear wheel arches and underbody"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    },
+    {
+     "id": "logan1_suspension",
+     "title": "Front suspension and steering wear (knocks, play)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Knocks over bumps",
+      "Loose steering"
+     ],
+     "what_to_check": [
+      "Drive over bumps; check for steering play"
+     ],
+     "complaint_group": "suspension",
+     "repair_cost_id": "control_arm_bushings"
+    },
+    {
+     "id": "logan1_heater",
+     "title": "Heater fan / resistor faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Fan works only on some speeds"
+     ],
+     "what_to_check": [
+      "Try all fan speeds"
+     ],
+     "complaint_group": "climate",
+     "repair_cost_id": "heater_core"
+    }
+   ],
+   "buying_tips": [
+    "Buy the best-maintained one you can find; rust and timing belt history matter most"
+   ],
+   "vin": {
+    "wmi": [
+     "UU1",
+     "UU2",
+     "UU3"
+    ]
+   }
+  },
+  {
+   "id": "dacia_logan_2",
+   "make": "Dacia",
+   "model": "Logan / Sandero",
+   "generation": "2nd gen",
+   "years": [
+    2012,
+    2020
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "sedan",
+    "hatchback",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "sce10",
+     "name": "1.0 SCe (73-75 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "tce09",
+     "name": "0.9 TCe (90 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "mpi12",
+     "name": "1.2 16v (75 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "dci15",
+     "name": "1.5 dCi (75-95 hp)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Cheap to buy and run",
+    "Simple mechanics"
+   ],
+   "problems": [
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "mpi12",
+      "dci15"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt + water pump change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "tce09_chain",
+     "title": "Timing chain and oil use issues (0.9 TCe, early)",
+     "engines": [
+      "tce09"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at start",
+      "Oil level drops"
+     ],
+     "what_to_check": [
+      "Listen at a cold start; check the oil level"
+     ],
+     "years": [
+      2012,
+      2016
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "dci_egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "dci15"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Loss of power / limp mode",
+      "DPF or engine light"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "dci15_bearings",
+     "title": "Crankshaft bearing wear on 1.5 dCi if oil changes were stretched",
+     "engines": [
+      "dci15"
+     ],
+     "frequency": "occasional",
+     "severity": "critical",
+     "symptoms": [
+      "Knocking from the engine",
+      "Oil-pressure warning"
+     ],
+     "what_to_check": [
+      "Ask for oil changes every 10,000-15,000 km",
+      "Listen for knocking when warm"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "engine_replacement"
+    },
+    {
+     "id": "easyr_gearbox",
+     "title": "Easy-R automated gearbox jerky shifts",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Nodding between gears"
+     ],
+     "what_to_check": [
+      "Test drive the automatic"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "clutch"
+    },
+    {
+     "id": "logan2_electrics",
+     "title": "Small electrical faults (central locking, windows)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Doors do not lock",
+      "Windows slow"
+     ],
+     "what_to_check": [
+      "Test locks and windows"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "door_lock_actuator"
+    }
+   ],
+   "buying_tips": [
+    "The 1.0 SCe and 1.2 16v are the simplest petrols"
+   ],
+   "vin": {
+    "wmi": [
+     "UU1",
+     "UU2",
+     "UU3"
+    ]
+   }
+  },
+  {
+   "id": "dacia_sandero_3",
+   "make": "Dacia",
+   "model": "Sandero / Logan",
+   "generation": "3rd gen",
+   "years": [
+    2020,
+    2026
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback",
+    "sedan"
+   ],
+   "engines": [
+    {
+     "id": "sce10",
+     "name": "1.0 SCe (65-75 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "tce10",
+     "name": "1.0 TCe / ECO-G LPG (90-100 hp)",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Modern safety for the money",
+    "LPG versions cheap to run"
+   ],
+   "problems": [
+    {
+     "id": "cvt_sandero3",
+     "title": "CVT automatic: drone and hesitation",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Engine drones, slow response"
+     ],
+     "what_to_check": [
+      "Test drive the automatic"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_service"
+    },
+    {
+     "id": "lpg_sandero3",
+     "title": "LPG system needs regular service (filters, valves)",
+     "engines": [
+      "tce10"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Rough running on LPG"
+     ],
+     "what_to_check": [
+      "Ask for LPG service records"
+     ],
+     "complaint_group": "fuel"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "UU1",
+     "UU2",
+     "UU3"
+    ]
+   }
+  },
+  {
+   "id": "dacia_duster_1",
+   "make": "Dacia",
+   "model": "Duster",
+   "generation": "1st gen",
+   "years": [
+    2010,
+    2017
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "mpi16",
+     "name": "1.6 16v (105-115 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "tce12",
+     "name": "1.2 TCe (125 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "dci15",
+     "name": "1.5 dCi (85-110 hp)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Cheap, tough 4x4",
+    "Good ground clearance",
+    "Simple to repair"
+   ],
+   "problems": [
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "mpi16",
+      "dci15"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt + water pump change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "tce12_oil",
+     "title": "High oil use and timing chain wear (1.2 TCe 115-130 hp)",
+     "engines": [
+      "tce12"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Oil level drops between services",
+      "Rattle at start",
+      "Misfires, check-engine light"
+     ],
+     "what_to_check": [
+      "Ask how much oil it uses",
+      "Check the dipstick",
+      "Ask if the engine had the manufacturer repair (pistons/chain)"
+     ],
+     "years": [
+      2012,
+      2017
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "dci_egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "dci15"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Loss of power / limp mode",
+      "DPF or engine light"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "dci15_bearings",
+     "title": "Crankshaft bearing wear on 1.5 dCi if oil changes were stretched",
+     "engines": [
+      "dci15"
+     ],
+     "frequency": "occasional",
+     "severity": "critical",
+     "symptoms": [
+      "Knocking from the engine",
+      "Oil-pressure warning"
+     ],
+     "what_to_check": [
+      "Ask for oil changes every 10,000-15,000 km",
+      "Listen for knocking when warm"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "engine_replacement"
+    },
+    {
+     "id": "rust",
+     "title": "Rust (underbody, rear subframe and door bottoms) on older or salted-road cars",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Bubbling paint",
+      "Holes"
+     ],
+     "what_to_check": [
+      "Check the underbody, rear subframe and door bottoms"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    },
+    {
+     "id": "duster1_4x4",
+     "title": "4x4 rear differential / transfer box neglect",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Whine or clunk from the rear",
+      "4x4 warning"
+     ],
+     "what_to_check": [
+      "Ask if the rear axle oil was changed",
+      "Test 4x4 lock mode"
+     ],
+     "complaint_group": "transmission"
+    },
+    {
+     "id": "duster1_ac",
+     "title": "A/C condenser damaged by stones",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "A/C not cold"
+     ],
+     "what_to_check": [
+      "Test the A/C"
+     ],
+     "complaint_group": "climate",
+     "repair_cost_id": "ac_condenser"
+    }
+   ],
+   "buying_tips": [
+    "4x4 versions often worked hard off-road: check underneath"
+   ],
+   "vin": {
+    "wmi": [
+     "UU1",
+     "UU2",
+     "UU3"
+    ]
+   }
+  },
+  {
+   "id": "dacia_duster_2",
+   "make": "Dacia",
+   "model": "Duster",
+   "generation": "2nd gen",
+   "years": [
+    2017,
+    2024
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "tce10",
+     "name": "1.0 TCe (90-100 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "tce13",
+     "name": "1.3 TCe (130-150 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "dci15",
+     "name": "1.5 Blue dCi (95-115 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "sce16",
+     "name": "1.6 SCe (115 hp)",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Very good value",
+    "Capable 4x4"
+   ],
+   "problems": [
+    {
+     "id": "dci_egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "dci15"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Loss of power / limp mode",
+      "DPF or engine light"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "adblue_duster2",
+     "title": "AdBlue (DEF) system faults",
+     "engines": [
+      "dci15"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    },
+    {
+     "id": "tce13_early",
+     "title": "Early 1.3 TCe: rough running / particle filter issues",
+     "engines": [
+      "tce13"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Hesitation, engine light"
+     ],
+     "what_to_check": [
+      "Check for warning lights and smooth running"
+     ],
+     "years": [
+      2018,
+      2020
+     ],
+     "complaint_group": "engine"
+    },
+    {
+     "id": "duster2_ac",
+     "title": "A/C condenser damaged by stones",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "A/C not cold"
+     ],
+     "what_to_check": [
+      "Test the A/C"
+     ],
+     "complaint_group": "climate",
+     "repair_cost_id": "ac_condenser"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "UU1",
+     "UU2",
+     "UU3"
+    ]
+   }
+  },
+  {
+   "id": "dacia_spring",
+   "make": "Dacia",
+   "model": "Spring",
+   "generation": "electric",
+   "years": [
+    2021,
+    2026
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback"
+   ],
+   "engines": [
+    {
+     "id": "ev",
+     "name": "Electric (45-65 hp)",
+     "fuel": "ev"
+    }
+   ],
+   "strengths": [
+    "Cheapest EV to run in the city"
+   ],
+   "problems": [
+    {
+     "id": "spring_range",
+     "title": "Short real-world range, battery wear on fast-charged cars",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Range much lower in winter"
+     ],
+     "what_to_check": [
+      "Ask for a battery health report",
+      "Check the range shown at 100%"
+     ],
+     "complaint_group": "hybrid_ev",
+     "repair_cost_id": "ev_battery"
+    },
+    {
+     "id": "spring_rust_brakes",
+     "title": "Rear drum brakes and steel parts corroding from low use",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Grinding, pulling"
+     ],
+     "what_to_check": [
+      "Check brakes on the test drive"
+     ],
+     "complaint_group": "brakes",
+     "repair_cost_id": "brake_pads_axle"
+    }
+   ],
+   "buying_tips": [
+    "Very basic safety rating: think about who will drive it"
+   ],
+   "vin": {
+    "wmi": [
+     "UU1",
+     "UU2",
+     "UU3"
+    ]
+   }
+  },
+  {
+   "id": "dacia_lodgy",
+   "make": "Dacia",
+   "model": "Lodgy / Dokker",
+   "generation": "1st gen",
+   "years": [
+    2012,
+    2022
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "mpv",
+    "van"
+   ],
+   "engines": [
+    {
+     "id": "tce12",
+     "name": "1.2 TCe (115 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "mpi16",
+     "name": "1.6 MPI/SCe",
+     "fuel": "gas"
+    },
+    {
+     "id": "dci15",
+     "name": "1.5 dCi",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "7 seats for little money"
+   ],
+   "problems": [
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "mpi16",
+      "dci15"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt + water pump change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "tce12_oil",
+     "title": "High oil use and timing chain wear (1.2 TCe 115-130 hp)",
+     "engines": [
+      "tce12"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Oil level drops between services",
+      "Rattle at start",
+      "Misfires, check-engine light"
+     ],
+     "what_to_check": [
+      "Ask how much oil it uses",
+      "Check the dipstick",
+      "Ask if the engine had the manufacturer repair (pistons/chain)"
+     ],
+     "years": [
+      2012,
+      2017
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "dci_egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "dci15"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Loss of power / limp mode",
+      "DPF or engine light"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "dci15_bearings",
+     "title": "Crankshaft bearing wear on 1.5 dCi if oil changes were stretched",
+     "engines": [
+      "dci15"
+     ],
+     "frequency": "occasional",
+     "severity": "critical",
+     "symptoms": [
+      "Knocking from the engine",
+      "Oil-pressure warning"
+     ],
+     "what_to_check": [
+      "Ask for oil changes every 10,000-15,000 km",
+      "Listen for knocking when warm"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "engine_replacement"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "UU1",
+     "UU2",
+     "UU3"
+    ]
+   }
+  },
+  {
+   "id": "renault_clio_3",
+   "make": "Renault",
+   "model": "Clio",
+   "generation": "3rd gen",
+   "years": [
+    2005,
+    2014
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "d4f12",
+     "name": "1.2 16v (75 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "tce12",
+     "name": "1.2 TCe (100 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "k4m16",
+     "name": "1.6 16v (110 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "dci15",
+     "name": "1.5 dCi (68-105 hp)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Comfortable ride",
+    "Cheap parts"
+   ],
+   "problems": [
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "d4f12",
+      "k4m16",
+      "dci15"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt + water pump change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "ignition_coils",
+     "title": "Ignition coil failures",
+     "engines": [
+      "d4f12",
+      "k4m16"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Misfire, shaking, check-engine light"
+     ],
+     "what_to_check": [
+      "Check for a smooth idle and pulling power"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "id": "dci15_bearings",
+     "title": "Crankshaft bearing wear on 1.5 dCi if oil changes were stretched",
+     "engines": [
+      "dci15"
+     ],
+     "frequency": "occasional",
+     "severity": "critical",
+     "symptoms": [
+      "Knocking from the engine",
+      "Oil-pressure warning"
+     ],
+     "what_to_check": [
+      "Ask for oil changes every 10,000-15,000 km",
+      "Listen for knocking when warm"
+     ],
+     "years": [
+      2005,
+      2010
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "engine_replacement"
+    },
+    {
+     "id": "dci_injectors",
+     "title": "Diesel injector wear",
+     "engines": [
+      "dci15"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Hard starting",
+      "Rough idle",
+      "Smoke"
+     ],
+     "what_to_check": [
+      "Check for a clean start and smooth idle"
+     ],
+     "years": [
+      2005,
+      2009
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "id": "clio3_steering_lock",
+     "title": "Electric steering lock (keycard cars) failing",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "\"Steering lock fault\", car will not start"
+     ],
+     "what_to_check": [
+      "Start and stop the car several times with the keycard"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "electrical_diagnosis"
+    },
+    {
+     "id": "clio3_ps",
+     "title": "Electric power steering faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Heavy steering, warning light"
+     ],
+     "what_to_check": [
+      "Check steering at parking speed"
+     ],
+     "complaint_group": "steering",
+     "repair_cost_id": "power_steering"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "VF1",
+     "VF6",
+     "X7L"
+    ]
+   }
+  },
+  {
+   "id": "renault_clio_4",
+   "make": "Renault",
+   "model": "Clio",
+   "generation": "4th gen",
+   "years": [
+    2012,
+    2019
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "tce09",
+     "name": "0.9 TCe (75-90 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "tce12",
+     "name": "1.2 TCe (120 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "d4f12",
+     "name": "1.2 16v (75 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "dci15",
+     "name": "1.5 dCi (75-110 hp)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Stylish, comfortable",
+    "Economical 1.5 dCi"
+   ],
+   "problems": [
+    {
+     "id": "tce12_oil",
+     "title": "High oil use and timing chain wear (1.2 TCe 115-130 hp)",
+     "engines": [
+      "tce12"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Oil level drops between services",
+      "Rattle at start",
+      "Misfires, check-engine light"
+     ],
+     "what_to_check": [
+      "Ask how much oil it uses",
+      "Check the dipstick",
+      "Ask if the engine had the manufacturer repair (pistons/chain)"
+     ],
+     "years": [
+      2012,
+      2017
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "tce09_chain_clio4",
+     "title": "Timing chain / oil use (0.9 TCe, early)",
+     "engines": [
+      "tce09"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at start",
+      "Oil drops"
+     ],
+     "what_to_check": [
+      "Cold start, check the oil"
+     ],
+     "years": [
+      2012,
+      2016
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "d4f12",
+      "dci15"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt + water pump change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "dci_egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "dci15"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Loss of power / limp mode",
+      "DPF or engine light"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "edc_gearbox",
+     "title": "EDC dual-clutch automatic: jerky pull-away or clutch wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Shudder or jerk when pulling away",
+      "Gear warning"
+     ],
+     "what_to_check": [
+      "Test drive in traffic",
+      "Ask for clutch/software work"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dsg_mechatronic"
+    },
+    {
+     "id": "clio4_infotainment",
+     "title": "R-Link touchscreen faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Screen freezes or is dead"
+     ],
+     "what_to_check": [
+      "Test the screen"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "infotainment"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "VF1",
+     "VF6",
+     "X7L"
+    ]
+   }
+  },
+  {
+   "id": "renault_clio_5",
+   "make": "Renault",
+   "model": "Clio",
+   "generation": "5th gen",
+   "years": [
+    2019,
+    2026
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback"
+   ],
+   "engines": [
+    {
+     "id": "tce10",
+     "name": "1.0 TCe / SCe",
+     "fuel": "gas"
+    },
+    {
+     "id": "tce13",
+     "name": "1.3 TCe (130-140 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "dci15",
+     "name": "1.5 Blue dCi",
+     "fuel": "diesel"
+    },
+    {
+     "id": "etech",
+     "name": "E-Tech hybrid",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Modern and efficient",
+    "Good safety equipment"
+   ],
+   "problems": [
+    {
+     "id": "edc_gearbox",
+     "title": "EDC dual-clutch automatic: jerky pull-away or clutch wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Shudder or jerk when pulling away",
+      "Gear warning"
+     ],
+     "what_to_check": [
+      "Test drive in traffic",
+      "Ask for clutch/software work"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dsg_mechatronic"
+    },
+    {
+     "id": "clio5_infotainment",
+     "title": "Infotainment / electrical glitches",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Screen freezes"
+     ],
+     "what_to_check": [
+      "Test the screen"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "infotainment"
+    },
+    {
+     "id": "adblue_clio5",
+     "title": "AdBlue (DEF) system faults",
+     "engines": [
+      "dci15"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "VF1",
+     "VF6",
+     "X7L"
+    ]
+   }
+  },
+  {
+   "id": "renault_megane_2",
+   "make": "Renault",
+   "model": "Megane",
+   "generation": "2nd gen (incl. Scenic 2)",
+   "years": [
+    2002,
+    2009
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback",
+    "estate",
+    "sedan",
+    "mpv",
+    "convertible"
+   ],
+   "engines": [
+    {
+     "id": "k4m16",
+     "name": "1.4/1.6 16v (98-115 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "dci15",
+     "name": "1.5 dCi (82-106 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "dci19",
+     "name": "1.9 dCi (120-130 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "f4r20",
+     "name": "2.0 16v / Turbo",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Comfortable",
+    "Cheap to buy"
+   ],
+   "problems": [
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "k4m16",
+      "dci15",
+      "dci19",
+      "f4r20"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt + water pump change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "ignition_coils",
+     "title": "Ignition coil failures",
+     "engines": [
+      "k4m16"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Misfire, shaking, check-engine light"
+     ],
+     "what_to_check": [
+      "Check for a smooth idle and pulling power"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "id": "dci15_bearings",
+     "title": "Crankshaft bearing wear on 1.5 dCi if oil changes were stretched",
+     "engines": [
+      "dci15"
+     ],
+     "frequency": "occasional",
+     "severity": "critical",
+     "symptoms": [
+      "Knocking from the engine",
+      "Oil-pressure warning"
+     ],
+     "what_to_check": [
+      "Ask for oil changes every 10,000-15,000 km",
+      "Listen for knocking when warm"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "engine_replacement"
+    },
+    {
+     "id": "dci_injectors",
+     "title": "Diesel injector wear",
+     "engines": [
+      "dci15"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Hard starting",
+      "Rough idle",
+      "Smoke"
+     ],
+     "what_to_check": [
+      "Check for a clean start and smooth idle"
+     ],
+     "years": [
+      2002,
+      2008
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "id": "dci19_turbo",
+     "title": "Turbo failures (1.9 dCi)",
+     "engines": [
+      "dci19"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Whistle, smoke, loss of power"
+     ],
+     "what_to_check": [
+      "Check for blue smoke and power"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "turbo"
+    },
+    {
+     "id": "megane2_keycard",
+     "title": "Keycard reader and electrical faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "\"Card not detected\"",
+      "Random warnings"
+     ],
+     "what_to_check": [
+      "Start the car several times with both cards"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "electrical_diagnosis"
+    },
+    {
+     "id": "megane2_rear_axle",
+     "title": "Rear axle bearing wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Rear wheels lean inward, uneven tire wear"
+     ],
+     "what_to_check": [
+      "Look at the rear wheels from behind for inward lean"
+     ],
+     "complaint_group": "suspension",
+     "repair_cost_id": "wheel_bearing"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "VF1",
+     "VF6",
+     "X7L"
+    ]
+   }
+  },
+  {
+   "id": "renault_megane_3",
+   "make": "Renault",
+   "model": "Megane",
+   "generation": "3rd gen (incl. Scenic 3, Fluence)",
+   "years": [
+    2008,
+    2016
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback",
+    "estate",
+    "coupe",
+    "mpv",
+    "sedan"
+   ],
+   "engines": [
+    {
+     "id": "k4m16",
+     "name": "1.6 16v (110 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "tce12",
+     "name": "1.2 TCe (115-130 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "tce14",
+     "name": "1.4 TCe (130 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "dci15",
+     "name": "1.5 dCi (86-110 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "dci16",
+     "name": "1.6 dCi (130 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "dci19",
+     "name": "1.9 dCi (130 hp)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Comfortable, good value",
+    "Economical 1.5 dCi"
+   ],
+   "problems": [
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "k4m16",
+      "dci15",
+      "dci19"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt + water pump change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "tce12_oil",
+     "title": "High oil use and timing chain wear (1.2 TCe 115-130 hp)",
+     "engines": [
+      "tce12"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Oil level drops between services",
+      "Rattle at start",
+      "Misfires, check-engine light"
+     ],
+     "what_to_check": [
+      "Ask how much oil it uses",
+      "Check the dipstick",
+      "Ask if the engine had the manufacturer repair (pistons/chain)"
+     ],
+     "years": [
+      2012,
+      2017
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "dci15_bearings",
+     "title": "Crankshaft bearing wear on 1.5 dCi if oil changes were stretched",
+     "engines": [
+      "dci15"
+     ],
+     "frequency": "occasional",
+     "severity": "critical",
+     "symptoms": [
+      "Knocking from the engine",
+      "Oil-pressure warning"
+     ],
+     "what_to_check": [
+      "Ask for oil changes every 10,000-15,000 km",
+      "Listen for knocking when warm"
+     ],
+     "years": [
+      2008,
+      2010
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "engine_replacement"
+    },
+    {
+     "id": "dci_egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "dci15",
+      "dci16",
+      "dci19"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Loss of power / limp mode",
+      "DPF or engine light"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "edc_gearbox",
+     "title": "EDC dual-clutch automatic: jerky pull-away or clutch wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Shudder or jerk when pulling away",
+      "Gear warning"
+     ],
+     "what_to_check": [
+      "Test drive in traffic",
+      "Ask for clutch/software work"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dsg_mechatronic"
+    },
+    {
+     "id": "megane3_keycard",
+     "title": "Keycard and electrical faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "\"Card not detected\""
+     ],
+     "what_to_check": [
+      "Start with both cards"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "electrical_diagnosis"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "VF1",
+     "VF6",
+     "X7L"
+    ]
+   }
+  },
+  {
+   "id": "renault_megane_4",
+   "make": "Renault",
+   "model": "Megane",
+   "generation": "4th gen",
+   "years": [
+    2016,
+    2023
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback",
+    "estate",
+    "sedan"
+   ],
+   "engines": [
+    {
+     "id": "tce13",
+     "name": "1.2/1.3 TCe",
+     "fuel": "gas"
+    },
+    {
+     "id": "dci15",
+     "name": "1.5 dCi",
+     "fuel": "diesel"
+    },
+    {
+     "id": "dci16",
+     "name": "1.6/1.7 dCi",
+     "fuel": "diesel"
+    },
+    {
+     "id": "etech",
+     "name": "E-Tech plug-in",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Comfortable, well equipped"
+   ],
+   "problems": [
+    {
+     "id": "edc_gearbox",
+     "title": "EDC dual-clutch automatic: jerky pull-away or clutch wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Shudder or jerk when pulling away",
+      "Gear warning"
+     ],
+     "what_to_check": [
+      "Test drive in traffic",
+      "Ask for clutch/software work"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dsg_mechatronic"
+    },
+    {
+     "id": "dci_egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "dci15",
+      "dci16"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Loss of power / limp mode",
+      "DPF or engine light"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "megane4_rlink",
+     "title": "R-Link 2 infotainment glitches",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Screen freezes"
+     ],
+     "what_to_check": [
+      "Test the screen"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "infotainment"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "VF1",
+     "VF6",
+     "X7L"
+    ]
+   }
+  },
+  {
+   "id": "renault_captur_1",
+   "make": "Renault",
+   "model": "Captur",
+   "generation": "1st gen",
+   "years": [
+    2013,
+    2019
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "tce09",
+     "name": "0.9 TCe (90 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "tce12",
+     "name": "1.2 TCe (120 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "dci15",
+     "name": "1.5 dCi (90-110 hp)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Practical sliding rear seat",
+    "Economical"
+   ],
+   "problems": [
+    {
+     "id": "tce12_oil",
+     "title": "High oil use and timing chain wear (1.2 TCe 115-130 hp)",
+     "engines": [
+      "tce12"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Oil level drops between services",
+      "Rattle at start",
+      "Misfires, check-engine light"
+     ],
+     "what_to_check": [
+      "Ask how much oil it uses",
+      "Check the dipstick",
+      "Ask if the engine had the manufacturer repair (pistons/chain)"
+     ],
+     "years": [
+      2012,
+      2017
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "edc_gearbox",
+     "title": "EDC dual-clutch automatic: jerky pull-away or clutch wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Shudder or jerk when pulling away",
+      "Gear warning"
+     ],
+     "what_to_check": [
+      "Test drive in traffic",
+      "Ask for clutch/software work"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dsg_mechatronic"
+    },
+    {
+     "id": "dci_egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "dci15"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Loss of power / limp mode",
+      "DPF or engine light"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "dci15"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt + water pump change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "VF1",
+     "VF6",
+     "X7L"
+    ]
+   }
+  },
+  {
+   "id": "renault_kadjar",
+   "make": "Renault",
+   "model": "Kadjar",
+   "generation": "1st gen",
+   "years": [
+    2015,
+    2022
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "tce12",
+     "name": "1.2/1.3 TCe",
+     "fuel": "gas"
+    },
+    {
+     "id": "dci15",
+     "name": "1.5 dCi (110-115 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "dci16",
+     "name": "1.6/1.7 dCi",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Comfortable family SUV",
+    "Shares parts with the Nissan Qashqai"
+   ],
+   "problems": [
+    {
+     "id": "tce12_oil",
+     "title": "High oil use and timing chain wear (1.2 TCe 115-130 hp)",
+     "engines": [
+      "tce12"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Oil level drops between services",
+      "Rattle at start",
+      "Misfires, check-engine light"
+     ],
+     "what_to_check": [
+      "Ask how much oil it uses",
+      "Check the dipstick",
+      "Ask if the engine had the manufacturer repair (pistons/chain)"
+     ],
+     "years": [
+      2012,
+      2017
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "edc_gearbox",
+     "title": "EDC dual-clutch automatic: jerky pull-away or clutch wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Shudder or jerk when pulling away",
+      "Gear warning"
+     ],
+     "what_to_check": [
+      "Test drive in traffic",
+      "Ask for clutch/software work"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dsg_mechatronic"
+    },
+    {
+     "id": "dci_egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "dci15",
+      "dci16"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Loss of power / limp mode",
+      "DPF or engine light"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "VF1",
+     "VF6",
+     "X7L"
+    ]
+   }
+  },
+  {
+   "id": "renault_laguna_3",
+   "make": "Renault",
+   "model": "Laguna",
+   "generation": "3rd gen",
+   "years": [
+    2007,
+    2015
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback",
+    "estate",
+    "coupe"
+   ],
+   "engines": [
+    {
+     "id": "dci15",
+     "name": "1.5 dCi (110 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "dci20",
+     "name": "2.0 dCi (130-180 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "gas20",
+     "name": "2.0 16v (140 hp)",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Comfortable long-distance car",
+    "Cheap to buy"
+   ],
+   "problems": [
+    {
+     "id": "dci_egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "dci15",
+      "dci20"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Loss of power / limp mode",
+      "DPF or engine light"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "dci15_bearings",
+     "title": "Crankshaft bearing wear on 1.5 dCi if oil changes were stretched",
+     "engines": [
+      "dci15"
+     ],
+     "frequency": "occasional",
+     "severity": "critical",
+     "symptoms": [
+      "Knocking from the engine",
+      "Oil-pressure warning"
+     ],
+     "what_to_check": [
+      "Ask for oil changes every 10,000-15,000 km",
+      "Listen for knocking when warm"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "engine_replacement"
+    },
+    {
+     "id": "dci20_dmf",
+     "title": "Dual-mass flywheel wear (2.0 dCi)",
+     "engines": [
+      "dci20"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at idle"
+     ],
+     "what_to_check": [
+      "Listen at idle"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dual_mass_flywheel"
+    },
+    {
+     "id": "laguna3_keycard",
+     "title": "Keycard reader faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Card not detected"
+     ],
+     "what_to_check": [
+      "Start with both cards"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "electrical_diagnosis"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "VF1",
+     "VF6",
+     "X7L"
+    ]
+   }
+  },
+  {
+   "id": "renault_kangoo_2",
+   "make": "Renault",
+   "model": "Kangoo",
+   "generation": "2nd gen",
+   "years": [
+    2008,
+    2021
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "van",
+    "mpv"
+   ],
+   "engines": [
+    {
+     "id": "dci15",
+     "name": "1.5 dCi (70-110 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "k4m16",
+     "name": "1.6 16v",
+     "fuel": "gas"
+    },
+    {
+     "id": "ze",
+     "name": "Z.E. electric",
+     "fuel": "ev"
+    }
+   ],
+   "strengths": [
+    "Very practical",
+    "Cheap to run"
+   ],
+   "problems": [
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "dci15",
+      "k4m16"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt + water pump change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "dci_egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "dci15"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Loss of power / limp mode",
+      "DPF or engine light"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "dci15_bearings",
+     "title": "Crankshaft bearing wear on 1.5 dCi if oil changes were stretched",
+     "engines": [
+      "dci15"
+     ],
+     "frequency": "occasional",
+     "severity": "critical",
+     "symptoms": [
+      "Knocking from the engine",
+      "Oil-pressure warning"
+     ],
+     "what_to_check": [
+      "Ask for oil changes every 10,000-15,000 km",
+      "Listen for knocking when warm"
+     ],
+     "years": [
+      2008,
+      2010
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "engine_replacement"
+    },
+    {
+     "id": "rust",
+     "title": "Rust (sills and underbody) on older or salted-road cars",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Bubbling paint",
+      "Holes"
+     ],
+     "what_to_check": [
+      "Check the sills and underbody"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    },
+    {
+     "id": "kangoo_work",
+     "title": "Heavy wear from work use",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Worn clutch, tired suspension"
+     ],
+     "what_to_check": [
+      "Check clutch bite and load area"
+     ],
+     "repair_cost_id": "clutch"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "VF1",
+     "VF6",
+     "X7L"
+    ]
+   }
+  },
+  {
+   "id": "peugeot_206",
+   "make": "Peugeot",
+   "model": "206",
+   "generation": "206 / 206+",
+   "years": [
+    1998,
+    2012
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback",
+    "estate",
+    "convertible",
+    "sedan"
+   ],
+   "engines": [
+    {
+     "id": "tu14",
+     "name": "1.1/1.4 (60-75 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "tu16",
+     "name": "1.6 16v (110 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "hdi14",
+     "name": "1.4 HDi (68 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "hdi20",
+     "name": "2.0 HDi (90 hp)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Cheap and simple",
+    "Fun to drive"
+   ],
+   "problems": [
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "tu14",
+      "tu16",
+      "hdi14",
+      "hdi20"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt + water pump change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "al4_gearbox",
+     "title": "4-speed automatic (AL4/DP0) failures",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Harsh shifts",
+      "Flashing gear indicator / limp mode"
+     ],
+     "what_to_check": [
+      "Test drive the automatic warm and cold",
+      "Ask for fluid changes and solenoid repairs"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "id": "rust",
+     "title": "Rust (rear wheel arches and boot floor) on older or salted-road cars",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Bubbling paint",
+      "Holes"
+     ],
+     "what_to_check": [
+      "Check the rear wheel arches and boot floor"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    },
+    {
+     "id": "206_bsi",
+     "title": "Electrical (BSI module) faults: wipers, lights, locks acting up",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Random electrical behaviour"
+     ],
+     "what_to_check": [
+      "Test wipers, lights and locks"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "electrical_diagnosis"
+    },
+    {
+     "id": "206_rear_axle",
+     "title": "Rear axle bearings worn (rear wheels lean in)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rear wheels lean inward",
+      "Inner tire wear"
+     ],
+     "what_to_check": [
+      "Look at the rear wheels from behind"
+     ],
+     "complaint_group": "suspension",
+     "repair_cost_id": "wheel_bearing"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "VF3",
+     "VR3"
+    ]
+   }
+  },
+  {
+   "id": "peugeot_207",
+   "make": "Peugeot",
+   "model": "207",
+   "generation": "207",
+   "years": [
+    2006,
+    2014
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback",
+    "estate",
+    "convertible"
+   ],
+   "engines": [
+    {
+     "id": "tu14",
+     "name": "1.4 8v (75 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "vti",
+     "name": "1.4/1.6 VTi (95-120 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "thp",
+     "name": "1.6 THP (150-175 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "hdi16",
+     "name": "1.6 HDi (90-110 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "hdi14",
+     "name": "1.4 HDi (68 hp)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Comfortable small car"
+   ],
+   "problems": [
+    {
+     "id": "thp_chain",
+     "title": "Timing chain stretch (1.6 THP / VTi petrol)",
+     "engines": [
+      "thp",
+      "vti"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Rattle at cold start",
+      "Engine light"
+     ],
+     "what_to_check": [
+      "Listen at a cold start",
+      "Ask for chain kit replacement"
+     ],
+     "years": [
+      2006,
+      2014
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "thp_carbon",
+     "title": "Carbon build-up and high oil use (1.6 THP)",
+     "engines": [
+      "thp",
+      "vti"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Misfires",
+      "Oil use"
+     ],
+     "what_to_check": [
+      "Ask about oil consumption"
+     ],
+     "years": [
+      2006,
+      2014
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "intake_carbon_cleaning"
+    },
+    {
+     "id": "hdi_injector_seals",
+     "title": "Leaking injector seals (\"black death\" carbon around injectors, 1.6 HDi)",
+     "engines": [
+      "hdi16"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Diesel smell, ticking/puffing noise",
+      "Black carbon around the injectors"
+     ],
+     "what_to_check": [
+      "Look at the injectors for black tar-like deposits"
+     ],
+     "years": [
+      2004,
+      2011
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "id": "hdi_turbo_oil",
+     "title": "Turbo failure from oil starvation (1.6 HDi)",
+     "engines": [
+      "hdi16"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Whistling",
+      "Blue smoke",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask if the turbo oil feed and filter screen were replaced with the turbo",
+      "Check for blue smoke"
+     ],
+     "years": [
+      2004,
+      2011
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "turbo"
+    },
+    {
+     "id": "fap_additive",
+     "title": "Particulate filter needs additive fluid top-up (Eolys)",
+     "engines": [
+      "hdi16"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "FAP/DPF warning",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask when the DPF additive and filter were serviced"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "al4_gearbox",
+     "title": "4-speed automatic (AL4/DP0) failures",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Harsh shifts",
+      "Flashing gear indicator / limp mode"
+     ],
+     "what_to_check": [
+      "Test drive the automatic warm and cold",
+      "Ask for fluid changes and solenoid repairs"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "tu14",
+      "hdi14",
+      "hdi16"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt + water pump change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "207_electrics",
+     "title": "Electrical glitches (BSI, sensors)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Random warnings"
+     ],
+     "what_to_check": [
+      "Check for warnings on the dash"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "electrical_diagnosis"
+    }
+   ],
+   "buying_tips": [
+    "Avoid the 1.6 THP/VTi without timing-chain records"
+   ],
+   "vin": {
+    "wmi": [
+     "VF3",
+     "VR3"
+    ]
+   }
+  },
+  {
+   "id": "peugeot_208_1",
+   "make": "Peugeot",
+   "model": "208",
+   "generation": "1st gen",
+   "years": [
+    2012,
+    2019
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback"
+   ],
+   "engines": [
+    {
+     "id": "puretech",
+     "name": "1.0/1.2 PureTech (68-110 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "vti16",
+     "name": "1.6 VTi (120 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "hdi",
+     "name": "1.4/1.6 HDi / BlueHDi",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Small, comfortable, economical"
+   ],
+   "problems": [
+    {
+     "id": "puretech_wet_belt",
+     "title": "Oil-bath timing belt breaking down (1.0/1.2 PureTech), clogging the oil pump",
+     "engines": [
+      "puretech"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Oil-pressure warning",
+      "Engine-fault message",
+      "Brake assistance warning (vacuum pump)"
+     ],
+     "what_to_check": [
+      "Ask when the timing belt was changed and which oil was used (must be the specified grade)",
+      "Ask for an inspection of the belt condition",
+      "Avoid cars with gaps in the service history"
+     ],
+     "years": [
+      2013,
+      2026
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "puretech_oil",
+     "title": "High oil consumption (1.2 PureTech)",
+     "engines": [
+      "puretech"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Low-oil warning between services",
+      "Blue smoke"
+     ],
+     "what_to_check": [
+      "Ask how much oil it uses",
+      "Check the dipstick"
+     ],
+     "years": [
+      2013,
+      2026
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "adblue_tank_psa",
+     "title": "AdBlue (DEF) tank/pump failure (BlueHDi)",
+     "engines": [
+      "hdi"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning with a countdown to no-start"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings",
+      "Ask whether the AdBlue tank was replaced"
+     ],
+     "years": [
+      2015,
+      2026
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    },
+    {
+     "id": "etg_gearbox",
+     "title": "Automated manual (ETG/EGS) slow, jerky shifts and clutch wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Nodding between gears"
+     ],
+     "what_to_check": [
+      "Test drive to see if you can live with it"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "clutch"
+    },
+    {
+     "id": "208_infotainment",
+     "title": "Touchscreen freezing",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Screen freezes"
+     ],
+     "what_to_check": [
+      "Test the screen"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "infotainment"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "VF3",
+     "VR3"
+    ]
+   }
+  },
+  {
+   "id": "peugeot_208_2",
+   "make": "Peugeot",
+   "model": "208",
+   "generation": "2nd gen (incl. e-208)",
+   "years": [
+    2019,
+    2026
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback"
+   ],
+   "engines": [
+    {
+     "id": "puretech",
+     "name": "1.2 PureTech (75-130 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "bluehdi",
+     "name": "1.5 BlueHDi (100 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "e208",
+     "name": "e-208 electric",
+     "fuel": "ev"
+    }
+   ],
+   "strengths": [
+    "Modern and stylish",
+    "Electric version available"
+   ],
+   "problems": [
+    {
+     "id": "puretech_wet_belt",
+     "title": "Oil-bath timing belt breaking down (1.0/1.2 PureTech), clogging the oil pump",
+     "engines": [
+      "puretech"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Oil-pressure warning",
+      "Engine-fault message",
+      "Brake assistance warning (vacuum pump)"
+     ],
+     "what_to_check": [
+      "Ask when the timing belt was changed and which oil was used (must be the specified grade)",
+      "Ask for an inspection of the belt condition",
+      "Avoid cars with gaps in the service history"
+     ],
+     "years": [
+      2013,
+      2026
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "puretech_oil",
+     "title": "High oil consumption (1.2 PureTech)",
+     "engines": [
+      "puretech"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Low-oil warning between services",
+      "Blue smoke"
+     ],
+     "what_to_check": [
+      "Ask how much oil it uses",
+      "Check the dipstick"
+     ],
+     "years": [
+      2013,
+      2026
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "adblue_tank_psa",
+     "title": "AdBlue (DEF) tank/pump failure (BlueHDi)",
+     "engines": [
+      "bluehdi"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning with a countdown to no-start"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings",
+      "Ask whether the AdBlue tank was replaced"
+     ],
+     "years": [
+      2015,
+      2026
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    },
+    {
+     "id": "e208_charging",
+     "title": "Onboard charger / charging faults (e-208)",
+     "engines": [
+      "e208"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Will not charge"
+     ],
+     "what_to_check": [
+      "Test charging if possible"
+     ],
+     "complaint_group": "hybrid_ev",
+     "repair_cost_id": "ev_charger_port"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "VF3",
+     "VR3"
+    ]
+   }
+  },
+  {
+   "id": "peugeot_307",
+   "make": "Peugeot",
+   "model": "307",
+   "generation": "307",
+   "years": [
+    2001,
+    2008
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback",
+    "estate",
+    "convertible"
+   ],
+   "engines": [
+    {
+     "id": "tu16",
+     "name": "1.4/1.6 16v",
+     "fuel": "gas"
+    },
+    {
+     "id": "hdi16",
+     "name": "1.6 HDi (90-110 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "hdi20",
+     "name": "2.0 HDi (90-136 hp)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Roomy, comfortable"
+   ],
+   "problems": [
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "tu16",
+      "hdi16",
+      "hdi20"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt + water pump change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "hdi_injector_seals",
+     "title": "Leaking injector seals (\"black death\" carbon around injectors, 1.6 HDi)",
+     "engines": [
+      "hdi16"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Diesel smell, ticking/puffing noise",
+      "Black carbon around the injectors"
+     ],
+     "what_to_check": [
+      "Look at the injectors for black tar-like deposits"
+     ],
+     "years": [
+      2004,
+      2011
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "id": "hdi_turbo_oil",
+     "title": "Turbo failure from oil starvation (1.6 HDi)",
+     "engines": [
+      "hdi16"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Whistling",
+      "Blue smoke",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask if the turbo oil feed and filter screen were replaced with the turbo",
+      "Check for blue smoke"
+     ],
+     "years": [
+      2004,
+      2011
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "turbo"
+    },
+    {
+     "id": "fap_additive",
+     "title": "Particulate filter needs additive fluid top-up (Eolys)",
+     "engines": [
+      "hdi16",
+      "hdi20"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "FAP/DPF warning",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask when the DPF additive and filter were serviced"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "al4_gearbox",
+     "title": "4-speed automatic (AL4/DP0) failures",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Harsh shifts",
+      "Flashing gear indicator / limp mode"
+     ],
+     "what_to_check": [
+      "Test drive the automatic warm and cold",
+      "Ask for fluid changes and solenoid repairs"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "id": "307_electrics",
+     "title": "Electrical faults (BSI, wipers, instrument cluster)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Random electrical behaviour"
+     ],
+     "what_to_check": [
+      "Test all electrics"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "electrical_diagnosis"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "VF3",
+     "VR3"
+    ]
+   }
+  },
+  {
+   "id": "peugeot_308_1",
+   "make": "Peugeot",
+   "model": "308",
+   "generation": "1st gen (T7)",
+   "years": [
+    2007,
+    2014
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback",
+    "estate",
+    "convertible"
+   ],
+   "engines": [
+    {
+     "id": "vti",
+     "name": "1.4/1.6 VTi (95-120 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "thp",
+     "name": "1.6 THP (150-200 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "hdi16",
+     "name": "1.6 HDi (90-112 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "hdi20",
+     "name": "2.0 HDi (136-163 hp)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Comfortable, roomy"
+   ],
+   "problems": [
+    {
+     "id": "thp_chain",
+     "title": "Timing chain stretch (1.6 THP / VTi petrol)",
+     "engines": [
+      "thp",
+      "vti"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Rattle at cold start",
+      "Engine light"
+     ],
+     "what_to_check": [
+      "Listen at a cold start",
+      "Ask for chain kit replacement"
+     ],
+     "years": [
+      2006,
+      2014
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "thp_carbon",
+     "title": "Carbon build-up and high oil use (1.6 THP)",
+     "engines": [
+      "thp",
+      "vti"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Misfires",
+      "Oil use"
+     ],
+     "what_to_check": [
+      "Ask about oil consumption"
+     ],
+     "years": [
+      2006,
+      2014
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "intake_carbon_cleaning"
+    },
+    {
+     "id": "hdi_injector_seals",
+     "title": "Leaking injector seals (\"black death\" carbon around injectors, 1.6 HDi)",
+     "engines": [
+      "hdi16"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Diesel smell, ticking/puffing noise",
+      "Black carbon around the injectors"
+     ],
+     "what_to_check": [
+      "Look at the injectors for black tar-like deposits"
+     ],
+     "years": [
+      2004,
+      2011
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "id": "hdi_turbo_oil",
+     "title": "Turbo failure from oil starvation (1.6 HDi)",
+     "engines": [
+      "hdi16"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Whistling",
+      "Blue smoke",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask if the turbo oil feed and filter screen were replaced with the turbo",
+      "Check for blue smoke"
+     ],
+     "years": [
+      2004,
+      2011
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "turbo"
+    },
+    {
+     "id": "fap_additive",
+     "title": "Particulate filter needs additive fluid top-up (Eolys)",
+     "engines": [
+      "hdi16",
+      "hdi20"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "FAP/DPF warning",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask when the DPF additive and filter were serviced"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "al4_gearbox",
+     "title": "4-speed automatic (AL4/DP0) failures",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Harsh shifts",
+      "Flashing gear indicator / limp mode"
+     ],
+     "what_to_check": [
+      "Test drive the automatic warm and cold",
+      "Ask for fluid changes and solenoid repairs"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "hdi16",
+      "hdi20"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt + water pump change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "VF3",
+     "VR3"
+    ]
+   }
+  },
+  {
+   "id": "peugeot_308_2",
+   "make": "Peugeot",
+   "model": "308",
+   "generation": "2nd gen (T9)",
+   "years": [
+    2013,
+    2021
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "puretech",
+     "name": "1.2 PureTech (110-130 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "thp",
+     "name": "1.6 THP (125-270 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "bluehdi",
+     "name": "1.5/1.6/2.0 BlueHDi",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Comfortable, economical diesels",
+    "Big boot"
+   ],
+   "problems": [
+    {
+     "id": "puretech_wet_belt",
+     "title": "Oil-bath timing belt breaking down (1.0/1.2 PureTech), clogging the oil pump",
+     "engines": [
+      "puretech"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Oil-pressure warning",
+      "Engine-fault message",
+      "Brake assistance warning (vacuum pump)"
+     ],
+     "what_to_check": [
+      "Ask when the timing belt was changed and which oil was used (must be the specified grade)",
+      "Ask for an inspection of the belt condition",
+      "Avoid cars with gaps in the service history"
+     ],
+     "years": [
+      2013,
+      2026
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "puretech_oil",
+     "title": "High oil consumption (1.2 PureTech)",
+     "engines": [
+      "puretech"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Low-oil warning between services",
+      "Blue smoke"
+     ],
+     "what_to_check": [
+      "Ask how much oil it uses",
+      "Check the dipstick"
+     ],
+     "years": [
+      2013,
+      2026
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "adblue_tank_psa",
+     "title": "AdBlue (DEF) tank/pump failure (BlueHDi)",
+     "engines": [
+      "bluehdi"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning with a countdown to no-start"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings",
+      "Ask whether the AdBlue tank was replaced"
+     ],
+     "years": [
+      2015,
+      2026
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    },
+    {
+     "id": "bluehdi15_chain",
+     "title": "Timing chain wear (1.5 BlueHDi, early)",
+     "engines": [
+      "bluehdi"
+     ],
+     "frequency": "occasional",
+     "severity": "critical",
+     "symptoms": [
+      "Rattle at start",
+      "Engine light"
+     ],
+     "what_to_check": [
+      "Listen at a cold start; ask for chain work"
+     ],
+     "years": [
+      2017,
+      2021
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "308_infotainment",
+     "title": "Touchscreen freezing (climate is in the screen)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Screen freezes"
+     ],
+     "what_to_check": [
+      "Test the screen"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "infotainment"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "VF3",
+     "VR3"
+    ]
+   }
+  },
+  {
+   "id": "peugeot_3008_1",
+   "make": "Peugeot",
+   "model": "3008",
+   "generation": "1st gen (incl. 5008 I)",
+   "years": [
+    2009,
+    2016
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "mpv",
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "vti",
+     "name": "1.6 VTi (120 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "thp",
+     "name": "1.6 THP (150-156 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "hdi16",
+     "name": "1.6 HDi (110-115 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "hdi20",
+     "name": "2.0 HDi (150-163 hp)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Practical, comfortable"
+   ],
+   "problems": [
+    {
+     "id": "thp_chain",
+     "title": "Timing chain stretch (1.6 THP / VTi petrol)",
+     "engines": [
+      "thp",
+      "vti"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Rattle at cold start",
+      "Engine light"
+     ],
+     "what_to_check": [
+      "Listen at a cold start",
+      "Ask for chain kit replacement"
+     ],
+     "years": [
+      2006,
+      2014
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "thp_carbon",
+     "title": "Carbon build-up and high oil use (1.6 THP)",
+     "engines": [
+      "thp",
+      "vti"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Misfires",
+      "Oil use"
+     ],
+     "what_to_check": [
+      "Ask about oil consumption"
+     ],
+     "years": [
+      2006,
+      2014
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "intake_carbon_cleaning"
+    },
+    {
+     "id": "hdi_injector_seals",
+     "title": "Leaking injector seals (\"black death\" carbon around injectors, 1.6 HDi)",
+     "engines": [
+      "hdi16"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Diesel smell, ticking/puffing noise",
+      "Black carbon around the injectors"
+     ],
+     "what_to_check": [
+      "Look at the injectors for black tar-like deposits"
+     ],
+     "years": [
+      2004,
+      2011
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "id": "hdi_turbo_oil",
+     "title": "Turbo failure from oil starvation (1.6 HDi)",
+     "engines": [
+      "hdi16"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Whistling",
+      "Blue smoke",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask if the turbo oil feed and filter screen were replaced with the turbo",
+      "Check for blue smoke"
+     ],
+     "years": [
+      2004,
+      2011
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "turbo"
+    },
+    {
+     "id": "fap_additive",
+     "title": "Particulate filter needs additive fluid top-up (Eolys)",
+     "engines": [
+      "hdi16",
+      "hdi20"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "FAP/DPF warning",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask when the DPF additive and filter were serviced"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "etg_gearbox",
+     "title": "Automated manual (ETG/EGS) slow, jerky shifts and clutch wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Nodding between gears"
+     ],
+     "what_to_check": [
+      "Test drive to see if you can live with it"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "clutch"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "VF3",
+     "VR3"
+    ]
+   }
+  },
+  {
+   "id": "peugeot_3008_2",
+   "make": "Peugeot",
+   "model": "3008",
+   "generation": "2nd gen (incl. 5008 II)",
+   "years": [
+    2016,
+    2024
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "puretech",
+     "name": "1.2 PureTech (130 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "thp",
+     "name": "1.6 PureTech/THP (180-225 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "bluehdi",
+     "name": "1.5/2.0 BlueHDi",
+     "fuel": "diesel"
+    },
+    {
+     "id": "hybrid",
+     "name": "Hybrid / Hybrid4 plug-in",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Stylish interior",
+    "Comfortable and practical"
+   ],
+   "problems": [
+    {
+     "id": "puretech_wet_belt",
+     "title": "Oil-bath timing belt breaking down (1.0/1.2 PureTech), clogging the oil pump",
+     "engines": [
+      "puretech"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Oil-pressure warning",
+      "Engine-fault message",
+      "Brake assistance warning (vacuum pump)"
+     ],
+     "what_to_check": [
+      "Ask when the timing belt was changed and which oil was used (must be the specified grade)",
+      "Ask for an inspection of the belt condition",
+      "Avoid cars with gaps in the service history"
+     ],
+     "years": [
+      2013,
+      2026
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "puretech_oil",
+     "title": "High oil consumption (1.2 PureTech)",
+     "engines": [
+      "puretech"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Low-oil warning between services",
+      "Blue smoke"
+     ],
+     "what_to_check": [
+      "Ask how much oil it uses",
+      "Check the dipstick"
+     ],
+     "years": [
+      2013,
+      2026
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "adblue_tank_psa",
+     "title": "AdBlue (DEF) tank/pump failure (BlueHDi)",
+     "engines": [
+      "bluehdi"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning with a countdown to no-start"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings",
+      "Ask whether the AdBlue tank was replaced"
+     ],
+     "years": [
+      2015,
+      2026
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    },
+    {
+     "id": "bluehdi15_chain_3008",
+     "title": "Timing chain wear (1.5 BlueHDi, early)",
+     "engines": [
+      "bluehdi"
+     ],
+     "frequency": "occasional",
+     "severity": "critical",
+     "symptoms": [
+      "Rattle at start"
+     ],
+     "what_to_check": [
+      "Listen at a cold start"
+     ],
+     "years": [
+      2017,
+      2021
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "3008_screens",
+     "title": "Screen / electrical glitches",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Screen freezes"
+     ],
+     "what_to_check": [
+      "Test the screens"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "infotainment"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "VF3",
+     "VR3"
+    ]
+   }
+  },
+  {
+   "id": "peugeot_2008_1",
+   "make": "Peugeot",
+   "model": "2008",
+   "generation": "1st gen",
+   "years": [
+    2013,
+    2019
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "puretech",
+     "name": "1.2 PureTech (82-130 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "vti",
+     "name": "1.6 VTi",
+     "fuel": "gas"
+    },
+    {
+     "id": "hdi",
+     "name": "1.4/1.6 HDi / BlueHDi",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Compact and practical"
+   ],
+   "problems": [
+    {
+     "id": "puretech_wet_belt",
+     "title": "Oil-bath timing belt breaking down (1.0/1.2 PureTech), clogging the oil pump",
+     "engines": [
+      "puretech"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Oil-pressure warning",
+      "Engine-fault message",
+      "Brake assistance warning (vacuum pump)"
+     ],
+     "what_to_check": [
+      "Ask when the timing belt was changed and which oil was used (must be the specified grade)",
+      "Ask for an inspection of the belt condition",
+      "Avoid cars with gaps in the service history"
+     ],
+     "years": [
+      2013,
+      2026
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "puretech_oil",
+     "title": "High oil consumption (1.2 PureTech)",
+     "engines": [
+      "puretech"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Low-oil warning between services",
+      "Blue smoke"
+     ],
+     "what_to_check": [
+      "Ask how much oil it uses",
+      "Check the dipstick"
+     ],
+     "years": [
+      2013,
+      2026
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "adblue_tank_psa",
+     "title": "AdBlue (DEF) tank/pump failure (BlueHDi)",
+     "engines": [
+      "hdi"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning with a countdown to no-start"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings",
+      "Ask whether the AdBlue tank was replaced"
+     ],
+     "years": [
+      2015,
+      2026
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    },
+    {
+     "id": "etg_gearbox",
+     "title": "Automated manual (ETG/EGS) slow, jerky shifts and clutch wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Nodding between gears"
+     ],
+     "what_to_check": [
+      "Test drive to see if you can live with it"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "clutch"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "VF3",
+     "VR3"
+    ]
+   }
+  },
+  {
+   "id": "peugeot_508_1",
+   "make": "Peugeot",
+   "model": "508",
+   "generation": "1st gen",
+   "years": [
+    2010,
+    2018
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "sedan",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "thp",
+     "name": "1.6 THP (156-165 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "hdi16",
+     "name": "1.6 HDi/BlueHDi",
+     "fuel": "diesel"
+    },
+    {
+     "id": "hdi20",
+     "name": "2.0 HDi/BlueHDi (140-180 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "hybrid4",
+     "name": "HYbrid4 diesel hybrid",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Comfortable long-distance car"
+   ],
+   "problems": [
+    {
+     "id": "thp_chain",
+     "title": "Timing chain stretch (1.6 THP / VTi petrol)",
+     "engines": [
+      "thp"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Rattle at cold start",
+      "Engine light"
+     ],
+     "what_to_check": [
+      "Listen at a cold start",
+      "Ask for chain kit replacement"
+     ],
+     "years": [
+      2006,
+      2014
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "thp_carbon",
+     "title": "Carbon build-up and high oil use (1.6 THP)",
+     "engines": [
+      "thp"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Misfires",
+      "Oil use"
+     ],
+     "what_to_check": [
+      "Ask about oil consumption"
+     ],
+     "years": [
+      2006,
+      2014
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "intake_carbon_cleaning"
+    },
+    {
+     "id": "fap_additive",
+     "title": "Particulate filter needs additive fluid top-up (Eolys)",
+     "engines": [
+      "hdi16",
+      "hdi20"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "FAP/DPF warning",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask when the DPF additive and filter were serviced"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "adblue_tank_psa",
+     "title": "AdBlue (DEF) tank/pump failure (BlueHDi)",
+     "engines": [
+      "hdi16",
+      "hdi20"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning with a countdown to no-start"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings",
+      "Ask whether the AdBlue tank was replaced"
+     ],
+     "years": [
+      2015,
+      2026
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    },
+    {
+     "id": "508_dmf",
+     "title": "Dual-mass flywheel wear (2.0 HDi manual)",
+     "engines": [
+      "hdi20"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at idle"
+     ],
+     "what_to_check": [
+      "Listen at idle"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dual_mass_flywheel"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "VF3",
+     "VR3"
+    ]
+   }
+  },
+  {
+   "id": "citroen_c3_2",
+   "make": "Citroën",
+   "model": "C3",
+   "generation": "2nd gen (incl. DS3)",
+   "years": [
+    2009,
+    2016
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback"
+   ],
+   "engines": [
+    {
+     "id": "vti",
+     "name": "1.4/1.6 VTi",
+     "fuel": "gas"
+    },
+    {
+     "id": "puretech",
+     "name": "1.0/1.2 PureTech",
+     "fuel": "gas"
+    },
+    {
+     "id": "thp",
+     "name": "1.6 THP (DS3)",
+     "fuel": "gas"
+    },
+    {
+     "id": "hdi",
+     "name": "1.4/1.6 HDi",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Comfortable, big windscreen"
+   ],
+   "problems": [
+    {
+     "id": "thp_chain",
+     "title": "Timing chain stretch (1.6 THP / VTi petrol)",
+     "engines": [
+      "thp",
+      "vti"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Rattle at cold start",
+      "Engine light"
+     ],
+     "what_to_check": [
+      "Listen at a cold start",
+      "Ask for chain kit replacement"
+     ],
+     "years": [
+      2006,
+      2014
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "thp_carbon",
+     "title": "Carbon build-up and high oil use (1.6 THP)",
+     "engines": [
+      "thp",
+      "vti"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Misfires",
+      "Oil use"
+     ],
+     "what_to_check": [
+      "Ask about oil consumption"
+     ],
+     "years": [
+      2006,
+      2014
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "intake_carbon_cleaning"
+    },
+    {
+     "id": "puretech_wet_belt",
+     "title": "Oil-bath timing belt breaking down (1.0/1.2 PureTech), clogging the oil pump",
+     "engines": [
+      "puretech"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Oil-pressure warning",
+      "Engine-fault message",
+      "Brake assistance warning (vacuum pump)"
+     ],
+     "what_to_check": [
+      "Ask when the timing belt was changed and which oil was used (must be the specified grade)",
+      "Ask for an inspection of the belt condition",
+      "Avoid cars with gaps in the service history"
+     ],
+     "years": [
+      2013,
+      2026
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "hdi_injector_seals",
+     "title": "Leaking injector seals (\"black death\" carbon around injectors, 1.6 HDi)",
+     "engines": [
+      "hdi"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Diesel smell, ticking/puffing noise",
+      "Black carbon around the injectors"
+     ],
+     "what_to_check": [
+      "Look at the injectors for black tar-like deposits"
+     ],
+     "years": [
+      2004,
+      2011
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "id": "hdi_turbo_oil",
+     "title": "Turbo failure from oil starvation (1.6 HDi)",
+     "engines": [
+      "hdi"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Whistling",
+      "Blue smoke",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask if the turbo oil feed and filter screen were replaced with the turbo",
+      "Check for blue smoke"
+     ],
+     "years": [
+      2004,
+      2011
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "turbo"
+    },
+    {
+     "id": "fap_additive",
+     "title": "Particulate filter needs additive fluid top-up (Eolys)",
+     "engines": [
+      "hdi"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "FAP/DPF warning",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask when the DPF additive and filter were serviced"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "etg_gearbox",
+     "title": "Automated manual (ETG/EGS) slow, jerky shifts and clutch wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Nodding between gears"
+     ],
+     "what_to_check": [
+      "Test drive to see if you can live with it"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "clutch"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "VF7",
+     "VR7"
+    ]
+   }
+  },
+  {
+   "id": "citroen_c3_3",
+   "make": "Citroën",
+   "model": "C3",
+   "generation": "3rd gen (incl. C3 Aircross)",
+   "years": [
+    2016,
+    2026
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback",
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "puretech",
+     "name": "1.2 PureTech (68-130 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "bluehdi",
+     "name": "1.5/1.6 BlueHDi",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Comfortable, quirky"
+   ],
+   "problems": [
+    {
+     "id": "puretech_wet_belt",
+     "title": "Oil-bath timing belt breaking down (1.0/1.2 PureTech), clogging the oil pump",
+     "engines": [
+      "puretech"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Oil-pressure warning",
+      "Engine-fault message",
+      "Brake assistance warning (vacuum pump)"
+     ],
+     "what_to_check": [
+      "Ask when the timing belt was changed and which oil was used (must be the specified grade)",
+      "Ask for an inspection of the belt condition",
+      "Avoid cars with gaps in the service history"
+     ],
+     "years": [
+      2013,
+      2026
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "puretech_oil",
+     "title": "High oil consumption (1.2 PureTech)",
+     "engines": [
+      "puretech"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Low-oil warning between services",
+      "Blue smoke"
+     ],
+     "what_to_check": [
+      "Ask how much oil it uses",
+      "Check the dipstick"
+     ],
+     "years": [
+      2013,
+      2026
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "adblue_tank_psa",
+     "title": "AdBlue (DEF) tank/pump failure (BlueHDi)",
+     "engines": [
+      "bluehdi"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning with a countdown to no-start"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings",
+      "Ask whether the AdBlue tank was replaced"
+     ],
+     "years": [
+      2015,
+      2026
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "VF7",
+     "VR7"
+    ]
+   }
+  },
+  {
+   "id": "citroen_c4_1",
+   "make": "Citroën",
+   "model": "C4",
+   "generation": "1st gen (incl. C4 Picasso I)",
+   "years": [
+    2004,
+    2013
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback",
+    "coupe",
+    "mpv"
+   ],
+   "engines": [
+    {
+     "id": "tu16",
+     "name": "1.4/1.6 16v",
+     "fuel": "gas"
+    },
+    {
+     "id": "thp",
+     "name": "1.6 VTi/THP",
+     "fuel": "gas"
+    },
+    {
+     "id": "hdi16",
+     "name": "1.6 HDi",
+     "fuel": "diesel"
+    },
+    {
+     "id": "hdi20",
+     "name": "2.0 HDi",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Comfortable",
+    "Practical (Picasso)"
+   ],
+   "problems": [
+    {
+     "id": "thp_chain",
+     "title": "Timing chain stretch (1.6 THP / VTi petrol)",
+     "engines": [
+      "thp"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Rattle at cold start",
+      "Engine light"
+     ],
+     "what_to_check": [
+      "Listen at a cold start",
+      "Ask for chain kit replacement"
+     ],
+     "years": [
+      2006,
+      2014
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "thp_carbon",
+     "title": "Carbon build-up and high oil use (1.6 THP)",
+     "engines": [
+      "thp"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Misfires",
+      "Oil use"
+     ],
+     "what_to_check": [
+      "Ask about oil consumption"
+     ],
+     "years": [
+      2006,
+      2014
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "intake_carbon_cleaning"
+    },
+    {
+     "id": "hdi_injector_seals",
+     "title": "Leaking injector seals (\"black death\" carbon around injectors, 1.6 HDi)",
+     "engines": [
+      "hdi16"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Diesel smell, ticking/puffing noise",
+      "Black carbon around the injectors"
+     ],
+     "what_to_check": [
+      "Look at the injectors for black tar-like deposits"
+     ],
+     "years": [
+      2004,
+      2011
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "id": "hdi_turbo_oil",
+     "title": "Turbo failure from oil starvation (1.6 HDi)",
+     "engines": [
+      "hdi16"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Whistling",
+      "Blue smoke",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask if the turbo oil feed and filter screen were replaced with the turbo",
+      "Check for blue smoke"
+     ],
+     "years": [
+      2004,
+      2011
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "turbo"
+    },
+    {
+     "id": "fap_additive",
+     "title": "Particulate filter needs additive fluid top-up (Eolys)",
+     "engines": [
+      "hdi16",
+      "hdi20"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "FAP/DPF warning",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask when the DPF additive and filter were serviced"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "al4_gearbox",
+     "title": "4-speed automatic (AL4/DP0) failures",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Harsh shifts",
+      "Flashing gear indicator / limp mode"
+     ],
+     "what_to_check": [
+      "Test drive the automatic warm and cold",
+      "Ask for fluid changes and solenoid repairs"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "id": "etg_gearbox",
+     "title": "Automated manual (ETG/EGS) slow, jerky shifts and clutch wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Nodding between gears"
+     ],
+     "what_to_check": [
+      "Test drive to see if you can live with it"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "clutch"
+    },
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "tu16",
+      "hdi16",
+      "hdi20"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt + water pump change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "VF7",
+     "VR7"
+    ]
+   }
+  },
+  {
+   "id": "citroen_c4_2",
+   "make": "Citroën",
+   "model": "C4",
+   "generation": "2nd gen (incl. C4 Picasso II)",
+   "years": [
+    2010,
+    2022
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback",
+    "mpv"
+   ],
+   "engines": [
+    {
+     "id": "vti",
+     "name": "1.6 VTi/THP",
+     "fuel": "gas"
+    },
+    {
+     "id": "puretech",
+     "name": "1.2 PureTech",
+     "fuel": "gas"
+    },
+    {
+     "id": "hdi",
+     "name": "1.6 HDi / 1.6-2.0 BlueHDi",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Very comfortable",
+    "Practical MPV"
+   ],
+   "problems": [
+    {
+     "id": "thp_chain",
+     "title": "Timing chain stretch (1.6 THP / VTi petrol)",
+     "engines": [
+      "vti"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Rattle at cold start",
+      "Engine light"
+     ],
+     "what_to_check": [
+      "Listen at a cold start",
+      "Ask for chain kit replacement"
+     ],
+     "years": [
+      2006,
+      2014
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "thp_carbon",
+     "title": "Carbon build-up and high oil use (1.6 THP)",
+     "engines": [
+      "vti"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Misfires",
+      "Oil use"
+     ],
+     "what_to_check": [
+      "Ask about oil consumption"
+     ],
+     "years": [
+      2006,
+      2014
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "intake_carbon_cleaning"
+    },
+    {
+     "id": "puretech_wet_belt",
+     "title": "Oil-bath timing belt breaking down (1.0/1.2 PureTech), clogging the oil pump",
+     "engines": [
+      "puretech"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Oil-pressure warning",
+      "Engine-fault message",
+      "Brake assistance warning (vacuum pump)"
+     ],
+     "what_to_check": [
+      "Ask when the timing belt was changed and which oil was used (must be the specified grade)",
+      "Ask for an inspection of the belt condition",
+      "Avoid cars with gaps in the service history"
+     ],
+     "years": [
+      2013,
+      2026
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "puretech_oil",
+     "title": "High oil consumption (1.2 PureTech)",
+     "engines": [
+      "puretech"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Low-oil warning between services",
+      "Blue smoke"
+     ],
+     "what_to_check": [
+      "Ask how much oil it uses",
+      "Check the dipstick"
+     ],
+     "years": [
+      2013,
+      2026
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "fap_additive",
+     "title": "Particulate filter needs additive fluid top-up (Eolys)",
+     "engines": [
+      "hdi"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "FAP/DPF warning",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask when the DPF additive and filter were serviced"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "adblue_tank_psa",
+     "title": "AdBlue (DEF) tank/pump failure (BlueHDi)",
+     "engines": [
+      "hdi"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning with a countdown to no-start"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings",
+      "Ask whether the AdBlue tank was replaced"
+     ],
+     "years": [
+      2015,
+      2026
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    },
+    {
+     "id": "etg_gearbox",
+     "title": "Automated manual (ETG/EGS) slow, jerky shifts and clutch wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Nodding between gears"
+     ],
+     "what_to_check": [
+      "Test drive to see if you can live with it"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "clutch"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "VF7",
+     "VR7"
+    ]
+   }
+  },
+  {
+   "id": "citroen_c5_2",
+   "make": "Citroën",
+   "model": "C5",
+   "generation": "2nd gen",
+   "years": [
+    2008,
+    2017
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "sedan",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "thp",
+     "name": "1.6 THP",
+     "fuel": "gas"
+    },
+    {
+     "id": "hdi16",
+     "name": "1.6 HDi",
+     "fuel": "diesel"
+    },
+    {
+     "id": "hdi20",
+     "name": "2.0 HDi (136-163 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "v6",
+     "name": "2.7/3.0 V6 HDi",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Exceptionally comfortable (Hydractive suspension)"
+   ],
+   "problems": [
+    {
+     "id": "hydractive",
+     "title": "Hydractive suspension spheres and leaks",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Harsh ride",
+      "Car sits low",
+      "Suspension warning"
+     ],
+     "what_to_check": [
+      "Check the car rises and falls evenly when started",
+      "Ask when the spheres were replaced"
+     ],
+     "complaint_group": "suspension",
+     "repair_cost_id": "shocks_struts_pair"
+    },
+    {
+     "id": "thp_chain",
+     "title": "Timing chain stretch (1.6 THP / VTi petrol)",
+     "engines": [
+      "thp"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Rattle at cold start",
+      "Engine light"
+     ],
+     "what_to_check": [
+      "Listen at a cold start",
+      "Ask for chain kit replacement"
+     ],
+     "years": [
+      2006,
+      2014
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "thp_carbon",
+     "title": "Carbon build-up and high oil use (1.6 THP)",
+     "engines": [
+      "thp"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Misfires",
+      "Oil use"
+     ],
+     "what_to_check": [
+      "Ask about oil consumption"
+     ],
+     "years": [
+      2006,
+      2014
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "intake_carbon_cleaning"
+    },
+    {
+     "id": "hdi_injector_seals",
+     "title": "Leaking injector seals (\"black death\" carbon around injectors, 1.6 HDi)",
+     "engines": [
+      "hdi16"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Diesel smell, ticking/puffing noise",
+      "Black carbon around the injectors"
+     ],
+     "what_to_check": [
+      "Look at the injectors for black tar-like deposits"
+     ],
+     "years": [
+      2004,
+      2011
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "id": "hdi_turbo_oil",
+     "title": "Turbo failure from oil starvation (1.6 HDi)",
+     "engines": [
+      "hdi16"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Whistling",
+      "Blue smoke",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask if the turbo oil feed and filter screen were replaced with the turbo",
+      "Check for blue smoke"
+     ],
+     "years": [
+      2004,
+      2011
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "turbo"
+    },
+    {
+     "id": "fap_additive",
+     "title": "Particulate filter needs additive fluid top-up (Eolys)",
+     "engines": [
+      "hdi16",
+      "hdi20"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "FAP/DPF warning",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask when the DPF additive and filter were serviced"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    }
+   ],
+   "buying_tips": [
+    "Hydractive cars need a mechanic who knows them"
+   ],
+   "vin": {
+    "wmi": [
+     "VF7",
+     "VR7"
+    ]
+   }
+  },
+  {
+   "id": "citroen_berlingo_2",
+   "make": "Citroën",
+   "model": "Berlingo",
+   "generation": "2nd gen (incl. Peugeot Partner)",
+   "years": [
+    2008,
+    2018
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "van",
+    "mpv"
+   ],
+   "engines": [
+    {
+     "id": "vti",
+     "name": "1.6 VTi / 1.6 16v",
+     "fuel": "gas"
+    },
+    {
+     "id": "hdi",
+     "name": "1.6 HDi / BlueHDi (75-120 hp)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Hugely practical",
+    "Cheap to run"
+   ],
+   "problems": [
+    {
+     "id": "hdi_injector_seals",
+     "title": "Leaking injector seals (\"black death\" carbon around injectors, 1.6 HDi)",
+     "engines": [
+      "hdi"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Diesel smell, ticking/puffing noise",
+      "Black carbon around the injectors"
+     ],
+     "what_to_check": [
+      "Look at the injectors for black tar-like deposits"
+     ],
+     "years": [
+      2008,
+      2013
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "id": "hdi_turbo_oil",
+     "title": "Turbo failure from oil starvation (1.6 HDi)",
+     "engines": [
+      "hdi"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Whistling",
+      "Blue smoke",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask if the turbo oil feed and filter screen were replaced with the turbo",
+      "Check for blue smoke"
+     ],
+     "years": [
+      2008,
+      2013
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "turbo"
+    },
+    {
+     "id": "fap_additive",
+     "title": "Particulate filter needs additive fluid top-up (Eolys)",
+     "engines": [
+      "hdi"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "FAP/DPF warning",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask when the DPF additive and filter were serviced"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "adblue_tank_psa",
+     "title": "AdBlue (DEF) tank/pump failure (BlueHDi)",
+     "engines": [
+      "hdi"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning with a countdown to no-start"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings",
+      "Ask whether the AdBlue tank was replaced"
+     ],
+     "years": [
+      2015,
+      2026
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    },
+    {
+     "id": "etg_gearbox",
+     "title": "Automated manual (ETG/EGS) slow, jerky shifts and clutch wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Nodding between gears"
+     ],
+     "what_to_check": [
+      "Test drive to see if you can live with it"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "clutch"
+    },
+    {
+     "id": "berlingo_work",
+     "title": "Heavy wear from work use",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Worn clutch, tired suspension"
+     ],
+     "what_to_check": [
+      "Check clutch bite and the load area"
+     ],
+     "repair_cost_id": "clutch"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "VF7",
+     "VR7",
+     "VF3",
+     "VR3"
+    ]
+   }
+  },
+  {
+   "id": "opel_astra_h",
+   "make": "Opel / Vauxhall",
+   "model": "Astra",
+   "generation": "H",
+   "years": [
+    2004,
+    2010
+   ],
+   "markets": [
+    "eu",
+    "uk"
+   ],
+   "body": [
+    "hatchback",
+    "estate",
+    "sedan",
+    "coupe",
+    "convertible"
+   ],
+   "engines": [
+    {
+     "id": "twinport",
+     "name": "1.4/1.6 Twinport (90-115 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "z18",
+     "name": "1.8 (125-140 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "cdti17",
+     "name": "1.7 CDTI (80-125 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "cdti19",
+     "name": "1.9 CDTI (100-150 hp)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Cheap, solid, simple"
+   ],
+   "problems": [
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "twinport",
+      "z18",
+      "cdti19"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt + water pump change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "twinport_flap",
+     "title": "Intake manifold flap (Twinport) and thermostat housing faults",
+     "engines": [
+      "twinport"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Rough running, engine light",
+      "Coolant leak"
+     ],
+     "what_to_check": [
+      "Check for engine light and coolant leaks"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "thermostat"
+    },
+    {
+     "id": "cdti19_swirl",
+     "title": "Swirl flaps, EGR and DPF issues (1.9 CDTI)",
+     "engines": [
+      "cdti19"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Engine light, loss of power"
+     ],
+     "what_to_check": [
+      "Check for warning lights"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "egr_valve"
+    },
+    {
+     "id": "easytronic",
+     "title": "Easytronic automated gearbox faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Jerky shifts",
+      "Will not select gear"
+     ],
+     "what_to_check": [
+      "Test drive; check it engages every gear"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "clutch"
+    },
+    {
+     "id": "astrah_cim",
+     "title": "Steering column module (CIM) faults: indicators, wipers",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Indicators or wipers not working"
+     ],
+     "what_to_check": [
+      "Test indicators, wipers and horn"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "electrical_diagnosis"
+    },
+    {
+     "id": "astrah_rear_lights",
+     "title": "Rear light circuit board burning out",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Rear light not working"
+     ],
+     "what_to_check": [
+      "Check all rear lights"
+     ],
+     "complaint_group": "lighting_visibility",
+     "repair_cost_id": "headlight_restore"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "W0L",
+     "W0V",
+     "VXK",
+     "W0S"
+    ]
+   }
+  },
+  {
+   "id": "opel_astra_j",
+   "make": "Opel / Vauxhall",
+   "model": "Astra",
+   "generation": "J (incl. Buick Verano/Chevrolet Cruze sibling)",
+   "years": [
+    2009,
+    2015
+   ],
+   "markets": [
+    "eu",
+    "uk"
+   ],
+   "body": [
+    "hatchback",
+    "estate",
+    "sedan"
+   ],
+   "engines": [
+    {
+     "id": "turbo14",
+     "name": "1.4 Turbo (120-140 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "ecotec16",
+     "name": "1.4/1.6 (87-115 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "turbo16",
+     "name": "1.6 Turbo (180 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "cdti17",
+     "name": "1.7 CDTI (110-130 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "cdti20",
+     "name": "2.0 CDTI (160-195 hp)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Comfortable",
+    "Good value"
+   ],
+   "problems": [
+    {
+     "id": "turbo14_pcv",
+     "title": "PCV (breather) diaphragm failure and coolant leaks (1.4 Turbo)",
+     "engines": [
+      "turbo14"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Whistle at idle, rough idle",
+      "Coolant smell"
+     ],
+     "what_to_check": [
+      "Listen for whistling; check coolant level"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "pcv_valve"
+    },
+    {
+     "id": "dual_mass_flywheel",
+     "title": "Dual-mass flywheel wear (manual diesel)",
+     "engines": [
+      "cdti17",
+      "cdti20"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at idle that stops with the clutch pressed"
+     ],
+     "what_to_check": [
+      "Listen at idle, clutch released then pressed"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dual_mass_flywheel"
+    },
+    {
+     "id": "dci_egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "cdti17",
+      "cdti20"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Loss of power / limp mode",
+      "DPF or engine light"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "ecotec16",
+      "cdti17",
+      "turbo14"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt + water pump change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "astraj_auto",
+     "title": "6-speed automatic harsh shifts",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Harsh 1-2 shift"
+     ],
+     "what_to_check": [
+      "Test drive the automatic"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_service"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "W0L",
+     "W0V",
+     "VXK",
+     "W0S"
+    ]
+   }
+  },
+  {
+   "id": "opel_astra_k",
+   "make": "Opel / Vauxhall",
+   "model": "Astra",
+   "generation": "K",
+   "years": [
+    2015,
+    2021
+   ],
+   "markets": [
+    "eu",
+    "uk"
+   ],
+   "body": [
+    "hatchback",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "turbo10",
+     "name": "1.0/1.4 Turbo (105-150 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "cdti16",
+     "name": "1.6 CDTI (110-160 hp)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Light and efficient",
+    "Comfortable"
+   ],
+   "problems": [
+    {
+     "id": "astrak_coolant",
+     "title": "Coolant leaks (water pump / pipes)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Coolant level drops"
+     ],
+     "what_to_check": [
+      "Check coolant level"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "coolant_leak_minor"
+    },
+    {
+     "id": "dci_egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "cdti16"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Loss of power / limp mode",
+      "DPF or engine light"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "astrak_infotainment",
+     "title": "Infotainment glitches",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Screen freezes"
+     ],
+     "what_to_check": [
+      "Test the screen"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "infotainment"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "W0L",
+     "W0V",
+     "VXK",
+     "W0S"
+    ]
+   }
+  },
+  {
+   "id": "opel_corsa_d",
+   "make": "Opel / Vauxhall",
+   "model": "Corsa",
+   "generation": "D",
+   "years": [
+    2006,
+    2014
+   ],
+   "markets": [
+    "eu",
+    "uk"
+   ],
+   "body": [
+    "hatchback"
+   ],
+   "engines": [
+    {
+     "id": "twinport",
+     "name": "1.0/1.2/1.4 Twinport (60-100 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "cdti13",
+     "name": "1.3 CDTI (75-95 hp)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Cheap to buy and run"
+   ],
+   "problems": [
+    {
+     "id": "corsad_chain",
+     "title": "Timing chain stretch (1.0/1.2/1.4 petrol)",
+     "engines": [
+      "twinport"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at start",
+      "Engine light"
+     ],
+     "what_to_check": [
+      "Listen at a cold start"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "corsad_eps",
+     "title": "Electric power steering column failure",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Heavy steering, warning light"
+     ],
+     "what_to_check": [
+      "Check steering assistance at parking speed"
+     ],
+     "complaint_group": "steering",
+     "repair_cost_id": "power_steering"
+    },
+    {
+     "id": "easytronic",
+     "title": "Easytronic automated gearbox faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Jerky shifts",
+      "Will not select gear"
+     ],
+     "what_to_check": [
+      "Test drive; check it engages every gear"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "clutch"
+    },
+    {
+     "id": "cdti13_dpf",
+     "title": "DPF and EGR issues (1.3 CDTI)",
+     "engines": [
+      "cdti13"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF light, loss of power"
+     ],
+     "what_to_check": [
+      "Check for warning lights"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "W0L",
+     "W0V",
+     "VXK",
+     "W0S"
+    ]
+   }
+  },
+  {
+   "id": "opel_corsa_e",
+   "make": "Opel / Vauxhall",
+   "model": "Corsa",
+   "generation": "E",
+   "years": [
+    2014,
+    2019
+   ],
+   "markets": [
+    "eu",
+    "uk"
+   ],
+   "body": [
+    "hatchback"
+   ],
+   "engines": [
+    {
+     "id": "ecotec12",
+     "name": "1.2/1.4 (70-100 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "turbo10",
+     "name": "1.0 Turbo (90-115 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "cdti13",
+     "name": "1.3 CDTI",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Comfortable small car"
+   ],
+   "problems": [
+    {
+     "id": "corsae_chain",
+     "title": "Timing chain wear (1.2/1.4)",
+     "engines": [
+      "ecotec12"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at start"
+     ],
+     "what_to_check": [
+      "Listen at a cold start"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "easytronic",
+     "title": "Easytronic automated gearbox faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Jerky shifts",
+      "Will not select gear"
+     ],
+     "what_to_check": [
+      "Test drive; check it engages every gear"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "clutch"
+    },
+    {
+     "id": "cdti13_dpf_e",
+     "title": "DPF and EGR issues (1.3 CDTI)",
+     "engines": [
+      "cdti13"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF light"
+     ],
+     "what_to_check": [
+      "Check for warning lights"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "W0L",
+     "W0V",
+     "VXK",
+     "W0S"
+    ]
+   }
+  },
+  {
+   "id": "opel_corsa_f",
+   "make": "Opel / Vauxhall",
+   "model": "Corsa",
+   "generation": "F (incl. Corsa-e)",
+   "years": [
+    2019,
+    2026
+   ],
+   "markets": [
+    "eu",
+    "uk"
+   ],
+   "body": [
+    "hatchback"
+   ],
+   "engines": [
+    {
+     "id": "puretech",
+     "name": "1.2 (75-130 hp, PureTech)",
+     "fuel": "gas"
+    },
+    {
+     "id": "bluehdi",
+     "name": "1.5 diesel",
+     "fuel": "diesel"
+    },
+    {
+     "id": "corsae",
+     "name": "Corsa-e electric",
+     "fuel": "ev"
+    }
+   ],
+   "strengths": [
+    "Modern, efficient",
+    "Electric version available"
+   ],
+   "problems": [
+    {
+     "id": "puretech_wet_belt",
+     "title": "Oil-bath timing belt breaking down (1.0/1.2 PureTech), clogging the oil pump",
+     "engines": [
+      "puretech"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Oil-pressure warning",
+      "Engine-fault message",
+      "Brake assistance warning (vacuum pump)"
+     ],
+     "what_to_check": [
+      "Ask when the timing belt was changed and which oil was used (must be the specified grade)",
+      "Ask for an inspection of the belt condition",
+      "Avoid cars with gaps in the service history"
+     ],
+     "years": [
+      2013,
+      2026
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "puretech_oil",
+     "title": "High oil consumption (1.2 PureTech)",
+     "engines": [
+      "puretech"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Low-oil warning between services",
+      "Blue smoke"
+     ],
+     "what_to_check": [
+      "Ask how much oil it uses",
+      "Check the dipstick"
+     ],
+     "years": [
+      2013,
+      2026
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "adblue_tank_psa",
+     "title": "AdBlue (DEF) tank/pump failure (BlueHDi)",
+     "engines": [
+      "bluehdi"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning with a countdown to no-start"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings",
+      "Ask whether the AdBlue tank was replaced"
+     ],
+     "years": [
+      2015,
+      2026
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "W0L",
+     "W0V",
+     "VXK",
+     "W0S"
+    ]
+   }
+  },
+  {
+   "id": "opel_insignia_a",
+   "make": "Opel / Vauxhall",
+   "model": "Insignia",
+   "generation": "A (incl. Buick Regal)",
+   "years": [
+    2008,
+    2017
+   ],
+   "markets": [
+    "eu",
+    "uk",
+    "us"
+   ],
+   "body": [
+    "sedan",
+    "hatchback",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "turbo14",
+     "name": "1.4/1.6 Turbo (140-180 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "turbo20",
+     "name": "2.0 Turbo (220-250 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "cdti20",
+     "name": "2.0 CDTI (110-195 hp)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Big and comfortable",
+    "Cheap to buy"
+   ],
+   "problems": [
+    {
+     "id": "dual_mass_flywheel",
+     "title": "Dual-mass flywheel wear (manual diesel)",
+     "engines": [
+      "cdti20"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at idle that stops with the clutch pressed"
+     ],
+     "what_to_check": [
+      "Listen at idle, clutch released then pressed"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dual_mass_flywheel"
+    },
+    {
+     "id": "dci_egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "cdti20"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Loss of power / limp mode",
+      "DPF or engine light"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "cdti20",
+      "turbo14"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt + water pump change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "insignia_injectors",
+     "title": "Injector and swirl-flap faults (2.0 CDTI)",
+     "engines": [
+      "cdti20"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Rough idle, smoke, engine light"
+     ],
+     "what_to_check": [
+      "Check for a smooth idle"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "id": "insignia_auto",
+     "title": "6-speed automatic faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Harsh shifts, slipping"
+     ],
+     "what_to_check": [
+      "Test drive the automatic"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_repair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "W0L",
+     "W0V",
+     "VXK",
+     "W0S"
+    ]
+   }
+  },
+  {
+   "id": "opel_insignia_b",
+   "make": "Opel / Vauxhall",
+   "model": "Insignia",
+   "generation": "B",
+   "years": [
+    2017,
+    2022
+   ],
+   "markets": [
+    "eu",
+    "uk"
+   ],
+   "body": [
+    "hatchback",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "turbo15",
+     "name": "1.5 Turbo (140-165 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "cdti16",
+     "name": "1.6 CDTI (110-136 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "cdti20",
+     "name": "2.0 Turbo D (170-210 hp)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Spacious",
+    "Good value used"
+   ],
+   "problems": [
+    {
+     "id": "dci_egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "cdti16",
+      "cdti20"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Loss of power / limp mode",
+      "DPF or engine light"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "insignia_b_adblue",
+     "title": "AdBlue (DEF) system faults",
+     "engines": [
+      "cdti16",
+      "cdti20"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "W0L",
+     "W0V",
+     "VXK",
+     "W0S"
+    ]
+   }
+  },
+  {
+   "id": "opel_zafira_b",
+   "make": "Opel / Vauxhall",
+   "model": "Zafira",
+   "generation": "B",
+   "years": [
+    2005,
+    2014
+   ],
+   "markets": [
+    "eu",
+    "uk"
+   ],
+   "body": [
+    "mpv"
+   ],
+   "engines": [
+    {
+     "id": "ecotec16",
+     "name": "1.6/1.8 (105-140 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "cdti17",
+     "name": "1.7 CDTI (110-125 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "cdti19",
+     "name": "1.9 CDTI (100-150 hp)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "7 seats, flexible interior"
+   ],
+   "problems": [
+    {
+     "id": "zafira_blower",
+     "title": "Heater blower resistor failure (fan only on top speed); some burned out",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Fan works only on speed 4",
+      "Burning smell"
+     ],
+     "what_to_check": [
+      "Try every fan speed",
+      "Ask if the blower resistor recall/repair was done"
+     ],
+     "complaint_group": "climate",
+     "repair_cost_id": "electrical_diagnosis"
+    },
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "ecotec16",
+      "cdti19"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt + water pump change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "cdti19_swirl_z",
+     "title": "Swirl flaps, EGR and DPF issues (1.9 CDTI)",
+     "engines": [
+      "cdti19"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Engine light, loss of power"
+     ],
+     "what_to_check": [
+      "Check for warning lights"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "egr_valve"
+    },
+    {
+     "id": "dual_mass_flywheel",
+     "title": "Dual-mass flywheel wear (manual diesel)",
+     "engines": [
+      "cdti17",
+      "cdti19"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at idle that stops with the clutch pressed"
+     ],
+     "what_to_check": [
+      "Listen at idle, clutch released then pressed"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dual_mass_flywheel"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "W0L",
+     "W0V",
+     "VXK",
+     "W0S"
+    ]
+   }
+  },
+  {
+   "id": "opel_mokka_1",
+   "make": "Opel / Vauxhall",
+   "model": "Mokka / Mokka X",
+   "generation": "1st gen (incl. Chevrolet Trax, Buick Encore)",
+   "years": [
+    2012,
+    2019
+   ],
+   "markets": [
+    "eu",
+    "uk",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "turbo14",
+     "name": "1.4 Turbo (140 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "ecotec16",
+     "name": "1.6 (115 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "cdti",
+     "name": "1.6/1.7 CDTI",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Compact and high-riding"
+   ],
+   "problems": [
+    {
+     "id": "turbo14_pcv_m",
+     "title": "PCV (breather) failure and coolant leaks (1.4 Turbo)",
+     "engines": [
+      "turbo14"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Whistle at idle",
+      "Coolant smell"
+     ],
+     "what_to_check": [
+      "Listen for whistling; check coolant"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "pcv_valve"
+    },
+    {
+     "id": "dci_egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "cdti"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Loss of power / limp mode",
+      "DPF or engine light"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "mokka_awd",
+     "title": "AWD coupling faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "AWD warning"
+     ],
+     "what_to_check": [
+      "Check for warnings"
+     ],
+     "complaint_group": "transmission"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "W0L",
+     "W0V",
+     "VXK",
+     "W0S",
+     "KL1",
+     "1G1",
+     "KL4"
+    ]
+   }
+  }
+ ]
+}

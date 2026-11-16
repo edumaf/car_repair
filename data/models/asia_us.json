@@ -1,0 +1,7904 @@
+{
+ "_meta": {
+  "version": 1,
+  "note": "Drafted by AI from general automotive knowledge (commonly reported issues), 2026-11-16. NOT a diagnosis and not exhaustive. A mechanic must review before launch. VIN model codes (positions 7-8) are pre-fill hints only; the user always confirms the model."
+ },
+ "models": [
+  {
+   "id": "toyota_corolla_e120",
+   "make": "Toyota",
+   "model": "Corolla",
+   "generation": "E120/E130",
+   "years": [
+    2001,
+    2008
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "hatchback",
+    "sedan",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "vvti14",
+     "name": "1.4/1.6 VVT-i",
+     "fuel": "gas"
+    },
+    {
+     "id": "zz18",
+     "name": "1.8 (1ZZ)",
+     "fuel": "gas"
+    },
+    {
+     "id": "d4d20",
+     "name": "1.4/2.0 D-4D",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Very reliable",
+    "Cheap to run"
+   ],
+   "problems": [
+    {
+     "id": "1zz_oil",
+     "title": "Oil consumption (1.8 1ZZ, some years)",
+     "engines": [
+      "zz18"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Oil level drops"
+     ],
+     "what_to_check": [
+      "Check the oil level"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "mmt_gearbox",
+     "title": "MMT / i-SHIFT automated manual: jerky shifts, clutch actuator wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Nodding between gears",
+      "Gearbox warning"
+     ],
+     "what_to_check": [
+      "Test drive the automatic"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "clutch"
+    },
+    {
+     "id": "rust",
+     "title": "Rust (rear wheel arches and sills (salted roads))",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Bubbling paint"
+     ],
+     "what_to_check": [
+      "Check the rear wheel arches and sills (salted roads)"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    }
+   ],
+   "buying_tips": [
+    "One of the safest older used buys if not rusty"
+   ],
+   "vin": {
+    "wmi": [
+     "JTD",
+     "JTE",
+     "JTN",
+     "JTM",
+     "JTH",
+     "JTJ",
+     "SB1",
+     "VNK",
+     "NMT",
+     "2T1",
+     "2T3",
+     "4T1",
+     "4T3",
+     "5TD",
+     "5TF",
+     "5TE",
+     "1NX",
+     "JTK",
+     "JTL",
+     "MR0",
+     "AHT"
+    ]
+   }
+  },
+  {
+   "id": "toyota_corolla_e150",
+   "make": "Toyota",
+   "model": "Corolla / Auris",
+   "generation": "E150 (Auris 1st gen, US Corolla 2009-2013)",
+   "years": [
+    2006,
+    2013
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "hatchback",
+    "sedan"
+   ],
+   "engines": [
+    {
+     "id": "vvti16",
+     "name": "1.33/1.6 Dual VVT-i",
+     "fuel": "gas"
+    },
+    {
+     "id": "zr18",
+     "name": "1.8 (2ZR)",
+     "fuel": "gas"
+    },
+    {
+     "id": "d4d14",
+     "name": "1.4 D-4D",
+     "fuel": "diesel"
+    },
+    {
+     "id": "d4d20",
+     "name": "2.0/2.2 D-4D",
+     "fuel": "diesel"
+    },
+    {
+     "id": "hybrid",
+     "name": "1.8 hybrid (Auris, 2010+)",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Reliable petrol and hybrid",
+    "Cheap to run"
+   ],
+   "problems": [
+    {
+     "id": "ad_diesel_head_gasket",
+     "title": "Head gasket / oil consumption (2.0-2.2 D-4D \"AD\" diesel)",
+     "engines": [
+      "d4d20"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Coolant loss, white smoke",
+      "Oil use"
+     ],
+     "what_to_check": [
+      "Check coolant level and oil use",
+      "Ask if the engine was repaired under warranty"
+     ],
+     "years": [
+      2005,
+      2010
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "head_gasket"
+    },
+    {
+     "id": "mmt_gearbox",
+     "title": "MMT / i-SHIFT automated manual: jerky shifts, clutch actuator wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Nodding between gears",
+      "Gearbox warning"
+     ],
+     "what_to_check": [
+      "Test drive the automatic"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "clutch"
+    },
+    {
+     "id": "2zr_water_pump",
+     "title": "Water pump leaks (1.6/1.8)",
+     "engines": [
+      "vvti16",
+      "zr18"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Coolant loss"
+     ],
+     "what_to_check": [
+      "Check coolant"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "water_pump"
+    },
+    {
+     "id": "hybrid_battery_age",
+     "title": "Hybrid battery ageing (high mileage / older cars)",
+     "engines": [
+      "hybrid"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Hybrid warning",
+      "Engine runs more often, fuel use rises"
+     ],
+     "what_to_check": [
+      "Ask for a hybrid battery health check",
+      "Watch the battery gauge on the test drive"
+     ],
+     "complaint_group": "hybrid_ev",
+     "repair_cost_id": "hybrid_battery"
+    }
+   ],
+   "buying_tips": [
+    "Avoid the 2.0/2.2 D-4D unless it had the engine repair; petrol or hybrid is the safe choice"
+   ],
+   "vin": {
+    "wmi": [
+     "JTD",
+     "JTE",
+     "JTN",
+     "JTM",
+     "JTH",
+     "JTJ",
+     "SB1",
+     "VNK",
+     "NMT",
+     "2T1",
+     "2T3",
+     "4T1",
+     "4T3",
+     "5TD",
+     "5TF",
+     "5TE",
+     "1NX",
+     "JTK",
+     "JTL",
+     "MR0",
+     "AHT"
+    ]
+   }
+  },
+  {
+   "id": "toyota_corolla_e170",
+   "make": "Toyota",
+   "model": "Corolla / Auris",
+   "generation": "E170/E180 (Auris 2nd gen, US Corolla 2014-2019)",
+   "years": [
+    2012,
+    2019
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "hatchback",
+    "sedan",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "vvti16",
+     "name": "1.33/1.6/1.8 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "t12",
+     "name": "1.2 turbo (8NR)",
+     "fuel": "gas"
+    },
+    {
+     "id": "d4d14",
+     "name": "1.4/1.6 D-4D",
+     "fuel": "diesel"
+    },
+    {
+     "id": "hybrid",
+     "name": "1.8 hybrid",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Very reliable",
+    "Hybrid is cheap to run"
+   ],
+   "problems": [
+    {
+     "id": "cvt_judder",
+     "title": "CVT automatic: judder, whine or slipping",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Judder pulling away",
+      "Whining",
+      "Loss of power uphill"
+     ],
+     "what_to_check": [
+      "Test drive from a stop several times and on a hill",
+      "Ask for CVT fluid changes and any CVT replacement"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_replacement"
+    },
+    {
+     "id": "hybrid_battery_age",
+     "title": "Hybrid battery ageing (high mileage / older cars)",
+     "engines": [
+      "hybrid"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Hybrid warning",
+      "Engine runs more often, fuel use rises"
+     ],
+     "what_to_check": [
+      "Ask for a hybrid battery health check",
+      "Watch the battery gauge on the test drive"
+     ],
+     "complaint_group": "hybrid_ev",
+     "repair_cost_id": "hybrid_battery"
+    },
+    {
+     "id": "auris_water_pump",
+     "title": "Water pump leaks",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Coolant loss"
+     ],
+     "what_to_check": [
+      "Check coolant"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "water_pump"
+    }
+   ],
+   "buying_tips": [
+    "Many hybrids were taxis: check real mileage"
+   ],
+   "vin": {
+    "wmi": [
+     "JTD",
+     "JTE",
+     "JTN",
+     "JTM",
+     "JTH",
+     "JTJ",
+     "SB1",
+     "VNK",
+     "NMT",
+     "2T1",
+     "2T3",
+     "4T1",
+     "4T3",
+     "5TD",
+     "5TF",
+     "5TE",
+     "1NX",
+     "JTK",
+     "JTL",
+     "MR0",
+     "AHT"
+    ]
+   }
+  },
+  {
+   "id": "toyota_corolla_e210",
+   "make": "Toyota",
+   "model": "Corolla",
+   "generation": "E210",
+   "years": [
+    2018,
+    2026
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "hatchback",
+    "sedan",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "hybrid",
+     "name": "1.8/2.0 hybrid",
+     "fuel": "hybrid"
+    },
+    {
+     "id": "t12",
+     "name": "1.2 turbo / 2.0 petrol",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Excellent reliability",
+    "Low running costs"
+   ],
+   "problems": [
+    {
+     "id": "e210_infotainment",
+     "title": "Infotainment glitches",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Screen freezes"
+     ],
+     "what_to_check": [
+      "Test the screen"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "infotainment"
+    },
+    {
+     "id": "cat_theft",
+     "title": "Catalytic converter theft target (hybrids)",
+     "engines": [
+      "hybrid"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Very loud exhaust after parking"
+     ],
+     "what_to_check": [
+      "Listen to the exhaust; ask about theft history"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "catalytic_converter"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JTD",
+     "JTE",
+     "JTN",
+     "JTM",
+     "JTH",
+     "JTJ",
+     "SB1",
+     "VNK",
+     "NMT",
+     "2T1",
+     "2T3",
+     "4T1",
+     "4T3",
+     "5TD",
+     "5TF",
+     "5TE",
+     "1NX",
+     "JTK",
+     "JTL",
+     "MR0",
+     "AHT"
+    ]
+   }
+  },
+  {
+   "id": "toyota_yaris_xp90",
+   "make": "Toyota",
+   "model": "Yaris",
+   "generation": "XP90",
+   "years": [
+    2005,
+    2011
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "hatchback",
+    "sedan"
+   ],
+   "engines": [
+    {
+     "id": "vvti10",
+     "name": "1.0/1.3/1.5 VVT-i",
+     "fuel": "gas"
+    },
+    {
+     "id": "d4d14",
+     "name": "1.4 D-4D",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Reliable, simple"
+   ],
+   "problems": [
+    {
+     "id": "mmt_gearbox",
+     "title": "MMT / i-SHIFT automated manual: jerky shifts, clutch actuator wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Nodding between gears",
+      "Gearbox warning"
+     ],
+     "what_to_check": [
+      "Test drive the automatic"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "clutch"
+    },
+    {
+     "id": "yaris_clutch",
+     "title": "Clutch wear (city use)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "High bite point"
+     ],
+     "what_to_check": [
+      "Check the clutch bite"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "clutch"
+    },
+    {
+     "id": "rust",
+     "title": "Rust (rear arches)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Bubbling paint"
+     ],
+     "what_to_check": [
+      "Check the rear arches"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JTD",
+     "JTE",
+     "JTN",
+     "JTM",
+     "JTH",
+     "JTJ",
+     "SB1",
+     "VNK",
+     "NMT",
+     "2T1",
+     "2T3",
+     "4T1",
+     "4T3",
+     "5TD",
+     "5TF",
+     "5TE",
+     "1NX",
+     "JTK",
+     "JTL",
+     "MR0",
+     "AHT"
+    ]
+   }
+  },
+  {
+   "id": "toyota_yaris_xp130",
+   "make": "Toyota",
+   "model": "Yaris",
+   "generation": "XP130 (incl. Hybrid)",
+   "years": [
+    2011,
+    2020
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback"
+   ],
+   "engines": [
+    {
+     "id": "vvti10",
+     "name": "1.0/1.33/1.5 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "d4d14",
+     "name": "1.4 D-4D",
+     "fuel": "diesel"
+    },
+    {
+     "id": "hybrid",
+     "name": "1.5 hybrid",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Very reliable",
+    "Hybrid great in the city"
+   ],
+   "problems": [
+    {
+     "id": "cvt_judder",
+     "title": "CVT automatic: judder, whine or slipping",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Judder pulling away",
+      "Whining",
+      "Loss of power uphill"
+     ],
+     "what_to_check": [
+      "Test drive from a stop several times and on a hill",
+      "Ask for CVT fluid changes and any CVT replacement"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_replacement"
+    },
+    {
+     "id": "hybrid_battery_age",
+     "title": "Hybrid battery ageing (high mileage / older cars)",
+     "engines": [
+      "hybrid"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Hybrid warning",
+      "Engine runs more often, fuel use rises"
+     ],
+     "what_to_check": [
+      "Ask for a hybrid battery health check",
+      "Watch the battery gauge on the test drive"
+     ],
+     "complaint_group": "hybrid_ev",
+     "repair_cost_id": "hybrid_battery"
+    },
+    {
+     "id": "yaris_water_pump",
+     "title": "Water pump leaks",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Coolant loss"
+     ],
+     "what_to_check": [
+      "Check coolant"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "water_pump"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JTD",
+     "JTE",
+     "JTN",
+     "JTM",
+     "JTH",
+     "JTJ",
+     "SB1",
+     "VNK",
+     "NMT",
+     "2T1",
+     "2T3",
+     "4T1",
+     "4T3",
+     "5TD",
+     "5TF",
+     "5TE",
+     "1NX",
+     "JTK",
+     "JTL",
+     "MR0",
+     "AHT"
+    ]
+   }
+  },
+  {
+   "id": "toyota_rav4_xa30",
+   "make": "Toyota",
+   "model": "RAV4",
+   "generation": "XA30",
+   "years": [
+    2005,
+    2012
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "az24",
+     "name": "2.0/2.4 petrol (1AZ/2AZ)",
+     "fuel": "gas"
+    },
+    {
+     "id": "v6",
+     "name": "3.5 V6 (US)",
+     "fuel": "gas"
+    },
+    {
+     "id": "d4d22",
+     "name": "2.2 D-4D",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Tough, reliable petrol"
+   ],
+   "problems": [
+    {
+     "id": "ad_diesel_head_gasket",
+     "title": "Head gasket / oil consumption (2.0-2.2 D-4D \"AD\" diesel)",
+     "engines": [
+      "d4d22"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Coolant loss, white smoke",
+      "Oil use"
+     ],
+     "what_to_check": [
+      "Check coolant level and oil use",
+      "Ask if the engine was repaired under warranty"
+     ],
+     "years": [
+      2005,
+      2010
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "head_gasket"
+    },
+    {
+     "id": "2az_oil",
+     "title": "Oil consumption (2.4 2AZ)",
+     "engines": [
+      "az24"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Oil level drops"
+     ],
+     "what_to_check": [
+      "Check the oil level and ask about use"
+     ],
+     "years": [
+      2006,
+      2011
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "rav4_steering",
+     "title": "Steering column intermediate shaft clunk",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Clunk when turning"
+     ],
+     "what_to_check": [
+      "Turn the wheel at standstill"
+     ],
+     "complaint_group": "steering",
+     "repair_cost_id": "tie_rod_ends"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JTD",
+     "JTE",
+     "JTN",
+     "JTM",
+     "JTH",
+     "JTJ",
+     "SB1",
+     "VNK",
+     "NMT",
+     "2T1",
+     "2T3",
+     "4T1",
+     "4T3",
+     "5TD",
+     "5TF",
+     "5TE",
+     "1NX",
+     "JTK",
+     "JTL",
+     "MR0",
+     "AHT"
+    ]
+   }
+  },
+  {
+   "id": "toyota_rav4_xa40",
+   "make": "Toyota",
+   "model": "RAV4",
+   "generation": "XA40",
+   "years": [
+    2012,
+    2018
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "petrol",
+     "name": "2.0/2.5 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "d4d",
+     "name": "2.0/2.2 D-4D",
+     "fuel": "diesel"
+    },
+    {
+     "id": "hybrid",
+     "name": "2.5 hybrid",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Reliable, practical"
+   ],
+   "problems": [
+    {
+     "id": "hybrid_battery_age",
+     "title": "Hybrid battery ageing (high mileage / older cars)",
+     "engines": [
+      "hybrid"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Hybrid warning",
+      "Engine runs more often, fuel use rises"
+     ],
+     "what_to_check": [
+      "Ask for a hybrid battery health check",
+      "Watch the battery gauge on the test drive"
+     ],
+     "complaint_group": "hybrid_ev",
+     "repair_cost_id": "hybrid_battery"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "d4d"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "rav4_awd",
+     "title": "AWD coupling/rear diff whine",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Whine from the rear"
+     ],
+     "what_to_check": [
+      "Listen at speed"
+     ],
+     "complaint_group": "transmission"
+    },
+    {
+     "id": "cvt_judder",
+     "title": "CVT automatic: judder, whine or slipping",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Judder pulling away",
+      "Whining",
+      "Loss of power uphill"
+     ],
+     "what_to_check": [
+      "Test drive from a stop several times and on a hill",
+      "Ask for CVT fluid changes and any CVT replacement"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_replacement"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JTD",
+     "JTE",
+     "JTN",
+     "JTM",
+     "JTH",
+     "JTJ",
+     "SB1",
+     "VNK",
+     "NMT",
+     "2T1",
+     "2T3",
+     "4T1",
+     "4T3",
+     "5TD",
+     "5TF",
+     "5TE",
+     "1NX",
+     "JTK",
+     "JTL",
+     "MR0",
+     "AHT"
+    ]
+   }
+  },
+  {
+   "id": "toyota_rav4_xa50",
+   "make": "Toyota",
+   "model": "RAV4",
+   "generation": "XA50",
+   "years": [
+    2018,
+    2025
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "petrol",
+     "name": "2.0/2.5 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "hybrid",
+     "name": "2.5 hybrid / Prime plug-in",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Excellent reliability",
+    "Efficient hybrid"
+   ],
+   "problems": [
+    {
+     "id": "rav4_fuel_tank",
+     "title": "Fuel tank fills short (US hybrid, some years)",
+     "engines": [
+      "hybrid"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Range lower than expected"
+     ],
+     "what_to_check": [
+      "Ask if the tank was replaced"
+     ],
+     "complaint_group": "fuel"
+    },
+    {
+     "id": "rav4_hv_cable",
+     "title": "Hybrid cable corrosion (some cold-climate cars)",
+     "engines": [
+      "hybrid"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Hybrid warning"
+     ],
+     "what_to_check": [
+      "Check for warnings"
+     ],
+     "complaint_group": "hybrid_ev",
+     "repair_cost_id": "electrical_diagnosis"
+    },
+    {
+     "id": "cat_theft_rav4",
+     "title": "Catalytic converter theft target",
+     "engines": [
+      "hybrid"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Loud exhaust"
+     ],
+     "what_to_check": [
+      "Listen to the exhaust"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "catalytic_converter"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JTD",
+     "JTE",
+     "JTN",
+     "JTM",
+     "JTH",
+     "JTJ",
+     "SB1",
+     "VNK",
+     "NMT",
+     "2T1",
+     "2T3",
+     "4T1",
+     "4T3",
+     "5TD",
+     "5TF",
+     "5TE",
+     "1NX",
+     "JTK",
+     "JTL",
+     "MR0",
+     "AHT"
+    ]
+   }
+  },
+  {
+   "id": "toyota_prius_xw20",
+   "make": "Toyota",
+   "model": "Prius",
+   "generation": "XW20 (2nd gen)",
+   "years": [
+    2003,
+    2009
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "hatchback"
+   ],
+   "engines": [
+    {
+     "id": "hybrid",
+     "name": "1.5 hybrid",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Very durable",
+    "Cheap to run"
+   ],
+   "problems": [
+    {
+     "id": "hybrid_battery_age",
+     "title": "Hybrid battery ageing (high mileage / older cars)",
+     "engines": [
+      "hybrid"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Hybrid warning",
+      "Engine runs more often, fuel use rises"
+     ],
+     "what_to_check": [
+      "Ask for a hybrid battery health check",
+      "Watch the battery gauge on the test drive"
+     ],
+     "complaint_group": "hybrid_ev",
+     "repair_cost_id": "hybrid_battery"
+    },
+    {
+     "id": "xw20_inverter_pump",
+     "title": "Inverter coolant pump failure",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Hybrid warning, overheating inverter"
+     ],
+     "what_to_check": [
+      "Ask if the inverter pump was replaced"
+     ],
+     "complaint_group": "hybrid_ev",
+     "repair_cost_id": "water_pump"
+    },
+    {
+     "id": "xw20_brake_actuator",
+     "title": "Brake actuator / ABS pump failure",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Brake warnings, pump noise"
+     ],
+     "what_to_check": [
+      "Check for brake warnings"
+     ],
+     "complaint_group": "brakes",
+     "repair_cost_id": "abs_module"
+    },
+    {
+     "id": "xw20_headlights",
+     "title": "Headlights (HID) flickering off",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Headlight turns off"
+     ],
+     "what_to_check": [
+      "Test headlights"
+     ],
+     "complaint_group": "lighting_visibility",
+     "repair_cost_id": "headlight_restore"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JTD",
+     "JTE",
+     "JTN",
+     "JTM",
+     "JTH",
+     "JTJ",
+     "SB1",
+     "VNK",
+     "NMT",
+     "2T1",
+     "2T3",
+     "4T1",
+     "4T3",
+     "5TD",
+     "5TF",
+     "5TE",
+     "1NX",
+     "JTK",
+     "JTL",
+     "MR0",
+     "AHT"
+    ]
+   }
+  },
+  {
+   "id": "toyota_prius_xw30",
+   "make": "Toyota",
+   "model": "Prius",
+   "generation": "XW30 (3rd gen, incl. Prius+)",
+   "years": [
+    2009,
+    2015
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "hatchback",
+    "mpv"
+   ],
+   "engines": [
+    {
+     "id": "hybrid",
+     "name": "1.8 hybrid",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Very economical",
+    "Reliable"
+   ],
+   "problems": [
+    {
+     "id": "hybrid_battery_age",
+     "title": "Hybrid battery ageing (high mileage / older cars)",
+     "engines": [
+      "hybrid"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Hybrid warning",
+      "Engine runs more often, fuel use rises"
+     ],
+     "what_to_check": [
+      "Ask for a hybrid battery health check",
+      "Watch the battery gauge on the test drive"
+     ],
+     "complaint_group": "hybrid_ev",
+     "repair_cost_id": "hybrid_battery"
+    },
+    {
+     "id": "xw30_egr",
+     "title": "EGR cooler clogging leading to head gasket failure",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Knocking at start, misfires, coolant loss"
+     ],
+     "what_to_check": [
+      "Ask if the EGR system was cleaned",
+      "Check for coolant loss"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "head_gasket"
+    },
+    {
+     "id": "xw30_inverter",
+     "title": "Inverter faults (recall)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Hybrid warning"
+     ],
+     "what_to_check": [
+      "Ask if the recall was done"
+     ],
+     "complaint_group": "hybrid_ev",
+     "repair_cost_id": "electrical_diagnosis"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JTD",
+     "JTE",
+     "JTN",
+     "JTM",
+     "JTH",
+     "JTJ",
+     "SB1",
+     "VNK",
+     "NMT",
+     "2T1",
+     "2T3",
+     "4T1",
+     "4T3",
+     "5TD",
+     "5TF",
+     "5TE",
+     "1NX",
+     "JTK",
+     "JTL",
+     "MR0",
+     "AHT"
+    ]
+   }
+  },
+  {
+   "id": "toyota_prius_xw50",
+   "make": "Toyota",
+   "model": "Prius",
+   "generation": "XW50 (4th gen, incl. Prime)",
+   "years": [
+    2015,
+    2022
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "hatchback"
+   ],
+   "engines": [
+    {
+     "id": "hybrid",
+     "name": "1.8 hybrid / plug-in",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Excellent reliability",
+    "Very economical"
+   ],
+   "problems": [
+    {
+     "id": "hybrid_battery_age",
+     "title": "Hybrid battery ageing (high mileage / older cars)",
+     "engines": [
+      "hybrid"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Hybrid warning",
+      "Engine runs more often, fuel use rises"
+     ],
+     "what_to_check": [
+      "Ask for a hybrid battery health check",
+      "Watch the battery gauge on the test drive"
+     ],
+     "complaint_group": "hybrid_ev",
+     "repair_cost_id": "hybrid_battery"
+    },
+    {
+     "id": "cat_theft_prius",
+     "title": "Catalytic converter theft target",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Very loud exhaust after parking"
+     ],
+     "what_to_check": [
+      "Listen to the exhaust"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "catalytic_converter"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JTD",
+     "JTE",
+     "JTN",
+     "JTM",
+     "JTH",
+     "JTJ",
+     "SB1",
+     "VNK",
+     "NMT",
+     "2T1",
+     "2T3",
+     "4T1",
+     "4T3",
+     "5TD",
+     "5TF",
+     "5TE",
+     "1NX",
+     "JTK",
+     "JTL",
+     "MR0",
+     "AHT"
+    ]
+   }
+  },
+  {
+   "id": "toyota_camry_xv40",
+   "make": "Toyota",
+   "model": "Camry",
+   "generation": "XV40",
+   "years": [
+    2006,
+    2011
+   ],
+   "markets": [
+    "us"
+   ],
+   "body": [
+    "sedan"
+   ],
+   "engines": [
+    {
+     "id": "az24",
+     "name": "2.4 (2AZ)",
+     "fuel": "gas"
+    },
+    {
+     "id": "v6",
+     "name": "3.5 V6",
+     "fuel": "gas"
+    },
+    {
+     "id": "hybrid",
+     "name": "2.4 hybrid",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Reliable, comfortable"
+   ],
+   "problems": [
+    {
+     "id": "2az_oil_camry",
+     "title": "Oil consumption (2.4 2AZ)",
+     "engines": [
+      "az24"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Oil level drops"
+     ],
+     "what_to_check": [
+      "Check the oil"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "camry_dash",
+     "title": "Sticky / melting dashboard (hot climates)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Shiny, sticky dash"
+     ],
+     "what_to_check": [
+      "Look at the dashboard"
+     ],
+     "complaint_group": "structure"
+    },
+    {
+     "id": "hybrid_battery_age",
+     "title": "Hybrid battery ageing (high mileage / older cars)",
+     "engines": [
+      "hybrid"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Hybrid warning",
+      "Engine runs more often, fuel use rises"
+     ],
+     "what_to_check": [
+      "Ask for a hybrid battery health check",
+      "Watch the battery gauge on the test drive"
+     ],
+     "complaint_group": "hybrid_ev",
+     "repair_cost_id": "hybrid_battery"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JTD",
+     "JTE",
+     "JTN",
+     "JTM",
+     "JTH",
+     "JTJ",
+     "SB1",
+     "VNK",
+     "NMT",
+     "2T1",
+     "2T3",
+     "4T1",
+     "4T3",
+     "5TD",
+     "5TF",
+     "5TE",
+     "1NX",
+     "JTK",
+     "JTL",
+     "MR0",
+     "AHT"
+    ]
+   }
+  },
+  {
+   "id": "toyota_camry_xv50",
+   "make": "Toyota",
+   "model": "Camry",
+   "generation": "XV50",
+   "years": [
+    2011,
+    2017
+   ],
+   "markets": [
+    "us"
+   ],
+   "body": [
+    "sedan"
+   ],
+   "engines": [
+    {
+     "id": "ar25",
+     "name": "2.5 (2AR)",
+     "fuel": "gas"
+    },
+    {
+     "id": "v6",
+     "name": "3.5 V6",
+     "fuel": "gas"
+    },
+    {
+     "id": "hybrid",
+     "name": "2.5 hybrid",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Very reliable"
+   ],
+   "problems": [
+    {
+     "id": "camry_torque_converter",
+     "title": "Torque converter shudder at low speed",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Shudder at 40-60 km/h"
+     ],
+     "what_to_check": [
+      "Feel for shudder on light throttle"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_service"
+    },
+    {
+     "id": "hybrid_battery_age",
+     "title": "Hybrid battery ageing (high mileage / older cars)",
+     "engines": [
+      "hybrid"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Hybrid warning",
+      "Engine runs more often, fuel use rises"
+     ],
+     "what_to_check": [
+      "Ask for a hybrid battery health check",
+      "Watch the battery gauge on the test drive"
+     ],
+     "complaint_group": "hybrid_ev",
+     "repair_cost_id": "hybrid_battery"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JTD",
+     "JTE",
+     "JTN",
+     "JTM",
+     "JTH",
+     "JTJ",
+     "SB1",
+     "VNK",
+     "NMT",
+     "2T1",
+     "2T3",
+     "4T1",
+     "4T3",
+     "5TD",
+     "5TF",
+     "5TE",
+     "1NX",
+     "JTK",
+     "JTL",
+     "MR0",
+     "AHT"
+    ]
+   }
+  },
+  {
+   "id": "toyota_camry_xv70",
+   "make": "Toyota",
+   "model": "Camry",
+   "generation": "XV70",
+   "years": [
+    2017,
+    2024
+   ],
+   "markets": [
+    "us",
+    "eu"
+   ],
+   "body": [
+    "sedan"
+   ],
+   "engines": [
+    {
+     "id": "ar25",
+     "name": "2.5 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "v6",
+     "name": "3.5 V6",
+     "fuel": "gas"
+    },
+    {
+     "id": "hybrid",
+     "name": "2.5 hybrid",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Reliable, efficient hybrid"
+   ],
+   "problems": [
+    {
+     "id": "camry8_shift",
+     "title": "8-speed automatic hesitant shifts (software)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Hesitation"
+     ],
+     "what_to_check": [
+      "Test drive"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_service"
+    },
+    {
+     "id": "hybrid_battery_age",
+     "title": "Hybrid battery ageing (high mileage / older cars)",
+     "engines": [
+      "hybrid"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Hybrid warning",
+      "Engine runs more often, fuel use rises"
+     ],
+     "what_to_check": [
+      "Ask for a hybrid battery health check",
+      "Watch the battery gauge on the test drive"
+     ],
+     "complaint_group": "hybrid_ev",
+     "repair_cost_id": "hybrid_battery"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JTD",
+     "JTE",
+     "JTN",
+     "JTM",
+     "JTH",
+     "JTJ",
+     "SB1",
+     "VNK",
+     "NMT",
+     "2T1",
+     "2T3",
+     "4T1",
+     "4T3",
+     "5TD",
+     "5TF",
+     "5TE",
+     "1NX",
+     "JTK",
+     "JTL",
+     "MR0",
+     "AHT"
+    ]
+   }
+  },
+  {
+   "id": "toyota_avensis_t27",
+   "make": "Toyota",
+   "model": "Avensis",
+   "generation": "T250/T270",
+   "years": [
+    2003,
+    2018
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "sedan",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "petrol",
+     "name": "1.6/1.8/2.0 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "d4d20",
+     "name": "2.0/2.2 D-4D",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Reliable petrol, roomy"
+   ],
+   "problems": [
+    {
+     "id": "ad_diesel_head_gasket",
+     "title": "Head gasket / oil consumption (2.0-2.2 D-4D \"AD\" diesel)",
+     "engines": [
+      "d4d20"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Coolant loss, white smoke",
+      "Oil use"
+     ],
+     "what_to_check": [
+      "Check coolant level and oil use",
+      "Ask if the engine was repaired under warranty"
+     ],
+     "years": [
+      2005,
+      2010
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "head_gasket"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "d4d20"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "valvematic_oil",
+     "title": "Oil consumption (1.8 Valvematic, some)",
+     "engines": [
+      "petrol"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Oil drops"
+     ],
+     "what_to_check": [
+      "Check oil use"
+     ],
+     "years": [
+      2009,
+      2014
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JTD",
+     "JTE",
+     "JTN",
+     "JTM",
+     "JTH",
+     "JTJ",
+     "SB1",
+     "VNK",
+     "NMT",
+     "2T1",
+     "2T3",
+     "4T1",
+     "4T3",
+     "5TD",
+     "5TF",
+     "5TE",
+     "1NX",
+     "JTK",
+     "JTL",
+     "MR0",
+     "AHT"
+    ]
+   }
+  },
+  {
+   "id": "toyota_hilux_7",
+   "make": "Toyota",
+   "model": "Hilux / Tacoma",
+   "generation": "7th gen Hilux / 2nd gen Tacoma",
+   "years": [
+    2005,
+    2015
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "pickup"
+   ],
+   "engines": [
+    {
+     "id": "d4d",
+     "name": "2.5/3.0 D-4D",
+     "fuel": "diesel"
+    },
+    {
+     "id": "petrol",
+     "name": "2.7/4.0 petrol (Tacoma)",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Extremely tough"
+   ],
+   "problems": [
+    {
+     "id": "frame_rust_tacoma",
+     "title": "Frame rust (Tacoma frame replacement program)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Flaking frame, holes"
+     ],
+     "what_to_check": [
+      "Inspect the frame with a flashlight; tap it with a screwdriver handle"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "frame_damage"
+    },
+    {
+     "id": "d4d_injectors_hilux",
+     "title": "Injector failures (D-4D)",
+     "engines": [
+      "d4d"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Smoke, rough running"
+     ],
+     "what_to_check": [
+      "Check for smoke"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "id": "hilux_leaf",
+     "title": "Leaf spring wear from overloading",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Sagging rear"
+     ],
+     "what_to_check": [
+      "Look at the rear ride height"
+     ],
+     "complaint_group": "suspension",
+     "repair_cost_id": "shocks_struts_pair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JTD",
+     "JTE",
+     "JTN",
+     "JTM",
+     "JTH",
+     "JTJ",
+     "SB1",
+     "VNK",
+     "NMT",
+     "2T1",
+     "2T3",
+     "4T1",
+     "4T3",
+     "5TD",
+     "5TF",
+     "5TE",
+     "1NX",
+     "JTK",
+     "JTL",
+     "MR0",
+     "AHT"
+    ]
+   }
+  },
+  {
+   "id": "honda_civic_8",
+   "make": "Honda",
+   "model": "Civic",
+   "generation": "8th gen",
+   "years": [
+    2005,
+    2011
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "hatchback",
+    "sedan",
+    "coupe"
+   ],
+   "engines": [
+    {
+     "id": "r18",
+     "name": "1.8 i-VTEC (R18)",
+     "fuel": "gas"
+    },
+    {
+     "id": "l14",
+     "name": "1.4 i-DSI / i-VTEC",
+     "fuel": "gas"
+    },
+    {
+     "id": "ctdi22",
+     "name": "2.2 i-CTDi",
+     "fuel": "diesel"
+    },
+    {
+     "id": "hybrid",
+     "name": "1.3 IMA hybrid",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Reliable petrol engines",
+    "Practical \"magic seats\" (EU hatch)"
+   ],
+   "problems": [
+    {
+     "id": "r18_block_crack",
+     "title": "Cracked engine block coolant leak (US 2006-2009 1.8)",
+     "engines": [
+      "r18"
+     ],
+     "frequency": "occasional",
+     "severity": "critical",
+     "symptoms": [
+      "Coolant loss, overheating"
+     ],
+     "what_to_check": [
+      "Check coolant; ask about the extended warranty repair"
+     ],
+     "years": [
+      2006,
+      2009
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "engine_replacement"
+    },
+    {
+     "id": "mmt_gearbox",
+     "title": "MMT / i-SHIFT automated manual: jerky shifts, clutch actuator wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Nodding between gears",
+      "Gearbox warning"
+     ],
+     "what_to_check": [
+      "Test drive the automatic"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "clutch"
+    },
+    {
+     "id": "ac_condenser_leak",
+     "title": "A/C condenser or compressor leaks",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "A/C not cold"
+     ],
+     "what_to_check": [
+      "Test the A/C"
+     ],
+     "complaint_group": "climate",
+     "repair_cost_id": "ac_condenser"
+    },
+    {
+     "id": "civic8_rear_axle",
+     "title": "Rear tire wear from worn rear arms (US sedan) / rear axle bushings (EU)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Inner rear tire wear"
+     ],
+     "what_to_check": [
+      "Check rear tires"
+     ],
+     "complaint_group": "suspension",
+     "repair_cost_id": "control_arm_bushings"
+    },
+    {
+     "id": "hybrid_battery_age",
+     "title": "Hybrid battery ageing (high mileage / older cars)",
+     "engines": [
+      "hybrid"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Hybrid warning",
+      "Engine runs more often, fuel use rises"
+     ],
+     "what_to_check": [
+      "Ask for a hybrid battery health check",
+      "Watch the battery gauge on the test drive"
+     ],
+     "complaint_group": "hybrid_ev",
+     "repair_cost_id": "hybrid_battery"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JHM",
+     "SHH",
+     "SHS",
+     "1HG",
+     "2HG",
+     "19X",
+     "2HK",
+     "5FN",
+     "5J6",
+     "7FA",
+     "JHL"
+    ]
+   }
+  },
+  {
+   "id": "honda_civic_9",
+   "make": "Honda",
+   "model": "Civic",
+   "generation": "9th gen",
+   "years": [
+    2011,
+    2017
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "hatchback",
+    "sedan",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "r18",
+     "name": "1.4/1.8 i-VTEC",
+     "fuel": "gas"
+    },
+    {
+     "id": "dtec",
+     "name": "1.6/2.2 i-DTEC",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Reliable, economical"
+   ],
+   "problems": [
+    {
+     "id": "ac_condenser_leak",
+     "title": "A/C condenser or compressor leaks",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "A/C not cold"
+     ],
+     "what_to_check": [
+      "Test the A/C"
+     ],
+     "complaint_group": "climate",
+     "repair_cost_id": "ac_condenser"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "dtec"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "civic9_infotainment",
+     "title": "Infotainment / Bluetooth glitches",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Freezes"
+     ],
+     "what_to_check": [
+      "Test the screen"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "infotainment"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JHM",
+     "SHH",
+     "SHS",
+     "1HG",
+     "2HG",
+     "19X",
+     "2HK",
+     "5FN",
+     "5J6",
+     "7FA",
+     "JHL"
+    ]
+   }
+  },
+  {
+   "id": "honda_civic_10",
+   "make": "Honda",
+   "model": "Civic",
+   "generation": "10th gen",
+   "years": [
+    2015,
+    2021
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "hatchback",
+    "sedan"
+   ],
+   "engines": [
+    {
+     "id": "t10",
+     "name": "1.0/1.5 VTEC Turbo",
+     "fuel": "gas"
+    },
+    {
+     "id": "n20",
+     "name": "2.0 (US)",
+     "fuel": "gas"
+    },
+    {
+     "id": "dtec",
+     "name": "1.6 i-DTEC",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Great to drive",
+    "Efficient"
+   ],
+   "problems": [
+    {
+     "id": "oil_dilution_15t",
+     "title": "Fuel getting into the oil (1.5 turbo) in cold climates",
+     "engines": [
+      "t10"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Oil level rises, smells of fuel"
+     ],
+     "what_to_check": [
+      "Check the dipstick level and smell",
+      "Ask about the software update"
+     ],
+     "years": [
+      2016,
+      2019
+     ],
+     "complaint_group": "engine"
+    },
+    {
+     "id": "ac_condenser_leak",
+     "title": "A/C condenser or compressor leaks",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "A/C not cold"
+     ],
+     "what_to_check": [
+      "Test the A/C"
+     ],
+     "complaint_group": "climate",
+     "repair_cost_id": "ac_condenser"
+    },
+    {
+     "id": "cvt_judder",
+     "title": "CVT automatic: judder, whine or slipping",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Judder pulling away",
+      "Whining",
+      "Loss of power uphill"
+     ],
+     "what_to_check": [
+      "Test drive from a stop several times and on a hill",
+      "Ask for CVT fluid changes and any CVT replacement"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_replacement"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JHM",
+     "SHH",
+     "SHS",
+     "1HG",
+     "2HG",
+     "19X",
+     "2HK",
+     "5FN",
+     "5J6",
+     "7FA",
+     "JHL"
+    ]
+   }
+  },
+  {
+   "id": "honda_accord_8",
+   "make": "Honda",
+   "model": "Accord",
+   "generation": "8th gen (EU 2008-2015, US 2008-2012)",
+   "years": [
+    2008,
+    2015
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "sedan",
+    "estate",
+    "coupe"
+   ],
+   "engines": [
+    {
+     "id": "k24",
+     "name": "2.0/2.4 i-VTEC",
+     "fuel": "gas"
+    },
+    {
+     "id": "v6",
+     "name": "3.5 V6 (US)",
+     "fuel": "gas"
+    },
+    {
+     "id": "dtec22",
+     "name": "2.2 i-DTEC",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Reliable, comfortable"
+   ],
+   "problems": [
+    {
+     "id": "vtc_rattle",
+     "title": "VTC actuator rattle at cold start (2.4 K24)",
+     "engines": [
+      "k24"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Grinding rattle for 1-2 seconds at cold start"
+     ],
+     "what_to_check": [
+      "Listen at a cold start"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "cam_phasers"
+    },
+    {
+     "id": "dual_mass_flywheel",
+     "title": "Dual-mass flywheel wear (manual)",
+     "engines": [
+      "dtec22"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at idle that stops with the clutch pressed"
+     ],
+     "what_to_check": [
+      "Listen at idle, clutch released then pressed"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dual_mass_flywheel"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "dtec22"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "accord8_oil",
+     "title": "Oil consumption (some 2.4 / V6 with cylinder deactivation)",
+     "engines": [
+      "k24",
+      "v6"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Oil level drops"
+     ],
+     "what_to_check": [
+      "Check oil use"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JHM",
+     "SHH",
+     "SHS",
+     "1HG",
+     "2HG",
+     "19X",
+     "2HK",
+     "5FN",
+     "5J6",
+     "7FA",
+     "JHL"
+    ]
+   }
+  },
+  {
+   "id": "honda_accord_9",
+   "make": "Honda",
+   "model": "Accord",
+   "generation": "9th gen (US)",
+   "years": [
+    2012,
+    2017
+   ],
+   "markets": [
+    "us"
+   ],
+   "body": [
+    "sedan",
+    "coupe"
+   ],
+   "engines": [
+    {
+     "id": "k24",
+     "name": "2.4 Earth Dreams",
+     "fuel": "gas"
+    },
+    {
+     "id": "v6",
+     "name": "3.5 V6",
+     "fuel": "gas"
+    },
+    {
+     "id": "hybrid",
+     "name": "2.0 hybrid",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Reliable, roomy"
+   ],
+   "problems": [
+    {
+     "id": "cvt_judder",
+     "title": "CVT automatic: judder, whine or slipping",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Judder pulling away",
+      "Whining",
+      "Loss of power uphill"
+     ],
+     "what_to_check": [
+      "Test drive from a stop several times and on a hill",
+      "Ask for CVT fluid changes and any CVT replacement"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_replacement"
+    },
+    {
+     "id": "ac_condenser_leak",
+     "title": "A/C condenser or compressor leaks",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "A/C not cold"
+     ],
+     "what_to_check": [
+      "Test the A/C"
+     ],
+     "complaint_group": "climate",
+     "repair_cost_id": "ac_condenser"
+    },
+    {
+     "id": "vtc_rattle",
+     "title": "VTC actuator rattle at cold start (2.4 K24)",
+     "engines": [
+      "k24"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Grinding rattle for 1-2 seconds at cold start"
+     ],
+     "what_to_check": [
+      "Listen at a cold start"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "cam_phasers"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JHM",
+     "SHH",
+     "SHS",
+     "1HG",
+     "2HG",
+     "19X",
+     "2HK",
+     "5FN",
+     "5J6",
+     "7FA",
+     "JHL"
+    ]
+   }
+  },
+  {
+   "id": "honda_crv_3",
+   "make": "Honda",
+   "model": "CR-V",
+   "generation": "3rd gen",
+   "years": [
+    2006,
+    2012
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "k24",
+     "name": "2.0/2.4 i-VTEC",
+     "fuel": "gas"
+    },
+    {
+     "id": "ctdi22",
+     "name": "2.2 i-CTDi / i-DTEC",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Reliable, practical"
+   ],
+   "problems": [
+    {
+     "id": "vtc_rattle",
+     "title": "VTC actuator rattle at cold start (2.4 K24)",
+     "engines": [
+      "k24"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Grinding rattle for 1-2 seconds at cold start"
+     ],
+     "what_to_check": [
+      "Listen at a cold start"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "cam_phasers"
+    },
+    {
+     "id": "crv_ac_compressor",
+     "title": "A/C compressor failure",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "A/C not cold"
+     ],
+     "what_to_check": [
+      "Test the A/C"
+     ],
+     "complaint_group": "climate",
+     "repair_cost_id": "ac_compressor"
+    },
+    {
+     "id": "crv_rear_diff",
+     "title": "Rear differential groan on tight turns (fluid not changed)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Groan when turning at low speed"
+     ],
+     "what_to_check": [
+      "Drive in tight circles"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_service"
+    },
+    {
+     "id": "dual_mass_flywheel",
+     "title": "Dual-mass flywheel wear (manual)",
+     "engines": [
+      "ctdi22"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at idle that stops with the clutch pressed"
+     ],
+     "what_to_check": [
+      "Listen at idle, clutch released then pressed"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dual_mass_flywheel"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JHM",
+     "SHH",
+     "SHS",
+     "1HG",
+     "2HG",
+     "19X",
+     "2HK",
+     "5FN",
+     "5J6",
+     "7FA",
+     "JHL"
+    ]
+   }
+  },
+  {
+   "id": "honda_crv_4",
+   "make": "Honda",
+   "model": "CR-V",
+   "generation": "4th gen",
+   "years": [
+    2012,
+    2017
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "k24",
+     "name": "2.0/2.4 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "dtec",
+     "name": "1.6/2.2 i-DTEC",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Reliable, roomy"
+   ],
+   "problems": [
+    {
+     "id": "vtc_rattle",
+     "title": "VTC actuator rattle at cold start (2.4 K24)",
+     "engines": [
+      "k24"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Grinding rattle for 1-2 seconds at cold start"
+     ],
+     "what_to_check": [
+      "Listen at a cold start"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "cam_phasers"
+    },
+    {
+     "id": "ac_condenser_leak",
+     "title": "A/C condenser or compressor leaks",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "A/C not cold"
+     ],
+     "what_to_check": [
+      "Test the A/C"
+     ],
+     "complaint_group": "climate",
+     "repair_cost_id": "ac_condenser"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "dtec"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "cvt_judder",
+     "title": "CVT automatic: judder, whine or slipping",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Judder pulling away",
+      "Whining",
+      "Loss of power uphill"
+     ],
+     "what_to_check": [
+      "Test drive from a stop several times and on a hill",
+      "Ask for CVT fluid changes and any CVT replacement"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_replacement"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JHM",
+     "SHH",
+     "SHS",
+     "1HG",
+     "2HG",
+     "19X",
+     "2HK",
+     "5FN",
+     "5J6",
+     "7FA",
+     "JHL"
+    ]
+   }
+  },
+  {
+   "id": "honda_crv_5",
+   "make": "Honda",
+   "model": "CR-V",
+   "generation": "5th gen",
+   "years": [
+    2017,
+    2023
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "t15",
+     "name": "1.5 VTEC Turbo",
+     "fuel": "gas"
+    },
+    {
+     "id": "hybrid",
+     "name": "2.0 hybrid",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Roomy, efficient hybrid"
+   ],
+   "problems": [
+    {
+     "id": "oil_dilution_15t",
+     "title": "Fuel getting into the oil (1.5 turbo) in cold climates",
+     "engines": [
+      "t15"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Oil level rises, smells of fuel"
+     ],
+     "what_to_check": [
+      "Check the dipstick level and smell",
+      "Ask about the software update"
+     ],
+     "years": [
+      2017,
+      2019
+     ],
+     "complaint_group": "engine"
+    },
+    {
+     "id": "cvt_judder",
+     "title": "CVT automatic: judder, whine or slipping",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Judder pulling away",
+      "Whining",
+      "Loss of power uphill"
+     ],
+     "what_to_check": [
+      "Test drive from a stop several times and on a hill",
+      "Ask for CVT fluid changes and any CVT replacement"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_replacement"
+    },
+    {
+     "id": "ac_condenser_leak",
+     "title": "A/C condenser or compressor leaks",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "A/C not cold"
+     ],
+     "what_to_check": [
+      "Test the A/C"
+     ],
+     "complaint_group": "climate",
+     "repair_cost_id": "ac_condenser"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JHM",
+     "SHH",
+     "SHS",
+     "1HG",
+     "2HG",
+     "19X",
+     "2HK",
+     "5FN",
+     "5J6",
+     "7FA",
+     "JHL"
+    ]
+   }
+  },
+  {
+   "id": "honda_jazz_2_3",
+   "make": "Honda",
+   "model": "Jazz / Fit",
+   "generation": "2nd and 3rd gen",
+   "years": [
+    2008,
+    2020
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "hatchback"
+   ],
+   "engines": [
+    {
+     "id": "l13",
+     "name": "1.2/1.3/1.5 i-VTEC",
+     "fuel": "gas"
+    },
+    {
+     "id": "hybrid",
+     "name": "1.3 hybrid",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Very reliable",
+    "Huge interior for its size"
+   ],
+   "problems": [
+    {
+     "id": "mmt_gearbox",
+     "title": "MMT / i-SHIFT automated manual: jerky shifts, clutch actuator wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Nodding between gears",
+      "Gearbox warning"
+     ],
+     "what_to_check": [
+      "Test drive the automatic"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "clutch"
+    },
+    {
+     "id": "cvt_judder",
+     "title": "CVT automatic: judder, whine or slipping",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Judder pulling away",
+      "Whining",
+      "Loss of power uphill"
+     ],
+     "what_to_check": [
+      "Test drive from a stop several times and on a hill",
+      "Ask for CVT fluid changes and any CVT replacement"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_replacement"
+    },
+    {
+     "id": "jazz_ignition",
+     "title": "Ignition coil failure",
+     "engines": [
+      "l13"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Misfire"
+     ],
+     "what_to_check": [
+      "Check idle"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "spark_plugs_coils"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JHM",
+     "SHH",
+     "SHS",
+     "1HG",
+     "2HG",
+     "19X",
+     "2HK",
+     "5FN",
+     "5J6",
+     "7FA",
+     "JHL"
+    ]
+   }
+  },
+  {
+   "id": "nissan_qashqai_j10",
+   "make": "Nissan",
+   "model": "Qashqai",
+   "generation": "J10 (incl. +2)",
+   "years": [
+    2007,
+    2014
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "hr16",
+     "name": "1.6 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "mr20",
+     "name": "2.0 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "dci15",
+     "name": "1.5 dCi",
+     "fuel": "diesel"
+    },
+    {
+     "id": "dci20",
+     "name": "2.0 dCi",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Practical, popular"
+   ],
+   "problems": [
+    {
+     "id": "dci15_bearings",
+     "title": "Crankshaft bearing wear if oil changes were stretched (1.5 dCi, Renault engine)",
+     "engines": [
+      "dci15"
+     ],
+     "frequency": "occasional",
+     "severity": "critical",
+     "symptoms": [
+      "Knocking",
+      "Oil-pressure warning"
+     ],
+     "what_to_check": [
+      "Ask for regular oil changes"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "engine_replacement"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "dci15",
+      "dci20"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "dual_mass_flywheel",
+     "title": "Dual-mass flywheel wear (manual)",
+     "engines": [
+      "dci15",
+      "dci20"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at idle that stops with the clutch pressed"
+     ],
+     "what_to_check": [
+      "Listen at idle, clutch released then pressed"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dual_mass_flywheel"
+    },
+    {
+     "id": "cvt_judder",
+     "title": "CVT automatic: judder, whine or slipping",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Judder pulling away",
+      "Whining",
+      "Loss of power uphill"
+     ],
+     "what_to_check": [
+      "Test drive from a stop several times and on a hill",
+      "Ask for CVT fluid changes and any CVT replacement"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_replacement"
+    },
+    {
+     "id": "qashqai_j10_rust",
+     "title": "Rust on subframes and underbody",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Flaking metal underneath"
+     ],
+     "what_to_check": [
+      "Inspect underneath"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JN1",
+     "JN8",
+     "SJN",
+     "VSK",
+     "1N4",
+     "1N6",
+     "3N1",
+     "5N1",
+     "JN3"
+    ]
+   }
+  },
+  {
+   "id": "nissan_qashqai_j11",
+   "make": "Nissan",
+   "model": "Qashqai",
+   "generation": "J11 (incl. Rogue Sport)",
+   "years": [
+    2013,
+    2021
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "digt12",
+     "name": "1.2 DIG-T (115 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "digt13",
+     "name": "1.3 DIG-T (140-160 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "dci15",
+     "name": "1.5 dCi (110-115 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "dci16",
+     "name": "1.6 dCi (130 hp)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Comfortable, practical"
+   ],
+   "problems": [
+    {
+     "id": "digt12_oil",
+     "title": "High oil use and timing chain wear (1.2 DIG-T, same as Renault 1.2 TCe)",
+     "engines": [
+      "digt12"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Oil level drops",
+      "Rattle at start"
+     ],
+     "what_to_check": [
+      "Check oil use; listen at a cold start"
+     ],
+     "years": [
+      2013,
+      2018
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "dci15",
+      "dci16"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "cvt_judder",
+     "title": "CVT automatic: judder, whine or slipping",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Judder pulling away",
+      "Whining",
+      "Loss of power uphill"
+     ],
+     "what_to_check": [
+      "Test drive from a stop several times and on a hill",
+      "Ask for CVT fluid changes and any CVT replacement"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_replacement"
+    },
+    {
+     "id": "qashqai_j11_sensors",
+     "title": "Driver-assist sensor / camera faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Warnings"
+     ],
+     "what_to_check": [
+      "Check for warnings"
+     ],
+     "complaint_group": "driver_assist",
+     "repair_cost_id": "adas_sensor"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JN1",
+     "JN8",
+     "SJN",
+     "VSK",
+     "1N4",
+     "1N6",
+     "3N1",
+     "5N1",
+     "JN3"
+    ]
+   }
+  },
+  {
+   "id": "nissan_juke_f15",
+   "make": "Nissan",
+   "model": "Juke",
+   "generation": "F15",
+   "years": [
+    2010,
+    2019
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "hr16",
+     "name": "1.6 petrol (94-117 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "digt16",
+     "name": "1.6 DIG-T (190 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "digt12",
+     "name": "1.2 DIG-T",
+     "fuel": "gas"
+    },
+    {
+     "id": "dci15",
+     "name": "1.5 dCi",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Distinctive, cheap"
+   ],
+   "problems": [
+    {
+     "id": "digt16_turbo",
+     "title": "Turbo and oil use issues (1.6 DIG-T)",
+     "engines": [
+      "digt16"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Smoke, oil use"
+     ],
+     "what_to_check": [
+      "Check for smoke"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "turbo"
+    },
+    {
+     "id": "cvt_judder",
+     "title": "CVT automatic: judder, whine or slipping",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Judder pulling away",
+      "Whining",
+      "Loss of power uphill"
+     ],
+     "what_to_check": [
+      "Test drive from a stop several times and on a hill",
+      "Ask for CVT fluid changes and any CVT replacement"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_replacement"
+    },
+    {
+     "id": "dci15_bearings",
+     "title": "Crankshaft bearing wear if oil changes were stretched (1.5 dCi, Renault engine)",
+     "engines": [
+      "dci15"
+     ],
+     "frequency": "occasional",
+     "severity": "critical",
+     "symptoms": [
+      "Knocking",
+      "Oil-pressure warning"
+     ],
+     "what_to_check": [
+      "Ask for regular oil changes"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "engine_replacement"
+    },
+    {
+     "id": "digt12_oil_juke",
+     "title": "High oil use (1.2 DIG-T)",
+     "engines": [
+      "digt12"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Oil drops"
+     ],
+     "what_to_check": [
+      "Check oil use"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JN1",
+     "JN8",
+     "SJN",
+     "VSK",
+     "1N4",
+     "1N6",
+     "3N1",
+     "5N1",
+     "JN3"
+    ]
+   }
+  },
+  {
+   "id": "nissan_micra_k12",
+   "make": "Nissan",
+   "model": "Micra",
+   "generation": "K12",
+   "years": [
+    2002,
+    2010
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback",
+    "convertible"
+   ],
+   "engines": [
+    {
+     "id": "cr12",
+     "name": "1.0/1.2/1.4 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "dci15",
+     "name": "1.5 dCi",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Cheap, easy to drive"
+   ],
+   "problems": [
+    {
+     "id": "cr12_chain",
+     "title": "Timing chain stretch (1.2/1.4)",
+     "engines": [
+      "cr12"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at start",
+      "Engine light"
+     ],
+     "what_to_check": [
+      "Listen at a cold start"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "micra_k12_ignition",
+     "title": "Ignition coil / starter faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Misfire, hard start"
+     ],
+     "what_to_check": [
+      "Check starting"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "id": "rust",
+     "title": "Rust (sills and rear arches)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Bubbling paint"
+     ],
+     "what_to_check": [
+      "Check the sills and rear arches"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JN1",
+     "JN8",
+     "SJN",
+     "VSK",
+     "1N4",
+     "1N6",
+     "3N1",
+     "5N1",
+     "JN3"
+    ]
+   }
+  },
+  {
+   "id": "nissan_xtrail_t31",
+   "make": "Nissan",
+   "model": "X-Trail",
+   "generation": "T31",
+   "years": [
+    2007,
+    2014
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "mr20",
+     "name": "2.0/2.5 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "dci20",
+     "name": "2.0 dCi",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Practical 4x4"
+   ],
+   "problems": [
+    {
+     "id": "dual_mass_flywheel",
+     "title": "Dual-mass flywheel wear (manual)",
+     "engines": [
+      "dci20"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at idle that stops with the clutch pressed"
+     ],
+     "what_to_check": [
+      "Listen at idle, clutch released then pressed"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dual_mass_flywheel"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "dci20"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "cvt_judder",
+     "title": "CVT automatic: judder, whine or slipping",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Judder pulling away",
+      "Whining",
+      "Loss of power uphill"
+     ],
+     "what_to_check": [
+      "Test drive from a stop several times and on a hill",
+      "Ask for CVT fluid changes and any CVT replacement"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_replacement"
+    },
+    {
+     "id": "rust",
+     "title": "Rust (underbody)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Bubbling paint"
+     ],
+     "what_to_check": [
+      "Check the underbody"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JN1",
+     "JN8",
+     "SJN",
+     "VSK",
+     "1N4",
+     "1N6",
+     "3N1",
+     "5N1",
+     "JN3"
+    ]
+   }
+  },
+  {
+   "id": "nissan_rogue_t32",
+   "make": "Nissan",
+   "model": "X-Trail / Rogue",
+   "generation": "T32",
+   "years": [
+    2013,
+    2021
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "qr25",
+     "name": "2.5 petrol (US)",
+     "fuel": "gas"
+    },
+    {
+     "id": "digt",
+     "name": "1.3/1.6 DIG-T",
+     "fuel": "gas"
+    },
+    {
+     "id": "dci16",
+     "name": "1.6/1.7 dCi",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Roomy, comfortable"
+   ],
+   "problems": [
+    {
+     "id": "cvt_judder",
+     "title": "CVT automatic: judder, whine or slipping",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Judder pulling away",
+      "Whining",
+      "Loss of power uphill"
+     ],
+     "what_to_check": [
+      "Test drive from a stop several times and on a hill",
+      "Ask for CVT fluid changes and any CVT replacement"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_replacement"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "dci16"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "rogue_brake_aeb",
+     "title": "False automatic emergency braking (US Rogue)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Sudden braking with no obstacle"
+     ],
+     "what_to_check": [
+      "Ask about updates"
+     ],
+     "complaint_group": "driver_assist",
+     "repair_cost_id": "adas_sensor"
+    }
+   ],
+   "buying_tips": [
+    "CVT failures are the main risk: get fluid-change records"
+   ],
+   "vin": {
+    "wmi": [
+     "JN1",
+     "JN8",
+     "SJN",
+     "VSK",
+     "1N4",
+     "1N6",
+     "3N1",
+     "5N1",
+     "JN3"
+    ]
+   }
+  },
+  {
+   "id": "nissan_altima_l32",
+   "make": "Nissan",
+   "model": "Altima",
+   "generation": "L32 (4th gen)",
+   "years": [
+    2007,
+    2012
+   ],
+   "markets": [
+    "us"
+   ],
+   "body": [
+    "sedan",
+    "coupe"
+   ],
+   "engines": [
+    {
+     "id": "qr25",
+     "name": "2.5 (QR25)",
+     "fuel": "gas"
+    },
+    {
+     "id": "v6",
+     "name": "3.5 V6",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Comfortable, roomy"
+   ],
+   "problems": [
+    {
+     "id": "cvt_judder",
+     "title": "CVT automatic: judder, whine or slipping",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Judder pulling away",
+      "Whining",
+      "Loss of power uphill"
+     ],
+     "what_to_check": [
+      "Test drive from a stop several times and on a hill",
+      "Ask for CVT fluid changes and any CVT replacement"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_replacement"
+    },
+    {
+     "id": "altima_steering_lock",
+     "title": "Electronic steering lock failure (will not start)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "\"Steering lock\" message, no start"
+     ],
+     "what_to_check": [
+      "Start and stop several times"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "electrical_diagnosis"
+    },
+    {
+     "id": "qr25_cat",
+     "title": "Pre-catalyst breakdown and oil use (QR25)",
+     "engines": [
+      "qr25"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Engine light, rattle from exhaust"
+     ],
+     "what_to_check": [
+      "Listen to the exhaust"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "catalytic_converter"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JN1",
+     "JN8",
+     "SJN",
+     "VSK",
+     "1N4",
+     "1N6",
+     "3N1",
+     "5N1",
+     "JN3"
+    ]
+   }
+  },
+  {
+   "id": "nissan_altima_l33",
+   "make": "Nissan",
+   "model": "Altima",
+   "generation": "L33 (5th gen)",
+   "years": [
+    2013,
+    2018
+   ],
+   "markets": [
+    "us"
+   ],
+   "body": [
+    "sedan"
+   ],
+   "engines": [
+    {
+     "id": "qr25",
+     "name": "2.5",
+     "fuel": "gas"
+    },
+    {
+     "id": "v6",
+     "name": "3.5 V6",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Efficient, comfortable"
+   ],
+   "problems": [
+    {
+     "id": "cvt_judder",
+     "title": "CVT automatic: judder, whine or slipping",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Judder pulling away",
+      "Whining",
+      "Loss of power uphill"
+     ],
+     "what_to_check": [
+      "Test drive from a stop several times and on a hill",
+      "Ask for CVT fluid changes and any CVT replacement"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_replacement"
+    },
+    {
+     "id": "altima_l33_cvt_cooler",
+     "title": "CVT overheating in hot weather",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Loss of power in heat"
+     ],
+     "what_to_check": [
+      "Test drive on a hot day / hills"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_replacement"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JN1",
+     "JN8",
+     "SJN",
+     "VSK",
+     "1N4",
+     "1N6",
+     "3N1",
+     "5N1",
+     "JN3"
+    ]
+   }
+  },
+  {
+   "id": "nissan_sentra_b17",
+   "make": "Nissan",
+   "model": "Sentra",
+   "generation": "B17",
+   "years": [
+    2012,
+    2019
+   ],
+   "markets": [
+    "us"
+   ],
+   "body": [
+    "sedan"
+   ],
+   "engines": [
+    {
+     "id": "mr18",
+     "name": "1.8 (MRA8)",
+     "fuel": "gas"
+    },
+    {
+     "id": "t16",
+     "name": "1.6 turbo (SR)",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Roomy, cheap"
+   ],
+   "problems": [
+    {
+     "id": "cvt_judder",
+     "title": "CVT automatic: judder, whine or slipping",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Judder pulling away",
+      "Whining",
+      "Loss of power uphill"
+     ],
+     "what_to_check": [
+      "Test drive from a stop several times and on a hill",
+      "Ask for CVT fluid changes and any CVT replacement"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_replacement"
+    },
+    {
+     "id": "ac_condenser_leak",
+     "title": "A/C condenser or compressor leaks",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "A/C not cold"
+     ],
+     "what_to_check": [
+      "Test the A/C"
+     ],
+     "complaint_group": "climate",
+     "repair_cost_id": "ac_condenser"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JN1",
+     "JN8",
+     "SJN",
+     "VSK",
+     "1N4",
+     "1N6",
+     "3N1",
+     "5N1",
+     "JN3"
+    ]
+   }
+  },
+  {
+   "id": "nissan_leaf",
+   "make": "Nissan",
+   "model": "Leaf",
+   "generation": "ZE0 / ZE1",
+   "years": [
+    2010,
+    2024
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "hatchback"
+   ],
+   "engines": [
+    {
+     "id": "ev",
+     "name": "Electric (24-62 kWh)",
+     "fuel": "ev"
+    }
+   ],
+   "strengths": [
+    "Cheap EV to run",
+    "Simple"
+   ],
+   "problems": [
+    {
+     "id": "leaf_battery",
+     "title": "Battery capacity loss (no active battery cooling; worse in hot climates)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Short range",
+      "Missing capacity bars on the dash"
+     ],
+     "what_to_check": [
+      "Count the capacity bars next to the battery gauge (12 = full health)",
+      "Ask for a battery health (SOH) report"
+     ],
+     "complaint_group": "hybrid_ev",
+     "repair_cost_id": "ev_battery"
+    },
+    {
+     "id": "leaf_charging",
+     "title": "Onboard charger / charge port faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Will not charge"
+     ],
+     "what_to_check": [
+      "Test charging"
+     ],
+     "complaint_group": "hybrid_ev",
+     "repair_cost_id": "ev_charger_port"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JN1",
+     "JN8",
+     "SJN",
+     "VSK",
+     "1N4",
+     "1N6",
+     "3N1",
+     "5N1",
+     "JN3",
+     "SJN"
+    ]
+   }
+  },
+  {
+   "id": "mazda_3_bk_bl",
+   "make": "Mazda",
+   "model": "Mazda3",
+   "generation": "BK/BL (1st/2nd gen)",
+   "years": [
+    2003,
+    2013
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "hatchback",
+    "sedan"
+   ],
+   "engines": [
+    {
+     "id": "mzr16",
+     "name": "1.6/2.0/2.5 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "mzcd16",
+     "name": "1.6 MZ-CD (PSA diesel)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "mzrcd22",
+     "name": "2.2 MZR-CD",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Good to drive",
+    "Reliable petrol"
+   ],
+   "problems": [
+    {
+     "id": "rust",
+     "title": "Rust (rear wheel arches, sills and subframes)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Bubbling paint"
+     ],
+     "what_to_check": [
+      "Check the rear wheel arches, sills and subframes"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    },
+    {
+     "id": "mzrcd_strainer",
+     "title": "Oil pump strainer clogging leading to engine failure (2.2 MZR-CD)",
+     "engines": [
+      "mzrcd22"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Oil-pressure warning",
+      "Turbo failure"
+     ],
+     "what_to_check": [
+      "Ask if the oil strainer was cleaned and the injector seals replaced"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "engine_replacement"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "mzcd16",
+      "mzrcd22"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "mazda3_engine_mounts",
+     "title": "Worn engine mounts",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Vibration, clunk"
+     ],
+     "what_to_check": [
+      "Feel at idle"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "engine_mounts"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JM1",
+     "JM0",
+     "JMZ",
+     "3MZ",
+     "JM3"
+    ]
+   }
+  },
+  {
+   "id": "mazda_3_bm",
+   "make": "Mazda",
+   "model": "Mazda3",
+   "generation": "BM/BN (3rd gen)",
+   "years": [
+    2013,
+    2019
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "hatchback",
+    "sedan"
+   ],
+   "engines": [
+    {
+     "id": "skyg",
+     "name": "1.5/2.0/2.5 Skyactiv-G",
+     "fuel": "gas"
+    },
+    {
+     "id": "skyd",
+     "name": "1.5/2.2 Skyactiv-D",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Reliable petrol",
+    "Great to drive"
+   ],
+   "problems": [
+    {
+     "id": "skyactiv_d",
+     "title": "Oil level rising, DPF and injector carbon issues (2.2 Skyactiv-D, short trips)",
+     "engines": [
+      "skyd"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Oil level above max",
+      "DPF light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Check the oil level (too HIGH is a warning)",
+      "Avoid if it did mostly short trips"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "mazda3_infotainment",
+     "title": "Infotainment \"ghost touch\" / screen faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Screen acts by itself"
+     ],
+     "what_to_check": [
+      "Test the screen"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "infotainment"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JM1",
+     "JM0",
+     "JMZ",
+     "3MZ",
+     "JM3"
+    ]
+   }
+  },
+  {
+   "id": "mazda_6_gh",
+   "make": "Mazda",
+   "model": "Mazda6",
+   "generation": "GH (2nd gen)",
+   "years": [
+    2007,
+    2013
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "sedan",
+    "hatchback",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "mzr",
+     "name": "1.8/2.0/2.5 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "mzrcd22",
+     "name": "2.0/2.2 MZR-CD",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Good to drive"
+   ],
+   "problems": [
+    {
+     "id": "mzrcd_strainer_6",
+     "title": "Oil pump strainer clogging leading to engine failure (2.2 MZR-CD)",
+     "engines": [
+      "mzrcd22"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Oil-pressure warning"
+     ],
+     "what_to_check": [
+      "Ask if the strainer was cleaned and injector seals replaced"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "engine_replacement"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "mzrcd22"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "rust",
+     "title": "Rust (rear arches and sills)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Bubbling paint"
+     ],
+     "what_to_check": [
+      "Check the rear arches and sills"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JM1",
+     "JM0",
+     "JMZ",
+     "3MZ",
+     "JM3"
+    ]
+   }
+  },
+  {
+   "id": "mazda_6_gj",
+   "make": "Mazda",
+   "model": "Mazda6",
+   "generation": "GJ/GL (3rd gen)",
+   "years": [
+    2012,
+    2023
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "sedan",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "skyg",
+     "name": "2.0/2.5 Skyactiv-G",
+     "fuel": "gas"
+    },
+    {
+     "id": "skyd",
+     "name": "2.2 Skyactiv-D",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Stylish, reliable petrol"
+   ],
+   "problems": [
+    {
+     "id": "skyactiv_d",
+     "title": "Oil level rising, DPF and injector carbon issues (2.2 Skyactiv-D, short trips)",
+     "engines": [
+      "skyd"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Oil level above max",
+      "DPF light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Check the oil level (too HIGH is a warning)",
+      "Avoid if it did mostly short trips"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "mazda6_brakes",
+     "title": "Electronic parking brake / rear caliper faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Parking brake warning"
+     ],
+     "what_to_check": [
+      "Apply and release several times"
+     ],
+     "complaint_group": "brakes",
+     "repair_cost_id": "brake_caliper"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JM1",
+     "JM0",
+     "JMZ",
+     "3MZ",
+     "JM3"
+    ]
+   }
+  },
+  {
+   "id": "mazda_cx5_ke",
+   "make": "Mazda",
+   "model": "CX-5",
+   "generation": "KE (1st gen)",
+   "years": [
+    2012,
+    2017
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "skyg",
+     "name": "2.0/2.5 Skyactiv-G",
+     "fuel": "gas"
+    },
+    {
+     "id": "skyd",
+     "name": "2.2 Skyactiv-D",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Reliable petrol, good to drive"
+   ],
+   "problems": [
+    {
+     "id": "skyactiv_d",
+     "title": "Oil level rising, DPF and injector carbon issues (2.2 Skyactiv-D, short trips)",
+     "engines": [
+      "skyd"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Oil level above max",
+      "DPF light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Check the oil level (too HIGH is a warning)",
+      "Avoid if it did mostly short trips"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "cx5_infotainment",
+     "title": "Infotainment faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Screen glitches"
+     ],
+     "what_to_check": [
+      "Test the screen"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "infotainment"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JM1",
+     "JM0",
+     "JMZ",
+     "3MZ",
+     "JM3"
+    ]
+   }
+  },
+  {
+   "id": "mazda_cx5_kf",
+   "make": "Mazda",
+   "model": "CX-5",
+   "generation": "KF (2nd gen)",
+   "years": [
+    2017,
+    2025
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "skyg",
+     "name": "2.0/2.5 Skyactiv-G (incl. turbo)",
+     "fuel": "gas"
+    },
+    {
+     "id": "skyd",
+     "name": "2.2 Skyactiv-D",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Reliable, high quality"
+   ],
+   "problems": [
+    {
+     "id": "skyactiv_d",
+     "title": "Oil level rising, DPF and injector carbon issues (2.2 Skyactiv-D, short trips)",
+     "engines": [
+      "skyd"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Oil level above max",
+      "DPF light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Check the oil level (too HIGH is a warning)",
+      "Avoid if it did mostly short trips"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "cx5_kf_ac",
+     "title": "A/C condenser leaks",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "A/C not cold"
+     ],
+     "what_to_check": [
+      "Test the A/C"
+     ],
+     "complaint_group": "climate",
+     "repair_cost_id": "ac_condenser"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JM1",
+     "JM0",
+     "JMZ",
+     "3MZ",
+     "JM3"
+    ]
+   }
+  },
+  {
+   "id": "mazda_2_de",
+   "make": "Mazda",
+   "model": "Mazda2",
+   "generation": "DE",
+   "years": [
+    2007,
+    2014
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "hatchback"
+   ],
+   "engines": [
+    {
+     "id": "mzr",
+     "name": "1.3/1.5 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "mzcd",
+     "name": "1.4/1.6 diesel (PSA)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Reliable, fun"
+   ],
+   "problems": [
+    {
+     "id": "rust",
+     "title": "Rust (rear arches and sills)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Bubbling paint"
+     ],
+     "what_to_check": [
+      "Check the rear arches and sills"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "mzcd"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JM1",
+     "JM0",
+     "JMZ",
+     "3MZ",
+     "JM3"
+    ]
+   }
+  },
+  {
+   "id": "mazda_mx5_nc",
+   "make": "Mazda",
+   "model": "MX-5",
+   "generation": "NC",
+   "years": [
+    2005,
+    2015
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "convertible"
+   ],
+   "engines": [
+    {
+     "id": "mzr",
+     "name": "1.8/2.0 petrol",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Reliable and fun"
+   ],
+   "problems": [
+    {
+     "id": "rust",
+     "title": "Rust (sills and rear arches)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Bubbling paint"
+     ],
+     "what_to_check": [
+      "Check the sills and rear arches"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    },
+    {
+     "id": "mx5_coolant_tank",
+     "title": "Coolant expansion tank cracking",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Coolant loss, overheating"
+     ],
+     "what_to_check": [
+      "Check the plastic tank for cracks"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "coolant_leak_minor"
+    },
+    {
+     "id": "mx5_roof_drains",
+     "title": "Soft-top drains blocking (wet carpets)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Wet carpets"
+     ],
+     "what_to_check": [
+      "Check carpets"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "sunroof_drains"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JM1",
+     "JM0",
+     "JMZ",
+     "3MZ",
+     "JM3"
+    ]
+   }
+  },
+  {
+   "id": "hyundai_i30_fd",
+   "make": "Hyundai / Kia",
+   "model": "i30 / Ceed",
+   "generation": "i30 FD / Ceed ED",
+   "years": [
+    2007,
+    2012
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "gamma16",
+     "name": "1.4/1.6 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "crdi16",
+     "name": "1.6 CRDi",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Reliable, good value"
+   ],
+   "problems": [
+    {
+     "id": "dual_mass_flywheel",
+     "title": "Dual-mass flywheel wear (manual)",
+     "engines": [
+      "crdi16"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at idle that stops with the clutch pressed"
+     ],
+     "what_to_check": [
+      "Listen at idle, clutch released then pressed"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dual_mass_flywheel"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "crdi16"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "i30fd_clutch",
+     "title": "Clutch wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "High bite"
+     ],
+     "what_to_check": [
+      "Check the clutch"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "clutch"
+    },
+    {
+     "id": "i30fd_rear_springs",
+     "title": "Broken rear coil springs",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Clunk, sagging corner"
+     ],
+     "what_to_check": [
+      "Check ride height"
+     ],
+     "complaint_group": "suspension",
+     "repair_cost_id": "shocks_struts_pair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "KMH",
+     "TMA",
+     "NLH",
+     "5NP",
+     "5NM",
+     "KM8",
+     "MAL",
+     "KNA",
+     "KNE",
+     "U5Y",
+     "5XY",
+     "5XX",
+     "KND",
+     "3KP"
+    ]
+   }
+  },
+  {
+   "id": "hyundai_i30_gd",
+   "make": "Hyundai / Kia",
+   "model": "i30 / Ceed",
+   "generation": "i30 GD / Ceed JD (incl. Elantra GT)",
+   "years": [
+    2012,
+    2018
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "hatchback",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "gdi16",
+     "name": "1.4/1.6 GDI",
+     "fuel": "gas"
+    },
+    {
+     "id": "crdi16",
+     "name": "1.4/1.6 CRDi",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Reliable, long warranty when new"
+   ],
+   "problems": [
+    {
+     "id": "gdi_carbon",
+     "title": "Carbon build-up and oil use (direct-injection petrol)",
+     "engines": [
+      "gdi16"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Rough idle",
+      "Misfires"
+     ],
+     "what_to_check": [
+      "Check idle smoothness"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "intake_carbon_cleaning"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "crdi16"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "dual_mass_flywheel",
+     "title": "Dual-mass flywheel wear (manual)",
+     "engines": [
+      "crdi16"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at idle that stops with the clutch pressed"
+     ],
+     "what_to_check": [
+      "Listen at idle, clutch released then pressed"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dual_mass_flywheel"
+    },
+    {
+     "id": "dct7",
+     "title": "7-speed dual-clutch (DCT) judder or jerky shifts",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Jerky low-speed shifts"
+     ],
+     "what_to_check": [
+      "Test drive in traffic"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dsg_mechatronic"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "KMH",
+     "TMA",
+     "NLH",
+     "5NP",
+     "5NM",
+     "KM8",
+     "MAL",
+     "KNA",
+     "KNE",
+     "U5Y",
+     "5XY",
+     "5XX",
+     "KND",
+     "3KP"
+    ]
+   }
+  },
+  {
+   "id": "hyundai_i30_pd",
+   "make": "Hyundai / Kia",
+   "model": "i30 / Ceed",
+   "generation": "i30 PD / Ceed CD",
+   "years": [
+    2017,
+    2026
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "tgdi",
+     "name": "1.0/1.4/1.5 T-GDI",
+     "fuel": "gas"
+    },
+    {
+     "id": "crdi16",
+     "name": "1.6 CRDi",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Modern, reliable"
+   ],
+   "problems": [
+    {
+     "id": "dct7",
+     "title": "7-speed dual-clutch (DCT) judder or jerky shifts",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Jerky low-speed shifts"
+     ],
+     "what_to_check": [
+      "Test drive in traffic"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dsg_mechatronic"
+    },
+    {
+     "id": "tgdi_oil",
+     "title": "Oil use and carbon (T-GDI)",
+     "engines": [
+      "tgdi"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Oil drops"
+     ],
+     "what_to_check": [
+      "Check oil"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "intake_carbon_cleaning"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "crdi16"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "KMH",
+     "TMA",
+     "NLH",
+     "5NP",
+     "5NM",
+     "KM8",
+     "MAL",
+     "KNA",
+     "KNE",
+     "U5Y",
+     "5XY",
+     "5XX",
+     "KND",
+     "3KP"
+    ]
+   }
+  },
+  {
+   "id": "hyundai_i20",
+   "make": "Hyundai",
+   "model": "i20",
+   "generation": "PB / GB",
+   "years": [
+    2008,
+    2020
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback"
+   ],
+   "engines": [
+    {
+     "id": "kappa12",
+     "name": "1.2/1.25/1.4 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "tgdi10",
+     "name": "1.0 T-GDI",
+     "fuel": "gas"
+    },
+    {
+     "id": "crdi",
+     "name": "1.1/1.4 CRDi",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Cheap, reliable"
+   ],
+   "problems": [
+    {
+     "id": "i20_clutch",
+     "title": "Clutch and gearbox bearing wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Whine, high bite"
+     ],
+     "what_to_check": [
+      "Listen in neutral"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "clutch"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "crdi"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "KMH",
+     "TMA",
+     "NLH",
+     "5NP",
+     "5NM",
+     "KM8",
+     "MAL"
+    ]
+   }
+  },
+  {
+   "id": "hyundai_tucson_lm",
+   "make": "Hyundai / Kia",
+   "model": "ix35/Tucson / Sportage",
+   "generation": "LM / SL",
+   "years": [
+    2009,
+    2015
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "theta",
+     "name": "2.0/2.4 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "gdi16",
+     "name": "1.6 GDI",
+     "fuel": "gas"
+    },
+    {
+     "id": "crdi",
+     "name": "1.7/2.0 CRDi",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Good value, practical"
+   ],
+   "problems": [
+    {
+     "id": "theta2_engine",
+     "title": "Engine bearing failure / seizure (2.0T/2.4 Theta II; recall and extended warranty in the US)",
+     "engines": [
+      "theta"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Knocking that gets louder",
+      "Engine stalls",
+      "Oil use"
+     ],
+     "what_to_check": [
+      "Ask if the recall / knock-sensor update was done and whether the engine was replaced",
+      "Listen for knocking when warm"
+     ],
+     "years": [
+      2010,
+      2015
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "engine_replacement"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "crdi"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "dual_mass_flywheel",
+     "title": "Dual-mass flywheel wear (manual)",
+     "engines": [
+      "crdi"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at idle that stops with the clutch pressed"
+     ],
+     "what_to_check": [
+      "Listen at idle, clutch released then pressed"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dual_mass_flywheel"
+    },
+    {
+     "id": "sportage_awd",
+     "title": "AWD coupling faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "AWD warning"
+     ],
+     "what_to_check": [
+      "Check warnings"
+     ],
+     "complaint_group": "transmission"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "KMH",
+     "TMA",
+     "NLH",
+     "5NP",
+     "5NM",
+     "KM8",
+     "MAL",
+     "KNA",
+     "KNE",
+     "U5Y",
+     "5XY",
+     "5XX",
+     "KND",
+     "3KP"
+    ]
+   }
+  },
+  {
+   "id": "hyundai_tucson_tl",
+   "make": "Hyundai / Kia",
+   "model": "Tucson / Sportage",
+   "generation": "TL / QL",
+   "years": [
+    2015,
+    2021
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "gdi16",
+     "name": "1.6 GDI / T-GDI",
+     "fuel": "gas"
+    },
+    {
+     "id": "theta",
+     "name": "2.0/2.4 GDI (US)",
+     "fuel": "gas"
+    },
+    {
+     "id": "crdi",
+     "name": "1.6/1.7/2.0 CRDi",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Comfortable, reliable diesels"
+   ],
+   "problems": [
+    {
+     "id": "theta2_engine",
+     "title": "Engine bearing failure / seizure (2.0T/2.4 Theta II; recall and extended warranty in the US)",
+     "engines": [
+      "theta"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Knocking that gets louder",
+      "Engine stalls",
+      "Oil use"
+     ],
+     "what_to_check": [
+      "Ask if the recall / knock-sensor update was done and whether the engine was replaced",
+      "Listen for knocking when warm"
+     ],
+     "years": [
+      2015,
+      2019
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "engine_replacement"
+    },
+    {
+     "id": "dct7",
+     "title": "7-speed dual-clutch (DCT) judder or jerky shifts",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Jerky low-speed shifts"
+     ],
+     "what_to_check": [
+      "Test drive in traffic"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dsg_mechatronic"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "crdi"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "gdi_carbon",
+     "title": "Carbon build-up and oil use (direct-injection petrol)",
+     "engines": [
+      "gdi16"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Rough idle",
+      "Misfires"
+     ],
+     "what_to_check": [
+      "Check idle smoothness"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "intake_carbon_cleaning"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "KMH",
+     "TMA",
+     "NLH",
+     "5NP",
+     "5NM",
+     "KM8",
+     "MAL",
+     "KNA",
+     "KNE",
+     "U5Y",
+     "5XY",
+     "5XX",
+     "KND",
+     "3KP"
+    ]
+   }
+  },
+  {
+   "id": "hyundai_elantra_md",
+   "make": "Hyundai",
+   "model": "Elantra",
+   "generation": "MD/UD",
+   "years": [
+    2010,
+    2016
+   ],
+   "markets": [
+    "us",
+    "eu"
+   ],
+   "body": [
+    "sedan",
+    "coupe"
+   ],
+   "engines": [
+    {
+     "id": "nu18",
+     "name": "1.6/1.8 petrol",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Cheap, efficient"
+   ],
+   "problems": [
+    {
+     "id": "nu18_piston",
+     "title": "Piston slap / knocking (1.8 Nu)",
+     "engines": [
+      "nu18"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Knocking when cold"
+     ],
+     "what_to_check": [
+      "Listen at a cold start"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "engine_replacement"
+    },
+    {
+     "id": "elantra_steering",
+     "title": "Steering column coupler clicking",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Click when turning"
+     ],
+     "what_to_check": [
+      "Turn the wheel at standstill"
+     ],
+     "complaint_group": "steering",
+     "repair_cost_id": "tie_rod_ends"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "KMH",
+     "TMA",
+     "NLH",
+     "5NP",
+     "5NM",
+     "KM8",
+     "MAL"
+    ]
+   }
+  },
+  {
+   "id": "hyundai_sonata_yf",
+   "make": "Hyundai / Kia",
+   "model": "Sonata / Optima",
+   "generation": "YF / TF",
+   "years": [
+    2010,
+    2015
+   ],
+   "markets": [
+    "us",
+    "eu"
+   ],
+   "body": [
+    "sedan"
+   ],
+   "engines": [
+    {
+     "id": "theta",
+     "name": "2.4 GDI / 2.0 turbo (Theta II)",
+     "fuel": "gas"
+    },
+    {
+     "id": "hybrid",
+     "name": "2.4 hybrid",
+     "fuel": "hybrid"
+    },
+    {
+     "id": "crdi",
+     "name": "1.7 CRDi (EU)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Roomy, well equipped"
+   ],
+   "problems": [
+    {
+     "id": "theta2_engine",
+     "title": "Engine bearing failure / seizure (2.0T/2.4 Theta II; recall and extended warranty in the US)",
+     "engines": [
+      "theta"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Knocking that gets louder",
+      "Engine stalls",
+      "Oil use"
+     ],
+     "what_to_check": [
+      "Ask if the recall / knock-sensor update was done and whether the engine was replaced",
+      "Listen for knocking when warm"
+     ],
+     "years": [
+      2011,
+      2014
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "engine_replacement"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "crdi"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "sonata_steering",
+     "title": "Electric steering clunk / column",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Clunk"
+     ],
+     "what_to_check": [
+      "Turn the wheel"
+     ],
+     "complaint_group": "steering",
+     "repair_cost_id": "power_steering"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "KMH",
+     "TMA",
+     "NLH",
+     "5NP",
+     "5NM",
+     "KM8",
+     "MAL",
+     "KNA",
+     "KNE",
+     "U5Y",
+     "5XY",
+     "5XX",
+     "KND",
+     "3KP"
+    ]
+   }
+  },
+  {
+   "id": "hyundai_santa_fe_dm",
+   "make": "Hyundai / Kia",
+   "model": "Santa Fe / Sorento",
+   "generation": "DM / XM-UM",
+   "years": [
+    2009,
+    2018
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "theta",
+     "name": "2.0T/2.4 petrol (Theta II)",
+     "fuel": "gas"
+    },
+    {
+     "id": "v6",
+     "name": "3.3 V6",
+     "fuel": "gas"
+    },
+    {
+     "id": "crdi22",
+     "name": "2.2 CRDi",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Roomy 7-seat option",
+    "Strong diesel"
+   ],
+   "problems": [
+    {
+     "id": "theta2_engine",
+     "title": "Engine bearing failure / seizure (2.0T/2.4 Theta II; recall and extended warranty in the US)",
+     "engines": [
+      "theta"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Knocking that gets louder",
+      "Engine stalls",
+      "Oil use"
+     ],
+     "what_to_check": [
+      "Ask if the recall / knock-sensor update was done and whether the engine was replaced",
+      "Listen for knocking when warm"
+     ],
+     "years": [
+      2011,
+      2018
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "engine_replacement"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "crdi22"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "dual_mass_flywheel",
+     "title": "Dual-mass flywheel wear (manual)",
+     "engines": [
+      "crdi22"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at idle that stops with the clutch pressed"
+     ],
+     "what_to_check": [
+      "Listen at idle, clutch released then pressed"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dual_mass_flywheel"
+    },
+    {
+     "id": "santafe_awd",
+     "title": "AWD coupling / transfer case faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "AWD warning"
+     ],
+     "what_to_check": [
+      "Check warnings"
+     ],
+     "complaint_group": "transmission"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "KMH",
+     "TMA",
+     "NLH",
+     "5NP",
+     "5NM",
+     "KM8",
+     "MAL",
+     "KNA",
+     "KNE",
+     "U5Y",
+     "5XY",
+     "5XX",
+     "KND",
+     "3KP"
+    ]
+   }
+  },
+  {
+   "id": "kia_rio_picanto",
+   "make": "Kia",
+   "model": "Rio / Picanto",
+   "generation": "Rio UB / Picanto TA",
+   "years": [
+    2011,
+    2017
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "hatchback",
+    "sedan"
+   ],
+   "engines": [
+    {
+     "id": "kappa",
+     "name": "1.0/1.25/1.4 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "crdi",
+     "name": "1.1/1.4 CRDi",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Cheap, reliable"
+   ],
+   "problems": [
+    {
+     "id": "rio_clutch",
+     "title": "Clutch and release bearing wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "High bite, noise"
+     ],
+     "what_to_check": [
+      "Check clutch"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "clutch"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "crdi"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "KNA",
+     "KNE",
+     "U5Y",
+     "5XY",
+     "5XX",
+     "KND",
+     "3KP"
+    ]
+   }
+  },
+  {
+   "id": "mitsubishi_outlander_3",
+   "make": "Mitsubishi",
+   "model": "Outlander",
+   "generation": "3rd gen (incl. PHEV)",
+   "years": [
+    2012,
+    2021
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "petrol",
+     "name": "2.0/2.4 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "did",
+     "name": "2.2/2.3 DI-D",
+     "fuel": "diesel"
+    },
+    {
+     "id": "phev",
+     "name": "PHEV plug-in hybrid",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Practical, PHEV cheap to run"
+   ],
+   "problems": [
+    {
+     "id": "phev_battery",
+     "title": "PHEV battery capacity loss and charging faults",
+     "engines": [
+      "phev"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Short electric range"
+     ],
+     "what_to_check": [
+      "Ask for a battery health check",
+      "Check electric range at full charge"
+     ],
+     "complaint_group": "hybrid_ev",
+     "repair_cost_id": "hybrid_battery"
+    },
+    {
+     "id": "cvt_judder",
+     "title": "CVT automatic: judder, whine or slipping",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Judder pulling away",
+      "Whining",
+      "Loss of power uphill"
+     ],
+     "what_to_check": [
+      "Test drive from a stop several times and on a hill",
+      "Ask for CVT fluid changes and any CVT replacement"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_replacement"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "did"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "outlander_rust",
+     "title": "Underbody corrosion",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Rust underneath"
+     ],
+     "what_to_check": [
+      "Inspect underneath"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JMB",
+     "JA4",
+     "JMY",
+     "JA3",
+     "MMB"
+    ]
+   }
+  },
+  {
+   "id": "mitsubishi_asx_lancer",
+   "make": "Mitsubishi",
+   "model": "ASX / Lancer",
+   "generation": "ASX 1st gen / Lancer X",
+   "years": [
+    2007,
+    2023
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv",
+    "sedan",
+    "hatchback"
+   ],
+   "engines": [
+    {
+     "id": "petrol",
+     "name": "1.6/1.8/2.0 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "did",
+     "name": "1.6/1.8/2.2 DI-D",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Simple, durable"
+   ],
+   "problems": [
+    {
+     "id": "cvt_judder",
+     "title": "CVT automatic: judder, whine or slipping",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Judder pulling away",
+      "Whining",
+      "Loss of power uphill"
+     ],
+     "what_to_check": [
+      "Test drive from a stop several times and on a hill",
+      "Ask for CVT fluid changes and any CVT replacement"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_replacement"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "did"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "asx_clutch",
+     "title": "Clutch and DMF wear (DI-D)",
+     "engines": [
+      "did"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Rattle, judder"
+     ],
+     "what_to_check": [
+      "Listen at idle"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dual_mass_flywheel"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JMB",
+     "JA4",
+     "JMY",
+     "JA3",
+     "MMB"
+    ]
+   }
+  },
+  {
+   "id": "suzuki_swift",
+   "make": "Suzuki",
+   "model": "Swift",
+   "generation": "3rd/4th gen",
+   "years": [
+    2010,
+    2024
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback"
+   ],
+   "engines": [
+    {
+     "id": "petrol",
+     "name": "1.2/1.0 Boosterjet",
+     "fuel": "gas"
+    },
+    {
+     "id": "hybrid",
+     "name": "1.2 mild hybrid",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Very reliable, light and cheap"
+   ],
+   "problems": [
+    {
+     "id": "swift_rust",
+     "title": "Rust on older cars (sills, arches)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Bubbling paint"
+     ],
+     "what_to_check": [
+      "Check sills"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    },
+    {
+     "id": "swift_clutch",
+     "title": "Clutch wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "High bite"
+     ],
+     "what_to_check": [
+      "Check clutch"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "clutch"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JSA",
+     "TSM",
+     "JS2",
+     "MA3"
+    ]
+   }
+  },
+  {
+   "id": "suzuki_vitara_ly",
+   "make": "Suzuki",
+   "model": "Vitara / S-Cross",
+   "generation": "LY / JY",
+   "years": [
+    2013,
+    2024
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "petrol",
+     "name": "1.6 / 1.4 Boosterjet / 1.0",
+     "fuel": "gas"
+    },
+    {
+     "id": "ddis",
+     "name": "1.6 DDiS (Fiat)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "hybrid",
+     "name": "1.4/1.5 hybrid",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Light, reliable, capable 4x4"
+   ],
+   "problems": [
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "ddis"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "vitara_allgrip",
+     "title": "AllGrip 4x4 coupling not serviced",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "4x4 warning"
+     ],
+     "what_to_check": [
+      "Check warnings"
+     ],
+     "complaint_group": "transmission"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JSA",
+     "TSM",
+     "JS2",
+     "MA3"
+    ]
+   }
+  },
+  {
+   "id": "subaru_outback_forester",
+   "make": "Subaru",
+   "model": "Outback / Forester / Legacy",
+   "generation": "2009-2019 (BR/BS, SH/SJ)",
+   "years": [
+    2008,
+    2019
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "estate",
+    "suv",
+    "sedan"
+   ],
+   "engines": [
+    {
+     "id": "ej25",
+     "name": "2.5 boxer (EJ25, to ~2011)",
+     "fuel": "gas"
+    },
+    {
+     "id": "fb25",
+     "name": "2.0/2.5 boxer (FB, 2011+)",
+     "fuel": "gas"
+    },
+    {
+     "id": "boxerd",
+     "name": "2.0 boxer diesel",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Excellent AWD, safe"
+   ],
+   "problems": [
+    {
+     "id": "ej25_head_gasket",
+     "title": "Head gasket leaks (2.5 EJ25)",
+     "engines": [
+      "ej25"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Oil or coolant seep, overheating"
+     ],
+     "what_to_check": [
+      "Look for oil/coolant at the cylinder heads"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "head_gasket"
+    },
+    {
+     "id": "fb25_oil",
+     "title": "Oil consumption (early FB engines)",
+     "engines": [
+      "fb25"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Oil drops"
+     ],
+     "what_to_check": [
+      "Check oil use"
+     ],
+     "years": [
+      2011,
+      2015
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "cvt_judder",
+     "title": "CVT automatic: judder, whine or slipping",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Judder pulling away",
+      "Whining",
+      "Loss of power uphill"
+     ],
+     "what_to_check": [
+      "Test drive from a stop several times and on a hill",
+      "Ask for CVT fluid changes and any CVT replacement"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_replacement"
+    },
+    {
+     "id": "boxer_diesel",
+     "title": "DPF, crankshaft and DMF issues (boxer diesel)",
+     "engines": [
+      "boxerd"
+     ],
+     "frequency": "occasional",
+     "severity": "critical",
+     "symptoms": [
+      "DPF light, knocking"
+     ],
+     "what_to_check": [
+      "Avoid if used for short trips"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "subaru_wheel_bearings",
+     "title": "Wheel bearing wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Humming"
+     ],
+     "what_to_check": [
+      "Listen at speed"
+     ],
+     "complaint_group": "suspension",
+     "repair_cost_id": "wheel_bearing"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JF1",
+     "JF2",
+     "4S3",
+     "4S4"
+    ]
+   }
+  },
+  {
+   "id": "subaru_impreza_gp",
+   "make": "Subaru",
+   "model": "Impreza / XV (Crosstrek)",
+   "generation": "GP/GJ",
+   "years": [
+    2011,
+    2017
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "hatchback",
+    "sedan",
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "fb20",
+     "name": "1.6/2.0 boxer",
+     "fuel": "gas"
+    },
+    {
+     "id": "boxerd",
+     "name": "2.0 boxer diesel",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "AWD, safe"
+   ],
+   "problems": [
+    {
+     "id": "fb20_oil",
+     "title": "Oil consumption (early FB engines)",
+     "engines": [
+      "fb20"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Oil drops"
+     ],
+     "what_to_check": [
+      "Check oil use"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "cvt_judder",
+     "title": "CVT automatic: judder, whine or slipping",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Judder pulling away",
+      "Whining",
+      "Loss of power uphill"
+     ],
+     "what_to_check": [
+      "Test drive from a stop several times and on a hill",
+      "Ask for CVT fluid changes and any CVT replacement"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_replacement"
+    },
+    {
+     "id": "impreza_ac",
+     "title": "A/C condenser / compressor",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "A/C not cold"
+     ],
+     "what_to_check": [
+      "Test A/C"
+     ],
+     "complaint_group": "climate",
+     "repair_cost_id": "ac_compressor"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "JF1",
+     "JF2",
+     "4S3",
+     "4S4"
+    ]
+   }
+  },
+  {
+   "id": "chevrolet_cruze_1",
+   "make": "Chevrolet",
+   "model": "Cruze",
+   "generation": "J300",
+   "years": [
+    2008,
+    2016
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "sedan",
+    "hatchback",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "turbo14",
+     "name": "1.4 Turbo",
+     "fuel": "gas"
+    },
+    {
+     "id": "ecotec",
+     "name": "1.6/1.8 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "vcdi",
+     "name": "2.0 VCDi / 1.7 diesel",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Cheap, comfortable"
+   ],
+   "problems": [
+    {
+     "id": "cruze_coolant",
+     "title": "Coolant leaks (water pump, thermostat housing, pipes)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Coolant smell, low coolant"
+     ],
+     "what_to_check": [
+      "Check coolant level and for crusty leaks"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "coolant_leak_minor"
+    },
+    {
+     "id": "cruze_pcv",
+     "title": "PCV / valve cover failure (1.4 Turbo)",
+     "engines": [
+      "turbo14"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Whistle, oil leak"
+     ],
+     "what_to_check": [
+      "Listen for whistling at idle"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "pcv_valve"
+    },
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "ecotec",
+      "vcdi"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "vcdi"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "1G1",
+     "1GN",
+     "1GC",
+     "2GN",
+     "3GN",
+     "KL1",
+     "3G1",
+     "2G1",
+     "KL7",
+     "KL8"
+    ]
+   }
+  },
+  {
+   "id": "chevrolet_aveo",
+   "make": "Chevrolet",
+   "model": "Aveo / Kalos",
+   "generation": "T250/T300",
+   "years": [
+    2006,
+    2015
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "hatchback",
+    "sedan"
+   ],
+   "engines": [
+    {
+     "id": "petrol",
+     "name": "1.2/1.4/1.6 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "diesel",
+     "name": "1.3 diesel",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Very cheap"
+   ],
+   "problems": [
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "petrol"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "aveo_rust",
+     "title": "Rust and cheap-trim wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Bubbling paint"
+     ],
+     "what_to_check": [
+      "Check sills"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    },
+    {
+     "id": "aveo_head_gasket",
+     "title": "Head gasket / valve issues on high mileage",
+     "engines": [
+      "petrol"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Coolant loss, rough running"
+     ],
+     "what_to_check": [
+      "Check coolant"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "head_gasket"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "1G1",
+     "1GN",
+     "1GC",
+     "2GN",
+     "3GN",
+     "KL1",
+     "3G1",
+     "2G1",
+     "KL7",
+     "KL8"
+    ]
+   }
+  },
+  {
+   "id": "chevrolet_equinox_2",
+   "make": "Chevrolet",
+   "model": "Equinox / GMC Terrain",
+   "generation": "2nd gen",
+   "years": [
+    2010,
+    2017
+   ],
+   "markets": [
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "ecotec24",
+     "name": "2.4 Ecotec",
+     "fuel": "gas"
+    },
+    {
+     "id": "v6",
+     "name": "3.0/3.6 V6",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Roomy, comfortable"
+   ],
+   "problems": [
+    {
+     "id": "ecotec24_oil_chain",
+     "title": "Oil consumption and timing chain stretch (2.4)",
+     "engines": [
+      "ecotec24"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Oil drops, chain rattle, engine light"
+     ],
+     "what_to_check": [
+      "Check oil use; ask about piston/chain repairs"
+     ],
+     "years": [
+      2010,
+      2013
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "equinox_v6_chain",
+     "title": "Timing chain stretch (3.6 V6, P0008 code)",
+     "engines": [
+      "v6"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Engine light, rattle"
+     ],
+     "what_to_check": [
+      "Listen at start"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "1G1",
+     "1GN",
+     "1GC",
+     "2GN",
+     "3GN",
+     "KL1",
+     "3G1",
+     "2G1",
+     "KL7",
+     "KL8"
+    ]
+   }
+  },
+  {
+   "id": "chevrolet_silverado_3",
+   "make": "Chevrolet",
+   "model": "Silverado / GMC Sierra",
+   "generation": "K2XX",
+   "years": [
+    2014,
+    2018
+   ],
+   "markets": [
+    "us"
+   ],
+   "body": [
+    "pickup"
+   ],
+   "engines": [
+    {
+     "id": "v8_53",
+     "name": "5.3 V8",
+     "fuel": "gas"
+    },
+    {
+     "id": "v8_62",
+     "name": "6.2 V8",
+     "fuel": "gas"
+    },
+    {
+     "id": "v6_43",
+     "name": "4.3 V6",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Strong, comfortable"
+   ],
+   "problems": [
+    {
+     "id": "afm_lifters",
+     "title": "Lifter failure / oil consumption (cylinder deactivation, AFM)",
+     "engines": [
+      "v8_53",
+      "v8_62",
+      "v6_43"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Ticking, misfire, oil use"
+     ],
+     "what_to_check": [
+      "Listen for ticking; check oil use"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "cam_phasers"
+    },
+    {
+     "id": "8l90_shudder",
+     "title": "8-speed torque converter shudder",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Shudder at 40-80 km/h"
+     ],
+     "what_to_check": [
+      "Feel for shudder on light throttle"
+     ],
+     "years": [
+      2015,
+      2018
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_service"
+    },
+    {
+     "id": "silverado_ac",
+     "title": "A/C condenser leaks",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "A/C not cold"
+     ],
+     "what_to_check": [
+      "Test A/C"
+     ],
+     "complaint_group": "climate",
+     "repair_cost_id": "ac_condenser"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "1G1",
+     "1GN",
+     "1GC",
+     "2GN",
+     "3GN",
+     "KL1",
+     "3G1",
+     "2G1",
+     "KL7",
+     "KL8"
+    ]
+   }
+  },
+  {
+   "id": "chevrolet_malibu_8",
+   "make": "Chevrolet",
+   "model": "Malibu",
+   "generation": "8th/9th gen",
+   "years": [
+    2013,
+    2024
+   ],
+   "markets": [
+    "us"
+   ],
+   "body": [
+    "sedan"
+   ],
+   "engines": [
+    {
+     "id": "t15",
+     "name": "1.5/2.0 turbo / 2.5",
+     "fuel": "gas"
+    },
+    {
+     "id": "hybrid",
+     "name": "Hybrid",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Comfortable, cheap"
+   ],
+   "problems": [
+    {
+     "id": "malibu_start_stop",
+     "title": "Start-stop battery / starter wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Slow start"
+     ],
+     "what_to_check": [
+      "Check starting"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "battery_12v"
+    },
+    {
+     "id": "malibu_shift",
+     "title": "Harsh shifts (software)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Harsh shifts"
+     ],
+     "what_to_check": [
+      "Test drive"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_service"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "1G1",
+     "1GN",
+     "1GC",
+     "2GN",
+     "3GN",
+     "KL1",
+     "3G1",
+     "2G1",
+     "KL7",
+     "KL8"
+    ]
+   }
+  },
+  {
+   "id": "jeep_grand_cherokee_wk2",
+   "make": "Jeep",
+   "model": "Grand Cherokee",
+   "generation": "WK2",
+   "years": [
+    2011,
+    2021
+   ],
+   "markets": [
+    "us",
+    "eu"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "v6",
+     "name": "3.6 Pentastar V6",
+     "fuel": "gas"
+    },
+    {
+     "id": "v8",
+     "name": "5.7 HEMI V8",
+     "fuel": "gas"
+    },
+    {
+     "id": "crd",
+     "name": "3.0 CRD / EcoDiesel",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Capable, comfortable"
+   ],
+   "problems": [
+    {
+     "id": "wk2_tipm",
+     "title": "TIPM power module faults (fuel pump relay, random electrics)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "No start, random electrical faults"
+     ],
+     "what_to_check": [
+      "Start it several times; test electrics"
+     ],
+     "years": [
+      2011,
+      2013
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "electrical_diagnosis"
+    },
+    {
+     "id": "pentastar_tick",
+     "title": "Rocker arm tick / oil cooler leaks (3.6 Pentastar)",
+     "engines": [
+      "v6"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Ticking, oil leak at the top-rear of engine"
+     ],
+     "what_to_check": [
+      "Listen for ticking"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_leak_minor"
+    },
+    {
+     "id": "wk2_air_susp",
+     "title": "Quadra-Lift air suspension faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Suspension warning, sitting low"
+     ],
+     "what_to_check": [
+      "Check ride height"
+     ],
+     "complaint_group": "suspension",
+     "repair_cost_id": "shocks_struts_pair"
+    },
+    {
+     "id": "ecodiesel_egr",
+     "title": "EGR cooler and camshaft wear (3.0 diesel)",
+     "engines": [
+      "crd"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Coolant loss, engine light"
+     ],
+     "what_to_check": [
+      "Check coolant"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "egr_valve"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "1C4",
+     "1J4",
+     "1J8",
+     "ZAC",
+     "3C4"
+    ]
+   }
+  },
+  {
+   "id": "jeep_cherokee_kl",
+   "make": "Jeep",
+   "model": "Cherokee",
+   "generation": "KL",
+   "years": [
+    2014,
+    2023
+   ],
+   "markets": [
+    "us",
+    "eu"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "tigershark",
+     "name": "2.4 Tigershark",
+     "fuel": "gas"
+    },
+    {
+     "id": "v6",
+     "name": "3.2 V6",
+     "fuel": "gas"
+    },
+    {
+     "id": "mj",
+     "name": "2.0/2.2 MultiJet (EU)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Capable 4x4"
+   ],
+   "problems": [
+    {
+     "id": "kl_9speed",
+     "title": "9-speed automatic rough or delayed shifts",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Rough shifts, hesitation"
+     ],
+     "what_to_check": [
+      "Test drive; ask about software updates"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_service"
+    },
+    {
+     "id": "tigershark_oil",
+     "title": "Oil consumption (2.4 Tigershark)",
+     "engines": [
+      "tigershark"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Oil drops"
+     ],
+     "what_to_check": [
+      "Check oil use"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "mj"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "1C4",
+     "1J4",
+     "1J8",
+     "ZAC",
+     "3C4"
+    ]
+   }
+  },
+  {
+   "id": "jeep_wrangler_jk",
+   "make": "Jeep",
+   "model": "Wrangler",
+   "generation": "JK",
+   "years": [
+    2007,
+    2018
+   ],
+   "markets": [
+    "us",
+    "eu"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "v6_38",
+     "name": "3.8 V6",
+     "fuel": "gas"
+    },
+    {
+     "id": "v6",
+     "name": "3.6 Pentastar",
+     "fuel": "gas"
+    },
+    {
+     "id": "crd",
+     "name": "2.8 CRD",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Unbeatable off-road"
+   ],
+   "problems": [
+    {
+     "id": "death_wobble",
+     "title": "\"Death wobble\": violent steering shake after bumps (worn steering/suspension)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Violent shaking at speed after a bump"
+     ],
+     "what_to_check": [
+      "Check steering parts for play; test drive at 70-100 km/h"
+     ],
+     "complaint_group": "steering",
+     "repair_cost_id": "tie_rod_ends"
+    },
+    {
+     "id": "jk_leaks",
+     "title": "Water leaks (roof panels, doors)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Wet carpets"
+     ],
+     "what_to_check": [
+      "Check carpets"
+     ],
+     "complaint_group": "structure"
+    },
+    {
+     "id": "jk_rust",
+     "title": "Frame and body rust",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Flaking frame"
+     ],
+     "what_to_check": [
+      "Inspect the frame"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    }
+   ],
+   "buying_tips": [
+    "Lifted or modified Jeeps need extra checks of steering and suspension"
+   ],
+   "vin": {
+    "wmi": [
+     "1C4",
+     "1J4",
+     "1J8",
+     "ZAC",
+     "3C4"
+    ]
+   }
+  },
+  {
+   "id": "jeep_renegade_compass",
+   "make": "Jeep",
+   "model": "Renegade / Compass",
+   "generation": "BU / MP (incl. Fiat 500X)",
+   "years": [
+    2014,
+    2026
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "multiair",
+     "name": "1.4 MultiAir / 1.3 turbo",
+     "fuel": "gas"
+    },
+    {
+     "id": "tigershark",
+     "name": "2.4 Tigershark (US)",
+     "fuel": "gas"
+    },
+    {
+     "id": "mj",
+     "name": "1.6/2.0 MultiJet",
+     "fuel": "diesel"
+    },
+    {
+     "id": "phev",
+     "name": "4xe plug-in",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Compact, capable"
+   ],
+   "problems": [
+    {
+     "id": "multiair_actuator",
+     "title": "MultiAir valve actuator faults (1.4)",
+     "engines": [
+      "multiair"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Rough running, engine light"
+     ],
+     "what_to_check": [
+      "Check smooth idle"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "cam_phasers"
+    },
+    {
+     "id": "renegade_9speed",
+     "title": "9-speed automatic rough shifts",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Rough shifts"
+     ],
+     "what_to_check": [
+      "Test drive"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_service"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "mj"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "tigershark_oil_rc",
+     "title": "Oil consumption (2.4)",
+     "engines": [
+      "tigershark"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Oil drops"
+     ],
+     "what_to_check": [
+      "Check oil"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "1C4",
+     "1J4",
+     "1J8",
+     "ZAC",
+     "3C4"
+    ]
+   }
+  },
+  {
+   "id": "tesla_model_3",
+   "make": "Tesla",
+   "model": "Model 3",
+   "generation": "1st gen",
+   "years": [
+    2017,
+    2023
+   ],
+   "markets": [
+    "us",
+    "eu"
+   ],
+   "body": [
+    "sedan"
+   ],
+   "engines": [
+    {
+     "id": "ev",
+     "name": "Electric (RWD / Long Range / Performance)",
+     "fuel": "ev"
+    }
+   ],
+   "strengths": [
+    "Long range, fast charging network",
+    "Low running costs"
+   ],
+   "problems": [
+    {
+     "id": "m3_build_quality",
+     "title": "Panel gaps, paint flaws and trim rattles",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Uneven gaps, rattles"
+     ],
+     "what_to_check": [
+      "Walk around and check panel gaps"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "paint_panel"
+    },
+    {
+     "id": "m3_control_arms",
+     "title": "Front upper control arm creak/clunk",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Creak over bumps"
+     ],
+     "what_to_check": [
+      "Drive over bumps slowly"
+     ],
+     "complaint_group": "suspension",
+     "repair_cost_id": "control_arm_bushings"
+    },
+    {
+     "id": "m3_12v",
+     "title": "12V battery failure",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Warning to replace 12V battery"
+     ],
+     "what_to_check": [
+      "Check for warnings"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "battery_12v"
+    },
+    {
+     "id": "m3_battery_health",
+     "title": "Battery degradation",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Range at 100% well below new"
+     ],
+     "what_to_check": [
+      "Check the range shown at 100% charge; ask for a battery health report"
+     ],
+     "complaint_group": "hybrid_ev",
+     "repair_cost_id": "ev_battery"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "5YJ",
+     "7SA",
+     "LRW",
+     "XP7"
+    ]
+   }
+  },
+  {
+   "id": "tesla_model_s",
+   "make": "Tesla",
+   "model": "Model S",
+   "generation": "1st gen",
+   "years": [
+    2012,
+    2021
+   ],
+   "markets": [
+    "us",
+    "eu"
+   ],
+   "body": [
+    "hatchback"
+   ],
+   "engines": [
+    {
+     "id": "ev",
+     "name": "Electric",
+     "fuel": "ev"
+    }
+   ],
+   "strengths": [
+    "Fast, long range"
+   ],
+   "problems": [
+    {
+     "id": "ms_mcu",
+     "title": "Touchscreen (MCU) memory failure: screen goes dead (recall)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Black screen, no rear camera"
+     ],
+     "what_to_check": [
+      "Ask if the MCU was replaced/upgraded"
+     ],
+     "years": [
+      2012,
+      2018
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "infotainment"
+    },
+    {
+     "id": "ms_drive_unit",
+     "title": "Drive unit whine / failure (early cars)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "critical",
+     "symptoms": [
+      "Whine or clunk"
+     ],
+     "what_to_check": [
+      "Listen at speed"
+     ],
+     "years": [
+      2012,
+      2016
+     ],
+     "complaint_group": "hybrid_ev",
+     "repair_cost_id": "ev_battery"
+    },
+    {
+     "id": "ms_door_handles",
+     "title": "Retracting door handle failures",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Handle does not present"
+     ],
+     "what_to_check": [
+      "Test all door handles"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "door_lock_actuator"
+    },
+    {
+     "id": "ms_air_susp",
+     "title": "Air suspension faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Sitting low"
+     ],
+     "what_to_check": [
+      "Check ride height"
+     ],
+     "complaint_group": "suspension",
+     "repair_cost_id": "shocks_struts_pair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "5YJ",
+     "7SA",
+     "LRW",
+     "XP7"
+    ]
+   }
+  },
+  {
+   "id": "tesla_model_y",
+   "make": "Tesla",
+   "model": "Model Y",
+   "generation": "1st gen",
+   "years": [
+    2020,
+    2025
+   ],
+   "markets": [
+    "us",
+    "eu"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "ev",
+     "name": "Electric",
+     "fuel": "ev"
+    }
+   ],
+   "strengths": [
+    "Practical, efficient EV"
+   ],
+   "problems": [
+    {
+     "id": "my_build_quality",
+     "title": "Panel gaps, paint flaws, water leaks",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Uneven gaps, damp carpet"
+     ],
+     "what_to_check": [
+      "Check gaps and the boot floor for water"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "paint_panel"
+    },
+    {
+     "id": "my_heat_pump",
+     "title": "Heat pump / cabin heating faults in cold weather (early cars)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "No heat in cold weather"
+     ],
+     "what_to_check": [
+      "Ask about heat pump updates"
+     ],
+     "years": [
+      2020,
+      2022
+     ],
+     "complaint_group": "climate",
+     "repair_cost_id": "heater_core"
+    },
+    {
+     "id": "my_suspension",
+     "title": "Suspension clunks",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Clunk over bumps"
+     ],
+     "what_to_check": [
+      "Drive over bumps"
+     ],
+     "complaint_group": "suspension",
+     "repair_cost_id": "control_arm_bushings"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "5YJ",
+     "7SA",
+     "LRW",
+     "XP7"
+    ]
+   }
+  }
+ ]
+}
