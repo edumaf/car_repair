@@ -10,7 +10,9 @@
 >
 > 1. Summarize in 5–8 short lines: what's done, what's in progress, and what I (the owner) still need to do.
 > 2. Check GitHub: are there open PRs or unmerged branches? Is PROGRESS.md up to date with main?
-> 3. Tell me the next step, then wait for my OK before you start building.
+> 3. If "NEXT CHAT: START HERE" below says a phone test is pending, walk me through it first,
+>    one step at a time, and note what fails.
+> 4. Tell me the next step, then wait for my OK before you start building.
 >
 > Rules for this chat:
 > - I write in Romanian or English; you always reply in English, short and simple.
@@ -21,7 +23,24 @@
 > - Crystal Check (edumaf/crystal_app) has priority if Apple asks for fixes.
 > ```
 
-Last updated: **2026-11-17, later** (price check, compare, onboarding, paywall + free limits, share card, Learn; owner to test).
+Last updated: **2026-11-16, end of session** (backend code ready to deploy, English + Romanian, app icon; **owner to test**).
+
+## ▶ NEXT CHAT: START HERE
+
+**State:** everything is on branch `claude/fervent-bohr-s8o6sg`, open as PR edumaf/car_repair#2 (not merged).
+Nothing has been tested on the iPhone since the M0 test. **The owner must test it now** using the step-by-step list in
+"How to test on the phone" below (tests A–L). Walk the owner through it **one step at a time**, wait for "done" or a
+description/screenshot of the problem, write down every failure, then fix them in the same PR before merging.
+
+What's new since the last phone test (all needs testing):
+1. Price check, compare cars, onboarding, paywall (simulated) + free limits, share card, Learn guides.
+2. Worldwide add-car (European VINs → pick model/engine), model pages, Diagnose tab (error codes + symptom flows).
+3. **English + Romanian**: phone language picks it; Settings → Language switches.
+4. App icon + splash.
+5. Backend code (`supabase/`) is written and unit-tested but **not deployed**: it can't be tested on the phone until the
+   owner creates the Supabase project (owner action 2). Until then the app uses "Real NHTSA (dev)" or "Sample cars".
+
+After the test passes: owner merges PR #2 → next work is in "Next steps" below.
 
 ## ⚠️ Scope change (owner decision, 2026-11-16) — read CLAUDE.md "Scope change" first
 
@@ -143,26 +162,63 @@ with "Known for this model" → Diagnose: P0301, "shakes at idle" flow, manufact
 
 ## How to test on the phone
 
+Setup (once, on the Windows PC):
 ```
 cd F:\projects\car_repair
+git fetch
+git checkout claude/fervent-bohr-s8o6sg
 git pull
 npm install
 npx expo start --clear
 ```
-Then:
-1. **Settings → Your region:** should show **Romania**. Data source: **Real NHTSA (dev)** is fine.
-2. **Check → Type the VIN** of a European car (e.g. a VW, Skoda, Dacia from the street; or `WVWZZZ1KZBW123456`).
-   You'll see the check-digit warning (normal for EU cars) → **Look it up** → the app asks for the engine/model
-   (pre-filled from the VIN) → save.
-3. Report: **About this model** (tap a problem to see signs and what to check) and the **RAR** button.
-4. **Start the inspection** → "Under the hood": a blue **Known for this model** box.
-5. **Diagnose tab:** search `P0420` and `P1234`; try **Engine shakes or runs rough at idle** and **Fluid under the car**.
-6. Check → **Pick make and model** → e.g. Dacia → Duster → engine → year.
-7. A US car still works as before (sample VIN `1N4AL3AP4DC900001`).
-8. **New this round:** first launch shows the **onboarding** (if it doesn't, Settings → Developer → Show onboarding
-   again). After the first report the **paywall** appears once: close it. Settings → Developer → **Simulate Premium**
-   on, then try **Price check** (add 3 listings), **Compare cars** in the Garage, and **Share card** on a verdict.
-   **Learn** tab: open a guide. Settings → **Delete all my data** resets everything.
+Scan the QR code with the iPhone camera → opens in **Expo Go**. If the app was open before, shake the phone → Reload.
+
+Each test: what to do → what you should see. Report anything different (a screenshot helps).
+
+**A. First launch (onboarding)** — if the app opens straight to the Garage: Settings → Developer → Show onboarding
+again.
+1. Welcome screen: "Don't buy a lemon." (or Romanian "Nu cumpăra o rablă." if the phone is in Romanian) → Get started.
+2. Answer the 4 questions → camera screen → "Not now" → you land in the Garage.
+
+**B. Language**
+1. Settings → **Language → Română**: the whole app redraws in Romanian and you stay in Settings.
+2. Tabs read Garaj · Diagnoză · Verifică · Învață · Setări. Switch back to English: everything is English again.
+3. Close and reopen the app: the language you chose is kept.
+
+**C. Region** — Settings → Your region: Romania (or the phone's country). Data source: **Real NHTSA (dev)**.
+
+**D. US car by VIN** — Check → Type the VIN → `1N4AL3AP4DC900001` (sample Nissan Altima; with "Sample cars"
+data source) or any real US VIN → Look it up → add a price and mileage → Save. You should see recalls, owner-complaint
+bars, crash rating. The **paywall** appears once after the first report: close it with ✕.
+
+**E. European car by VIN** — Check → Type the VIN of a car on the street (VW/Skoda/Dacia) or `WVWZZZ1KZBW123456`.
+A check-digit warning is normal for EU cars → Look it up → the app asks to confirm make/model (pre-filled) and the
+engine → Save. Report shows **About this model** (tap a problem: signs + what to check) and a **RAR** history button.
+
+**F. Pick make and model** — Check → Pick make and model → Dacia → Duster → engine → year → Save.
+
+**G. Inspection** — on a car: Start the inspection → answer a few items (Looks OK / Problem / Not sure / Skip), add a
+note, take a photo of a tire (AI result is a **sample** until the backend is live) → Confirm or Dismiss the AI chip.
+"Under the hood" shows a blue **Known for this model** box for model-database cars. Then **See the verdict**: headline,
+"Why", questions for the seller, negotiation script (Friendly / Firm, Copy).
+
+**H. Listing check** — on a car report, paste:
+`Vând urgent, plată în avans, livrare prin curier. Fără acte, km necunoscuți.` → Check the listing →
+**Possible scam** with several warnings, in Romanian if the app is in Romanian. Also try English:
+`wire transfer only, car is in storage` → Possible scam.
+
+**I. Diagnose tab** — search `P0301` → causes, "Try yourself", urgency banner. Search `P1234` → "manufacturer-specific".
+Pick **Engine shakes or runs rough at idle** → answer the questions → an outcome with likely causes.
+(Code/symptom texts are still English: Romanian data translation is next.)
+
+**J. Premium features** — Settings → Developer → **Simulate Premium** on. Then: car → **Price check** (add 3 similar
+listings with price + mileage → fair range), Garage → **Compare cars** (pick 2), verdict → **Share card**
+(Story / Post → share sheet opens).
+
+**K. Learn** — open 2 guides; in Romanian they should be fully Romanian.
+
+**L. App icon + delete data** — home screen icon is Expo Go's (the real icon shows only in a dev/store build: OK).
+Settings → **Delete all my data** → confirm → back to onboarding, garage empty.
 
 ## Next steps
 
