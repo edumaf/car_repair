@@ -13,6 +13,8 @@ import { initDatabase, restoreSettings } from '@/db/db';
 import { AppText } from '@/design/components/AppText';
 import { space, useTheme } from '@/design/tokens';
 import { fontAssets, fonts } from '@/design/typography';
+import { tr } from '@/core/i18n/i18n';
+import { useLang } from '@/hooks/useLang';
 
 SplashScreen.preventAutoHideAsync();
 SplashScreen.setOptions({ fade: true, duration: 300 });
@@ -24,6 +26,8 @@ const seedProblems = __DEV__ ? validateSeed(rawSeed) : [];
 
 export default function RootLayout() {
   const t = useTheme();
+  // Changing the language remounts the screens so every string is drawn again in the new language.
+  const lang = useLang();
   const [fontsLoaded, fontError] = useFonts(fontAssets);
   const [dbReady, setDbReady] = useState(false);
   const [dbError, setDbError] = useState<string | null>(null);
@@ -68,7 +72,7 @@ export default function RootLayout() {
   const navTheme = t.scheme === 'dark' ? DarkTheme : DefaultTheme;
   const pushedHeader = {
     headerShown: true,
-    headerBackTitle: 'Back',
+    headerBackTitle: tr('Back'),
     headerTintColor: t.brand,
     headerShadowVisible: false,
     headerStyle: { backgroundColor: t.bg },
@@ -83,25 +87,25 @@ export default function RootLayout() {
           colors: { ...navTheme.colors, background: t.bg, card: t.surface, primary: t.brand, text: t.ink, border: t.border },
         }}>
         <StatusBar style={t.scheme === 'dark' ? 'light' : 'dark'} />
-        <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: t.bg } }}>
+        <Stack key={lang} screenOptions={{ headerShown: false, contentStyle: { backgroundColor: t.bg } }}>
           <Stack.Screen name="(tabs)" />
           <Stack.Screen name="onboarding" options={{ gestureEnabled: false, animation: 'fade' }} />
           <Stack.Screen name="paywall" options={{ presentation: 'modal' }} />
-          <Stack.Screen name="dev/design" options={{ ...pushedHeader, title: 'Design preview' }} />
+          <Stack.Screen name="dev/design" options={{ ...pushedHeader, title: tr('Design preview') }} />
           <Stack.Screen name="add/scan" options={{ animation: 'slide_from_bottom', gestureEnabled: false }} />
-          <Stack.Screen name="add/vin" options={{ ...pushedHeader, title: 'Add a car' }} />
-          <Stack.Screen name="add/ymm" options={{ ...pushedHeader, title: 'Add a car' }} />
-          <Stack.Screen name="add/confirm" options={{ ...pushedHeader, title: 'Add a car' }} />
-          <Stack.Screen name="add/model" options={{ ...pushedHeader, title: 'Add a car' }} />
-          <Stack.Screen name="diagnose/code/[code]" options={{ ...pushedHeader, title: 'Error code' }} />
-          <Stack.Screen name="diagnose/symptom/[id]" options={{ ...pushedHeader, title: 'Diagnose' }} />
+          <Stack.Screen name="add/vin" options={{ ...pushedHeader, title: tr('Add a car') }} />
+          <Stack.Screen name="add/ymm" options={{ ...pushedHeader, title: tr('Add a car') }} />
+          <Stack.Screen name="add/confirm" options={{ ...pushedHeader, title: tr('Add a car') }} />
+          <Stack.Screen name="add/model" options={{ ...pushedHeader, title: tr('Add a car') }} />
+          <Stack.Screen name="diagnose/code/[code]" options={{ ...pushedHeader, title: tr('Error code') }} />
+          <Stack.Screen name="diagnose/symptom/[id]" options={{ ...pushedHeader, title: tr('Diagnose') }} />
           <Stack.Screen name="car/[id]/index" options={{ ...pushedHeader, title: '' }} />
-          <Stack.Screen name="car/[id]/inspect" options={{ ...pushedHeader, title: 'Inspection' }} />
-          <Stack.Screen name="car/[id]/verdict" options={{ ...pushedHeader, title: 'Verdict' }} />
-          <Stack.Screen name="car/[id]/price" options={{ ...pushedHeader, title: 'Price check' }} />
-          <Stack.Screen name="compare" options={{ ...pushedHeader, title: 'Compare' }} />
-          <Stack.Screen name="car/[id]/share" options={{ ...pushedHeader, title: 'Share' }} />
-          <Stack.Screen name="learn/[id]" options={{ ...pushedHeader, title: 'Learn' }} />
+          <Stack.Screen name="car/[id]/inspect" options={{ ...pushedHeader, title: tr('Inspection') }} />
+          <Stack.Screen name="car/[id]/verdict" options={{ ...pushedHeader, title: tr('Verdict') }} />
+          <Stack.Screen name="car/[id]/price" options={{ ...pushedHeader, title: tr('Price check') }} />
+          <Stack.Screen name="compare" options={{ ...pushedHeader, title: tr('Compare') }} />
+          <Stack.Screen name="car/[id]/share" options={{ ...pushedHeader, title: tr('Share') }} />
+          <Stack.Screen name="learn/[id]" options={{ ...pushedHeader, title: tr('Learn') }} />
         </Stack>
       </ThemeProvider>
     </QueryClientProvider>

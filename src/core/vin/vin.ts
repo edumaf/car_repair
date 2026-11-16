@@ -1,5 +1,6 @@
 // VIN helpers (CLAUDE.md §6.2): 17 characters, no I/O/Q, North American check digit in position 9.
 // A failed check digit is a warning, not an error: some imports and older VINs don't use it.
+import { tr } from '../i18n/i18n';
 
 const TRANSLITERATION: Record<string, number> = {
   A: 1,
@@ -77,17 +78,16 @@ export function vinProblemMessage(check: VinCheck): string | null {
     case 'empty':
       return null;
     case 'too_short':
-      return `A VIN has 17 characters. This one has ${check.vin.length}.`;
     case 'too_long':
-      return `A VIN has 17 characters. This one has ${check.vin.length}.`;
+      return tr('A VIN has 17 characters. This one has {n}.', { n: check.vin.length });
     case 'forbidden_letters':
-      return 'VINs never use the letters I, O or Q. Did you mean 1 or 0?';
+      return tr('VINs never use the letters I, O or Q. Did you mean 1 or 0?');
     case 'invalid_characters':
-      return 'A VIN only has letters and numbers.';
+      return tr('A VIN only has letters and numbers.');
     case null:
       return check.checkDigitOk
         ? null
-        : "This VIN doesn't pass the standard check. Compare it with the door sticker; imported cars can be an exception.";
+        : tr("This VIN doesn't pass the standard check. Compare it with the door sticker; imported cars can be an exception.");
   }
 }
 

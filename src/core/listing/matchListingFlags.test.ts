@@ -29,3 +29,21 @@ describe('matchListingFlags', () => {
     expect(listingOverall([])).toBe('looks_normal');
   });
 });
+
+describe('Romanian listings (OLX / Autovit)', () => {
+  it('flags advance payment by courier as a possible scam, with or without diacritics', () => {
+    for (const text of ['Plată în avans, livrare prin curier, sunt plecat în străinătate.', 'plata in avans, livrare prin curier']) {
+      const m = matchListingFlags(text);
+      expect(listingOverall(m)).toBe('possible_scam');
+    }
+  });
+
+  it('finds title and mileage warnings', () => {
+    const ids = matchListingFlags('Mașina e fără acte, km necunoscuți, nu fac probă.').map((m) => m.flag.id);
+    expect(ids).toEqual(expect.arrayContaining(['no_title', 'tmu', 'no_test_drive']));
+  });
+
+  it('does not match inside longer words', () => {
+    expect(matchListingFlags('Proprietar, mașina e inundatabila? nu')).toEqual([]);
+  });
+});

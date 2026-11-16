@@ -12,6 +12,7 @@ import { Card } from '@/design/components/Card';
 import { ErrorState } from '@/design/components/States';
 import { minTouch, radius, space, useTheme } from '@/design/tokens';
 import { CauseList, DIAGNOSE_DISCLAIMER, UrgencyBanner } from '@/features/diagnose/Diagnosis';
+import { tr } from '@/core/i18n/i18n';
 
 export default function SymptomFlow() {
   const t = useTheme();
@@ -87,7 +88,7 @@ export default function SymptomFlow() {
             <Pressable
               key={o.label}
               accessibilityRole="button"
-              accessibilityLabel={o.label}
+              accessibilityLabel={tr(o.label)}
               onPress={() => choose(o.next, o.outcome)}
               style={({ pressed }) => [styles.option, { backgroundColor: pressed ? t.sunken : t.surface, borderColor: t.border }]}>
               <AppText variant="bodyStrong" style={{ flex: 1 }}>

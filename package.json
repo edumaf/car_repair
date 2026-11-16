@@ -68,7 +68,8 @@
     "typecheck": "tsc --noEmit",
     "fixtures": "tsx scripts/build-mock-fixtures.ts",
     "sync-functions": "tsx scripts/sync-functions.ts",
-    "test:functions": "deno test --allow-env --allow-read --no-check=remote supabase/functions"
+    "test:functions": "deno test --allow-env --allow-read --no-check=remote supabase/functions",
+    "i18n": "tsx scripts/i18n-extract.ts --where"
   },
   "private": true
 }

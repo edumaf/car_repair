@@ -13,8 +13,18 @@ export type ListingOverall = 'looks_normal' | 'ask_questions' | 'possible_scam';
 
 const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-/** Normalizes curly quotes and whitespace so "as‑is" / "as  is" still match. */
-const clean = (s: string) => s.toLowerCase().replace(/[‘’]/g, "'").replace(/[‐-―]/g, '-').replace(/\s+/g, ' ');
+/**
+ * Normalizes case, accents, curly quotes and whitespace, so "as‑is" / "as  is" still match and Romanian ads
+ * match with or without diacritics ("plată în avans" = "plata in avans").
+ */
+const clean = (s: string) =>
+  s
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[‘’]/g, "'")
+    .replace(/[‐-―]/g, '-')
+    .replace(/\s+/g, ' ');
 
 const SEVERITY_ORDER = { scam: 0, critical: 1, major: 2, caution: 3 } as const;
 

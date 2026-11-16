@@ -13,6 +13,7 @@ import { Divider } from '@/design/components/Row';
 import { Tag } from '@/design/components/Tag';
 import { radius, space, useTheme, type SignalColor } from '@/design/tokens';
 import { useRegion } from '@/hooks/useRegion';
+import { tr } from '@/core/i18n/i18n';
 
 type Urgency = 'stop_now' | 'soon' | 'monitor' | 'ok' | 'caution' | 'stop';
 
@@ -67,7 +68,7 @@ export function UrgencyBanner({ urgency }: { urgency: Urgency }) {
       style={[styles.banner, { backgroundColor: t.tint[u.color], borderColor: fg }]}
       accessible
       accessibilityRole="alert"
-      accessibilityLabel={`${u.title}. ${u.text}`}>
+      accessibilityLabel={`${tr(u.title)}. ${tr(u.text)}`}>
       <Ionicons name={u.icon} size={26} color={fg} />
       <View style={{ flex: 1, gap: 2 }}>
         <AppText variant="heading" style={{ color: fg }}>

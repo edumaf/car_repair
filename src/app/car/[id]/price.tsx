@@ -19,6 +19,7 @@ import { space, useTheme, type SignalColor } from '@/design/tokens';
 import { useUpdateCar } from '@/hooks/useCars';
 import { usePriceCheck } from '@/hooks/usePriceCheck';
 import { useRegion } from '@/hooks/useRegion';
+import { tr } from '@/core/i18n/i18n';
 
 const POSITION: Record<PricePosition, { label: string; color: SignalColor; text: string }> = {
   below: {
@@ -86,7 +87,13 @@ export default function PriceCheckScreen() {
 
         {c.askingPrice == null ? (
           <Card>
-            <TextField label="Asking price" keyboardType="number-pad" value={asking} onChangeText={setAsking} placeholder="e.g. 8500" />
+            <TextField
+              label="Asking price"
+              keyboardType="number-pad"
+              value={asking}
+              onChangeText={setAsking}
+              placeholder={tr('e.g. 8500')}
+            />
             <Button
               label="Save"
               kind="secondary"
@@ -151,7 +158,7 @@ export default function PriceCheckScreen() {
                 </View>
                 <Pressable
                   accessibilityRole="button"
-                  accessibilityLabel="Remove this listing"
+                  accessibilityLabel={tr('Remove this listing')}
                   onPress={() => remove.mutate(x.id)}
                   hitSlop={10}>
                   <Ionicons name="trash-outline" size={20} color={t.muted} />
@@ -165,7 +172,7 @@ export default function PriceCheckScreen() {
             keyboardType="number-pad"
             value={form.price}
             onChangeText={(v) => setForm({ ...form, price: v })}
-            placeholder="e.g. 7900"
+            placeholder={tr('e.g. 7900')}
           />
           <View style={styles.twoCols}>
             <View style={{ flex: 1 }}>
@@ -185,7 +192,7 @@ export default function PriceCheckScreen() {
             label="Note (optional)"
             value={form.note}
             onChangeText={(v) => setForm({ ...form, note: v })}
-            placeholder="Where you saw it"
+            placeholder={tr('Where you saw it')}
           />
           <Button label="Add listing" icon="add" kind="secondary" disabled={!price} onPress={addComp} />
         </Card>

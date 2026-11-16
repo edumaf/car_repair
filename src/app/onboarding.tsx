@@ -11,6 +11,7 @@ import { getDb, saveFlag } from '@/db/db';
 import { AppText } from '@/design/components/AppText';
 import { Button } from '@/design/components/Button';
 import { minTouch, radius, space, useTheme } from '@/design/tokens';
+import { tr } from '@/core/i18n/i18n';
 
 interface Question {
   id: 'stage' | 'seller' | 'confidence' | 'worry';
@@ -119,7 +120,7 @@ export default function Onboarding() {
             <Pressable
               key={o.value}
               accessibilityRole="button"
-              accessibilityLabel={o.label}
+              accessibilityLabel={tr(o.label)}
               onPress={() => pick(o.value)}
               style={({ pressed }) => [
                 styles.option,

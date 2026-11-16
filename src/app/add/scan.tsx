@@ -12,6 +12,7 @@ import { vinFromBarcode } from '@/core/vin/vin';
 import { AppText } from '@/design/components/AppText';
 import { Button } from '@/design/components/Button';
 import { radius, space, useTheme } from '@/design/tokens';
+import { tr } from '@/core/i18n/i18n';
 
 const FRAME_H = 150;
 
@@ -88,12 +89,12 @@ export default function ScanVin() {
       />
       <SafeAreaView style={styles.overlay} pointerEvents="box-none">
         <View style={styles.topBar}>
-          <Pressable accessibilityRole="button" accessibilityLabel="Close" onPress={() => router.back()} style={styles.iconButton}>
+          <Pressable accessibilityRole="button" accessibilityLabel={tr('Close')} onPress={() => router.back()} style={styles.iconButton}>
             <Ionicons name="close" size={26} color="#fff" />
           </Pressable>
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel={torch ? 'Turn flashlight off' : 'Turn flashlight on'}
+            accessibilityLabel={tr(torch ? 'Turn flashlight off' : 'Turn flashlight on')}
             onPress={() => setTorch((x) => !x)}
             style={styles.iconButton}>
             <Ionicons name={torch ? 'flashlight' : 'flashlight-outline'} size={24} color="#fff" />

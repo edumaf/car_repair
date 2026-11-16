@@ -16,7 +16,9 @@ import { Screen } from '@/design/components/Screen';
 import { ChoiceChips } from '@/design/components/ChoiceChips';
 import { Tag } from '@/design/components/Tag';
 import { REGIONS } from '@/core/region';
-import { saveApiMode, saveFlag, saveRegion, wipeLocalData } from '@/db/db';
+import { saveApiMode, saveFlag, saveLang, saveRegion, wipeLocalData } from '@/db/db';
+import { LANG_NAMES, LANGS } from '@/core/i18n/i18n';
+import { useLang } from '@/hooks/useLang';
 import { Button } from '@/design/components/Button';
 import { useTheme } from '@/design/tokens';
 import { usePremium } from '@/hooks/usePremium';
@@ -48,11 +50,27 @@ function ApiModePicker() {
   );
 }
 
-// Settings (CLAUDE.md §6.10). Subscription, restore and delete-my-data arrive in Milestones 5–6.
+function LanguagePicker() {
+  const lang = useLang();
+  return (
+    <ChoiceChips
+      label="Language"
+      choices={LANGS.map((l) => ({ value: l, label: LANG_NAMES[l] }))}
+      value={lang}
+      onChange={(l) => {
+        saveLang(l);
+        // The screens are redrawn in the new language; come back here.
+        setTimeout(() => router.navigate('/settings'), 0);
+      }}
+    />
+  );
+}
+
 function RegionPicker() {
   const region = useRegion();
   return (
     <Card>
+      <LanguagePicker />
       <ChoiceChips label="Your region" choices={REGIONS} value={region} onChange={(r) => saveRegion(r)} />
       <AppText variant="caption" tone="muted">
         Sets km or miles, which official history checks we link to, and whether US repair prices are shown.

@@ -4,6 +4,7 @@ import { Pressable, StyleSheet, View } from 'react-native';
 
 import { minTouch, radius, space, useTheme } from '../tokens';
 import { AppText } from './AppText';
+import { tr } from '@/core/i18n/i18n';
 
 type IconName = ComponentProps<typeof Ionicons>['name'];
 
@@ -39,14 +40,19 @@ export function Row({ icon, title, subtitle, right, onPress, disabled }: RowProp
   );
   if (!onPress || disabled)
     return (
-      <View accessible accessibilityLabel={[title, subtitle].filter(Boolean).join('. ')}>
+      <View
+        accessible
+        accessibilityLabel={[title, subtitle]
+          .filter((x): x is string => typeof x === 'string' && !!x)
+          .map((x) => tr(x))
+          .join('. ')}>
         {content}
       </View>
     );
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={title}
+      accessibilityLabel={typeof title === 'string' ? tr(title) : undefined}
       accessibilityHint={subtitle}
       onPress={onPress}
       style={({ pressed }) => pressed && { opacity: 0.7 }}>

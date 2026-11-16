@@ -29,6 +29,7 @@ import { useInspection } from '@/hooks/useInspection';
 import { usePriceCheck } from '@/hooks/usePriceCheck';
 import { useRegion } from '@/hooks/useRegion';
 import { showRepairCosts } from '@/core/region';
+import { tr } from '@/core/i18n/i18n';
 
 const TONES = [
   { value: 'friendly', label: 'Friendly' },
@@ -138,7 +139,12 @@ export default function VerdictScreen() {
           {result.knownIssueOverlap.length ? (
             <View style={styles.tags}>
               {result.knownIssueOverlap.map((g) => (
-                <Tag key={g} label={`Known issue for this model: ${complaintGroupLabel(g)}`} color="brand" icon="flag" />
+                <Tag
+                  key={g}
+                  label={tr('Known issue for this model: {area}', { area: tr(complaintGroupLabel(g)) })}
+                  color="brand"
+                  icon="flag"
+                />
               ))}
             </View>
           ) : null}
@@ -171,7 +177,7 @@ export default function VerdictScreen() {
             </AppText>
             <Pressable
               accessibilityRole="button"
-              accessibilityLabel="Copy all questions"
+              accessibilityLabel={tr('Copy all questions')}
               onPress={() => copy(questions.join('\n'), 'Questions')}
               hitSlop={8}>
               <Ionicons name="copy-outline" size={20} color={t.brand} />

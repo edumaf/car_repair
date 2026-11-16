@@ -19,6 +19,7 @@ import { LoadingState } from '@/design/components/States';
 import { Tag } from '@/design/components/Tag';
 import { hairline, radius, space, useTheme, verdictColor } from '@/design/tokens';
 import { useRegion } from '@/hooks/useRegion';
+import { tr } from '@/core/i18n/i18n';
 
 interface Column {
   car: CarRecord;
@@ -124,7 +125,7 @@ export default function CompareScreen() {
               <Pressable
                 key={c.car.id}
                 accessibilityRole="button"
-                accessibilityLabel={`Open ${carTitle(c.car)}`}
+                accessibilityLabel={tr('Open {car}', { car: carTitle(c.car) })}
                 onPress={() => router.push({ pathname: '/car/[id]', params: { id: c.car.id } })}
                 style={[styles.cell, styles.headCell, { backgroundColor: t.surface, borderColor: t.border }]}>
                 <AppText variant="heading">{carTitle(c.car)}</AppText>

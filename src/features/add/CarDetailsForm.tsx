@@ -8,6 +8,7 @@ import { ChoiceChips } from '@/design/components/ChoiceChips';
 import { TextField, parseNumber } from '@/design/components/TextField';
 import { space } from '@/design/tokens';
 import { useRegion } from '@/hooks/useRegion';
+import { tr } from '@/core/i18n/i18n';
 
 export interface CarDetails {
   price: string;
@@ -50,7 +51,7 @@ export function CarDetailsForm({ value, onChange }: { value: CarDetails; onChang
         keyboardType="number-pad"
         value={value.price}
         onChangeText={(price) => onChange({ ...value, price })}
-        placeholder={region === 'us' ? '15,900' : 'e.g. 8500'}
+        placeholder={region === 'us' ? '15,900' : tr('e.g. 8500')}
       />
       <TextField
         label="Mileage"

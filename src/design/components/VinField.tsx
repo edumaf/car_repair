@@ -8,6 +8,7 @@ import { checkVin, groupVin, vinProblemMessage, VIN_LENGTH } from '@/core/vin/vi
 import { radius, space, useTheme } from '../tokens';
 import { fonts } from '../typography';
 import { AppText } from './AppText';
+import { tr } from '@/core/i18n/i18n';
 
 export function VinField({ value, onChange, autoFocus }: { value: string; onChange: (v: string) => void; autoFocus?: boolean }) {
   const t = useTheme();
@@ -65,7 +66,7 @@ export function VinField({ value, onChange, autoFocus }: { value: string; onChan
           spellCheck={false}
           autoFocus={autoFocus}
           maxLength={VIN_LENGTH + 2}
-          accessibilityLabel="VIN, 17 characters"
+          accessibilityLabel={tr('VIN, 17 characters')}
           accessibilityHint={message ?? undefined}
           caretHidden
           style={[StyleSheet.absoluteFill, styles.hiddenInput, { fontFamily: fonts.mono }]}

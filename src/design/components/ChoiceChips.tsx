@@ -3,6 +3,7 @@ import { Pressable, StyleSheet, View } from 'react-native';
 
 import { minTouch, radius, space, useTheme } from '../tokens';
 import { AppText } from './AppText';
+import { tr } from '@/core/i18n/i18n';
 
 export interface Choice<T extends string> {
   value: T;
@@ -25,7 +26,7 @@ export function ChoiceChips<T extends string>({
   return (
     <View style={styles.wrap}>
       {label ? <AppText variant="label">{label}</AppText> : null}
-      <View style={styles.row} accessibilityRole="radiogroup" accessibilityLabel={label}>
+      <View style={styles.row} accessibilityRole="radiogroup" accessibilityLabel={label ? tr(label) : undefined}>
         {choices.map((c) => {
           const on = c.value === value;
           return (
@@ -33,7 +34,7 @@ export function ChoiceChips<T extends string>({
               key={c.value}
               accessibilityRole="radio"
               accessibilityState={{ checked: on }}
-              accessibilityLabel={c.label}
+              accessibilityLabel={tr(c.label)}
               onPress={() => {
                 Haptics.selectionAsync().catch(() => {});
                 onChange(c.value);

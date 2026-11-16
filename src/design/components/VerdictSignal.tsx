@@ -6,6 +6,7 @@ import { POSSIBLE_SCAM_HEADLINE, PPI_REMINDER, VERDICT_HEADLINE } from '@/core/v
 
 import { radius, space, useTheme, verdictColor, type SignalColor } from '../tokens';
 import { AppText } from './AppText';
+import { tr } from '@/core/i18n/i18n';
 
 const LAMPS: SignalColor[] = ['stop', 'warn', 'caution', 'go'];
 
@@ -18,7 +19,9 @@ export function VerdictSignal({ verdict, possibleScam = false }: { verdict: Verd
       style={[styles.card, { backgroundColor: t.surface, borderColor: t.border }]}
       accessible
       accessibilityRole="summary"
-      accessibilityLabel={`Verdict: ${headline}.${verdict === 'LOOKS_GOOD_SO_FAR' ? ' ' + PPI_REMINDER : ''}`}>
+      accessibilityLabel={
+        tr('Verdict: {headline}.', { headline: tr(headline) }) + (verdict === 'LOOKS_GOOD_SO_FAR' ? ' ' + tr(PPI_REMINDER) : '')
+      }>
       <View style={[styles.housing, { backgroundColor: t.scheme === 'light' ? '#1D2024' : '#0B0C0E' }]}>
         {LAMPS.map((c) => {
           const on = c === active;

@@ -4,11 +4,12 @@ import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { space, useTheme } from '../tokens';
 import { AppText } from './AppText';
 import { Button } from './Button';
+import { tr } from '@/core/i18n/i18n';
 
 export function LoadingState({ label }: { label: string }) {
   const t = useTheme();
   return (
-    <View style={styles.center} accessible accessibilityLabel={label} accessibilityRole="progressbar">
+    <View style={styles.center} accessible accessibilityLabel={label ? tr(label) : undefined} accessibilityRole="progressbar">
       <ActivityIndicator color={t.brand} size="large" />
       <AppText tone="muted" align="center">
         {label}

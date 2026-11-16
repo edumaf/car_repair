@@ -15,6 +15,7 @@ import { ChoiceChips } from '@/design/components/ChoiceChips';
 import { ErrorState, LoadingState } from '@/design/components/States';
 import { minTouch, radius, space, useTheme } from '@/design/tokens';
 import { type } from '@/design/typography';
+import { tr } from '@/core/i18n/i18n';
 
 const THIS_YEAR = new Date().getFullYear();
 const YEARS = Array.from({ length: THIS_YEAR + 1 - 1990 + 1 }, (_, i) => THIS_YEAR + 1 - i);
@@ -33,7 +34,7 @@ function ListRow({ label, onPress }: { label: string; onPress: () => void }) {
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={label}
+      accessibilityLabel={tr(label)}
       onPress={onPress}
       style={({ pressed }) => [styles.row, { borderColor: t.border, backgroundColor: pressed ? t.sunken : t.surface }]}>
       <AppText variant="bodyStrong" style={{ flex: 1 }}>
@@ -52,10 +53,10 @@ function SearchBox({ value, onChange, placeholder }: { value: string; onChange: 
       <TextInput
         value={value}
         onChangeText={onChange}
-        placeholder={placeholder}
+        placeholder={tr(placeholder)}
         placeholderTextColor={t.faint}
         autoCorrect={false}
-        accessibilityLabel={placeholder}
+        accessibilityLabel={tr(placeholder)}
         style={[type.body, { flex: 1, color: t.ink, paddingVertical: space.sm }]}
       />
     </View>
@@ -108,7 +109,7 @@ export default function PickYmm() {
         {{ year: 'Which year?', make: 'Which make?', model: 'Which model?', powertrain: 'What powers it?' }[step]}
       </AppText>
       {crumbs ? (
-        <Pressable accessibilityRole="button" accessibilityLabel="Change your picks" onPress={() => go('year')}>
+        <Pressable accessibilityRole="button" accessibilityLabel={tr('Change your picks')} onPress={() => go('year')}>
           <AppText variant="label" tone="brand">
             {crumbs} · Change
           </AppText>

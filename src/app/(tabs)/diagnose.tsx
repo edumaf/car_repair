@@ -12,6 +12,7 @@ import { Divider, Row } from '@/design/components/Row';
 import { Screen } from '@/design/components/Screen';
 import { radius, space, useTheme } from '@/design/tokens';
 import { type } from '@/design/typography';
+import { tr } from '@/core/i18n/i18n';
 
 const CATEGORY_ICON: Record<
   string,
@@ -56,18 +57,18 @@ export default function DiagnoseScreen() {
           <TextInput
             value={query}
             onChangeText={setQuery}
-            placeholder="e.g. P0301 or “misfire”"
+            placeholder={tr('e.g. P0301 or “misfire”')}
             placeholderTextColor={t.faint}
             autoCapitalize="characters"
             autoCorrect={false}
             returnKeyType="search"
             onSubmitEditing={() => CODE_PATTERN.test(exact) && openCode(exact)}
-            accessibilityLabel="Search error codes"
+            accessibilityLabel={tr('Search error codes')}
             style={[type.mono, { flex: 1, color: t.ink, paddingVertical: space.sm }]}
           />
         </View>
         {CODE_PATTERN.test(exact) && !results.some((r) => r.code === exact) ? (
-          <Row icon="search-outline" title={`Look up ${exact}`} onPress={() => openCode(exact)} />
+          <Row icon="search-outline" title={tr('Look up {code}', { code: exact })} onPress={() => openCode(exact)} />
         ) : null}
         {results.map((c, i) => (
           <Fragment key={c.code}>
@@ -95,13 +96,15 @@ export default function DiagnoseScreen() {
               {i > 0 ? <Divider /> : null}
               <Pressable
                 accessibilityRole="button"
-                accessibilityLabel={s.title}
+                accessibilityLabel={tr(s.title)}
                 onPress={() => router.push({ pathname: '/diagnose/symptom/[id]', params: { id: s.id } })}
                 style={({ pressed }) => [styles.symptom, pressed && { opacity: 0.7 }]}>
                 <AppText variant="bodyStrong" style={{ flex: 1 }}>
                   {s.title}
                 </AppText>
-                {s.urgency_hint === 'stop_now' ? <Ionicons name="warning" size={18} color={t.stop} accessibilityLabel="Urgent" /> : null}
+                {s.urgency_hint === 'stop_now' ? (
+                  <Ionicons name="warning" size={18} color={t.stop} accessibilityLabel={tr('Urgent')} />
+                ) : null}
                 <Ionicons name="chevron-forward" size={18} color={t.faint} />
               </Pressable>
             </Fragment>

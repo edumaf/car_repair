@@ -4,6 +4,7 @@ import { Pressable, StyleSheet, View } from 'react-native';
 
 import { minTouch, radius, space, useTheme } from '../tokens';
 import { AppText } from './AppText';
+import { tr } from '@/core/i18n/i18n';
 
 export function PhotoFindingChip({
   title,
@@ -29,7 +30,7 @@ export function PhotoFindingChip({
         { backgroundColor: decision === 'dismissed' ? t.sunken : t.tint.warn, borderColor: decision === 'dismissed' ? t.border : t.warn },
       ]}
       accessible={done}
-      accessibilityLabel={done ? `${title}: ${decision}` : undefined}>
+      accessibilityLabel={done ? `${title}: ${tr(decision)}` : undefined}>
       <View style={styles.head}>
         <Ionicons name="sparkles" size={16} color={decision === 'dismissed' ? t.muted : t.warn} />
         <AppText variant="overline" tone={decision === 'dismissed' ? 'muted' : 'warn'}>
@@ -52,7 +53,7 @@ export function PhotoFindingChip({
         <View style={styles.actions}>
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel={`${confirmLabel}: ${title}`}
+            accessibilityLabel={`${tr(confirmLabel)}: ${title}`}
             onPress={onConfirm}
             style={[styles.btn, { backgroundColor: t.warn }]}>
             <AppText variant="label" style={{ color: '#fff' }}>
@@ -61,7 +62,7 @@ export function PhotoFindingChip({
           </Pressable>
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel={`Dismiss: ${title}`}
+            accessibilityLabel={`${tr('Dismiss')}: ${title}`}
             onPress={onDismiss}
             style={[styles.btn, { borderColor: t.borderStrong, borderWidth: 1 }]}>
             <AppText variant="label">Dismiss</AppText>

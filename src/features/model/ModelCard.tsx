@@ -20,6 +20,7 @@ import { SeverityTag, Tag } from '@/design/components/Tag';
 import { space, useTheme } from '@/design/tokens';
 import { useUpdateCar } from '@/hooks/useCars';
 import { useRegion } from '@/hooks/useRegion';
+import { tr } from '@/core/i18n/i18n';
 
 export function ProblemRow({ problem, showCost }: { problem: ModelProblem; showCost: boolean }) {
   const t = useTheme();
@@ -29,7 +30,7 @@ export function ProblemRow({ problem, showCost }: { problem: ModelProblem; showC
     <Pressable
       accessibilityRole="button"
       accessibilityState={{ expanded: open }}
-      accessibilityLabel={problem.title}
+      accessibilityLabel={tr(problem.title)}
       accessibilityHint={open ? 'Hides details' : 'Shows what to check'}
       onPress={() => setOpen((x) => !x)}
       style={{ gap: space.sm }}>
@@ -114,7 +115,7 @@ export function ModelCard({ car }: { car: CarRecord }) {
               <Pressable
                 key={e.id}
                 accessibilityRole="button"
-                accessibilityLabel={`Engine: ${e.name}`}
+                accessibilityLabel={tr('Engine: {name}', { name: e.name })}
                 onPress={() => update.mutate({ engineId: e.id })}
                 style={styles.engineChip}>
                 <Tag label={e.name} color="brand" />
@@ -125,7 +126,7 @@ export function ModelCard({ car }: { car: CarRecord }) {
       ) : (
         <Pressable
           accessibilityRole="button"
-          accessibilityLabel={`Engine ${engine.name}. Tap to change.`}
+          accessibilityLabel={tr('Engine {name}. Tap to change.', { name: engine.name })}
           onPress={() => update.mutate({ engineId: null })}>
           <AppText variant="label" tone="muted">
             Engine: {engine.name} · Change
@@ -153,7 +154,7 @@ export function ModelCard({ car }: { car: CarRecord }) {
       ))}
       {other.length ? (
         <Button
-          label={showOther ? 'Hide other engines and years' : `Show ${other.length} more for other engines/years`}
+          label={showOther ? 'Hide other engines and years' : tr('Show {n} more for other engines/years', { n: other.length })}
           kind="ghost"
           onPress={() => setShowOther((x) => !x)}
         />

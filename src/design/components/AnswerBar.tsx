@@ -8,6 +8,7 @@ import type { Answer } from '@/core/types';
 
 import { minTouch, radius, space, useTheme, type SignalColor } from '../tokens';
 import { AppText } from './AppText';
+import { tr } from '@/core/i18n/i18n';
 
 const OPTIONS: { value: Answer; label: string; icon: ComponentProps<typeof Ionicons>['name']; color: SignalColor }[] = [
   { value: 'ok', label: 'Looks OK', icon: 'checkmark-circle', color: 'go' },
@@ -21,7 +22,7 @@ export const ANSWER_LABEL: Record<Answer, string> = { ok: 'Looks OK', problem: '
 export function AnswerBar({ value, onChange }: { value: Answer | null; onChange: (a: Answer) => void }) {
   const t = useTheme();
   return (
-    <View style={styles.row} accessibilityRole="radiogroup" accessibilityLabel="Your answer">
+    <View style={styles.row} accessibilityRole="radiogroup" accessibilityLabel={tr('Your answer')}>
       {OPTIONS.map((o) => {
         const on = value === o.value;
         const color = o.color === 'caution' && t.scheme === 'light' ? '#B45309' : t[o.color];
@@ -30,7 +31,7 @@ export function AnswerBar({ value, onChange }: { value: Answer | null; onChange:
             key={o.value}
             accessibilityRole="radio"
             accessibilityState={{ checked: on }}
-            accessibilityLabel={o.label}
+            accessibilityLabel={tr(o.label)}
             onPress={() => {
               Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light).catch(() => {});
               onChange(o.value);

@@ -2,6 +2,7 @@
 import { openDatabaseSync, type SQLiteDatabase } from 'expo-sqlite';
 
 import { setApiMode, type ApiMode } from '@/core/api/mode';
+import { setLang, type Lang } from '@/core/i18n/i18n';
 import { setRegion, type Region } from '@/core/region';
 import { setFlags } from '@/state/appFlags';
 import { DATA_VERSION } from '@/core/data/seed';
@@ -42,13 +43,15 @@ export async function initDatabase(): Promise<void> {
   if ((await getMeta(db, META.dataVersion)) !== DATA_VERSION) await setMeta(db, META.dataVersion, DATA_VERSION);
 }
 
-/** Re-applies settings saved in app_meta: region, and (dev) the API mode. */
+/** Re-applies settings saved in app_meta: region, language, and (dev) the API mode. */
 export async function restoreSettings(): Promise<void> {
   const db = getDb();
   const mode = await getMeta(db, META.apiMode);
   if (mode) setApiMode(mode as ApiMode);
   const region = await getMeta(db, META.region);
   if (region) setRegion(region as Region);
+  const lang = await getMeta(db, META.lang);
+  if (lang) setLang(lang as Lang);
   setFlags({
     onboardingDone: (await getMeta(db, META.onboardingDone)) === '1',
     firstPaywallShown: (await getMeta(db, META.firstPaywallShown)) === '1',
@@ -68,6 +71,11 @@ export async function saveFlag(key: 'onboardingDone' | 'firstPaywallShown' | 'si
 export async function saveRegion(region: Region): Promise<void> {
   setRegion(region);
   await setMeta(getDb(), META.region, region);
+}
+
+export async function saveLang(lang: Lang): Promise<void> {
+  setLang(lang);
+  await setMeta(getDb(), META.lang, lang);
 }
 
 export async function saveApiMode(mode: ApiMode): Promise<void> {

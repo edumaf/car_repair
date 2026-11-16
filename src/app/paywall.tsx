@@ -14,6 +14,7 @@ import { AppText } from '@/design/components/AppText';
 import { Button } from '@/design/components/Button';
 import { Tag } from '@/design/components/Tag';
 import { minTouch, radius, space, useTheme } from '@/design/tokens';
+import { tr } from '@/core/i18n/i18n';
 
 const PLANS = [
   {
@@ -26,7 +27,9 @@ const PLANS = [
   {
     id: 'pro_annual',
     title: 'Pro, yearly',
-    price: '$39.99 / year',
+    get price() {
+      return tr('{price} / year', { price: '$39.99' });
+    },
     detail: 'For checking many cars. Renews yearly; cancel anytime.',
     badge: null,
   },
@@ -79,7 +82,12 @@ export default function Paywall() {
 
   return (
     <SafeAreaView edges={['top', 'bottom']} style={{ flex: 1, backgroundColor: t.bg }}>
-      <Pressable accessibilityRole="button" accessibilityLabel="Close" onPress={() => router.back()} style={styles.close} hitSlop={10}>
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={tr('Close')}
+        onPress={() => router.back()}
+        style={styles.close}
+        hitSlop={10}>
         <Ionicons name="close" size={28} color={t.ink} />
       </Pressable>
       <ScrollView contentContainerStyle={styles.content}>
@@ -106,7 +114,7 @@ export default function Paywall() {
               key={p.id}
               accessibilityRole="radio"
               accessibilityState={{ checked: on }}
-              accessibilityLabel={`${p.title}, ${p.price}. ${p.detail}`}
+              accessibilityLabel={`${tr(p.title)}, ${p.price}. ${tr(p.detail)}`}
               onPress={() => setPlan(p.id)}
               style={[styles.plan, { borderColor: on ? t.brand : t.border, backgroundColor: on ? t.tint.brand : t.surface }]}>
               <View style={{ flex: 1, gap: 2 }}>

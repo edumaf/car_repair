@@ -19,6 +19,7 @@ import { minTouch, radius, space, useTheme } from '@/design/tokens';
 import { type } from '@/design/typography';
 import { CarDetailsForm, EMPTY_DETAILS, useDetailsValues } from '@/features/add/CarDetailsForm';
 import { useCar, useCreateCar, useUpdateCar } from '@/hooks/useCars';
+import { tr } from '@/core/i18n/i18n';
 
 type Step = 'make' | 'model' | 'engine' | 'year' | 'save' | 'manual';
 
@@ -34,7 +35,10 @@ function Row({ title, subtitle, onPress, highlight }: { title: string; subtitle?
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={[title, subtitle].filter(Boolean).join(', ')}
+      accessibilityLabel={[title, subtitle]
+        .filter((x): x is string => !!x)
+        .map((x) => tr(x))
+        .join(', ')}
       onPress={onPress}
       style={({ pressed }) => [
         styles.row,
@@ -125,7 +129,9 @@ export default function PickModel() {
       {p.vin && step !== 'manual' ? (
         <AppText variant="caption" tone="muted">
           {vinMatch?.make
-            ? `From the VIN: ${vinMatch.make}${vinMatch.year ? `, probably ${vinMatch.year}` : ''}. Please confirm.`
+            ? vinMatch.year
+              ? tr('From the VIN: {make}, probably {year}. Please confirm.', { make: vinMatch.make, year: vinMatch.year })
+              : tr('From the VIN: {make}. Please confirm.', { make: vinMatch.make })
             : 'We couldn’t read the make from this VIN. Pick it below.'}
         </AppText>
       ) : null}
@@ -138,10 +144,10 @@ export default function PickModel() {
       <TextInput
         value={search}
         onChangeText={setSearch}
-        placeholder={placeholder}
+        placeholder={tr(placeholder)}
         placeholderTextColor={t.faint}
         autoCorrect={false}
-        accessibilityLabel={placeholder}
+        accessibilityLabel={tr(placeholder)}
         style={[type.body, { flex: 1, color: t.ink, paddingVertical: space.sm }]}
       />
     </View>
@@ -210,7 +216,7 @@ export default function PickModel() {
         renderItem={({ item }) => (
           <Row
             title={item.model}
-            subtitle={`${item.generation} · ${yearsLabel(item)}${vinCandidates.has(item.id) ? ' · fits your VIN' : ''}`}
+            subtitle={`${item.generation} · ${yearsLabel(item)}${vinCandidates.has(item.id) ? ` · ${tr('fits your VIN')}` : ''}`}
             highlight={vinCandidates.has(item.id)}
             onPress={() => {
               setModel(item);
@@ -303,14 +309,24 @@ export default function PickModel() {
           <AppText variant="label" tone="muted">
             You’ll still get the full inspection and verdict. We just won’t have model-specific problems for it yet.
           </AppText>
-          <TextField label="Make" value={manual.make} onChangeText={(v) => setManual({ ...manual, make: v })} placeholder="e.g. Lada" />
-          <TextField label="Model" value={manual.model} onChangeText={(v) => setManual({ ...manual, model: v })} placeholder="e.g. Niva" />
+          <TextField
+            label="Make"
+            value={manual.make}
+            onChangeText={(v) => setManual({ ...manual, make: v })}
+            placeholder={tr('e.g. Lada')}
+          />
+          <TextField
+            label="Model"
+            value={manual.model}
+            onChangeText={(v) => setManual({ ...manual, model: v })}
+            placeholder={tr('e.g. Niva')}
+          />
           <TextField
             label="Year"
             keyboardType="number-pad"
             value={manual.year}
             onChangeText={(v) => setManual({ ...manual, year: v })}
-            placeholder="e.g. 2012"
+            placeholder={tr('e.g. 2012')}
           />
           <ChoiceChips label="Fuel" choices={FUELS} value={manual.fuel} onChange={(fuel) => setManual({ ...manual, fuel })} />
           <CarDetailsForm value={details} onChange={setDetails} />

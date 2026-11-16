@@ -3,6 +3,7 @@ import { StyleSheet, TextInput, View, type TextInputProps } from 'react-native';
 import { minTouch, radius, space, useTheme } from '../tokens';
 import { type } from '../typography';
 import { AppText } from './AppText';
+import { tr } from '@/core/i18n/i18n';
 
 interface TextFieldProps extends Omit<TextInputProps, 'style'> {
   label: string;
@@ -21,8 +22,9 @@ export function TextField({ label, prefix, suffix, hint, multiline, ...rest }: T
         {prefix ? <AppText tone="muted">{prefix}</AppText> : null}
         <TextInput
           {...rest}
+          placeholder={rest.placeholder ? tr(rest.placeholder) : undefined}
           multiline={multiline}
-          accessibilityLabel={label}
+          accessibilityLabel={tr(label)}
           placeholderTextColor={t.faint}
           style={[type.body, styles.input, { color: t.ink }, multiline && styles.multiInput]}
         />

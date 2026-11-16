@@ -17,6 +17,7 @@ import { ErrorState, LoadingState } from '@/design/components/States';
 import { space, useTheme } from '@/design/tokens';
 import { CarDetailsForm, EMPTY_DETAILS, useDetailsValues } from '@/features/add/CarDetailsForm';
 import { useCars, useCreateCar } from '@/hooks/useCars';
+import { plural } from '@/core/i18n/i18n';
 
 export default function ConfirmCar() {
   const t = useTheme();
@@ -116,8 +117,13 @@ export default function ConfirmCar() {
         ) : null}
         <Card>
           <AppText variant="label">
-            {r.recalls === null ? 'Recalls unavailable right now' : `${r.recalls.length} recall${r.recalls.length === 1 ? '' : 's'}`} ·{' '}
-            {r.complaints === null ? 'complaints unavailable' : `${r.complaints.total.toLocaleString('en-US')} owner complaints`}
+            {r.recalls === null
+              ? 'Recalls unavailable right now'
+              : plural(r.recalls.length, '{n} recall', '{n} recalls', '{n} de rechemări')}{' '}
+            ·{' '}
+            {r.complaints === null
+              ? 'complaints unavailable'
+              : plural(r.complaints.total, '{n} owner complaint', '{n} owner complaints', '{n} de reclamații de la proprietari')}
           </AppText>
           <AppText variant="caption" tone="muted">
             Full details on the next screen.

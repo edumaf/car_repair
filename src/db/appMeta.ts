@@ -15,6 +15,7 @@ export const META = {
   apiMode: 'dev_api_mode',
   /** Region picked in Settings (us / uk / ro / eu / other); otherwise detected from the phone. */
   region: 'region',
+  lang: 'lang',
 } as const;
 
 export async function getMeta(db: SqlDb, key: string): Promise<string | null> {

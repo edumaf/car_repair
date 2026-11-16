@@ -6,6 +6,7 @@ import type { Severity } from '@/core/types';
 
 import { radius, severityColor, space, useTheme, type SignalColor } from '../tokens';
 import { AppText } from './AppText';
+import { tr } from '@/core/i18n/i18n';
 
 type IconName = ComponentProps<typeof Ionicons>['name'];
 
@@ -14,7 +15,7 @@ export function Tag({ label, color, icon }: { label: string; color: SignalColor;
   const t = useTheme();
   const fg = color === 'caution' && t.scheme === 'light' ? '#B45309' : t[color];
   return (
-    <View style={[styles.tag, { backgroundColor: t.tint[color] }]} accessible accessibilityLabel={label}>
+    <View style={[styles.tag, { backgroundColor: t.tint[color] }]} accessible accessibilityLabel={tr(label)}>
       {icon ? <Ionicons name={icon} size={13} color={fg} /> : <View style={[styles.dot, { backgroundColor: t[color] }]} />}
       <AppText variant="overline" style={{ color: fg }}>
         {label}

@@ -1,5 +1,6 @@
 // Seller questions, suggested offer and negotiation script (CLAUDE.md §8.3). Template-based; no LLM.
 import type { ChecklistItem, ListingFlag } from '../data/seedSchema';
+import { tr } from '../i18n/i18n';
 import type { CostRange } from '../types';
 import type { Recall } from '../vehicle/types';
 
@@ -17,17 +18,23 @@ export function sellerQuestions(input: {
   recalls: readonly Pick<Recall, 'campaign'>[];
 }): string[] {
   const out: string[] = [];
-  for (const f of input.listingFlags) out.push(f.ask_seller);
+  for (const f of input.listingFlags) out.push(tr(f.ask_seller));
   for (const i of input.problemItems)
-    out.push(`I noticed ${lowerFirst(i.bad_signs[0] ?? i.title).replace(/\.$/, '')}. Has that been looked at?`);
+    out.push(tr('I noticed {sign}. Has that been looked at?', { sign: lowerFirst(tr(i.bad_signs[0] ?? i.title)).replace(/\.$/, '') }));
   // A few recalls get one question each; many are combined so the list stays readable.
   if (input.recalls.length > MAX_RECALL_QUESTIONS) {
-    out.push(`There are ${input.recalls.length} recalls for this model. Have they all been done? Can you show me the dealer paperwork?`);
+    out.push(
+      tr('There are {n} recalls for this model. Have they all been done? Can you show me the dealer paperwork?', {
+        n: input.recalls.length,
+      }),
+    );
   } else {
-    for (const r of input.recalls) out.push(`Has recall ${r.campaign} been completed? Can you show me the paperwork?`);
+    for (const r of input.recalls)
+      out.push(tr('Has recall {campaign} been completed? Can you show me the paperwork?', { campaign: r.campaign }));
   }
   // Always ask for a pre-purchase inspection, unless a listing question already does.
-  if (!out.some((q) => /pre-?purchase inspection/i.test(q))) out.push(PPI_QUESTION);
+  const ppi = tr(PPI_QUESTION);
+  if (!out.some((q) => q === ppi || /pre-?purchase inspection|inspecți[ae] înainte de cumpărare/i.test(q))) out.push(ppi);
   return [...new Set(out)];
 }
 
@@ -54,13 +61,21 @@ export function negotiationScript(
   tone: Tone,
   input: { issues: readonly string[]; estimate: CostRange | null; offer: number | null },
 ): string {
-  const top = input.issues.slice(0, 2).map((s) => s.toLowerCase());
-  const issues = top.length === 2 ? `${top[0]} and ${top[1]}` : (top[0] ?? 'a few issues');
-  const cost = input.estimate ? `, which typically cost ${usd(input.estimate.low)}–${usd(input.estimate.high)} to fix` : '';
+  const top = input.issues.slice(0, 2).map((s) => tr(s).toLowerCase());
+  const issues = top.length === 2 ? tr('{a} and {b}', { a: top[0], b: top[1] }) : (top[0] ?? tr('a few issues'));
+  const cost = input.estimate
+    ? tr(', which typically cost {low}–{high} to fix', { low: usd(input.estimate.low), high: usd(input.estimate.high) })
+    : '';
   if (tone === 'friendly') {
-    const offer = input.offer != null ? ` Would you take ${usd(input.offer)}? I can do it today.` : ' Is there some room on the price?';
-    return `I really like the car, thanks for letting me look at it. The inspection showed ${issues}${cost}.${offer}`;
+    const offer =
+      input.offer != null
+        ? tr(' Would you take {offer}? I can do it today.', { offer: usd(input.offer) })
+        : tr(' Is there some room on the price?');
+    return tr('I really like the car, thanks for letting me look at it. The inspection showed {issues}{cost}.', { issues, cost }) + offer;
   }
-  const offer = input.offer != null ? ` My offer is ${usd(input.offer)}, and I can do it today.` : ' I need the price to reflect that.';
-  return `I’m interested, but the inspection showed ${issues}${cost}.${offer}`;
+  const offer =
+    input.offer != null
+      ? tr(' My offer is {offer}, and I can do it today.', { offer: usd(input.offer) })
+      : tr(' I need the price to reflect that.');
+  return tr('I’m interested, but the inspection showed {issues}{cost}.', { issues, cost }) + offer;
 }

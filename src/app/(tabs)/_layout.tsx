@@ -7,6 +7,7 @@ import { StyleSheet, View } from 'react-native';
 import { useTheme } from '@/design/tokens';
 import { fonts } from '@/design/typography';
 import { getFlags } from '@/state/appFlags';
+import { tr } from '@/core/i18n/i18n';
 
 type IconName = ComponentProps<typeof Ionicons>['name'];
 
@@ -43,11 +44,11 @@ export default function TabLayout() {
         tabBarStyle: { backgroundColor: t.surface, borderTopColor: t.border },
         tabBarLabelStyle: { fontFamily: fonts.sansMedium, fontSize: 11 },
       }}>
-      <Tabs.Screen name="index" options={{ title: 'Garage', tabBarIcon: icon('car-sport', 'car-sport-outline') }} />
-      <Tabs.Screen name="diagnose" options={{ title: 'Diagnose', tabBarIcon: icon('pulse', 'pulse-outline') }} />
-      <Tabs.Screen name="check" options={{ title: 'Check', tabBarIcon: CheckIcon, tabBarAccessibilityLabel: 'Check a car' }} />
-      <Tabs.Screen name="learn" options={{ title: 'Learn', tabBarIcon: icon('book', 'book-outline') }} />
-      <Tabs.Screen name="settings" options={{ title: 'Settings', tabBarIcon: icon('settings', 'settings-outline') }} />
+      <Tabs.Screen name="index" options={{ title: tr('Garage'), tabBarIcon: icon('car-sport', 'car-sport-outline') }} />
+      <Tabs.Screen name="diagnose" options={{ title: tr('Diagnose'), tabBarIcon: icon('pulse', 'pulse-outline') }} />
+      <Tabs.Screen name="check" options={{ title: tr('Check'), tabBarIcon: CheckIcon, tabBarAccessibilityLabel: tr('Check a car') }} />
+      <Tabs.Screen name="learn" options={{ title: tr('Learn'), tabBarIcon: icon('book', 'book-outline') }} />
+      <Tabs.Screen name="settings" options={{ title: tr('Settings'), tabBarIcon: icon('settings', 'settings-outline') }} />
     </Tabs>
   );
 }

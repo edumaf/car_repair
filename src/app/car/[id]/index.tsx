@@ -31,6 +31,7 @@ import { usePremium } from '@/hooks/usePremium';
 import { getFlags } from '@/state/appFlags';
 import { useCar, useDeleteCar, useUpdateCar } from '@/hooks/useCars';
 import { useRegion } from '@/hooks/useRegion';
+import { tr } from '@/core/i18n/i18n';
 
 function RecallItem({ recall }: { recall: Recall }) {
   const [open, setOpen] = useState(false);
@@ -38,7 +39,7 @@ function RecallItem({ recall }: { recall: Recall }) {
     <Pressable
       accessibilityRole="button"
       accessibilityState={{ expanded: open }}
-      accessibilityLabel={`Recall: ${recallComponentLabel(recall.component)}`}
+      accessibilityLabel={tr('Recall: {component}', { component: tr(recallComponentLabel(recall.component)) })}
       accessibilityHint={open ? 'Hides details' : 'Shows details'}
       onPress={() => setOpen((x) => !x)}
       style={styles.recall}>
@@ -101,7 +102,11 @@ function RecallsCard({ recalls }: { recalls: Recall[] | null }) {
             </View>
           ))}
           {recalls.length > RECALLS_SHOWN ? (
-            <Button label={all ? 'Show fewer' : `Show all ${recalls.length} recalls`} kind="ghost" onPress={() => setAll((x) => !x)} />
+            <Button
+              label={all ? 'Show fewer' : tr('Show all {n} recalls', { n: recalls.length })}
+              kind="ghost"
+              onPress={() => setAll((x) => !x)}
+            />
           ) : null}
         </>
       )}
@@ -126,14 +131,14 @@ function ProblemAreasCard({ report }: { report: VehicleReport }) {
         <>
           <AppText variant="label" tone="muted">
             {c.total.toLocaleString('en-US')} complaints from owners
-            {c.crashes || c.fires ? ` · ${c.crashes} mention a crash, ${c.fires} a fire` : ''}
+            {c.crashes || c.fires ? ` · ${tr('{crashes} mention a crash, {fires} a fire', { crashes: c.crashes, fires: c.fires })}` : ''}
           </AppText>
           {top.map((g) => (
             <Pressable
               key={g.group}
               accessibilityRole="button"
               accessibilityState={{ expanded: openGroup === g.group }}
-              accessibilityHint="Shows what owners wrote"
+              accessibilityHint={tr('Shows what owners wrote')}
               onPress={() => setOpenGroup(openGroup === g.group ? null : g.group)}
               style={{ gap: space.sm }}>
               <ProblemAreaBar label={complaintGroupLabel(g.group)} count={g.count} max={top[0].count} />
@@ -164,7 +169,7 @@ function SafetyCard({ report }: { report: VehicleReport }) {
         NHTSA crash-test rating
       </AppText>
       {s?.overall ? (
-        <View style={styles.stars} accessible accessibilityLabel={`Overall rating ${s.overall} out of 5 stars`}>
+        <View style={styles.stars} accessible accessibilityLabel={tr('Overall rating {n} out of 5 stars', { n: s.overall })}>
           {[1, 2, 3, 4, 5].map((n) => (
             <Ionicons key={n} name={n <= s.overall! ? 'star' : 'star-outline'} size={22} color={t.ink} />
           ))}
@@ -223,7 +228,7 @@ function ListingCard({ car, onSave }: { car: CarRecord; onSave: (text: string | 
             multiline
             value={text}
             onChangeText={setText}
-            placeholder="Copy the ad’s description from Facebook Marketplace, Craigslist or a dealer site and paste it here."
+            placeholder={tr('Copy the ad’s description from Facebook Marketplace, Craigslist or a dealer site and paste it here.')}
           />
           <Button
             label="Check the listing"

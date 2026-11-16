@@ -16,6 +16,7 @@ import { Tag } from '@/design/components/Tag';
 import { radius, space, useTheme, verdictColor } from '@/design/tokens';
 import { useCars } from '@/hooks/useCars';
 import { usePremium } from '@/hooks/usePremium';
+import { tr } from '@/core/i18n/i18n';
 
 function CarCard({
   car,
@@ -41,7 +42,7 @@ function CarCard({
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={`${carTitle(car)}${verdictLabel ? `, verdict ${verdictLabel}` : ''}`}
+      accessibilityLabel={carTitle(car) + (verdictLabel ? tr(', verdict {verdict}', { verdict: tr(verdictLabel) }) : '')}
       accessibilityState={selecting ? { checked: !!selected } : undefined}
       onPress={() => (selecting ? onSelect?.() : router.push({ pathname: '/car/[id]', params: { id: car.id } }))}
       style={({ pressed }) => [
@@ -121,7 +122,7 @@ export default function GarageScreen() {
           selecting ? (
             <View style={{ gap: space.sm }}>
               <Button
-                label={`Compare ${selected.length} cars`}
+                label={tr('Compare {n} cars', { n: selected.length })}
                 icon="git-compare-outline"
                 disabled={selected.length < 2}
                 onPress={() => {

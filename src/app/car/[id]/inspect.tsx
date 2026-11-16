@@ -27,6 +27,7 @@ import { canRunPhotoCheck } from '@/core/limits';
 import { useInspection } from '@/hooks/useInspection';
 import { usePremium } from '@/hooks/usePremium';
 import { capturePhoto, PhotoPermissionError, type PhotoSource } from '@/media/photos';
+import { tr } from '@/core/i18n/i18n';
 
 type Inspection = ReturnType<typeof useInspection>;
 
@@ -53,7 +54,7 @@ function SectionChips({
             key={s.section.id}
             accessibilityRole="tab"
             accessibilityState={{ selected: on }}
-            accessibilityLabel={`${s.section.title}, ${p.touched} of ${p.total} done`}
+            accessibilityLabel={tr('{section}, {done} of {total} done', { section: tr(s.section.title), done: p.touched, total: p.total })}
             onPress={() => onJump(s.section.id)}
             style={[styles.chip, { backgroundColor: on ? t.ink : t.surface, borderColor: on ? t.ink : t.border }]}>
             {done ? <Ionicons name="checkmark-circle" size={14} color={on ? t.bg : t.go} /> : null}
@@ -73,7 +74,7 @@ function SectionChips({
 function OverallBar({ checked, total }: { checked: number; total: number }) {
   const t = useTheme();
   return (
-    <View style={styles.overall} accessible accessibilityLabel={`${checked} of ${total} items checked`}>
+    <View style={styles.overall} accessible accessibilityLabel={tr('{checked} of {total} items checked', { checked, total })}>
       <View style={[styles.track, { backgroundColor: t.sunken }]}>
         <View style={[styles.fill, { width: `${total ? (checked / total) * 100 : 0}%`, backgroundColor: t.brand }]} />
       </View>
@@ -100,8 +101,8 @@ function PhotoResults({
       {checks.map((pc) => {
         const r = pc.result;
         const lights = mapDashboardLights(r.lights, applicable);
-        const tr = r.transcriptions ?? {};
-        const readVin = tr.vin_text ? checkVin(tr.vin_text.replace(/\?/g, '')).vin : null;
+        const trx = r.transcriptions ?? {};
+        const readVin = trx.vin_text ? checkVin(trx.vin_text.replace(/\?/g, '')).vin : null;
         return (
           <View key={pc.id} style={styles.results}>
             {pc.sample ? <Tag label="Sample AI result" color="slate" icon="flask-outline" /> : null}
@@ -134,7 +135,7 @@ function PhotoResults({
             {lights.suggestions.map((s) => (
               <PhotoFindingChip
                 key={`${s.light}-${s.itemId}`}
-                title={`${LIGHT_LABEL[s.light]} light is on`}
+                title={tr('{light} light is on', { light: tr(LIGHT_LABEL[s.light]) })}
                 detail={`Marks “${getChecklistItem(s.itemId)?.title ?? s.itemId}” as a problem if you confirm.`}
                 decision={pc.decisions[`light:${s.light}:${s.itemId}`]}
                 onConfirm={() =>
@@ -161,24 +162,24 @@ function PhotoResults({
                 after 10 seconds.
               </AppText>
             ) : null}
-            {tr.odometer_value != null ? (
+            {trx.odometer_value != null ? (
               <AppText variant="label">
-                AI read the odometer: {tr.odometer_value.toLocaleString('en-US')} {tr.odometer_unit ?? ''}
+                AI read the odometer: {trx.odometer_value.toLocaleString('en-US')} {trx.odometer_unit ?? ''}
               </AppText>
             ) : null}
-            {tr.dot_code ? <AppText variant="label">AI read the tire date code: {tr.dot_code}</AppText> : null}
+            {trx.dot_code ? <AppText variant="label">AI read the tire date code: {trx.dot_code}</AppText> : null}
             {readVin ? (
               <AppText variant="label" tone={carVin && readVin !== carVin ? 'stop' : 'ink'}>
                 AI read the VIN: {readVin}
-                {carVin ? (readVin === carVin ? ' (matches)' : ` — doesn’t match ${carVin}. Check it yourself.`) : ''}
+                {carVin ? (readVin === carVin ? ' (matches)' : tr(' — doesn’t match {vin}. Check it yourself.', { vin: carVin })) : ''}
               </AppText>
             ) : null}
-            {tr.title_brand_words?.length ? (
+            {trx.title_brand_words?.length ? (
               <AppText variant="bodyStrong" tone="stop">
-                Title words spotted: {tr.title_brand_words.join(', ')}
+                Title words spotted: {trx.title_brand_words.join(', ')}
               </AppText>
             ) : null}
-            {r.findings.length === 0 && r.lights.length === 0 && r.quality.ok && !readVin && tr.odometer_value == null ? (
+            {r.findings.length === 0 && r.lights.length === 0 && r.quality.ok && !readVin && trx.odometer_value == null ? (
               <AppText variant="label" tone="muted">
                 AI didn’t spot anything in this photo. That doesn’t mean there’s nothing there: check it yourself too.
               </AppText>
@@ -311,7 +312,7 @@ function ItemCard({
           <Pressable
             key={uri}
             accessibilityRole="imagebutton"
-            accessibilityLabel="Photo. Long-press to remove."
+            accessibilityLabel={tr('Photo. Long-press to remove.')}
             onLongPress={() =>
               Alert.alert('Remove this photo?', undefined, [
                 { text: 'Cancel', style: 'cancel' },
@@ -336,7 +337,7 @@ function ItemCard({
         </Pressable>
         <Pressable
           accessibilityRole="button"
-          accessibilityLabel="Choose a photo from your library"
+          accessibilityLabel={tr('Choose a photo from your library')}
           onPress={() => addPhoto('library')}
           style={[styles.photoBtn, { borderColor: t.borderStrong }]}>
           <Ionicons name="images-outline" size={18} color={t.brand} />
@@ -351,7 +352,7 @@ function ItemCard({
         <AppText variant="caption" tone="stop">
           {inspection.photo.error instanceof ApiError && inspection.photo.error.code === 'quota_exceeded'
             ? 'Photo saved. You’ve used your free AI photo checks.'
-            : `Photo saved, but the AI check failed: ${(inspection.photo.error as Error).message}`}
+            : tr('Photo saved, but the AI check failed: {error}', { error: (inspection.photo.error as Error).message })}
         </AppText>
       ) : null}
       <PhotoResults checks={checks} inspection={inspection} applicable={applicable} carVin={inspection.car.data?.vin ?? null} />
@@ -361,10 +362,10 @@ function ItemCard({
           value={noteText}
           onChangeText={setNoteText}
           onBlur={() => inspection.note.mutate({ itemId: item.id, text: noteText })}
-          placeholder="What did you notice?"
+          placeholder={tr('What did you notice?')}
           placeholderTextColor={t.faint}
           multiline
-          accessibilityLabel="Note"
+          accessibilityLabel={tr('Note')}
           style={[type.body, styles.note, { color: t.ink, borderColor: t.border, backgroundColor: t.surface }]}
         />
       ) : (
@@ -451,7 +452,7 @@ export default function Inspect() {
             checks={(inspection.photoChecks.data ?? []).filter((c) => c.itemId === entry.item.id)}
             inspection={inspection}
             sectionTitle={section.section.title}
-            position={`${inSection + 1} of ${section.entries.length}`}
+            position={tr('{n} of {total}', { n: inSection + 1, total: section.entries.length })}
           />
         </Fragment>
       </ScrollView>
@@ -460,7 +461,7 @@ export default function Inspect() {
         <View style={styles.nav}>
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel="Previous item"
+            accessibilityLabel={tr('Previous item')}
             disabled={index === 0}
             onPress={() => goTo(index - 1)}
             style={[styles.navBtn, { opacity: index === 0 ? 0.3 : 1 }]}>
@@ -472,7 +473,11 @@ export default function Inspect() {
               <Button label="See the verdict" icon="arrow-forward" onPress={toVerdict} />
             </View>
           ) : (
-            <Pressable accessibilityRole="button" accessibilityLabel="Next item" onPress={() => goTo(index + 1)} style={styles.navBtn}>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={tr('Next item')}
+              onPress={() => goTo(index + 1)}
+              style={styles.navBtn}>
               <AppText variant="label">Next</AppText>
               <Ionicons name="chevron-forward" size={22} color={t.ink} />
             </Pressable>
