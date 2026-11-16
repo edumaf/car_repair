@@ -1,0 +1,228 @@
+{
+  "decode": {
+    "vin": "3VW3L7AJ4CM900001",
+    "year": 2012,
+    "make": "Volkswagen",
+    "model": "Jetta",
+    "trim": null,
+    "body": "Sedan/Saloon",
+    "powertrain": "diesel",
+    "engineDesc": "2.0L 4-cyl turbo diesel",
+    "drive": null,
+    "plantCountry": "MEXICO",
+    "decodeWarnings": []
+  },
+  "recalls": [
+    {
+      "campaign": "20E064000",
+      "component": "SERVICE BRAKES, HYDRAULIC:FOUNDATION COMPONENTS:MASTER CYLINDER",
+      "summary": "Tenneco Automotive (Tenneco) is recalling certain Beck/Arnley Master Cylinders, part number 072-9831, sold as aftermarket or replacement parts for 2004-2018 Volkswagen Jetta, and 2012-2019 Volkswagen Beetle vehicles.  The fluid seal crimp on the master cylinder may be insufficient, causing brake fluid to leak or the cylinder to come apart.",
+      "consequence": "If there is a brake fluid leak, it can reduce braking ability, increasing the risk of a crash.",
+      "remedy": "Beck/Arnley will notify the distributors that sold the master cylinders and will work with the distributors to notify the end users.  Affected master cylinders will be exchanged for a new master cylinder (part number 072-9990), free of charge.  The recall began October 30, 2020.  Owners may contact Tenneco customer service at 1-800-625-9319.",
+      "reportDate": "2020-09-23",
+      "parkIt": false,
+      "parkOutside": false
+    },
+    {
+      "campaign": "19V679000",
+      "component": "UNKNOWN OR OTHER",
+      "summary": "Volkswagen Group of America, Inc. (Volkswagen) is recalling certain 2017 Volkswagen Passat, 2018 Tiguan LWB, 2007-2009 Jetta Sedan, 2011-2013, 2015 and 2019 Jetta, 2013 Jetta Hybrid, 2008-2009 Jetta Sportwagen, 2015 Golf Sportwagen, 2013 Golf, 2008-2010 and 2012-2013 Beetle and Beetle Convertible, 2008-2010 Beetle, and Beetle Convertible vehicles.  Modifications made while the vehicles were in an internal evaluation period may cause the affected vehicles to not comply with all of the applicable regulatory requirements.",
+      "consequence": "If the vehicles do not meet all regulatory requirements, there could be an increased risk of a crash, fire, or injury.",
+      "remedy": "Volkswagen will notify owners and repurchase the affected vehicles.  The recall began November 6, 2019.  Owners may contact Volkswagen customer service at 1-800-893-5298.  Volkswagen's number for this recall is 01D7.  Note: This recall is an expansion of NHTSA recall number 18V-329.",
+      "reportDate": "2019-09-25",
+      "parkIt": false,
+      "parkOutside": false
+    },
+    {
+      "campaign": "19V615000",
+      "component": "ELECTRICAL SYSTEM:IGNITION:ANTI-THEFT:CONTROL MODULE",
+      "summary": "Volkswagen Group of America, Inc. (Volkswagen) is recalling certain 2015-2019 GTI, 2015-2016 and 2018-2019 Golf, 2012-2019 Beetle and Beetle Convertible, 2017-2019 Golf SportWagen and 2011-2018 Jetta vehicles equipped with an automatic transmission, manual handbrake and keyless entry.  A build-up of silicate on the shift lever micro switch contacts may enable the key to be removed from the ignition when the transmission shift lever is not in \"Park.\"",
+      "consequence": "Removing the key while the shift lever is in a position other than \"Park\" increases the risk of an unintended vehicle rollaway that may result in personal injury or a crash.",
+      "remedy": "Volkswagen will notify owners, and dealers will install an additional switch and circuit board, free of charge.  The recall began November 19, 2019. Owners may contact Volkswagen customer service at 1-800-893-5298.  Volkswagen's number for this recall is 37M2.",
+      "reportDate": "2019-08-22",
+      "parkIt": false,
+      "parkOutside": false
+    },
+    {
+      "campaign": "15V483000",
+      "component": "AIR BAGS:FRONTAL",
+      "summary": "Volkswagen Group of America, Inc. (Volkswagen) is recalling certain model year 2010-2014 Volkswagen CC, and Passat, 2010-2013 Eos, 2011-2014 Golf, GTI, Jetta, and Tiguan, and 2012-2014 Jetta Sportwagen vehicles.  In the affected vehicles, debris may contaminate the air bag clock spring, a spiral wound, flat cable that keeps the air bag powered while the steering wheel is being turned.  This contamination may tear the cable and result in a loss of electrical connection to the driver's frontal air bag.",
+      "consequence": "A loss of electrical connection to the driver's frontal air bag will prevent the air bag from deploying in the event of a vehicle crash, increasing the risk of injury.",
+      "remedy": "Volkswagen will notify owners, and dealers will install a protective cover over the steering wheel clock spring if the air bag light is off.  If the airbag light is on and the steering wheel clock spring requires replacement, dealers will install a new steering wheel clock spring.  These repairs will be performed free of charge. The recall began on January 15, 2016.  Owners may contact Volkswagen customer service at 1-800-822-8987.",
+      "reportDate": "2015-08-04",
+      "parkIt": false,
+      "parkOutside": false
+    },
+    {
+      "campaign": "14V656000",
+      "component": "SUSPENSION:REAR",
+      "summary": "Volkswagen Group of America, Inc. (Volkswagen) is recalling certain model year 2011-2013 Jetta vehicles manufactured March 1, 2010, to November 30, 2012, and 2012-2013 Beetle vehicles manufactured March 1, 2011, to July 31, 2013.  The durability of the rear trailing arms may be reduced in vehicles whose rear trailing arms have been previously deformed, such as a result of a rear or side-rear impact crash.",
+      "consequence": "The reduced durability of the trailing arm may result in its sudden fracture, possibly causing loss of vehicle control and increasing the risk of a crash.",
+      "remedy": "Volkswagen will notify owners, and dealers will install a sheet metal inlay on the rear axle trailing arms designed to prevent a sudden loss of control in the event of trailing arm sudden fracture, free of charge.  The recall began April 7, 2015.  Owners may contact Volkswagen customer service at 1-800-893-5298.",
+      "reportDate": "2014-10-20",
+      "parkIt": false,
+      "parkOutside": false
+    },
+    {
+      "campaign": "14E007000",
+      "component": "ENGINE AND ENGINE COOLING:ENGINE",
+      "summary": "The Gates Corporation (Gates) is recalling certain aftermarket Tru-Flow Water Pumps, part number TFW 41127, sold at certain NAPA Auto Parts and/or installed by automotive service technicians after November 1, 2013 (and manufactured August 2013 through October 2013) that have a black-colored pulley/sprocket or do not have 'US9377' stamped on the water pump housing.  These service replacement parts were sold for use in model year 1999-2005 Audi A4, 2000-2006 Audi TT, 1998-2005 Volkswagen Beetle, 1999-2006 Golf, 1999-2008 and 2011-2013 Volkswagen Jetta, and 2000-2005 Volkswagen Passat.  In the affected water pumps, the pulley or sprocket that turns the timing belt may develop microfractures causing the timing belt to fail.",
+      "consequence": "A failure of the timing belt may cause the engine to shut down, potentially increasing the risk of a vehicle crash.",
+      "remedy": "Gates will notify owners, and dealers will replace the water pump, free of charge.  The recall began during May 2014.  Owners may contact The Gates Corporation at 1-303-744-1911.",
+      "reportDate": "2014-03-07",
+      "parkIt": false,
+      "parkOutside": false
+    },
+    {
+      "campaign": "11V490000",
+      "component": "FUEL SYSTEM, DIESEL",
+      "summary": "VOLKSWAGEN IS RECALLING CERTAIN MODEL 2009-2012 JETTA AND JETTA SPORTWAGEN VEHICLES, MANUFACTURED FROM MAY 2008 THROUGH SEPTEMBER 2011, MODEL YEAR 2010-2012 VOLKSWAGEN GOLF VEHICLES, MANUFACTURED FROM MAY 2009 THROUGH SEPTEMBER 2011, AND MODEL YEAR 2010-2012 AUDI A3 VEHICLES, MANUFACTURED FROM SEPTEMBER 2009 THROUGH SEPTEMBER 2011, THAT ARE EQUIPPED WITH A 2.0L TDI COMMON RAIL DIESEL ENGINE/CLEAN DIESEL ENGINE.  THE FUEL INJECTION PULSES COULD COINCIDE WITH THE NATURAL FREQUENCY OF THE INJECTOR LINE #2, IN SPECIFIC LOAD AND RPM CONDITIONS.  THIS RESONANCE CREATES ADDITIONAL STRESS IN THE FUEL LINE.",
+      "consequence": "DUE TO THE RESONANCE CONDITION, INJECTOR LINE NUMBER 2 COULD DEVELOP SMALL CRACKS WHICH COULD LEAD TO FUEL LEAKAGE.  LEAKING FUEL IN THE PRESENCE OF AN IGNITION SOURCE, MAY LEAD TO A FIRE.",
+      "remedy": "VOLKSWAGEN WILL INSTALL AN IMPROVED FUEL INJECTOR LINE FOR THE NUMBER 2 CYLINDER ON CERTAIN VEHICLES AND WILL INSTALL VIBRATION DAMPERS ON ALL OF THE INJECTOR LINES.  VOLKSWAGEN AND AUDI WILL NOTIFY OWNERS TO HAVE THE VEHICLES REPAIRED FREE OF CHARGE.  THE SAFETY RECALL IS EXPECTED TO BEGIN DURING NOVEMBER 2011.  OWNERS MAY CONTACT VOLKSWAGEN AT 1-800-822-8987.",
+      "reportDate": "2011-10-03",
+      "parkIt": false,
+      "parkOutside": false
+    },
+    {
+      "campaign": "11E036000",
+      "component": "ENGINE AND ENGINE COOLING:EXHAUST SYSTEM",
+      "summary": "VOLKSWAGEN IS RECALLING CERTAIN STAINLESS STEEL EXHAUST TIPS, PART NUMBER 1K0 071 910 U, SOLD AS ACCESSORY EQUIPMENT FOR USE ON MODEL YEAR 2011-2012 JETTA SEDAN VEHICLES MANUFACTURED FROM MARCH 18, 2010, THROUGH AUGUST 22, 2011.  THESE EXHAUST TIPS MAY EXTEND BEYOND THE ORIGINAL LENGTH OF THE FACTORY-INSTALLED EXHAUST PIPES.  IT IS POSSIBLE FOR INADVERTENT CONTACT TO OCCUR WITH A PERSON'S LEG.",
+      "consequence": "IF THE TAILPIPE EXTENSION IS HOT DURING INADVERTENT CONTACT, A BURN COULD OCCUR.",
+      "remedy": "DEALERS WILL INSPECT AND REPLACE THE STAINLESS STEEL EXHAUST TIPS AS NECESSARY FREE OF CHARGE.  THE SAFETY RECALL IS EXPECTED TO BEGIN DURING NOVEMBER 2011.  OWNERS MAY CONTACT VOLKSWAGEN AT 1-800-822-8987.",
+      "reportDate": "2011-09-08",
+      "parkIt": false,
+      "parkOutside": false
+    }
+  ],
+  "complaints": {
+    "total": 527,
+    "crashes": 24,
+    "fires": 7,
+    "injuries": 17,
+    "deaths": 0,
+    "groups": [
+      {
+        "group": "electrical",
+        "count": 144,
+        "samples": [
+          "A microswitch malfunction. My car will not lock and while I am driving it there is clicking on the doors for locking and unlocking. My night lights will not shut off when I park the vehicle. There…",
+          "The contact owns a 2012 Volkswagen Jetta. The contact stated that for the past eight months, the contact was unable to remove the key from the ignition. Several warning lights were illuminated. The…",
+          "This is my 4th volkswagen jetta 2.5L I've own that has had the same issue with the charging system the car would just shut off while driving due to dead battery almost causing an accident this needs…"
+        ]
+      },
+      {
+        "group": "engine",
+        "count": 95,
+        "samples": [
+          "I recently bought vehicle seen there is a recall",
+          "I remember having my keys in my hand and my car was slowly reversing out the driveway. I panicked, i was stomping on my brakes for a while jerking back and it took me about 2 minutes to finally get…",
+          "The contact owns a 2012 Volkswagon Jetta Sportwagen. The contact stated that while driving at 35 MPH, the accelerator pedal became inoperable and the vehicle did not accelerate. The engine and power…"
+        ]
+      },
+      {
+        "group": "fuel",
+        "count": 86,
+        "samples": [
+          "Cp4 high pressure fuel pump will self-destruct causing little pieces of metal to go throughout the fuel system and causing thousands in repair lots of manufacturers are doing recalls to this pump…",
+          "I was looking at the GMC Duramax diesel and it has the same problem as the Volkswagen Jetta TDI fuel pump failure due to American Diesel in the pump is designed for foreign diesel which is very…",
+          "I was driving on the road going up a hill and my fuel was just alittle low about 120 miles my car sputtered and died and didn't start back up stuck on the road with barley any gaurd rail so I'm…"
+        ]
+      },
+      {
+        "group": "transmission",
+        "count": 50,
+        "samples": [
+          "I recently bought vehicle seen there is a recall",
+          "A bolt holding my CV Joint backed out causing the bracket between two of the bolts to come lose. The bracket then swung as I drove a created a hole in my transmission. This caused me to lose…",
+          "I remember having my keys in my hand and my car was slowly reversing out the driveway. I panicked, i was stomping on my brakes for a while jerking back and it took me about 2 minutes to finally get…"
+        ]
+      },
+      {
+        "group": "steering",
+        "count": 44,
+        "samples": [
+          "On the day the issue occurred, I went to work as usual. When I finished work and tried to leave, my vehicle wouldn't start. I had the vehicle towed to a repair shop to determine what was wrong…",
+          "The contact owns a 2012 Volkswagen Jetta. The contact stated that for the past eight months, the contact was unable to remove the key from the ignition. Several warning lights were illuminated. The…",
+          "I remember having my keys in my hand and my car was slowly reversing out the driveway. I panicked, i was stomping on my brakes for a while jerking back and it took me about 2 minutes to finally get…"
+        ]
+      },
+      {
+        "group": "brakes",
+        "count": 41,
+        "samples": [
+          "I recently bought vehicle seen there is a recall",
+          "ABS module controlling the Anti-Lock brake system has failed. I am told there is a recall for earlier models of this car for the very same issue but not for 2012 model year. This is a safety issue…",
+          "The brakes randomly engage while driving and sometimes while parking, without touching the brake pedal. After this happens and you're driving for a while, there is a burning smell, likely from the…"
+        ]
+      },
+      {
+        "group": "lighting_visibility",
+        "count": 36,
+        "samples": [
+          "The contact's daughter owns a 2012 Volkswagen Jetta. The contact stated that while his daughter was driving at undisclosed speeds in the rain, an abnormal popping sound was heard. The wipers were…",
+          "Horn only occasionally works when honking and/or locking car, which increases the risk of a crash since I can’t always use my horn to alert other drivers of presence. One front headlight only…",
+          "WHEN THE WEATHER GETS COLD AROUND 35 DEGREES AND LOWER, THE WIPERS STOP WORKING. THEY ARE NOT STUCK TO WINDSHIELD. VERY DANGEROUS AND HAPPENS RANDOMLY ON IN THE WINTER."
+        ]
+      },
+      {
+        "group": "airbags",
+        "count": 35,
+        "samples": [
+          "Clock spring went out and would have failed to deploy the airbags if i was in an accident. there was no notification that said it went out. NHTSA campaign number - 15V483000",
+          "The contact owns a 2012 Volkswagen Jetta. The contact stated that while his daughter was driving at an undisclosed speed, the air bag warning light illuminated. The vehicle was taken to an…",
+          "Unknown Car has been acting up First throttle body went now airbag, tire pressure, tracking, & other lights are on Cruise control won’t work when prompted etc."
+        ]
+      },
+      {
+        "group": "tires_wheels",
+        "count": 17,
+        "samples": [
+          "On the day the issue occurred, I went to work as usual. When I finished work and tried to leave, my vehicle wouldn't start. I had the vehicle towed to a repair shop to determine what was wrong…",
+          "MY AIRBAG LIGHT CAME ON A COUPLE MONTHS AGO. I DON'T HAVE THE MONEY TO FIX IT AND THE CLOSEST VW DEALERSHIP IS ABOUT 80MILES FROM HERE. I DON'T KNOW IF THIS COULD BE A RECALL DEFECT OR WAS IT…",
+          "THIS VEHICLE CAME FROM THE MANUFACTURER WITH DUNLOP SP SPORT 01 A TIRES (225/40R18) (AUGUST 2012 PURCHASE). WITHIN NINE MONTHS (8800 MILES) TWO TIRES DEVELOPED SIDEWALL BUBBLES. AFTER CONTACTING…"
+        ]
+      },
+      {
+        "group": "driver_assist",
+        "count": 15,
+        "samples": [
+          "Horn only occasionally works when honking and/or locking car, which increases the risk of a crash since I can’t always use my horn to alert other drivers of presence. One front headlight only…",
+          "WHEN STARTING MY 2012 VW JETTA, THE ABS LIGHT, BRAKE LIGHT, PASSENGER AIR BAG LIGHT COME ON ON THE DASHBOARD ALONG WITH A LONG BEEPING SOUND. THE SOUND EVENTUALLY STOPS BUT THE LIGHTS STAY ON…",
+          "I'VE NOTICED THAT MY CHECK ENGINE LIGHT COMES ON AND OFF, IT'S THE MAP SENSOR. IT HAS BEEN REPLACED SEVERAL TIMES AND EVERYTHING HAS BEEN FULLY CLEANED, CHECK ENGINE LIGHT STILL COMES ON. MY CAR…"
+        ]
+      },
+      {
+        "group": "suspension",
+        "count": 14,
+        "samples": [
+          "Front driver strut coil spring snapped while driving.",
+          "I HAD TO HAVE ALL FOUR SPRINGS REPLACED BECAUSE THEY WERE BROKEN. I'VE SEEN MANY COMPLAINTS ABOUT THE SAME PROBLEM. THIS IS A KNOWN PROBLEM WITH VW. WHY ARE THEY NOT ADDRESSING THIS? THE CAR HAD…",
+          "TL* THE CONTACT OWNS A 2012 VOLKSWAGEN JETTA SPORTWAGEN. THE CONTACT STATED WHILE DRIVING 45 MPH, THERE WAS AN ABNORMAL NOISE COMING FROM REAR, WHICH CAUSED THE VEHICLE TO BE DIFFICULT TO STEER. THE…"
+        ]
+      },
+      {
+        "group": "structure",
+        "count": 11,
+        "samples": [
+          "TL* THE CONTACT OWNS A 2012 VOLKSWAGEN JETTA. WHILE DRIVING APPROXIMATELY 30 MPH, THE FRONT DRIVER'S DOOR OPENED INDEPENDENTLY. THE CONTACT MENTIONED THAT THE LATCH FAILED AND THE DOOR COULD NOT BE…",
+          "FRONT DRIVER SIDE DOOR WILL INTERMITTENTLY FAIL TO LOCK AND/OR UNLOCK WITH KEY FOB OR LOCK/UNLOCK BUTTONS IN THE CABIN (BEGAN APPROX 6/20/2018 AT APPROX 43,000 MILES). MUST USE THE KEY IN EXTERIOR…",
+          "DOOR LATCH FAILED MID-DRIVE AND MY DOOR FLEW WIDE OPEN MID-TURN. MAJOR SAFETY ISSUE. IF THIS WAS AN ISOLATED INCIDENT, I WOULDN'T BOTHER POSTING THIS. BUT IF YOU USE A QUICK GOOGLE SEARCH, THIS IS…"
+        ]
+      },
+      {
+        "group": "climate",
+        "count": 2,
+        "samples": [
+          "FOR THIS YEAR OF JETTA THE DOORS LOCK AROUND 10 MILES AN HOUR. MINE DOES NOT LOCK. THE DOORS WILL KEEP ATTEMPTING TO LOCK WITH NO SUCCESS. IF YOU GO ON A LONG TRIP AND SLOW DOWN TO THE 10 MPH RANGE…",
+          "ON THE AFTERNOON OF APRIL 30TH, 2014 WHILE THE VEHICLE WAS IDEAL AT A STOP LIGHT THE VEHICLES POWER STEERING AND A/C GAVE OUT. AFTER INSPECTING THE ENGINE, IT WAS DETERMINED THE BELT TENSONER BROKE…"
+        ]
+      }
+    ],
+    "ungrouped": 87
+  },
+  "safety": {
+    "overall": null,
+    "vehicleDescription": "2012 Volkswagen Jetta SW FWD"
+  },
+  "fetchedAt": 1794819133723
+}

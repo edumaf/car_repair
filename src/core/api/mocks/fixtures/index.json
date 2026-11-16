@@ -1,0 +1,50 @@
+[
+  {
+    "id": "civic_2018",
+    "vin": "2HGFC2F78JH900001",
+    "year": 2018,
+    "make": "Honda",
+    "model": "Civic",
+    "powertrain": "gas"
+  },
+  {
+    "id": "f150_2015",
+    "vin": "1FTEW1EG5FK900001",
+    "year": 2015,
+    "make": "Ford",
+    "model": "F-150",
+    "powertrain": "gas"
+  },
+  {
+    "id": "altima_2013",
+    "vin": "1N4AL3AP4DC900001",
+    "year": 2013,
+    "make": "Nissan",
+    "model": "Altima",
+    "powertrain": "gas"
+  },
+  {
+    "id": "prius_2017",
+    "vin": "JTDKBRFU3H3900001",
+    "year": 2017,
+    "make": "Toyota",
+    "model": "Prius",
+    "powertrain": "hybrid"
+  },
+  {
+    "id": "model3_2019",
+    "vin": "5YJ3E1EA5KF900001",
+    "year": 2019,
+    "make": "Tesla",
+    "model": "Model 3",
+    "powertrain": "ev"
+  },
+  {
+    "id": "jetta_tdi_2012",
+    "vin": "3VW3L7AJ4CM900001",
+    "year": 2012,
+    "make": "Volkswagen",
+    "model": "Jetta",
+    "powertrain": "diesel"
+  }
+]

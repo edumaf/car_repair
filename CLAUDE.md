@@ -1,5 +1,7 @@
 # Used Car Check — Build Brief for Claude Code (Expo / React Native)
 
+> **Progress log:** read [`PROGRESS.md`](./PROGRESS.md) before starting any work — it records what is done, decisions already made, what the owner still owes, and the next steps. Update it at the end of every milestone or session, in the same PR.
+
 > **How to use this file:** Put this file at the root of a new, empty project folder as `CLAUDE.md`, with the `data/` folder next to it (`inspection_checklist.json`, `repair_costs.json`, `listing_red_flags.json`). Open Claude Code in that folder and say: *"Read CLAUDE.md and start Milestone 0. Stop at the end of each milestone, tell me exactly how to test it on my phone, and wait for my OK."*
 >
 > **The owner has no Mac.** Everything must be buildable and testable from Windows:
