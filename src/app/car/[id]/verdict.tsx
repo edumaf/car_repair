@@ -227,6 +227,14 @@ export default function VerdictScreen() {
           </AppText>
         </View>
 
+        {result.verdict !== 'INCOMPLETE' ? (
+          <Button
+            label="Share card"
+            icon="share-outline"
+            kind="secondary"
+            onPress={() => router.push({ pathname: '/car/[id]/share', params: { id } })}
+          />
+        ) : null}
         <Button
           label={result.verdict === 'INCOMPLETE' ? 'Keep checking' : 'Back to the checklist'}
           icon="clipboard-outline"

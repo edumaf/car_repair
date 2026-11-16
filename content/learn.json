@@ -1,0 +1,94 @@
+{
+  "_meta": { "version": 1, "note": "Short offline guides (CLAUDE.md §6.9). Plain English, general guidance only: no legal advice. Drafted by AI 2026-11-17; review before launch." },
+  "guides": [
+    {
+      "id": "tire_date",
+      "title": "Read a tire’s date code",
+      "icon": "calendar-outline",
+      "minutes": 2,
+      "sections": [
+        { "text": ["Every tire has a date stamp on the sidewall. Old tires can be dangerous even if the tread looks deep, because the rubber hardens and cracks."] },
+        { "heading": "Find it", "bullets": ["Look on the sidewall for the letters DOT followed by a code.", "The last 4 digits are the week and year it was made: 2319 means week 23 of 2019.", "It may be on the inner side only: use your phone camera and a flashlight."] },
+        { "heading": "What it means", "bullets": ["Older than about 6 years: plan to replace them, whatever the tread.", "Different dates on each tire is normal, but a mix of very old and new ones is worth asking about.", "Small cracks in the sidewall or between the tread blocks are a sign of age."] }
+      ]
+    },
+    {
+      "id": "tread_test",
+      "title": "The coin tread test",
+      "icon": "cash-outline",
+      "minutes": 2,
+      "sections": [
+        { "text": ["Tread depth tells you how soon the tires need replacing, and uneven wear can point to suspension or alignment problems."] },
+        { "heading": "Quick check", "bullets": ["US: put a penny into the tread with Lincoln’s head upside down. If you can see all of his head, the tread is below about 2/32 in: the tires need replacing.", "Europe: the legal minimum is usually 1.6 mm. Many tires have small wear bars in the grooves: if the tread is level with them, it’s worn out.", "Check the inner, middle and outer part of each tire."] },
+        { "heading": "Uneven wear", "bullets": ["Worn more on the inside or outside edge: often alignment or worn suspension parts.", "Wavy, scalloped wear (cupping): often worn shock absorbers.", "Worn in the middle: usually over-inflated."] }
+      ]
+    },
+    {
+      "id": "ppi",
+      "title": "What a pre-purchase inspection is",
+      "icon": "construct-outline",
+      "minutes": 3,
+      "sections": [
+        { "text": ["A pre-purchase inspection (PPI) is a check by an independent mechanic before you buy. It usually takes about an hour and costs far less than one surprise repair."] },
+        { "heading": "What they do", "bullets": ["Lift the car to look at the underbody, frame, leaks and rust.", "Read stored and pending fault codes with a professional scanner.", "Check brakes, suspension, steering, fluids and the engine’s condition.", "Test drive with an expert ear."] },
+        { "heading": "How to arrange it", "bullets": ["Pick a mechanic the seller doesn’t know.", "Ask the seller if you can take the car there, or if the mechanic can come to the car.", "A seller who refuses any inspection is a warning sign."] },
+        { "text": ["This app’s check helps you decide whether a car is worth a PPI. It doesn’t replace one."] }
+      ]
+    },
+    {
+      "id": "papers",
+      "title": "Papers to check before you pay",
+      "icon": "document-text-outline",
+      "minutes": 3,
+      "sections": [
+        { "text": ["The paperwork tells you who really owns the car and whether it has a hidden past. Rules differ by country: this is general guidance, not legal advice."] },
+        { "heading": "Everywhere", "bullets": ["The VIN on the papers matches the windshield and the door sticker.", "The seller’s name matches the ownership document and their ID.", "Service records: dates and mileage should rise steadily.", "Any recalls were done (ask for the dealer paperwork)."] },
+        { "heading": "United States", "bullets": ["Look at the title for brands like salvage, rebuilt, flood, lemon or junk.", "Check there’s no lien (money owed on the car).", "Be careful with titles from another state that were issued very recently."] },
+        { "heading": "Romania and Europe", "bullets": ["Registration certificate (talon) and, in Romania, the CIV (vehicle identity card) with the same VIN.", "A valid technical inspection (ITP in Romania) helps, but isn’t a full check.", "For imports: ask for the foreign registration papers and service history.", "In Romania, RAR offers a vehicle history check by VIN."] }
+      ]
+    },
+    {
+      "id": "scams",
+      "title": "Common used-car scams",
+      "icon": "shield-outline",
+      "minutes": 3,
+      "sections": [
+        { "heading": "Warning signs", "bullets": ["Asking for a deposit, wire transfer or gift cards before you’ve seen the car.", "“The car is in storage / with a shipping company”, or an “escrow service” you’ve never heard of.", "A price far below every similar car.", "The seller isn’t the owner on the papers (“selling for a friend”).", "Mileage that doesn’t match the wear on the seat, pedals and steering wheel.", "A car that smells damp, has silt under the carpets or rust on seat rails (flood car)."] },
+        { "heading": "Protect yourself", "bullets": ["See the car in person, in daylight, in a safe public place.", "Check the VIN everywhere on the car and on the papers.", "Pay at a bank or with a traceable method when the papers are signed. Never wire money in advance.", "Use the Listing check in this app on the ad text."] }
+      ]
+    },
+    {
+      "id": "test_drive",
+      "title": "Plan your test-drive route",
+      "icon": "navigate-outline",
+      "minutes": 3,
+      "sections": [
+        { "text": ["Only drive where it’s safe and legal, with the seller’s permission. If a red warning light comes on, stop and don’t buy without a mechanic’s check."] },
+        { "heading": "A good 20-minute route", "bullets": ["Cold start: arrive before the engine is warmed up and listen for rattles or smoke.", "Slow streets: low-speed turns at full lock left and right, listen for clicks.", "A rough or bumpy road: listen for knocks from the suspension.", "A faster road: smooth acceleration through all gears, no vibrations at cruising speed.", "A safe empty spot: firm (not emergency) braking in a straight line; the car shouldn’t pull.", "Parking: reverse and park, check the steering and any cameras."] },
+        { "heading": "Afterwards", "bullets": ["Leave the engine running for a few minutes and look underneath for new drips.", "Check that no warning lights came on during the drive."] }
+      ]
+    },
+    {
+      "id": "obd2",
+      "title": "Use a cheap OBD2 code reader",
+      "icon": "hardware-chip-outline",
+      "minutes": 3,
+      "sections": [
+        { "text": ["Almost every car from about 2001 (Europe) or 1996 (US) has a diagnostic socket. A cheap reader (about $20 / 100 lei) shows fault codes you can look up in the Diagnose tab."] },
+        { "heading": "How to use it", "bullets": ["Find the socket under the dashboard, usually near the driver’s knees.", "Plug the reader in and switch the ignition on (engine off or running, as the reader says).", "Read stored and pending codes, then look them up in Diagnose → I have a code."] },
+        { "heading": "When buying a car", "bullets": ["Check the readiness monitors: several “not ready” monitors can mean the codes were cleared recently to hide a fault.", "Ask the seller before plugging in anything.", "Never clear codes on someone else’s car."] }
+      ]
+    },
+    {
+      "id": "warning_lights",
+      "title": "Dashboard warning lights",
+      "icon": "warning-outline",
+      "minutes": 2,
+      "sections": [
+        { "text": ["When you switch the ignition on, most lights come on for a moment as a bulb check, then go out. A light that stays on means something."] },
+        { "heading": "By color", "bullets": ["Red (oil pressure, temperature, brake, battery): stop as soon as it’s safe and don’t keep driving.", "Amber or yellow (check engine, ABS, airbag, tire pressure): get it checked soon. A flashing check-engine light means stop.", "Green or blue: just information (lights, cruise control)."] },
+        { "heading": "When buying", "bullets": ["Watch the dash at start-up: a warning light that never comes on at all may have been disabled.", "Take a photo of the dashboard in the inspection: the app suggests which checks it affects."] }
+      ]
+    }
+  ]
+}

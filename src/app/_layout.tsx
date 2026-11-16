@@ -100,6 +100,8 @@ export default function RootLayout() {
           <Stack.Screen name="car/[id]/verdict" options={{ ...pushedHeader, title: 'Verdict' }} />
           <Stack.Screen name="car/[id]/price" options={{ ...pushedHeader, title: 'Price check' }} />
           <Stack.Screen name="compare" options={{ ...pushedHeader, title: 'Compare' }} />
+          <Stack.Screen name="car/[id]/share" options={{ ...pushedHeader, title: 'Share' }} />
+          <Stack.Screen name="learn/[id]" options={{ ...pushedHeader, title: 'Learn' }} />
         </Stack>
       </ThemeProvider>
     </QueryClientProvider>

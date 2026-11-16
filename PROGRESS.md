@@ -21,7 +21,7 @@
 > - Crystal Check (edumaf/crystal_app) has priority if Apple asks for fixes.
 > ```
 
-Last updated: **2026-11-17** (worldwide scope: model database, Diagnose tab, cars from any country; owner to test).
+Last updated: **2026-11-17, later** (price check, compare, onboarding, paywall + free limits, share card, Learn; owner to test).
 
 ## ⚠️ Scope change (owner decision, 2026-11-16) — read CLAUDE.md "Scope change" first
 
@@ -37,9 +37,9 @@ cut. **New submission target: ~Dec 20** (early January if it slips past Dec 22).
 | M2 — Guided inspection + photo checks | 🟡 Built. **Real AI photo checks wait for the backend** (sample results until then) |
 | M3 — Verdict, repairs, questions, script | ✅ Built + tested |
 | **M-D — Model database + Diagnose (new)** | 🟡 Data + screens built. Left: **Romanian translation**, mechanic review of the data |
-| M4 — Listing check + price check | 🟡 Pasted-text check done. Left: screenshots, VIN photo, price check |
-| M5 — Garage/compare, onboarding, paywall, quotas, dev build | 🟡 Basic garage list only |
-| M6 — Share, Learn, analytics, settings, polish, store assets | ⏳ |
+| M4 — Listing check + price check | 🟡 Pasted-text check + **price check** done. Left (backend): screenshots, VIN photo |
+| M5 — Garage/compare, onboarding, paywall, quotas, dev build | 🟡 Filters, **compare**, **onboarding**, **paywall (simulated)**, local free limits done. Left: RevenueCat, server quotas, pass-expiry reminder, dev build |
+| M6 — Share, Learn, analytics, settings, polish, store assets | 🟡 **Share card**, **Learn guides**, Settings (Premium, restore, delete my data) done. Left: analytics, store assets, eval light |
 | M7 — Submit | **~Dec 20** |
 
 **Critical path:** Supabase backend (start by Nov 20), then Romanian translation, paywall, dev build.
@@ -78,7 +78,26 @@ questions and a 2-tone script; offline listing check; garage list. See git histo
   the US** (elsewhere severity only, per the brief).
 - Database migration 3: `cars.model_id`, `engine_id`, `mileage_unit`.
 
-**Quality gates:** `tsc` clean · **243 Jest tests** pass · `expo lint` clean · `expo-doctor` 20/20 · iOS bundle
+**Price check, compare, onboarding, paywall, share, Learn (2026-11-17, later)**
+- **Price check** (`src/core/price/priceCheck.ts`, tested): the user adds similar listings; ≥ 3 with mileage →
+  least-squares fit, fair range (± max(residual SD, 5%)), below/within/above; fewer → min/median/max. Feeds the
+  verdict (above → Negotiate) and floors the suggested offer. Links to KBB/Edmunds (US), Autovit/OLX (RO), Auto
+  Trader (UK), mobile.de (EU). Prices shown in the region's currency (€ for Romania).
+- **Garage:** status filters; **compare 2–3 cars** side by side (verdict, repairs, price, price vs similar, mileage,
+  engine, recalls, known problem areas).
+- **Onboarding** (§11): welcome, 4 questions, camera priming; "I own a car with a problem" goes to Diagnose.
+- **Paywall** (§9): pass pre-selected, headline from the "biggest worry" answer, restore, close. Purchases are
+  **simulated** until RevenueCat + dev build (Settings → Developer → Simulate Premium).
+- **Free limits (local until /quota exists):** 1 inspected car, 10 AI photo checks, price check and compare are
+  Premium; paywall once after the first vehicle report.
+- **Share card** (§13): story/post, generic silhouette, verdict, 3 facts, "Free check" mark for free users; no VIN,
+  plate, price or photos.
+- **Learn:** 8 offline guides in `content/learn.json` (tire date, coin tread test, PPI, papers incl. Romania, scams,
+  test drive, OBD2 reader, warning lights).
+- **Settings:** Premium status, restore, **delete all my data**, region, dev toggles (simulate Premium, show
+  onboarding again).
+
+**Quality gates:** `tsc` clean · **264 Jest tests** (was 243) pass · `expo lint` clean · `expo-doctor` 20/20 · iOS bundle
 exports. Clicked through in a browser: Romanian Golf 6 VIN → engine → report with model card and RAR link → inspection
 with "Known for this model" → Diagnose: P0301, "shakes at idle" flow, manufacturer code P1234.
 
@@ -107,6 +126,7 @@ with "Known for this model" → Diagnose: P0301, "shakes at idle" flow, manufact
    Romania: Logan, Golf, Octavia, Astra, Focus, Passat, Duster), `obd_codes.json`, `symptoms.json`, repair costs.
 4. Final app name; employment-contract check; eval photos by Dec 6 (unchanged).
 5. Romanian translation will need your review (a list of texts in the app).
+6. Provide **terms of use + privacy policy URLs** and a **support email** (paywall and Settings need them).
 
 ## How to test on the phone
 
@@ -126,11 +146,15 @@ Then:
 5. **Diagnose tab:** search `P0420` and `P1234`; try **Engine shakes or runs rough at idle** and **Fluid under the car**.
 6. Check → **Pick make and model** → e.g. Dacia → Duster → engine → year.
 7. A US car still works as before (sample VIN `1N4AL3AP4DC900001`).
+8. **New this round:** first launch shows the **onboarding** (if it doesn't, Settings → Developer → Show onboarding
+   again). After the first report the **paywall** appears once: close it. Settings → Developer → **Simulate Premium**
+   on, then try **Price check** (add 3 listings), **Compare cars** in the Garage, and **Share card** on a verdict.
+   **Learn** tab: open a guide. Settings → **Delete all my data** resets everything.
 
 ## Next steps
 
 1. Owner tests → merge PR edumaf/car_repair#2.
 2. **Backend (critical path):** Supabase, `/vehicle` (reuses `src/core/vehicle/nhtsa.ts`), `/photo-check`,
    `/listing-check`, `/quota`; free-text symptom → symptom id (AI) for Diagnose.
-3. **Romanian translation** (UI + data files) with the owner's review.
-4. M4 rest (price check, screenshots), M5 (paywall, onboarding, compare, dev build), M6 (share, Learn, polish).
+3. **Romanian translation** (UI first, then data files) with the owner's review: the next big chunk of work.
+4. RevenueCat + dev build (real purchases), analytics, store assets, eval light.

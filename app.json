@@ -53,7 +53,8 @@
           "cameraPermission": "Used Car Check uses the camera to scan VINs and photograph the car you're inspecting.",
           "microphonePermission": false
         }
-      ]
+      ],
+      "expo-sharing"
     ],
     "experiments": {
       "typedRoutes": true,
