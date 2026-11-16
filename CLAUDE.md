@@ -15,6 +15,34 @@
 
 ---
 
+## ⚠️ Scope change, 2026-11-16 (owner decision): worldwide + model database + Diagnose
+
+Read this before §0. Where it conflicts with older text below, **this section wins**.
+
+1. **Worldwide from v1.0.** The app is available in every App Store country. Everything that doesn't need
+   country data (add a car, model page, inspection, photos + AI, verdict, questions, script, Diagnose) works on any
+   car anywhere. Country data is added where a source exists ("deep" countries): **US** (NHTSA), **UK** (DVSA MOT
+   history by number plate), **Romania** (link to RAR's vehicle history). More countries after launch, by demand.
+   No paid VIN decoder: outside the US the user confirms make/model/year/fuel; VIN patterns we know (e.g. VW group
+   model codes) pre-fill them.
+2. **Our own model database** (`data/models.json`, §20): ~200 model generations popular in Europe and the US, each
+   with strengths, common problems by engine, and what to check before buying. Drafted by AI from general
+   knowledge, **reviewed by a mechanic before launch**, shown as "commonly reported", never as a diagnosis.
+3. **New "Diagnose" tab** (§20): look up an OBD-II code (meaning, main causes from most to least likely, DIY checks,
+   safe to drive?, typical cost), or describe a symptom and answer a few questions to get likely causes and simple
+   checks. Safety first: red lights, overheating, smoke, brake or steering problems → stop, see a mechanic.
+   Audience grows from buyers to **owners** too.
+4. **Rule §2.2 changes:** "known problems" may come from NHTSA **or from our reviewed data files**
+   (`models.json`, `obd_codes.json`, `symptoms.json`). The LLM still never invents problems, causes, codes or
+   prices at runtime. (It may map a user's free-text symptom to one of our symptom ids.)
+5. **Nothing is cut** (owner: "do everything at once"): price check, compare and share card stay in v1.0.
+   **New submission target: ~Dec 20, 2026**; if that slips past Dec 22 (Apple is slow Dec 23–27), early January.
+6. **Languages:** English + Romanian at launch (owner's market; the owner reviews Romanian). More after launch.
+   Units (km/mi) and currency follow the region; repair costs are shown only for regions with reviewed price data
+   (US now; Romania once reviewed); elsewhere severity only.
+
+---
+
 ## 0. Launch plan — live on iOS before Christmas (read first)
 
 **Goal:** iOS app **submitted by Dec 11, 2026, live by ~Dec 16**, stable through the holidays, and growing into the **US used-car peak in February–March** (tax-refund season). Android follows in January.
@@ -54,10 +82,10 @@ Used Car Check helps people **avoid buying a bad used car**. You add the car you
 ## 2. Non-negotiable rules (read before writing any code)
 
 1. **Never say a car is safe or good.** The best verdict is **"Looks good so far"**, always followed by: *"Get a professional pre-purchase inspection before you pay."* The app is a guide, not a mechanic. No "certified", no "guaranteed", no accuracy percentages.
-2. **Facts come from data, not the model.** Recalls, complaints, ratings and decoded specs come only from NHTSA responses. Checklist items, severities and repair costs come only from `data/*.json`. The LLM may describe what it sees in photos and extract text from screenshots — **it must never invent recalls, prices, repair costs, or known problems.**
+2. **Facts come from data, not the model.** Recalls, complaints, ratings and decoded specs come only from official sources (NHTSA, DVSA, …). Checklist items, severities, repair costs, model problems, OBD codes and symptom causes come only from `data/*.json` (reviewed). The LLM may describe what it sees in photos, extract text from screenshots and map free-text symptoms to our symptom ids — **it must never invent recalls, prices, repair costs, known problems, codes or causes.**
 3. **AI findings are suggestions the user confirms.** A photo finding pre-fills a checklist answer as "AI suggests: problem" — it only counts toward the verdict once the user confirms it.
 4. **Repair costs are ranges with a disclaimer:** "Typical US range at an independent shop. Your price will vary." Never a single number.
-5. **Safety first in instructions.** Never tell users to open a hot radiator cap, get under a car not on level ground, or drive unsafely. Test-drive steps say "only where safe and legal". Red warning lights (oil pressure, coolant temperature, brake) → "stop driving and don't buy without a mechanic's check".
+5. **Safety first in instructions.** Never tell users to open a hot radiator cap, get under a car not on level ground, or drive unsafely. Test-drive steps say "only where safe and legal". Red warning lights (oil pressure, coolant temperature, brake) → "stop driving and don't buy without a mechanic's check". In Diagnose: no DIY steps for brakes, steering, airbags, fuel leaks, high-voltage (hybrid/EV) parts or anything needing the car lifted; those always say "see a mechanic".
 6. **Never accuse a seller.** Listing flags are framed as "common warning sign — ask about it".
 7. **Privacy:** never put license plates, VINs, seller names or phone numbers on share cards or in analytics. Strip EXIF/GPS from photos before upload. Don't store user photos on the server.
 8. **No API keys in the app.** All LLM and NHTSA calls go through our backend functions (NHTSA is keyless, but proxying lets us cache and normalize).
@@ -155,7 +183,7 @@ app_meta      (key pk, value)                                                   
 
 ## 6. Screens & flows
 
-**Tab bar:** Garage · Check (center, prominent) · Learn · Settings.
+**Tab bar:** Garage · Diagnose · Check (center, prominent) · Learn · Settings.
 
 1. **Onboarding** (§11) → first car → vehicle report → paywall.
 2. **Add a car** (from "Check" tab)
@@ -443,4 +471,42 @@ No VINs, prices, free text, names or photos in analytics.
 ---
 
 ## 19. Later (not in v1)
-Paid vehicle-history integration (title/accident history via a licensed provider), OBD2 Bluetooth reader support (read codes + readiness monitors in-app), EU/UK version (DVSA MOT history API for the UK, local recall sources), PDF report export, share a car with a partner, Spanish localization (large US Spanish-speaking used-car market), dealer-mode for small lots.
+Paid vehicle-history integration (title/accident history via a licensed provider), OBD2 Bluetooth reader support (read codes + readiness monitors in-app), more deep countries beyond US/UK/Romania (local data sources), more languages, PDF report export, share a car with a partner, Spanish localization (large US Spanish-speaking used-car market), dealer-mode for small lots.
+
+---
+
+## 20. Model database & Diagnose (added 2026-11-16)
+
+### 20.1 Data files (drafted by AI, reviewed before launch; validated by tests like §5.1)
+- `data/models.json` — model **generations** (e.g. VW Golf Mk6 2008–2013). Fields: `id, make, model, generation,
+  years [from,to], markets[] (eu|us|uk|global), body[], engines[{id, name, fuel (gas|diesel|hybrid|ev), notes?}],
+  strengths[], problems[{id, title, engines[] ("all" or engine ids), years? [from,to], frequency
+  (common|occasional), severity (info|minor|major|critical), symptoms[], what_to_check[], complaint_group?,
+  repair_cost_id?}], buying_tips[], vin? {wmi[], model_codes[] (positions 7–8 for VW group), years?}`.
+- `data/obd_codes.json` — generic OBD-II codes (SAE J2012, P0/P2/C0/B0/U0). Fields: `code, title, system,
+  severity, drive (ok|caution|stop), causes[{text, likelihood (common|possible|rare), diy_check?,
+  repair_cost_id?}], notes?`. Manufacturer-specific codes (P1xxx…) → generic "manufacturer-specific, ask a
+  mechanic or look it up for your make".
+- `data/symptoms.json` — guided symptom flows: `id, title, category, urgency_hint, questions[{id, text,
+  options[{label, next? (question id), outcome? (outcome id)}]}], outcomes[{id, title, urgency (stop_now|soon|
+  monitor), causes[{text, likelihood, diy_check?, repair_cost_id?}], see_mechanic_if[]}]`.
+
+### 20.2 App
+- **Add a car, worldwide:** VIN (scan/type) → if NHTSA decodes it (US market) → full report as today; else detect
+  make (WMI) and, where `models.json` has VIN model codes, the model generation; the user confirms or picks
+  make → model generation → engine/fuel from `models.json` (or free entry if not listed).
+- **Model page** (inside the vehicle report, any country): strengths, common problems for the car's engine
+  ("commonly reported", frequency, what to check), buying tips. Problems with a `complaint_group` / matching
+  checklist items push those items first in the inspection ("Known problem area for this model").
+- **Diagnose tab:** (a) code lookup (search by code or words; recent codes); (b) symptom flow: pick a symptom or
+  describe it (AI maps the text to a symptom id when the backend exists; offline: pick from the list) → questions →
+  outcome with urgency banner, causes (most likely first), DIY checks, "see a mechanic if…". Explain that a
+  check-engine light needs a code reader (cheap OBD2 reader or any parts store/mechanic) to read the code.
+- **Region & units:** detected from the phone, changeable in Settings: units (km/mi), currency, which country data
+  sources to use.
+
+### 20.3 Milestone M-D (between M3 and M5)
+Schemas + tests → data in batches by make (models), codes by system, symptom flows → worldwide add-car + model
+page → Diagnose tab → Romanian translation. ✅ when: a Romanian VW Golf 6 VIN gives the Golf Mk6 page and a
+model-aware inspection; `P0301` shows causes; "car shakes at idle" leads to an outcome with DIY checks.
+
