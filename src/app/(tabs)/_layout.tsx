@@ -1,10 +1,12 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { Redirect } from 'expo-router';
 import { Tabs } from 'expo-router/js-tabs';
 import type { ComponentProps } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { useTheme } from '@/design/tokens';
 import { fonts } from '@/design/typography';
+import { getFlags } from '@/state/appFlags';
 
 type IconName = ComponentProps<typeof Ionicons>['name'];
 
@@ -30,6 +32,8 @@ function CheckIcon({ focused }: { focused: boolean }) {
 
 export default function TabLayout() {
   const t = useTheme();
+  // First launch: onboarding first (flags are loaded before the app renders).
+  if (!getFlags().onboardingDone) return <Redirect href="/onboarding" />;
   return (
     <Tabs
       screenOptions={{

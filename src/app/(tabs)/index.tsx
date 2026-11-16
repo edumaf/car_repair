@@ -1,36 +1,53 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
+import { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
-import { VERDICTS, type Verdict } from '@/core/types';
+import { money } from '@/core/region';
+import { VERDICTS, type CarStatus, type Verdict } from '@/core/types';
 import { POSSIBLE_SCAM_HEADLINE, VERDICT_HEADLINE } from '@/core/verdict/strings';
 import { carTitle, type CarRecord } from '@/db/carsRepository';
 import { AppText } from '@/design/components/AppText';
 import { Button } from '@/design/components/Button';
 import { Card } from '@/design/components/Card';
-import { usd } from '@/design/components/CostRangeBar';
+import { ChoiceChips } from '@/design/components/ChoiceChips';
 import { Screen } from '@/design/components/Screen';
 import { Tag } from '@/design/components/Tag';
 import { radius, space, useTheme, verdictColor } from '@/design/tokens';
 import { useCars } from '@/hooks/useCars';
+import { usePremium } from '@/hooks/usePremium';
 
-function CarCard({ car }: { car: CarRecord }) {
+function CarCard({
+  car,
+  selecting,
+  selected,
+  onSelect,
+}: {
+  car: CarRecord;
+  selecting?: boolean;
+  selected?: boolean;
+  onSelect?: () => void;
+}) {
   const t = useTheme();
   const recalls = car.report?.recalls?.length;
   const verdict = VERDICTS.includes(car.verdict as Verdict) ? (car.verdict as Verdict) : null;
   const scam = !!car.verdictJson && (JSON.parse(car.verdictJson) as { possibleScam?: boolean }).possibleScam === true;
   const verdictLabel = verdict ? (verdict === 'WALK_AWAY' && scam ? POSSIBLE_SCAM_HEADLINE : VERDICT_HEADLINE[verdict]) : null;
   const facts = [
-    car.askingPrice != null ? usd(car.askingPrice) : null,
-    car.mileage != null ? `${car.mileage.toLocaleString('en-US')} mi` : null,
+    car.askingPrice != null ? money(car.askingPrice) : null,
+    car.mileage != null ? `${car.mileage.toLocaleString('en-US')} ${car.mileageUnit}` : null,
     recalls != null ? `${recalls} recall${recalls === 1 ? '' : 's'}` : null,
   ].filter(Boolean);
   return (
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={`${carTitle(car)}${verdictLabel ? `, verdict ${verdictLabel}` : ''}`}
-      onPress={() => router.push({ pathname: '/car/[id]', params: { id: car.id } })}
-      style={({ pressed }) => [styles.card, { backgroundColor: t.surface, borderColor: t.border, opacity: pressed ? 0.85 : 1 }]}>
+      accessibilityState={selecting ? { checked: !!selected } : undefined}
+      onPress={() => (selecting ? onSelect?.() : router.push({ pathname: '/car/[id]', params: { id: car.id } }))}
+      style={({ pressed }) => [
+        styles.card,
+        { backgroundColor: t.surface, borderColor: selected ? t.brand : t.border, opacity: pressed ? 0.85 : 1 },
+      ]}>
       <View style={[styles.icon, { backgroundColor: t.tint.brand }]}>
         <Ionicons name="car-sport-outline" size={26} color={t.brand} />
       </View>
@@ -55,23 +72,85 @@ function CarCard({ car }: { car: CarRecord }) {
           {car.status !== 'considering' ? <Tag label={car.status === 'bought' ? 'Bought' : 'Passed'} color="slate" /> : null}
         </View>
       </View>
-      <Ionicons name="chevron-forward" size={18} color={t.faint} />
+      {selecting ? (
+        <Ionicons name={selected ? 'checkbox' : 'square-outline'} size={24} color={selected ? t.brand : t.faint} />
+      ) : (
+        <Ionicons name="chevron-forward" size={18} color={t.faint} />
+      )}
     </Pressable>
   );
 }
+
+const FILTERS = [
+  { value: 'all', label: 'All' },
+  { value: 'considering', label: 'Considering' },
+  { value: 'bought', label: 'Bought' },
+  { value: 'passed', label: 'Passed' },
+] as const;
 
 export default function GarageScreen() {
   const t = useTheme();
   const cars = useCars();
   const list = cars.data ?? [];
 
+  const premium = usePremium();
+  const [filter, setFilter] = useState<'all' | CarStatus>('all');
+  const [selecting, setSelecting] = useState(false);
+  const [selected, setSelected] = useState<string[]>([]);
+
   if (cars.isSuccess && list.length > 0) {
+    const shown = filter === 'all' ? list : list.filter((c) => c.status === filter);
+    const toggle = (id: string) => setSelected((s) => (s.includes(id) ? s.filter((x) => x !== id) : s.length >= 3 ? s : [...s, id]));
     return (
       <Screen overline="Your garage" title="Cars you’re checking">
-        {list.map((c) => (
-          <CarCard key={c.id} car={c} />
+        {list.length > 2 ? <ChoiceChips choices={FILTERS} value={filter} onChange={setFilter} /> : null}
+        {selecting ? (
+          <AppText variant="label" tone="muted">
+            Pick 2 or 3 cars to compare ({selected.length}/3).
+          </AppText>
+        ) : null}
+        {shown.map((c) => (
+          <CarCard key={c.id} car={c} selecting={selecting} selected={selected.includes(c.id)} onSelect={() => toggle(c.id)} />
         ))}
-        <Button label="Check another car" icon="add" kind="secondary" onPress={() => router.navigate('/check')} />
+        {shown.length === 0 ? (
+          <AppText tone="muted" align="center">
+            No cars here.
+          </AppText>
+        ) : null}
+        {list.length >= 2 ? (
+          selecting ? (
+            <View style={{ gap: space.sm }}>
+              <Button
+                label={`Compare ${selected.length} cars`}
+                icon="git-compare-outline"
+                disabled={selected.length < 2}
+                onPress={() => {
+                  router.push({ pathname: '/compare', params: { ids: selected.join(',') } });
+                  setSelecting(false);
+                  setSelected([]);
+                }}
+              />
+              <Button
+                label="Cancel"
+                kind="ghost"
+                onPress={() => {
+                  setSelecting(false);
+                  setSelected([]);
+                }}
+              />
+            </View>
+          ) : (
+            <Button
+              label={premium ? 'Compare cars' : 'Compare cars (Premium)'}
+              icon="git-compare-outline"
+              kind="secondary"
+              onPress={() =>
+                premium ? setSelecting(true) : router.push({ pathname: '/paywall', params: { placement: 'premium_feature' } })
+              }
+            />
+          )
+        ) : null}
+        {!selecting ? <Button label="Check another car" icon="add" kind="ghost" onPress={() => router.navigate('/check')} /> : null}
       </Screen>
     );
   }

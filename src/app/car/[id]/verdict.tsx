@@ -26,6 +26,7 @@ import { VerdictSignal } from '@/design/components/VerdictSignal';
 import { radius, space, useTheme } from '@/design/tokens';
 import { useUpdateCar } from '@/hooks/useCars';
 import { useInspection } from '@/hooks/useInspection';
+import { usePriceCheck } from '@/hooks/usePriceCheck';
 import { useRegion } from '@/hooks/useRegion';
 import { showRepairCosts } from '@/core/region';
 
@@ -52,6 +53,7 @@ export default function VerdictScreen() {
   const [tone, setTone] = useState<Tone>('friendly');
   const [price, setPrice] = useState('');
   const region = useRegion();
+  const priceResult = usePriceCheck(id).result;
   const costs = showRepairCosts(region);
 
   const car = inspection.car.data;
@@ -65,9 +67,9 @@ export default function VerdictScreen() {
       openRecallCount: car.report?.recalls?.length ?? 0,
       topComplaintGroups: inspection.topGroups,
       listingFlags: listingMatches.map((m) => m.flag),
-      pricePosition: 'unknown', // TODO(M4): price check with comparables
+      pricePosition: priceResult?.position ?? 'unknown',
     });
-  }, [car, inspection.entries, inspection.topGroups, answers, listingMatches]);
+  }, [car, inspection.entries, inspection.topGroups, answers, listingMatches, priceResult?.position]);
 
   // Save the verdict with the car (garage badge) and give a success/warning haptic when it changes (§12).
   const signature = result ? `${result.verdict}|${result.possibleScam}` : null;
@@ -102,7 +104,7 @@ export default function VerdictScreen() {
     problemItems: result.problemItems,
     recalls: car.report?.recalls ?? [],
   });
-  const offer = costs ? suggestedOffer(car.askingPrice, result.repairEstimate) : null;
+  const offer = costs ? suggestedOffer(car.askingPrice, result.repairEstimate, priceResult?.fairRange?.low ?? null) : null;
   const issueNames = result.repairs.map((r) => r.cost.name);
   const script = negotiationScript(tone, {
     issues: issueNames.length ? issueNames : result.problemItems.map((i) => i.title),

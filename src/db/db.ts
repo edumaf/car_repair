@@ -3,6 +3,7 @@ import { openDatabaseSync, type SQLiteDatabase } from 'expo-sqlite';
 
 import { setApiMode, type ApiMode } from '@/core/api/mode';
 import { setRegion, type Region } from '@/core/region';
+import { setFlags } from '@/state/appFlags';
 import { DATA_VERSION } from '@/core/data/seed';
 
 import { META, getMeta, setMeta } from './appMeta';
@@ -48,6 +49,20 @@ export async function restoreSettings(): Promise<void> {
   if (mode) setApiMode(mode as ApiMode);
   const region = await getMeta(db, META.region);
   if (region) setRegion(region as Region);
+  setFlags({
+    onboardingDone: (await getMeta(db, META.onboardingDone)) === '1',
+    firstPaywallShown: (await getMeta(db, META.firstPaywallShown)) === '1',
+    simulatePremium: __DEV__ && (await getMeta(db, META.simulatePremium)) === '1',
+  });
+}
+
+/** Saves a flag both in memory and in app_meta. */
+export async function saveFlag(key: 'onboardingDone' | 'firstPaywallShown' | 'simulatePremium', value: boolean): Promise<void> {
+  setFlags({ [key]: value });
+  const metaKey = { onboardingDone: META.onboardingDone, firstPaywallShown: META.firstPaywallShown, simulatePremium: META.simulatePremium }[
+    key
+  ];
+  await setMeta(getDb(), metaKey, value ? '1' : '0');
 }
 
 export async function saveRegion(region: Region): Promise<void> {
@@ -58,4 +73,12 @@ export async function saveRegion(region: Region): Promise<void> {
 export async function saveApiMode(mode: ApiMode): Promise<void> {
   setApiMode(mode);
   await setMeta(getDb(), META.apiMode, mode);
+}
+
+/** "Delete all my data" (CLAUDE.md §10): every car, answer, photo check, comparable and setting on this phone. */
+export async function wipeLocalData(): Promise<void> {
+  const db = getDb();
+  await db.execAsync('DELETE FROM photo_checks; DELETE FROM answers; DELETE FROM comparables; DELETE FROM cars; DELETE FROM app_meta;');
+  await setMeta(db, META.dataVersion, DATA_VERSION);
+  setFlags({ onboardingDone: false, firstPaywallShown: false, simulatePremium: false });
 }

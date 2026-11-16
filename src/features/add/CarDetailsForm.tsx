@@ -1,7 +1,7 @@
 // Optional details when adding a car: asking price, mileage (in the region's unit), seller type.
 import { View } from 'react-native';
 
-import { defaultMileageUnit } from '@/core/region';
+import { currencySymbol, defaultMileageUnit } from '@/core/region';
 import type { MileageUnit, SellerType } from '@/core/types';
 import { AppText } from '@/design/components/AppText';
 import { ChoiceChips } from '@/design/components/ChoiceChips';
@@ -46,7 +46,7 @@ export function CarDetailsForm({ value, onChange }: { value: CarDetails; onChang
       <AppText variant="heading">Optional details</AppText>
       <TextField
         label="Asking price"
-        prefix={region === 'us' ? '$' : undefined}
+        prefix={currencySymbol(region) || undefined}
         keyboardType="number-pad"
         value={value.price}
         onChangeText={(price) => onChange({ ...value, price })}

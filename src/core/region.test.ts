@@ -1,4 +1,4 @@
-import { defaultMileageUnit, historyLinks, regionFromLocale, showRepairCosts } from './region';
+import { defaultMileageUnit, historyLinks, money, regionFromLocale, showRepairCosts } from './region';
 
 describe('region', () => {
   it.each([
@@ -24,4 +24,10 @@ describe('region', () => {
     expect(historyLinks('ro')[0].url).toContain('rarom.ro');
     expect(historyLinks('us')).toEqual([]);
   });
+});
+
+it('formats prices in the region currency', () => {
+  expect(money(15900, 'us')).toBe('$15,900');
+  expect(money(8500, 'ro')).toBe('€8,500');
+  expect(money(8500, 'other')).toBe('8,500');
 });

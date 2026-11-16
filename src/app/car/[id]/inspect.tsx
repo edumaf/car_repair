@@ -22,7 +22,9 @@ import { ErrorState, LoadingState } from '@/design/components/States';
 import { SeverityTag, Tag } from '@/design/components/Tag';
 import { hairline, minTouch, radius, space, useTheme } from '@/design/tokens';
 import { type } from '@/design/typography';
+import { canRunPhotoCheck } from '@/core/limits';
 import { useInspection } from '@/hooks/useInspection';
+import { usePremium } from '@/hooks/usePremium';
 import { capturePhoto, PhotoPermissionError, type PhotoSource } from '@/media/photos';
 
 type Inspection = ReturnType<typeof useInspection>;
@@ -207,13 +209,18 @@ function ItemCard({
   const [noteOpen, setNoteOpen] = useState(!!record?.note);
   const [noteText, setNoteText] = useState(record?.note ?? '');
   const busy = inspection.photo.isPending && inspection.photo.variables?.itemId === item.id;
+  const premium = usePremium();
   const applicable = useMemo(() => new Set(inspection.entries.map((e) => e.item.id)), [inspection.entries]);
   // (The parent keys this card by item id, so note state starts fresh for every item.)
 
   const addPhoto = async (source: PhotoSource) => {
     try {
       const uri = await capturePhoto(source, item.id);
-      if (uri) inspection.photo.mutate({ itemId: item.id, uri, photoType: item.photo_check });
+      if (!uri) return;
+      // Free tier: 10 AI photo checks per free inspection; the photo is always saved.
+      const allowAi = canRunPhotoCheck(premium, inspection.photoChecks.data?.length ?? 0);
+      inspection.photo.mutate({ itemId: item.id, uri, photoType: allowAi ? item.photo_check : null });
+      if (item.photo_check && !allowAi) router.push({ pathname: '/paywall', params: { placement: 'photo_limit' } });
     } catch (e) {
       Alert.alert(
         e instanceof PhotoPermissionError ? 'Permission needed' : 'Couldn’t add the photo',

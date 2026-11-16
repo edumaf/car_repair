@@ -105,3 +105,14 @@ export function historyLinks(r: Region = region): { label: string; url: string; 
     ];
   return [];
 }
+
+/** Currency used for car prices in listings: Romanian listings are usually in euros. */
+export function currencySymbol(r: Region = region): string {
+  return { us: '$', uk: '£', ro: '€', eu: '€', other: '' }[r];
+}
+
+/** "€8,500" / "$15,900" / "8,500" (no symbol for "other"). */
+export function money(n: number, r: Region = region): string {
+  const sym = currencySymbol(r);
+  return `${sym}${Math.round(n).toLocaleString('en-US')}`;
+}

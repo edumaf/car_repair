@@ -2,14 +2,14 @@
 // Everything shown here comes from NHTSA responses stored with the car.
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router, Stack, useLocalSearchParams } from 'expo-router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Alert, Linking, Pressable, RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { vehicleClient } from '@/core/api/clients';
 import type { VehicleLookup } from '@/core/api/types';
 import { listingOverall, matchListingFlags } from '@/core/listing/matchListingFlags';
-import { historyLinks } from '@/core/region';
+import { historyLinks, money } from '@/core/region';
 import { complaintGroupLabel, recallComponentLabel } from '@/core/vehicle/labels';
 import type { ComplaintGroupStat, Recall, VehicleReport } from '@/core/vehicle/types';
 import { carTitle, type CarRecord } from '@/db/carsRepository';
@@ -22,9 +22,13 @@ import { Divider } from '@/design/components/Row';
 import { ErrorState, LoadingState } from '@/design/components/States';
 import { Tag } from '@/design/components/Tag';
 import { TextField } from '@/design/components/TextField';
-import { usd } from '@/design/components/CostRangeBar';
 import { space, useTheme, type SignalColor } from '@/design/tokens';
+import { canInspectFree } from '@/core/limits';
+import { META, getMeta, setMeta } from '@/db/appMeta';
+import { getDb, saveFlag } from '@/db/db';
 import { ModelCard } from '@/features/model/ModelCard';
+import { usePremium } from '@/hooks/usePremium';
+import { getFlags } from '@/state/appFlags';
 import { useCar, useDeleteCar, useUpdateCar } from '@/hooks/useCars';
 import { useRegion } from '@/hooks/useRegion';
 
@@ -182,7 +186,7 @@ function DetailsCard({ car }: { car: CarRecord }) {
     <View style={styles.details}>
       <AppText variant="label" tone="muted">
         {[
-          car.askingPrice != null ? `Asking ${usd(car.askingPrice)}` : 'No asking price',
+          car.askingPrice != null ? `Asking ${money(car.askingPrice)}` : 'No asking price',
           car.mileage != null ? `${car.mileage.toLocaleString('en-US')} ${car.mileageUnit}` : null,
           seller,
         ]
@@ -297,6 +301,18 @@ export default function CarReport() {
   const update = useUpdateCar(id);
   const remove = useDeleteCar();
   const [refreshing, setRefreshing] = useState(false);
+  const premium = usePremium();
+  const loaded = !!car.data;
+
+  // Paywall placement 1 (CLAUDE.md §9): once, after the first vehicle report. Dismissible.
+  useEffect(() => {
+    if (!loaded || premium || getFlags().firstPaywallShown) return;
+    const timer = setTimeout(() => {
+      saveFlag('firstPaywallShown', true);
+      router.push({ pathname: '/paywall', params: { placement: 'first_report' } });
+    }, 1200);
+    return () => clearTimeout(timer);
+  }, [loaded, premium]);
 
   if (car.isPending) return <LoadingState label="Opening…" />;
   if (!car.data) return <ErrorState title="Car not found" message="It may have been removed." />;
@@ -346,6 +362,16 @@ export default function CarReport() {
           vin={c.vin}
         />
         <DetailsCard car={c} />
+        <Button
+          label={premium ? 'Price check' : 'Price check (Premium)'}
+          icon="pricetag-outline"
+          kind="secondary"
+          onPress={() =>
+            premium
+              ? router.push({ pathname: '/car/[id]/price', params: { id: c.id } })
+              : router.push({ pathname: '/paywall', params: { placement: 'premium_feature' } })
+          }
+        />
         {c.verdict ? (
           <Button
             label="See the verdict"
@@ -382,7 +408,16 @@ export default function CarReport() {
         <Button
           label={c.verdict ? 'Continue the inspection' : 'Start the inspection'}
           icon="clipboard-outline"
-          onPress={() => router.push({ pathname: '/car/[id]/inspect', params: { id: c.id } })}
+          onPress={async () => {
+            // Free tier: one inspected car (lifetime); others need Premium (CLAUDE.md §9).
+            const freeId = await getMeta(getDb(), META.freeInspectionCarId);
+            if (!premium && !canInspectFree(freeId, c.id)) {
+              router.push({ pathname: '/paywall', params: { placement: 'second_inspection' } });
+              return;
+            }
+            if (!freeId && !premium) await setMeta(getDb(), META.freeInspectionCarId, c.id);
+            router.push({ pathname: '/car/[id]/inspect', params: { id: c.id } });
+          }}
         />
       </SafeAreaView>
     </View>

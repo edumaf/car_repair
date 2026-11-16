@@ -85,6 +85,8 @@ export default function RootLayout() {
         <StatusBar style={t.scheme === 'dark' ? 'light' : 'dark'} />
         <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: t.bg } }}>
           <Stack.Screen name="(tabs)" />
+          <Stack.Screen name="onboarding" options={{ gestureEnabled: false, animation: 'fade' }} />
+          <Stack.Screen name="paywall" options={{ presentation: 'modal' }} />
           <Stack.Screen name="dev/design" options={{ ...pushedHeader, title: 'Design preview' }} />
           <Stack.Screen name="add/scan" options={{ animation: 'slide_from_bottom', gestureEnabled: false }} />
           <Stack.Screen name="add/vin" options={{ ...pushedHeader, title: 'Add a car' }} />
@@ -96,6 +98,8 @@ export default function RootLayout() {
           <Stack.Screen name="car/[id]/index" options={{ ...pushedHeader, title: '' }} />
           <Stack.Screen name="car/[id]/inspect" options={{ ...pushedHeader, title: 'Inspection' }} />
           <Stack.Screen name="car/[id]/verdict" options={{ ...pushedHeader, title: 'Verdict' }} />
+          <Stack.Screen name="car/[id]/price" options={{ ...pushedHeader, title: 'Price check' }} />
+          <Stack.Screen name="compare" options={{ ...pushedHeader, title: 'Compare' }} />
         </Stack>
       </ThemeProvider>
     </QueryClientProvider>

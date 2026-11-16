@@ -1,7 +1,8 @@
 import Constants from 'expo-constants';
+import { useQueryClient } from '@tanstack/react-query';
 import { router } from 'expo-router';
-
 import { useEffect, useState } from 'react';
+import { Alert, Switch } from 'react-native';
 
 import { availableModes, getApiMode, onApiModeChange, type ApiMode } from '@/core/api/mode';
 import { CHECKLIST_ITEMS, DATA_VERSION, LISTING_FLAGS, REPAIR_COSTS } from '@/core/data/seed';
@@ -13,7 +14,11 @@ import { Screen } from '@/design/components/Screen';
 import { ChoiceChips } from '@/design/components/ChoiceChips';
 import { Tag } from '@/design/components/Tag';
 import { REGIONS } from '@/core/region';
-import { saveApiMode, saveRegion } from '@/db/db';
+import { saveApiMode, saveFlag, saveRegion, wipeLocalData } from '@/db/db';
+import { Button } from '@/design/components/Button';
+import { useTheme } from '@/design/tokens';
+import { usePremium } from '@/hooks/usePremium';
+import { deleteAllPhotos } from '@/media/photos';
 import { useRegion } from '@/hooks/useRegion';
 
 const MODE_LABEL: Record<ApiMode, string> = { mock: 'Sample cars (offline)', direct: 'Real NHTSA (dev)', live: 'Live backend' };
@@ -54,9 +59,75 @@ function RegionPicker() {
   );
 }
 
+function PremiumCard() {
+  const premium = usePremium();
+  return (
+    <Card>
+      <AppText variant="overline" tone="muted">
+        Premium
+      </AppText>
+      <Row
+        icon={premium ? 'checkmark-circle' : 'lock-closed-outline'}
+        title={premium ? 'Premium is active' : 'Free plan'}
+        subtitle={premium ? 'Unlimited inspections and photo checks' : '1 full inspection, 10 AI photo checks, unlimited reports'}
+        onPress={premium ? undefined : () => router.push({ pathname: '/paywall', params: { placement: 'premium_feature' } })}
+      />
+      <Divider />
+      <Row
+        icon="refresh"
+        title="Restore purchases"
+        onPress={() => Alert.alert('Nothing to restore yet', 'Purchases arrive with the test build.')}
+      />
+    </Card>
+  );
+}
+
+function DataCard() {
+  const qc = useQueryClient();
+  const confirm = () =>
+    Alert.alert('Delete all your data?', 'Every car, check, note and photo on this phone will be deleted. This can’t be undone.', [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Delete everything',
+        style: 'destructive',
+        onPress: async () => {
+          await wipeLocalData();
+          deleteAllPhotos();
+          qc.clear();
+          router.replace('/onboarding');
+        },
+      },
+    ]);
+  return (
+    <Card>
+      <AppText variant="overline" tone="muted">
+        Your data
+      </AppText>
+      <AppText variant="label" tone="muted">
+        Cars, checks, notes and photos are stored only on this phone.
+      </AppText>
+      <Button label="Delete all my data" kind="ghost" icon="trash-outline" onPress={confirm} />
+    </Card>
+  );
+}
+
+function SimulatePremium() {
+  const t = useTheme();
+  const premium = usePremium();
+  return (
+    <Row
+      icon="star-outline"
+      title="Simulate Premium"
+      subtitle="Test Premium features in Expo Go"
+      right={<Switch value={premium} onValueChange={(v) => saveFlag('simulatePremium', v)} trackColor={{ true: t.brand }} />}
+    />
+  );
+}
+
 export default function SettingsScreen() {
   return (
     <Screen overline="Settings" title="Settings">
+      <PremiumCard />
       <RegionPicker />
       <Card>
         <AppText variant="overline" tone="muted">
@@ -83,6 +154,14 @@ export default function SettingsScreen() {
           <Divider />
           <ApiModePicker />
           <Divider />
+          <SimulatePremium />
+          <Divider />
+          <Row
+            icon="refresh-circle-outline"
+            title="Show onboarding again"
+            onPress={() => saveFlag('onboardingDone', false).then(() => router.replace('/onboarding'))}
+          />
+          <Divider />
           <Row
             icon="albums-outline"
             title={`Seed data v${DATA_VERSION}`}
@@ -92,6 +171,7 @@ export default function SettingsScreen() {
         </Card>
       ) : null}
 
+      <DataCard />
       <AppText variant="caption" tone="faint" align="center">
         Used Car Check {Constants.expoConfig?.version ?? ''}
       </AppText>
