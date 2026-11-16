@@ -37,9 +37,19 @@ export function Row({ icon, title, subtitle, right, onPress, disabled }: RowProp
       {right ?? (onPress && !disabled ? <Ionicons name="chevron-forward" size={18} color={t.faint} /> : null)}
     </View>
   );
-  if (!onPress || disabled) return <View accessible accessibilityLabel={[title, subtitle].filter(Boolean).join('. ')}>{content}</View>;
+  if (!onPress || disabled)
+    return (
+      <View accessible accessibilityLabel={[title, subtitle].filter(Boolean).join('. ')}>
+        {content}
+      </View>
+    );
   return (
-    <Pressable accessibilityRole="button" accessibilityLabel={title} accessibilityHint={subtitle} onPress={onPress} style={({ pressed }) => pressed && { opacity: 0.7 }}>
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={title}
+      accessibilityHint={subtitle}
+      onPress={onPress}
+      style={({ pressed }) => pressed && { opacity: 0.7 }}>
       {content}
     </Pressable>
   );

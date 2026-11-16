@@ -19,7 +19,11 @@ const str = (v: unknown): string | null => {
  * "Strong HEV (Hybrid Electric Vehicle)", "Mild HEV (Hybrid Electric Vehicle)", "FCEV (Fuel Cell Electric Vehicle)".
  * Mild hybrids count as gas (a normal engine does the work); fuel-cell cars are closest to EVs.
  */
-export function derivePowertrain(fields: { fuelPrimary?: string | null; fuelSecondary?: string | null; electrification?: string | null }): Powertrain {
+export function derivePowertrain(fields: {
+  fuelPrimary?: string | null;
+  fuelSecondary?: string | null;
+  electrification?: string | null;
+}): Powertrain {
   const elec = (fields.electrification ?? '').toUpperCase();
   const fuel1 = (fields.fuelPrimary ?? '').toLowerCase();
   const fuel2 = (fields.fuelSecondary ?? '').toLowerCase();
@@ -36,6 +40,18 @@ export function displayMake(make: string): string {
   const up = make.toUpperCase();
   if (KEEP_UPPER.has(up)) return up;
   return make.toLowerCase().replace(/(^|[\s-])([a-z])/g, (_m, sep: string, ch: string) => sep + ch.toUpperCase());
+}
+
+/**
+ * NHTSA lists models in capitals ("CIVIC SI", "CR-V", "MODEL 3"). Title-case plain words longer than 3 letters;
+ * keep short words and anything with digits or hyphens as written: "Civic SI", "CR-V", "Model 3", "F-150".
+ */
+export function displayModel(model: string): string {
+  if (model !== model.toUpperCase()) return model; // already mixed case (vPIC decode)
+  return model
+    .split(/\s+/)
+    .map((w) => (/^[A-Z]{4,}$/.test(w) ? w[0] + w.slice(1).toLowerCase() : w))
+    .join(' ');
 }
 
 function engineDesc(r: Raw, powertrain: Powertrain): string | null {

@@ -17,6 +17,9 @@ export interface PriceCheckResult {
   stats: { min: number; median: number; max: number } | null;
 }
 
-export function priceCheck(_car: { askingPrice: number; mileage: number | null; year: number | null }, _comps: readonly Comparable[]): PriceCheckResult {
+export function priceCheck(
+  _car: { askingPrice: number; mileage: number | null; year: number | null },
+  _comps: readonly Comparable[],
+): PriceCheckResult {
   return notImplemented('priceCheck', 'M4');
 }

@@ -41,6 +41,10 @@ export interface QuotaStatus {
 
 export interface VehicleClient {
   getReport(lookup: VehicleLookup): Promise<VehicleReport>;
+  /** Makes with NHTSA records for a model year, as NHTSA writes them (e.g. "HONDA"). */
+  listMakes(year: number): Promise<string[]>;
+  /** Model names for a make/year, as NHTSA writes them (e.g. "CR-V"). */
+  listModels(year: number, make: string): Promise<string[]>;
 }
 export interface PhotoCheckClient {
   check(req: PhotoCheckRequest): Promise<PhotoCheckResult>;

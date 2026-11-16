@@ -37,7 +37,23 @@
           }
         }
       ],
-      "expo-sqlite"
+      "expo-sqlite",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Used Car Check uses the camera to scan VINs and photograph the car you're inspecting.",
+          "microphonePermission": false,
+          "recordAudioAndroid": false
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Used Car Check opens your photos so you can add listing screenshots and photos of the car.",
+          "cameraPermission": "Used Car Check uses the camera to scan VINs and photograph the car you're inspecting.",
+          "microphonePermission": false
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,

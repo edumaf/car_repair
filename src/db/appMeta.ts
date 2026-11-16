@@ -7,6 +7,8 @@ export const META = {
   onboardingAnswers: 'onboarding_answers',
   /** Dev-only: '1' = pretend the user has Premium (CLAUDE.md §9). */
   simulatePremium: 'dev_simulate_premium',
+  /** Dev-only: API mode picked in Settings (mock / direct / live). */
+  apiMode: 'dev_api_mode',
 } as const;
 
 export async function getMeta(db: SqlDb, key: string): Promise<string | null> {

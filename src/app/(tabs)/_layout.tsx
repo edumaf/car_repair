@@ -49,5 +49,14 @@ export default function TabLayout() {
 
 const styles = StyleSheet.create({
   slot: { width: 56, height: 24, alignItems: 'center' },
-  check: { position: 'absolute', bottom: -2, width: 56, height: 56, borderRadius: 28, alignItems: 'center', justifyContent: 'center', borderWidth: 4 },
+  check: {
+    position: 'absolute',
+    bottom: -2,
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 4,
+  },
 });

@@ -4,7 +4,14 @@ import { FIXTURE_CARS, FIXTURE_REPORTS, findFixture, mockPhotoCheckClient, mockV
 
 describe('mock fixtures', () => {
   it('cover the six CLAUDE.md §4 cars, one per required powertrain', () => {
-    expect(FIXTURE_CARS.map((c) => c.id).sort()).toEqual(['altima_2013', 'civic_2018', 'f150_2015', 'jetta_tdi_2012', 'model3_2019', 'prius_2017']);
+    expect(FIXTURE_CARS.map((c) => c.id).sort()).toEqual([
+      'altima_2013',
+      'civic_2018',
+      'f150_2015',
+      'jetta_tdi_2012',
+      'model3_2019',
+      'prius_2017',
+    ]);
     const pt = Object.fromEntries(FIXTURE_CARS.map((c) => [c.id, c.powertrain]));
     expect(pt).toMatchObject({ prius_2017: 'hybrid', model3_2019: 'ev', jetta_tdi_2012: 'diesel', civic_2018: 'gas' });
   });
@@ -46,8 +53,20 @@ describe('mockVehicleClient', () => {
 
 describe('mockPhotoCheckClient', () => {
   it('returns schema-shaped canned results', async () => {
-    const r = await mockPhotoCheckClient.check({ imageUri: 'file://x.jpg', photoType: 'dashboard_lights', car: { year: 2018, make: 'Honda', model: 'Civic', powertrain: 'gas' } });
+    const r = await mockPhotoCheckClient.check({
+      imageUri: 'file://x.jpg',
+      photoType: 'dashboard_lights',
+      car: { year: 2018, make: 'Honda', model: 'Civic', powertrain: 'gas' },
+    });
     expect(r.quality.ok).toBe(true);
     expect(r.lights).toContain('check_engine');
+  });
+});
+
+describe('mock lists', () => {
+  it('lists fixture makes and models by year', async () => {
+    expect(await mockVehicleClient.listMakes(2013)).toEqual(['NISSAN']);
+    expect(await mockVehicleClient.listModels(2019, 'Tesla')).toEqual(['MODEL 3']);
+    expect(await mockVehicleClient.listModels(2019, 'HONDA')).toEqual([]);
   });
 });

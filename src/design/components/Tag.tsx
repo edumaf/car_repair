@@ -36,6 +36,14 @@ export function SeverityTag({ severity }: { severity: Severity }) {
 }
 
 const styles = StyleSheet.create({
-  tag: { flexDirection: 'row', alignItems: 'center', gap: space.xs, alignSelf: 'flex-start', paddingHorizontal: space.sm, paddingVertical: 4, borderRadius: radius.pill },
+  tag: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: space.xs,
+    alignSelf: 'flex-start',
+    paddingHorizontal: space.sm,
+    paddingVertical: 4,
+    borderRadius: radius.pill,
+  },
   dot: { width: 7, height: 7, borderRadius: 4 },
 });

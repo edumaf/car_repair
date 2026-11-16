@@ -36,7 +36,11 @@ export function Button({ label, onPress, kind = 'primary', icon, loading, disabl
       }}
       style={({ pressed }) => [
         styles.base,
-        { backgroundColor: bg, borderColor: kind === 'secondary' ? t.borderStrong : 'transparent', opacity: inactive ? 0.5 : pressed ? 0.85 : 1 },
+        {
+          backgroundColor: bg,
+          borderColor: kind === 'secondary' ? t.borderStrong : 'transparent',
+          opacity: inactive ? 0.5 : pressed ? 0.85 : 1,
+        },
         pressed && { transform: [{ scale: 0.985 }] },
       ]}>
       <View style={styles.row}>

@@ -9,7 +9,7 @@ import { ScrollView, StyleSheet } from 'react-native';
 
 import { rawSeed } from '@/core/data/seed';
 import { validateSeed } from '@/core/data/seedSchema';
-import { initDatabase } from '@/db/db';
+import { initDatabase, restoreApiMode } from '@/db/db';
 import { AppText } from '@/design/components/AppText';
 import { space, useTheme } from '@/design/tokens';
 import { fontAssets, fonts } from '@/design/typography';
@@ -30,6 +30,7 @@ export default function RootLayout() {
 
   useEffect(() => {
     initDatabase()
+      .then(restoreApiMode)
       .then(() => setDbReady(true))
       .catch((e: unknown) => setDbError(e instanceof Error ? e.message : String(e)));
   }, []);
@@ -52,7 +53,9 @@ export default function RootLayout() {
     return (
       <ScrollView style={{ backgroundColor: t.bg }} contentContainerStyle={styles.error}>
         <AppText variant="title">Something went wrong</AppText>
-        <AppText tone="muted">{dbError ? 'We couldn’t open the app’s storage. Please restart the app.' : 'The bundled data files have errors (dev check):'}</AppText>
+        <AppText tone="muted">
+          {dbError ? 'We couldn’t open the app’s storage. Please restart the app.' : 'The bundled data files have errors (dev check):'}
+        </AppText>
         {problems.map((p) => (
           <AppText key={p} variant="caption" tone="stop">
             {p}
@@ -75,11 +78,21 @@ export default function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider
-        value={{ ...navTheme, colors: { ...navTheme.colors, background: t.bg, card: t.surface, primary: t.brand, text: t.ink, border: t.border } }}>
+        value={{
+          ...navTheme,
+          colors: { ...navTheme.colors, background: t.bg, card: t.surface, primary: t.brand, text: t.ink, border: t.border },
+        }}>
         <StatusBar style={t.scheme === 'dark' ? 'light' : 'dark'} />
         <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: t.bg } }}>
           <Stack.Screen name="(tabs)" />
           <Stack.Screen name="dev/design" options={{ ...pushedHeader, title: 'Design preview' }} />
+          <Stack.Screen name="add/scan" options={{ animation: 'slide_from_bottom', gestureEnabled: false }} />
+          <Stack.Screen name="add/vin" options={{ ...pushedHeader, title: 'Add a car' }} />
+          <Stack.Screen name="add/ymm" options={{ ...pushedHeader, title: 'Add a car' }} />
+          <Stack.Screen name="add/confirm" options={{ ...pushedHeader, title: 'Add a car' }} />
+          <Stack.Screen name="car/[id]/index" options={{ ...pushedHeader, title: '' }} />
+          <Stack.Screen name="car/[id]/inspect" options={{ ...pushedHeader, title: 'Inspection' }} />
+          <Stack.Screen name="car/[id]/verdict" options={{ ...pushedHeader, title: 'Verdict' }} />
         </Stack>
       </ThemeProvider>
     </QueryClientProvider>

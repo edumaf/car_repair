@@ -42,19 +42,30 @@ Install packages with `npx expo install <package>` (never plain `npm install <pa
 ```
 data/                 Seed data: checklist, repair costs, listing red flags (source of truth for facts)
 src/app/              Screens (expo-router; every file is a route)
-src/core/             Pure TypeScript, no React Native: VIN, NHTSA normalization, verdict, API clients + mocks
-src/db/               SQLite schema, migrations, app_meta
+src/core/             Pure TypeScript, no React Native: VIN, NHTSA lookup, checklist, verdict, listing flags, API clients + mocks
+src/db/               SQLite schema, migrations, repositories (cars, answers, photo checks)
+src/hooks/            React Query hooks over the database and API
+src/media/            Photo capture: resize to 1280 px, re-encode (drops EXIF), store on the phone
 src/design/           Design tokens, fonts and shared components
 scripts/              Developer scripts (mock fixture builder)
 ```
 
 Kept from the Expo template: `src/app` as the routes folder and the `@/` import alias for `src/`.
 
-## Mock mode
+## Data sources (API modes)
 
-Until the backend exists (Milestone 1), the app uses mock API clients (`EXPO_PUBLIC_USE_MOCKS=1`, also automatic when
-no Supabase URL is set). The vehicle reports in `src/core/api/mocks/fixtures/` are **real NHTSA data** for six sample
-cars; their VINs are synthetic (real model prefix + made-up serial):
+Until the Supabase backend exists, the app picks its data source like this (Settings → Developer → Data source):
+
+| Mode | What it does | When |
+|---|---|---|
+| **Real NHTSA (dev)** | The phone calls NHTSA directly (free, no key). Any real VIN works. | Default in dev builds without a backend. **Never in release builds.** |
+| **Sample cars (offline)** | Six recorded sample cars, no internet needed. | Tests, offline work. |
+| **Live backend** | Everything through our Supabase functions (CLAUDE.md §2.8). | Once `EXPO_PUBLIC_SUPABASE_URL` / `_ANON_KEY` are set. |
+
+AI photo checks need the backend, so until then they return **labelled sample results** in every mode.
+
+The sample vehicle reports in `src/core/api/mocks/fixtures/` are **real NHTSA data**; their VINs are synthetic
+(real model prefix + made-up serial), and they also work in "Real NHTSA" mode:
 
 | Car | Powertrain | Sample VIN |
 |---|---|---|

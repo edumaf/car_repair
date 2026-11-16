@@ -75,7 +75,17 @@ describe('normalizeDecode', () => {
   });
 
   it('handles EVs, missing fields and error codes', () => {
-    const d = normalizeDecode({ ModelYear: '', Make: 'TESLA', ElectrificationLevel: 'BEV (Battery Electric Vehicle)', DriveType: '4x2', ErrorCode: '1,6', Series: 'Long Range' }, null);
+    const d = normalizeDecode(
+      {
+        ModelYear: '',
+        Make: 'TESLA',
+        ElectrificationLevel: 'BEV (Battery Electric Vehicle)',
+        DriveType: '4x2',
+        ErrorCode: '1,6',
+        Series: 'Long Range',
+      },
+      null,
+    );
     expect(d.year).toBeNull();
     expect(d.powertrain).toBe('ev');
     expect(d.engineDesc).toBe('Electric motor');
@@ -113,7 +123,10 @@ describe('recalls', () => {
 describe('complaints', () => {
   it('maps component strings to groups by substring', () => {
     expect(groupsForComponents('POWER TRAIN', COMPLAINT_KEYWORD_GROUPS)).toEqual(['transmission']);
-    expect(groupsForComponents('ENGINE AND ENGINE COOLING,ELECTRICAL SYSTEM', COMPLAINT_KEYWORD_GROUPS).sort()).toEqual(['electrical', 'engine']);
+    expect(groupsForComponents('ENGINE AND ENGINE COOLING,ELECTRICAL SYSTEM', COMPLAINT_KEYWORD_GROUPS).sort()).toEqual([
+      'electrical',
+      'engine',
+    ]);
     expect(groupsForComponents('UNKNOWN OR OTHER', COMPLAINT_KEYWORD_GROUPS)).toEqual([]);
     expect(groupsForComponents('', COMPLAINT_KEYWORD_GROUPS)).toEqual([]);
   });
@@ -147,7 +160,10 @@ describe('complaints', () => {
 
 describe('normalizeSafety', () => {
   it('reads star ratings and treats "Not Rated" as null', () => {
-    expect(normalizeSafety({ OverallRating: '5', VehicleDescription: '2018 Honda Civic 4 DR FWD' })).toEqual({ overall: 5, vehicleDescription: '2018 Honda Civic 4 DR FWD' });
+    expect(normalizeSafety({ OverallRating: '5', VehicleDescription: '2018 Honda Civic 4 DR FWD' })).toEqual({
+      overall: 5,
+      vehicleDescription: '2018 Honda Civic 4 DR FWD',
+    });
     expect(normalizeSafety({ OverallRating: 'Not Rated', VehicleDescription: 'x' })?.overall).toBeNull();
     expect(normalizeSafety(undefined)).toBeNull();
   });

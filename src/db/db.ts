@@ -1,6 +1,7 @@
 // Opens the local SQLite database, runs migrations and records the seed data version.
 import { openDatabaseSync, type SQLiteDatabase } from 'expo-sqlite';
 
+import { setApiMode, type ApiMode } from '@/core/api/mode';
 import { DATA_VERSION } from '@/core/data/seed';
 
 import { META, getMeta, setMeta } from './appMeta';
@@ -37,4 +38,15 @@ export async function initDatabase(): Promise<void> {
   const db = getDb();
   await migrate(db);
   if ((await getMeta(db, META.dataVersion)) !== DATA_VERSION) await setMeta(db, META.dataVersion, DATA_VERSION);
+}
+
+/** Dev settings: re-applies the API mode picked in Settings (ignored if that mode isn't available). */
+export async function restoreApiMode(): Promise<void> {
+  const saved = await getMeta(getDb(), META.apiMode);
+  if (saved) setApiMode(saved as ApiMode);
+}
+
+export async function saveApiMode(mode: ApiMode): Promise<void> {
+  setApiMode(mode);
+  await setMeta(getDb(), META.apiMode, mode);
 }
