@@ -9,7 +9,7 @@ import { ScrollView, StyleSheet } from 'react-native';
 
 import { rawSeed } from '@/core/data/seed';
 import { validateSeed } from '@/core/data/seedSchema';
-import { initDatabase, restoreApiMode } from '@/db/db';
+import { initDatabase, restoreSettings } from '@/db/db';
 import { AppText } from '@/design/components/AppText';
 import { space, useTheme } from '@/design/tokens';
 import { fontAssets, fonts } from '@/design/typography';
@@ -30,7 +30,7 @@ export default function RootLayout() {
 
   useEffect(() => {
     initDatabase()
-      .then(restoreApiMode)
+      .then(restoreSettings)
       .then(() => setDbReady(true))
       .catch((e: unknown) => setDbError(e instanceof Error ? e.message : String(e)));
   }, []);
@@ -90,6 +90,9 @@ export default function RootLayout() {
           <Stack.Screen name="add/vin" options={{ ...pushedHeader, title: 'Add a car' }} />
           <Stack.Screen name="add/ymm" options={{ ...pushedHeader, title: 'Add a car' }} />
           <Stack.Screen name="add/confirm" options={{ ...pushedHeader, title: 'Add a car' }} />
+          <Stack.Screen name="add/model" options={{ ...pushedHeader, title: 'Add a car' }} />
+          <Stack.Screen name="diagnose/code/[code]" options={{ ...pushedHeader, title: 'Error code' }} />
+          <Stack.Screen name="diagnose/symptom/[id]" options={{ ...pushedHeader, title: 'Diagnose' }} />
           <Stack.Screen name="car/[id]/index" options={{ ...pushedHeader, title: '' }} />
           <Stack.Screen name="car/[id]/inspect" options={{ ...pushedHeader, title: 'Inspection' }} />
           <Stack.Screen name="car/[id]/verdict" options={{ ...pushedHeader, title: 'Verdict' }} />

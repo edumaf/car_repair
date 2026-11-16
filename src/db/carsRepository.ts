@@ -1,5 +1,5 @@
 // Cars the user is checking (the `cars` table). The vehicle report is stored with the car so it works offline.
-import type { Car, CarStatus, Powertrain, SellerType } from '@/core/types';
+import type { Car, CarStatus, MileageUnit, Powertrain, SellerType } from '@/core/types';
 import type { VehicleReport } from '@/core/vehicle/types';
 
 import { newId } from './ids';
@@ -20,6 +20,7 @@ interface CarRow {
   drive: string | null;
   asking_price: number | null;
   mileage: number | null;
+  mileage_unit: MileageUnit;
   seller_type: SellerType;
   listing_text: string | null;
   nickname: string | null;
@@ -27,6 +28,8 @@ interface CarRow {
   vehicle_report_json: string | null;
   verdict: string | null;
   verdict_json: string | null;
+  model_id: string | null;
+  engine_id: string | null;
 }
 
 export interface CarRecord extends Car {
@@ -50,10 +53,13 @@ const fromRow = (r: CarRow): CarRecord => ({
   drive: r.drive,
   askingPrice: r.asking_price,
   mileage: r.mileage,
+  mileageUnit: r.mileage_unit ?? 'mi',
   sellerType: r.seller_type,
   listingText: r.listing_text,
   nickname: r.nickname,
   status: r.status,
+  modelId: r.model_id,
+  engineId: r.engine_id,
   report: r.vehicle_report_json ? (JSON.parse(r.vehicle_report_json) as VehicleReport) : null,
   verdict: r.verdict,
   verdictJson: r.verdict_json,
@@ -66,6 +72,9 @@ export interface NewCar {
   sellerType?: SellerType;
   /** Overrides the decoded powertrain (e.g. the user picked "hybrid" for a year/make/model car). */
   powertrain?: Powertrain;
+  mileageUnit?: MileageUnit;
+  modelId?: string | null;
+  engineId?: string | null;
 }
 
 export async function createCar(db: SqlDb, input: NewCar, now = Date.now()): Promise<string> {
@@ -73,8 +82,8 @@ export async function createCar(db: SqlDb, input: NewCar, now = Date.now()): Pro
   const d = input.report.decode;
   await db.runAsync(
     `INSERT INTO cars (id, created_at, updated_at, vin, year, make, model, trim, body, powertrain, engine_desc, drive,
-       asking_price, mileage, seller_type, status, vehicle_report_json)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'considering', ?)`,
+       asking_price, mileage, seller_type, status, vehicle_report_json, mileage_unit, model_id, engine_id)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'considering', ?, ?, ?, ?)`,
     id,
     now,
     now,
@@ -91,6 +100,9 @@ export async function createCar(db: SqlDb, input: NewCar, now = Date.now()): Pro
     input.mileage ?? null,
     input.sellerType ?? 'unknown',
     JSON.stringify(input.report),
+    input.mileageUnit ?? 'mi',
+    input.modelId ?? null,
+    input.engineId ?? null,
   );
   return id;
 }
@@ -118,6 +130,9 @@ export interface CarPatch {
   report?: VehicleReport;
   verdict?: string | null;
   verdictJson?: string | null;
+  modelId?: string | null;
+  engineId?: string | null;
+  mileageUnit?: MileageUnit;
 }
 
 const COLUMNS: Record<keyof CarPatch, string> = {
@@ -131,6 +146,9 @@ const COLUMNS: Record<keyof CarPatch, string> = {
   report: 'vehicle_report_json',
   verdict: 'verdict',
   verdictJson: 'verdict_json',
+  modelId: 'model_id',
+  engineId: 'engine_id',
+  mileageUnit: 'mileage_unit',
 };
 
 export async function updateCar(db: SqlDb, id: string, patch: CarPatch, now = Date.now()): Promise<void> {

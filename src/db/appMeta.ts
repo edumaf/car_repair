@@ -9,6 +9,8 @@ export const META = {
   simulatePremium: 'dev_simulate_premium',
   /** Dev-only: API mode picked in Settings (mock / direct / live). */
   apiMode: 'dev_api_mode',
+  /** Region picked in Settings (us / uk / ro / eu / other); otherwise detected from the phone. */
+  region: 'region',
 } as const;
 
 export async function getMeta(db: SqlDb, key: string): Promise<string | null> {

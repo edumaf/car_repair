@@ -3,12 +3,13 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router, Stack, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
-import { Alert, Pressable, RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
+import { Alert, Linking, Pressable, RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { vehicleClient } from '@/core/api/clients';
 import type { VehicleLookup } from '@/core/api/types';
 import { listingOverall, matchListingFlags } from '@/core/listing/matchListingFlags';
+import { historyLinks } from '@/core/region';
 import { complaintGroupLabel, recallComponentLabel } from '@/core/vehicle/labels';
 import type { ComplaintGroupStat, Recall, VehicleReport } from '@/core/vehicle/types';
 import { carTitle, type CarRecord } from '@/db/carsRepository';
@@ -23,7 +24,9 @@ import { Tag } from '@/design/components/Tag';
 import { TextField } from '@/design/components/TextField';
 import { usd } from '@/design/components/CostRangeBar';
 import { space, useTheme, type SignalColor } from '@/design/tokens';
+import { ModelCard } from '@/features/model/ModelCard';
 import { useCar, useDeleteCar, useUpdateCar } from '@/hooks/useCars';
+import { useRegion } from '@/hooks/useRegion';
 
 function RecallItem({ recall }: { recall: Recall }) {
   const [open, setOpen] = useState(false);
@@ -180,7 +183,7 @@ function DetailsCard({ car }: { car: CarRecord }) {
       <AppText variant="label" tone="muted">
         {[
           car.askingPrice != null ? `Asking ${usd(car.askingPrice)}` : 'No asking price',
-          car.mileage != null ? `${car.mileage.toLocaleString('en-US')} mi` : null,
+          car.mileage != null ? `${car.mileage.toLocaleString('en-US')} ${car.mileageUnit}` : null,
           seller,
         ]
           .filter(Boolean)
@@ -262,6 +265,31 @@ function ListingCard({ car, onSave }: { car: CarRecord; onSave: (text: string | 
   );
 }
 
+/** For cars outside NHTSA's coverage: say so plainly and link to official history checks for the region. */
+function OtherMarketCard() {
+  const region = useRegion();
+  const links = historyLinks(region);
+  return (
+    <Card>
+      <AppText variant="overline" tone="muted">
+        Recalls and owner complaints
+      </AppText>
+      <AppText variant="label">
+        Official recall and complaint data isn’t available for cars sold outside the US yet. The model’s known problems above come from our
+        own database.
+      </AppText>
+      {links.map((l) => (
+        <View key={l.url} style={{ gap: space.xs }}>
+          <Button label={l.label} kind="secondary" icon="open-outline" onPress={() => Linking.openURL(l.url)} />
+          <AppText variant="caption" tone="muted">
+            {l.note}
+          </AppText>
+        </View>
+      ))}
+    </Card>
+  );
+}
+
 export default function CarReport() {
   const t = useTheme();
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -276,6 +304,7 @@ export default function CarReport() {
   const report = c.report;
 
   const refresh = async () => {
+    if (report?.coverage === 'none') return; // nothing to fetch for cars outside NHTSA's coverage
     setRefreshing(true);
     try {
       const lookup: VehicleLookup = c.vin
@@ -325,10 +354,17 @@ export default function CarReport() {
             onPress={() => router.push({ pathname: '/car/[id]/verdict', params: { id: c.id } })}
           />
         ) : null}
-        {report ? (
+        {report && report.coverage === 'none' ? (
+          <>
+            <ModelCard car={c} />
+            <OtherMarketCard />
+            <ListingCard car={c} onSave={(text) => update.mutate({ listingText: text })} />
+          </>
+        ) : report ? (
           <>
             <RecallsCard recalls={report.recalls} />
             <ProblemAreasCard report={report} />
+            <ModelCard car={c} />
             <SafetyCard report={report} />
             <ListingCard car={c} onSave={(text) => update.mutate({ listingText: text })} />
             <AppText variant="caption" tone="muted">

@@ -20,7 +20,12 @@ export default function CheckScreen() {
         <Divider />
         <Row icon="keypad-outline" title="Type the VIN" subtitle="17 letters and numbers" onPress={() => router.push('/add/vin')} />
         <Divider />
-        <Row icon="list-outline" title="No VIN yet?" subtitle="Pick year, make and model" onPress={() => router.push('/add/ymm')} />
+        <Row
+          icon="list-outline"
+          title="Pick make and model"
+          subtitle="No VIN yet? Works for cars from any country"
+          onPress={() => router.push('/add/model')}
+        />
         <Divider />
         <Row
           icon="camera-outline"
@@ -28,6 +33,14 @@ export default function CheckScreen() {
           subtitle="We read the 17 characters for you"
           right={<Tag label="Soon" color="slate" />}
           disabled
+        />
+      </Card>
+      <Card>
+        <Row
+          icon="flag-outline"
+          title="US car not in our list?"
+          subtitle="Search every US model in NHTSA’s list"
+          onPress={() => router.push('/add/ymm')}
         />
       </Card>
       <AppText variant="caption" tone="muted">

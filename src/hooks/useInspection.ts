@@ -5,6 +5,8 @@ import { useMemo } from 'react';
 import { photoCheckClient } from '@/core/api/clients';
 import { aiIsSample } from '@/core/api/mode';
 import { buildChecklist, flattenChecklist } from '@/core/checklist/buildChecklist';
+import { getModel } from '@/core/data/knowledge';
+import { modelComplaintGroups, problemsFor } from '@/core/models/matchModels';
 import { sanitizePhotoResult } from '@/core/photoCheck/findings';
 import type { PhotoCheckType, Answer } from '@/core/types';
 import { topComplaintGroups } from '@/core/vehicle/normalize';
@@ -35,10 +37,18 @@ export function useInspection(carId: string) {
   const answers = useQuery({ queryKey: inspectionKeys.answers(carId), queryFn: () => getAnswers(getDb(), carId) });
   const photoChecks = useQuery({ queryKey: inspectionKeys.photoChecks(carId), queryFn: () => listPhotoChecks(getDb(), carId) });
 
-  const sections = useMemo(
-    () => (car.data ? buildChecklist({ powertrain: car.data.powertrain }, topComplaintGroups(car.data.report?.complaints ?? null)) : []),
-    [car.data],
+  // Known problem areas: NHTSA's top complaint groups plus the ones our model database lists for this engine/year.
+  const model = car.data?.modelId ? getModel(car.data.modelId) : undefined;
+  const topGroups = useMemo(() => {
+    const c = car.data;
+    if (!c) return [];
+    return [...new Set([...topComplaintGroups(c.report?.complaints ?? null), ...modelComplaintGroups(model, c.engineId, c.year)])];
+  }, [car.data, model]);
+  const modelProblems = useMemo(
+    () => (model && car.data ? problemsFor(model, car.data.engineId, car.data.year).relevant : []),
+    [model, car.data],
   );
+  const sections = useMemo(() => (car.data ? buildChecklist({ powertrain: car.data.powertrain }, topGroups) : []), [car.data, topGroups]);
   const entries = useMemo(() => flattenChecklist(sections), [sections]);
 
   const invalidate = () => {
@@ -102,5 +112,19 @@ export function useInspection(carId: string) {
     onSuccess: invalidate,
   });
 
-  return { car, answers, photoChecks, sections, entries, answer, note, photo, removePhoto: removePhotoM, decide };
+  return {
+    car,
+    model,
+    modelProblems,
+    topGroups,
+    answers,
+    photoChecks,
+    sections,
+    entries,
+    answer,
+    note,
+    photo,
+    removePhoto: removePhotoM,
+    decide,
+  };
 }

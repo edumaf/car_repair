@@ -9,7 +9,6 @@ import { Alert, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleShee
 
 import { matchListingFlags } from '@/core/listing/matchListingFlags';
 import { complaintGroupLabel } from '@/core/vehicle/labels';
-import { topComplaintGroups } from '@/core/vehicle/normalize';
 import { negotiationScript, sellerQuestions, suggestedOffer, type Tone } from '@/core/verdict/negotiation';
 import { REPAIR_COST_DISCLAIMER, SELF_CHECK_DISCLAIMER } from '@/core/verdict/strings';
 import { computeVerdict } from '@/core/verdict/verdict';
@@ -27,6 +26,8 @@ import { VerdictSignal } from '@/design/components/VerdictSignal';
 import { radius, space, useTheme } from '@/design/tokens';
 import { useUpdateCar } from '@/hooks/useCars';
 import { useInspection } from '@/hooks/useInspection';
+import { useRegion } from '@/hooks/useRegion';
+import { showRepairCosts } from '@/core/region';
 
 const TONES = [
   { value: 'friendly', label: 'Friendly' },
@@ -50,6 +51,8 @@ export default function VerdictScreen() {
   const update = useUpdateCar(id);
   const [tone, setTone] = useState<Tone>('friendly');
   const [price, setPrice] = useState('');
+  const region = useRegion();
+  const costs = showRepairCosts(region);
 
   const car = inspection.car.data;
   const answers = useMemo(() => confirmedAnswers(inspection.answers.data ?? {}), [inspection.answers.data]);
@@ -60,11 +63,11 @@ export default function VerdictScreen() {
       items: inspection.entries.map((e) => e.item),
       answers,
       openRecallCount: car.report?.recalls?.length ?? 0,
-      topComplaintGroups: topComplaintGroups(car.report?.complaints ?? null),
+      topComplaintGroups: inspection.topGroups,
       listingFlags: listingMatches.map((m) => m.flag),
       pricePosition: 'unknown', // TODO(M4): price check with comparables
     });
-  }, [car, inspection.entries, answers, listingMatches]);
+  }, [car, inspection.entries, inspection.topGroups, answers, listingMatches]);
 
   // Save the verdict with the car (garage badge) and give a success/warning haptic when it changes (§12).
   const signature = result ? `${result.verdict}|${result.possibleScam}` : null;
@@ -99,11 +102,11 @@ export default function VerdictScreen() {
     problemItems: result.problemItems,
     recalls: car.report?.recalls ?? [],
   });
-  const offer = suggestedOffer(car.askingPrice, result.repairEstimate);
+  const offer = costs ? suggestedOffer(car.askingPrice, result.repairEstimate) : null;
   const issueNames = result.repairs.map((r) => r.cost.name);
   const script = negotiationScript(tone, {
     issues: issueNames.length ? issueNames : result.problemItems.map((i) => i.title),
-    estimate: result.repairEstimate,
+    estimate: costs ? result.repairEstimate : null,
     offer,
   });
   const checked = Math.round(result.coverage * inspection.entries.length);
@@ -139,7 +142,7 @@ export default function VerdictScreen() {
           ) : null}
         </Card>
 
-        {result.repairEstimate ? (
+        {result.repairEstimate && costs ? (
           <Card>
             <AppText variant="overline" tone="muted">
               Estimated repairs
@@ -185,7 +188,7 @@ export default function VerdictScreen() {
               Negotiation script
             </AppText>
             <ChoiceChips choices={TONES} value={tone} onChange={setTone} />
-            {car.askingPrice == null ? (
+            {costs && car.askingPrice == null ? (
               <View style={{ gap: space.sm }}>
                 <TextField
                   label="Asking price (for a suggested offer)"
@@ -204,8 +207,8 @@ export default function VerdictScreen() {
               </View>
             ) : offer != null ? (
               <AppText variant="label">
-                Suggested offer: <AppText variant="bodyStrong">{usd(offer)}</AppText> (asking {usd(car.askingPrice)} minus the middle of the
-                repair range)
+                Suggested offer: <AppText variant="bodyStrong">{usd(offer)}</AppText> (asking {usd(car.askingPrice ?? 0)} minus the middle
+                of the repair range)
               </AppText>
             ) : null}
             <View style={[styles.script, { backgroundColor: t.sunken }]}>

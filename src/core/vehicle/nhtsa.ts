@@ -211,6 +211,7 @@ export async function getVehicleReport(
     recalls: recalls.status === 'fulfilled' ? recalls.value : null,
     complaints: complaints.status === 'fulfilled' ? complaints.value : null,
     safety: safety.status === 'fulfilled' ? safety.value : null,
+    coverage: 'nhtsa',
     fetchedAt: now(),
   };
 }

@@ -2,6 +2,7 @@
 import { openDatabaseSync, type SQLiteDatabase } from 'expo-sqlite';
 
 import { setApiMode, type ApiMode } from '@/core/api/mode';
+import { setRegion, type Region } from '@/core/region';
 import { DATA_VERSION } from '@/core/data/seed';
 
 import { META, getMeta, setMeta } from './appMeta';
@@ -40,10 +41,18 @@ export async function initDatabase(): Promise<void> {
   if ((await getMeta(db, META.dataVersion)) !== DATA_VERSION) await setMeta(db, META.dataVersion, DATA_VERSION);
 }
 
-/** Dev settings: re-applies the API mode picked in Settings (ignored if that mode isn't available). */
-export async function restoreApiMode(): Promise<void> {
-  const saved = await getMeta(getDb(), META.apiMode);
-  if (saved) setApiMode(saved as ApiMode);
+/** Re-applies settings saved in app_meta: region, and (dev) the API mode. */
+export async function restoreSettings(): Promise<void> {
+  const db = getDb();
+  const mode = await getMeta(db, META.apiMode);
+  if (mode) setApiMode(mode as ApiMode);
+  const region = await getMeta(db, META.region);
+  if (region) setRegion(region as Region);
+}
+
+export async function saveRegion(region: Region): Promise<void> {
+  setRegion(region);
+  await setMeta(getDb(), META.region, region);
 }
 
 export async function saveApiMode(mode: ApiMode): Promise<void> {

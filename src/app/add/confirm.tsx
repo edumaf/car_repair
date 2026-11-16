@@ -1,28 +1,22 @@
 // Looks the car up (VIN or year/make/model), shows what we found, collects optional details, saves it.
 import { useQuery } from '@tanstack/react-query';
 import { router, useLocalSearchParams } from 'expo-router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, View } from 'react-native';
 
 import { vehicleClient } from '@/core/api/clients';
 import { ApiError, type VehicleLookup } from '@/core/api/types';
-import type { Powertrain, SellerType } from '@/core/types';
+import { enginesForPowertrain, findModelsByName } from '@/core/models/matchModels';
+import type { Powertrain } from '@/core/types';
 import { carTitle } from '@/db/carsRepository';
 import { AppText } from '@/design/components/AppText';
 import { Button } from '@/design/components/Button';
 import { Card } from '@/design/components/Card';
 import { CarHeader } from '@/design/components/CarHeader';
-import { ChoiceChips } from '@/design/components/ChoiceChips';
 import { ErrorState, LoadingState } from '@/design/components/States';
-import { TextField, parseNumber } from '@/design/components/TextField';
 import { space, useTheme } from '@/design/tokens';
+import { CarDetailsForm, EMPTY_DETAILS, useDetailsValues } from '@/features/add/CarDetailsForm';
 import { useCars, useCreateCar } from '@/hooks/useCars';
-
-const SELLER_CHOICES = [
-  { value: 'private', label: 'Private seller' },
-  { value: 'dealer', label: 'Dealer' },
-  { value: 'unknown', label: 'Not sure' },
-] as const;
 
 export default function ConfirmCar() {
   const t = useTheme();
@@ -41,9 +35,14 @@ export default function ConfirmCar() {
   });
   const cars = useCars();
   const create = useCreateCar();
-  const [price, setPrice] = useState('');
-  const [mileage, setMileage] = useState('');
-  const [seller, setSeller] = useState<SellerType>('unknown');
+  const [details, setDetails] = useState(EMPTY_DETAILS);
+  const values = useDetailsValues(details);
+  const notFound = report.isError && report.error instanceof ApiError && report.error.code === 'not_found';
+
+  // A VIN NHTSA doesn't know is usually a car built for another market: continue with our model list.
+  useEffect(() => {
+    if (notFound && p.vin) router.replace({ pathname: '/add/model', params: { vin: p.vin } });
+  }, [notFound, p.vin]);
 
   if (!lookup) return <ErrorState title="Nothing to look up" message="Go back and enter a VIN or pick a car." />;
   if (report.isPending) return <LoadingState label="Looking up the car with NHTSA…" />;
@@ -82,13 +81,18 @@ export default function ConfirmCar() {
     router.push({ pathname: '/car/[id]', params: { id } });
   };
 
+  // Link to our model database when exactly one generation fits; the engine only if the fuel narrows it to one.
+  const matches = findModelsByName(d.make, d.model, d.year);
+  const matched = matches.length === 1 ? matches[0] : null;
+  const engines = matched ? enginesForPowertrain(matched, powertrain) : [];
+
   const save = async () => {
     const id = await create.mutateAsync({
       report: r,
       powertrain,
-      askingPrice: parseNumber(price),
-      mileage: parseNumber(mileage),
-      sellerType: seller,
+      modelId: matched?.id ?? null,
+      engineId: engines.length === 1 ? engines[0].id : null,
+      ...values,
     });
     openCar(id);
   };
@@ -127,10 +131,7 @@ export default function ConfirmCar() {
           </Card>
         ) : null}
 
-        <AppText variant="heading">Optional details</AppText>
-        <TextField label="Asking price" prefix="$" keyboardType="number-pad" value={price} onChangeText={setPrice} placeholder="15,900" />
-        <TextField label="Mileage" suffix="mi" keyboardType="number-pad" value={mileage} onChangeText={setMileage} placeholder="62,000" />
-        <ChoiceChips label="Who’s selling?" choices={SELLER_CHOICES} value={seller} onChange={setSeller} />
+        <CarDetailsForm value={details} onChange={setDetails} />
 
         <Button label="Save and see the report" icon="arrow-forward" loading={create.isPending} onPress={save} />
         <AppText variant="caption" tone="muted" align="center">

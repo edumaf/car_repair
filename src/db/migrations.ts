@@ -79,4 +79,10 @@ export const MIGRATIONS: readonly string[] = [
   DROP TABLE answers;
   ALTER TABLE answers_v2 RENAME TO answers;
   `,
+  // 3: link a car to our model database (CLAUDE.md §20) and remember the mileage unit.
+  `
+  ALTER TABLE cars ADD COLUMN model_id TEXT;
+  ALTER TABLE cars ADD COLUMN engine_id TEXT;
+  ALTER TABLE cars ADD COLUMN mileage_unit TEXT NOT NULL DEFAULT 'mi';
+  `,
 ];

@@ -40,6 +40,7 @@ export default function TabLayout() {
         tabBarLabelStyle: { fontFamily: fonts.sansMedium, fontSize: 11 },
       }}>
       <Tabs.Screen name="index" options={{ title: 'Garage', tabBarIcon: icon('car-sport', 'car-sport-outline') }} />
+      <Tabs.Screen name="diagnose" options={{ title: 'Diagnose', tabBarIcon: icon('pulse', 'pulse-outline') }} />
       <Tabs.Screen name="check" options={{ title: 'Check', tabBarIcon: CheckIcon, tabBarAccessibilityLabel: 'Check a car' }} />
       <Tabs.Screen name="learn" options={{ title: 'Learn', tabBarIcon: icon('book', 'book-outline') }} />
       <Tabs.Screen name="settings" options={{ title: 'Settings', tabBarIcon: icon('settings', 'settings-outline') }} />

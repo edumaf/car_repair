@@ -12,7 +12,9 @@ import { Divider, Row } from '@/design/components/Row';
 import { Screen } from '@/design/components/Screen';
 import { ChoiceChips } from '@/design/components/ChoiceChips';
 import { Tag } from '@/design/components/Tag';
-import { saveApiMode } from '@/db/db';
+import { REGIONS } from '@/core/region';
+import { saveApiMode, saveRegion } from '@/db/db';
+import { useRegion } from '@/hooks/useRegion';
 
 const MODE_LABEL: Record<ApiMode, string> = { mock: 'Sample cars (offline)', direct: 'Real NHTSA (dev)', live: 'Live backend' };
 const MODE_HELP: Record<ApiMode, string> = {
@@ -40,9 +42,22 @@ function ApiModePicker() {
 }
 
 // Settings (CLAUDE.md §6.10). Subscription, restore and delete-my-data arrive in Milestones 5–6.
+function RegionPicker() {
+  const region = useRegion();
+  return (
+    <Card>
+      <ChoiceChips label="Your region" choices={REGIONS} value={region} onChange={(r) => saveRegion(r)} />
+      <AppText variant="caption" tone="muted">
+        Sets km or miles, which official history checks we link to, and whether US repair prices are shown.
+      </AppText>
+    </Card>
+  );
+}
+
 export default function SettingsScreen() {
   return (
     <Screen overline="Settings" title="Settings">
+      <RegionPicker />
       <Card>
         <AppText variant="overline" tone="muted">
           Important

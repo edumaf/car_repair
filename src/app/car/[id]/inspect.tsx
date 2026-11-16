@@ -259,6 +259,29 @@ function ItemCard({
         </View>
       ))}
 
+      {(() => {
+        const notes = item.complaint_group
+          ? inspection.modelProblems.filter((p) => p.complaint_group === item.complaint_group).slice(0, 2)
+          : [];
+        return notes.length ? (
+          <View style={[styles.modelNotes, { backgroundColor: t.tint.brand }]}>
+            <AppText variant="overline" tone="brand">
+              Known for this model
+            </AppText>
+            {notes.map((p) => (
+              <View key={p.id} style={{ gap: 2 }}>
+                <AppText variant="bodyStrong">{p.title}</AppText>
+                {p.what_to_check.slice(0, 2).map((c, i) => (
+                  <AppText key={i} variant="label">
+                    ✓ {c}
+                  </AppText>
+                ))}
+              </View>
+            ))}
+          </View>
+        ) : null;
+      })()}
+
       {item.section === 'test_drive' ? (
         <AppText variant="label" tone="muted">
           Only drive where it’s safe and legal, with the seller’s OK. If a red warning light comes on, stop and don’t buy without a
@@ -476,6 +499,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   results: { gap: space.sm },
+  modelNotes: { borderRadius: radius.md, padding: space.md, gap: space.sm },
   note: { minHeight: 80, borderWidth: 1, borderRadius: radius.md, padding: space.md, textAlignVertical: 'top' },
   addNote: { flexDirection: 'row', alignItems: 'center', gap: space.sm, minHeight: minTouch },
   bottom: { borderTopWidth: hairline, paddingHorizontal: space.lg, paddingTop: space.md, gap: space.sm },
