@@ -116,4 +116,7 @@ export const mockQuotaClient: QuotaClient = {
     await latency();
     return { premium: false, passExpiresAt: null, freeInspectionUsed: false, photoChecksLeft: 10 };
   },
+  async deleteServerData() {
+    await latency();
+  },
 };

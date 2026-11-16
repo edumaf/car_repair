@@ -22,6 +22,7 @@ import { ErrorState, LoadingState } from '@/design/components/States';
 import { SeverityTag, Tag } from '@/design/components/Tag';
 import { hairline, minTouch, radius, space, useTheme } from '@/design/tokens';
 import { type } from '@/design/typography';
+import { ApiError } from '@/core/api/types';
 import { canRunPhotoCheck } from '@/core/limits';
 import { useInspection } from '@/hooks/useInspection';
 import { usePremium } from '@/hooks/usePremium';
@@ -219,7 +220,16 @@ function ItemCard({
       if (!uri) return;
       // Free tier: 10 AI photo checks per free inspection; the photo is always saved.
       const allowAi = canRunPhotoCheck(premium, inspection.photoChecks.data?.length ?? 0);
-      inspection.photo.mutate({ itemId: item.id, uri, photoType: allowAi ? item.photo_check : null });
+      inspection.photo.mutate(
+        { itemId: item.id, uri, photoType: allowAi ? item.photo_check : null },
+        {
+          // The server is the source of truth for free checks once the backend is live.
+          onError: (e) => {
+            if (e instanceof ApiError && e.code === 'quota_exceeded')
+              router.push({ pathname: '/paywall', params: { placement: 'photo_limit' } });
+          },
+        },
+      );
       if (item.photo_check && !allowAi) router.push({ pathname: '/paywall', params: { placement: 'photo_limit' } });
     } catch (e) {
       Alert.alert(
@@ -339,7 +349,9 @@ function ItemCard({
       ) : null}
       {inspection.photo.isError && inspection.photo.variables?.itemId === item.id ? (
         <AppText variant="caption" tone="stop">
-          Photo saved, but the AI check failed: {(inspection.photo.error as Error).message}
+          {inspection.photo.error instanceof ApiError && inspection.photo.error.code === 'quota_exceeded'
+            ? 'Photo saved. You’ve used your free AI photo checks.'
+            : `Photo saved, but the AI check failed: ${(inspection.photo.error as Error).message}`}
         </AppText>
       ) : null}
       <PhotoResults checks={checks} inspection={inspection} applicable={applicable} carVin={inspection.car.data?.vin ?? null} />

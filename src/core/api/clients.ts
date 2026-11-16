@@ -2,21 +2,8 @@
 import { directVehicleClient } from './directClients';
 import { getApiMode } from './mode';
 import { mockListingClient, mockPhotoCheckClient, mockQuotaClient, mockVehicleClient } from './mocks/mockClients';
-import { ApiError, type ListingClient, type PhotoCheckClient, type QuotaClient, type VehicleClient } from './types';
-
-const notYet = (what: string) => async (): Promise<never> => {
-  throw new ApiError('not_configured', `${what} needs the backend, which isn't set up yet.`);
-};
-
-// TODO(backend): real Supabase clients for /vehicle, /photo-check, /listing-check and /quota.
-const liveVehicleClient: VehicleClient = {
-  getReport: notYet('Vehicle reports'),
-  listMakes: notYet('Make lists'),
-  listModels: notYet('Model lists'),
-};
-const livePhotoCheckClient: PhotoCheckClient = { check: notYet('Photo checks') };
-const liveListingClient: ListingClient = { extractListing: notYet('Listing screenshots'), readVin: notYet('VIN photos') };
-const liveQuotaClient: QuotaClient = { getStatus: notYet('Quota') };
+import { liveListingClient, livePhotoCheckClient, liveQuotaClient, liveVehicleClient } from './liveClients';
+import type { ListingClient, PhotoCheckClient, QuotaClient, VehicleClient } from './types';
 
 const pickVehicle = (): VehicleClient => ({ mock: mockVehicleClient, direct: directVehicleClient, live: liveVehicleClient })[getApiMode()];
 // Without a backend there is no AI: mock and direct modes both return labelled sample results.
@@ -32,4 +19,7 @@ export const listingClient: ListingClient = {
   extractListing: (u) => (live() ? liveListingClient : mockListingClient).extractListing(u),
   readVin: (u) => (live() ? liveListingClient : mockListingClient).readVin(u),
 };
-export const quotaClient: QuotaClient = { getStatus: () => (live() ? liveQuotaClient : mockQuotaClient).getStatus() };
+export const quotaClient: QuotaClient = {
+  getStatus: () => (live() ? liveQuotaClient : mockQuotaClient).getStatus(),
+  deleteServerData: () => (live() ? liveQuotaClient : mockQuotaClient).deleteServerData(),
+};

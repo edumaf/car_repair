@@ -75,3 +75,24 @@ The sample vehicle reports in `src/core/api/mocks/fixtures/` are **real NHTSA da
 | 2017 Toyota Prius | hybrid | `JTDKBRFU3H3900001` |
 | 2019 Tesla Model 3 | EV | `5YJ3E1EA5KF900001` |
 | 2012 Volkswagen Jetta TDI | diesel | `3VW3L7AJ4CM900001` |
+
+## Backend (Supabase)
+
+Code lives in `supabase/`: one migration (`migrations/`) and four Edge Functions (`functions/`):
+`vehicle` (NHTSA, cached 7 days), `photo-check` and `listing-check` (vision AI), `quota` (free limits, Premium
+state, server data deletion). The functions share the app's pure-TS NHTSA and photo code through
+`supabase/functions/_shared/core/`, which is **generated**: run `npm run sync-functions` after changing
+`src/core/vehicle/*` or `src/core/photoCheck/types.ts` (a Jest test fails if you forget).
+
+Deploy once the Supabase project exists (Supabase CLI, from this folder):
+
+1. `supabase login` then `supabase link --project-ref <your project ref>`
+2. `supabase db push` (creates the tables and counters)
+3. Dashboard → Authentication → Sign In / Providers → turn on **Anonymous sign-ins**
+4. Secrets (Dashboard → Edge Functions → Secrets, never in the app or in git):
+   `ANTHROPIC_API_KEY` (or `GEMINI_API_KEY` + `VISION_PROVIDER=gemini`), later `REVENUECAT_SECRET_KEY`;
+   optional `PREMIUM_TEST_USER_IDS` (comma-separated user ids treated as Premium on test phones)
+5. `supabase functions deploy vehicle photo-check listing-check quota`
+6. In `.env.local`: `EXPO_PUBLIC_SUPABASE_URL` and `EXPO_PUBLIC_SUPABASE_ANON_KEY` (both public), restart Expo.
+
+Function tests: `npm run test:functions` (needs Deno).

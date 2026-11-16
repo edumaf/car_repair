@@ -2,7 +2,15 @@ import type { PhotoCheckRequest, PhotoCheckResult } from '../photoCheck/types';
 import type { Powertrain } from '../types';
 import type { VehicleReport } from '../vehicle/types';
 
-export type ApiErrorCode = 'network' | 'timeout' | 'not_found' | 'quota_exceeded' | 'invalid_response' | 'not_configured' | 'server';
+export type ApiErrorCode =
+  | 'network'
+  | 'timeout'
+  | 'not_found'
+  | 'quota_exceeded'
+  | 'daily_limit'
+  | 'invalid_response'
+  | 'not_configured'
+  | 'server';
 
 export class ApiError extends Error {
   constructor(
@@ -55,4 +63,6 @@ export interface ListingClient {
 }
 export interface QuotaClient {
   getStatus(): Promise<QuotaStatus>;
+  /** Deletes the server-side usage rows and the anonymous account ("Delete all my data"). */
+  deleteServerData(): Promise<void>;
 }

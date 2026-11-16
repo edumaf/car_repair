@@ -4,7 +4,9 @@ import { router } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { Alert, Switch } from 'react-native';
 
+import { quotaClient } from '@/core/api/clients';
 import { availableModes, getApiMode, onApiModeChange, type ApiMode } from '@/core/api/mode';
+import { signOutLocal } from '@/core/api/supabase';
 import { CHECKLIST_ITEMS, DATA_VERSION, LISTING_FLAGS, REPAIR_COSTS } from '@/core/data/seed';
 import { SELF_CHECK_DISCLAIMER } from '@/core/verdict/strings';
 import { AppText } from '@/design/components/AppText';
@@ -91,20 +93,40 @@ function DataCard() {
         text: 'Delete everything',
         style: 'destructive',
         onPress: async () => {
-          await wipeLocalData();
-          deleteAllPhotos();
-          qc.clear();
-          router.replace('/onboarding');
+          // Server first (usage counters + the anonymous account), so the session still exists to prove who we are.
+          if (getApiMode() === 'live') {
+            try {
+              await quotaClient.deleteServerData();
+            } catch {
+              Alert.alert(
+                'Couldn’t reach our server',
+                'Your data on this phone can still be deleted. Try again later to delete the server copy too.',
+                [
+                  { text: 'Cancel', style: 'cancel' },
+                  { text: 'Delete on this phone', style: 'destructive', onPress: wipeLocal },
+                ],
+              );
+              return;
+            }
+          }
+          await wipeLocal();
         },
       },
     ]);
+  const wipeLocal = async () => {
+    await signOutLocal();
+    await wipeLocalData();
+    deleteAllPhotos();
+    qc.clear();
+    router.replace('/onboarding');
+  };
   return (
     <Card>
       <AppText variant="overline" tone="muted">
         Your data
       </AppText>
       <AppText variant="label" tone="muted">
-        Cars, checks, notes and photos are stored only on this phone.
+        Cars, checks, notes and photos are stored only on this phone. Photos sent for an AI check aren’t kept on our server.
       </AppText>
       <Button label="Delete all my data" kind="ghost" icon="trash-outline" onPress={confirm} />
     </Card>

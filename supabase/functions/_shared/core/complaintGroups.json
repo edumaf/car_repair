@@ -1,0 +1,63 @@
+{
+  "engine": [
+    "ENGINE",
+    "ENGINE AND ENGINE COOLING",
+    "ENGINE COOLING"
+  ],
+  "transmission": [
+    "POWER TRAIN",
+    "TRANSMISSION"
+  ],
+  "brakes": [
+    "SERVICE BRAKES",
+    "PARKING BRAKE",
+    "BRAKES"
+  ],
+  "steering": [
+    "STEERING"
+  ],
+  "suspension": [
+    "SUSPENSION"
+  ],
+  "electrical": [
+    "ELECTRICAL SYSTEM",
+    "ELECTRICAL"
+  ],
+  "airbags": [
+    "AIR BAGS",
+    "AIRBAG"
+  ],
+  "structure": [
+    "STRUCTURE",
+    "LATCHES/LOCKS/LINKAGES"
+  ],
+  "fuel": [
+    "FUEL SYSTEM",
+    "FUEL/PROPULSION SYSTEM"
+  ],
+  "tires_wheels": [
+    "TIRES",
+    "WHEELS"
+  ],
+  "climate": [
+    "EQUIPMENT",
+    "HEATER",
+    "AIR CONDITIONER"
+  ],
+  "lighting_visibility": [
+    "EXTERIOR LIGHTING",
+    "VISIBILITY",
+    "WIPER"
+  ],
+  "hybrid_ev": [
+    "HYBRID PROPULSION SYSTEM",
+    "ELECTRIC PROPULSION",
+    "HIGH VOLTAGE"
+  ],
+  "driver_assist": [
+    "FORWARD COLLISION AVOIDANCE",
+    "LANE DEPARTURE",
+    "BACK OVER PREVENTION",
+    "VEHICLE SPEED CONTROL"
+  ]
+}
