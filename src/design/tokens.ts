@@ -5,7 +5,11 @@ import { useColorScheme } from 'react-native';
 import type { Severity, Verdict } from '@/core/types';
 
 const withAlpha = (hex: string, alpha: number) =>
-  hex + Math.round(alpha * 255).toString(16).padStart(2, '0').toUpperCase();
+  hex +
+  Math.round(alpha * 255)
+    .toString(16)
+    .padStart(2, '0')
+    .toUpperCase();
 
 const base = {
   brand: '#1F6FEB',

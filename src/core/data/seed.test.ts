@@ -1,7 +1,7 @@
 import { CHECKLIST_ITEMS, DATA_VERSION, LISTING_FLAGS, REPAIR_COSTS, SECTIONS, rawSeed } from './seed';
 import { validateSeed } from './seedSchema';
 
-const clone = <T,>(x: T): T => JSON.parse(JSON.stringify(x));
+const clone = <T>(x: T): T => JSON.parse(JSON.stringify(x));
 
 describe('bundled seed data', () => {
   it('is valid, including cross-file references', () => {

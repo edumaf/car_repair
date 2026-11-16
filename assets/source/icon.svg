@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2F7BF5"/>
+      <stop offset="1" stop-color="#1449B8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+  <!-- car, front view -->
+  <g fill="#FFFFFF">
+    <!-- roof + windshield frame -->
+    <path d="M330 300 Q345 262 385 262 H639 Q679 262 694 300 L742 440 H282 Z"/>
+    <!-- body -->
+    <rect x="220" y="420" width="584" height="230" rx="70"/>
+    <!-- mirrors -->
+    <rect x="186" y="430" width="70" height="42" rx="21"/>
+    <rect x="768" y="430" width="70" height="42" rx="21"/>
+    <!-- wheels -->
+    <rect x="262" y="620" width="120" height="120" rx="34"/>
+    <rect x="642" y="620" width="120" height="120" rx="34"/>
+  </g>
+  <!-- windshield -->
+  <path d="M368 312 Q376 296 398 296 H626 Q648 296 656 312 L690 412 H334 Z" fill="#1D5FD6"/>
+  <!-- headlights -->
+  <circle cx="318" cy="520" r="42" fill="#1D5FD6"/>
+  <circle cx="706" cy="520" r="42" fill="#1D5FD6"/>
+  <!-- grille -->
+  <rect x="420" y="540" width="184" height="30" rx="15" fill="#1D5FD6"/>
+  <!-- check badge -->
+  <circle cx="742" cy="738" r="150" fill="#16A34A" stroke="#FFFFFF" stroke-width="28"/>
+  <path d="M672 740 L725 793 L820 690" fill="none" stroke="#FFFFFF" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

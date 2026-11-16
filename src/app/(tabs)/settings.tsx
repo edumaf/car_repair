@@ -1,27 +1,182 @@
 import Constants from 'expo-constants';
+import { useQueryClient } from '@tanstack/react-query';
 import { router } from 'expo-router';
+import { useEffect, useState } from 'react';
+import { Alert, Switch } from 'react-native';
 
-import { USE_MOCKS } from '@/core/api/config';
+import { quotaClient } from '@/core/api/clients';
+import { availableModes, getApiMode, onApiModeChange, type ApiMode } from '@/core/api/mode';
+import { signOutLocal } from '@/core/api/supabase';
 import { CHECKLIST_ITEMS, DATA_VERSION, LISTING_FLAGS, REPAIR_COSTS } from '@/core/data/seed';
 import { SELF_CHECK_DISCLAIMER } from '@/core/verdict/strings';
 import { AppText } from '@/design/components/AppText';
 import { Card } from '@/design/components/Card';
 import { Divider, Row } from '@/design/components/Row';
 import { Screen } from '@/design/components/Screen';
+import { ChoiceChips } from '@/design/components/ChoiceChips';
 import { Tag } from '@/design/components/Tag';
+import { REGIONS } from '@/core/region';
+import { saveApiMode, saveFlag, saveLang, saveRegion, wipeLocalData } from '@/db/db';
+import { LANG_NAMES, LANGS } from '@/core/i18n/i18n';
+import { useLang } from '@/hooks/useLang';
+import { Button } from '@/design/components/Button';
+import { useTheme } from '@/design/tokens';
+import { usePremium } from '@/hooks/usePremium';
+import { deleteAllPhotos } from '@/media/photos';
+import { useRegion } from '@/hooks/useRegion';
 
-// Settings (CLAUDE.md §6.10). Subscription, restore and delete-my-data arrive in Milestones 5–6.
+const MODE_LABEL: Record<ApiMode, string> = { mock: 'Sample cars (offline)', direct: 'Real NHTSA (dev)', live: 'Live backend' };
+const MODE_HELP: Record<ApiMode, string> = {
+  mock: 'Only the 6 sample cars work. No internet needed.',
+  direct: 'Any real VIN works. The phone asks NHTSA directly (dev builds only). AI photo checks show sample results.',
+  live: 'Everything goes through our backend.',
+};
+
+function ApiModePicker() {
+  const [mode, setMode] = useState(getApiMode());
+  useEffect(() => onApiModeChange(setMode), []);
+  return (
+    <>
+      <ChoiceChips
+        label="Data source"
+        choices={availableModes().map((m) => ({ value: m, label: MODE_LABEL[m] }))}
+        value={mode}
+        onChange={(m) => saveApiMode(m)}
+      />
+      <AppText variant="caption" tone="muted">
+        {MODE_HELP[mode]}
+      </AppText>
+    </>
+  );
+}
+
+function LanguagePicker() {
+  const lang = useLang();
+  return (
+    <ChoiceChips
+      label="Language"
+      choices={LANGS.map((l) => ({ value: l, label: LANG_NAMES[l] }))}
+      value={lang}
+      onChange={(l) => {
+        saveLang(l);
+        // The screens are redrawn in the new language; come back here.
+        setTimeout(() => router.navigate('/settings'), 0);
+      }}
+    />
+  );
+}
+
+function RegionPicker() {
+  const region = useRegion();
+  return (
+    <Card>
+      <LanguagePicker />
+      <ChoiceChips label="Your region" choices={REGIONS} value={region} onChange={(r) => saveRegion(r)} />
+      <AppText variant="caption" tone="muted">
+        Sets km or miles, which official history checks we link to, and whether US repair prices are shown.
+      </AppText>
+    </Card>
+  );
+}
+
+function PremiumCard() {
+  const premium = usePremium();
+  return (
+    <Card>
+      <AppText variant="overline" tone="muted">
+        Premium
+      </AppText>
+      <Row
+        icon={premium ? 'checkmark-circle' : 'lock-closed-outline'}
+        title={premium ? 'Premium is active' : 'Free plan'}
+        subtitle={premium ? 'Unlimited inspections and photo checks' : '1 full inspection, 10 AI photo checks, unlimited reports'}
+        onPress={premium ? undefined : () => router.push({ pathname: '/paywall', params: { placement: 'premium_feature' } })}
+      />
+      <Divider />
+      <Row
+        icon="refresh"
+        title="Restore purchases"
+        onPress={() => Alert.alert('Nothing to restore yet', 'Purchases arrive with the test build.')}
+      />
+    </Card>
+  );
+}
+
+function DataCard() {
+  const qc = useQueryClient();
+  const confirm = () =>
+    Alert.alert('Delete all your data?', 'Every car, check, note and photo on this phone will be deleted. This can’t be undone.', [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Delete everything',
+        style: 'destructive',
+        onPress: async () => {
+          // Server first (usage counters + the anonymous account), so the session still exists to prove who we are.
+          if (getApiMode() === 'live') {
+            try {
+              await quotaClient.deleteServerData();
+            } catch {
+              Alert.alert(
+                'Couldn’t reach our server',
+                'Your data on this phone can still be deleted. Try again later to delete the server copy too.',
+                [
+                  { text: 'Cancel', style: 'cancel' },
+                  { text: 'Delete on this phone', style: 'destructive', onPress: wipeLocal },
+                ],
+              );
+              return;
+            }
+          }
+          await wipeLocal();
+        },
+      },
+    ]);
+  const wipeLocal = async () => {
+    await signOutLocal();
+    await wipeLocalData();
+    deleteAllPhotos();
+    qc.clear();
+    router.replace('/onboarding');
+  };
+  return (
+    <Card>
+      <AppText variant="overline" tone="muted">
+        Your data
+      </AppText>
+      <AppText variant="label" tone="muted">
+        Cars, checks, notes and photos are stored only on this phone. Photos sent for an AI check aren’t kept on our server.
+      </AppText>
+      <Button label="Delete all my data" kind="ghost" icon="trash-outline" onPress={confirm} />
+    </Card>
+  );
+}
+
+function SimulatePremium() {
+  const t = useTheme();
+  const premium = usePremium();
+  return (
+    <Row
+      icon="star-outline"
+      title="Simulate Premium"
+      subtitle="Test Premium features in Expo Go"
+      right={<Switch value={premium} onValueChange={(v) => saveFlag('simulatePremium', v)} trackColor={{ true: t.brand }} />}
+    />
+  );
+}
+
 export default function SettingsScreen() {
   return (
     <Screen overline="Settings" title="Settings">
+      <PremiumCard />
+      <RegionPicker />
       <Card>
         <AppText variant="overline" tone="muted">
           Important
         </AppText>
         <AppText variant="label">{SELF_CHECK_DISCLAIMER}</AppText>
         <AppText variant="caption" tone="muted">
-          Not a vehicle history report. Photo findings are generated by AI and can be wrong. Recall, complaint and rating data: U.S. National
-          Highway Traffic Safety Administration (NHTSA). Not affiliated with NHTSA or any manufacturer.
+          Not a vehicle history report. Photo findings are generated by AI and can be wrong. Recall, complaint and rating data: U.S.
+          National Highway Traffic Safety Administration (NHTSA). Not affiliated with NHTSA or any manufacturer.
         </AppText>
       </Card>
 
@@ -30,13 +185,21 @@ export default function SettingsScreen() {
           <AppText variant="overline" tone="muted">
             Developer (dev builds only)
           </AppText>
-          <Row icon="color-palette-outline" title="Design preview" subtitle="Colors, type and signature components" onPress={() => router.push('/dev/design')} />
+          <Row
+            icon="color-palette-outline"
+            title="Design preview"
+            subtitle="Colors, type and signature components"
+            onPress={() => router.push('/dev/design')}
+          />
+          <Divider />
+          <ApiModePicker />
+          <Divider />
+          <SimulatePremium />
           <Divider />
           <Row
-            icon="server-outline"
-            title="API mode"
-            subtitle={USE_MOCKS ? 'Sample data (mock clients)' : 'Live backend'}
-            right={<Tag label={USE_MOCKS ? 'Mock' : 'Live'} color={USE_MOCKS ? 'caution' : 'go'} />}
+            icon="refresh-circle-outline"
+            title="Show onboarding again"
+            onPress={() => saveFlag('onboardingDone', false).then(() => router.replace('/onboarding'))}
           />
           <Divider />
           <Row
@@ -48,6 +211,7 @@ export default function SettingsScreen() {
         </Card>
       ) : null}
 
+      <DataCard />
       <AppText variant="caption" tone="faint" align="center">
         Used Car Check {Constants.expoConfig?.version ?? ''}
       </AppText>

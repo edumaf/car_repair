@@ -1,7 +1,9 @@
+import { Children, type ReactNode } from 'react';
 import { Text, type TextProps } from 'react-native';
 
 import { useTheme, type Theme } from '../tokens';
 import { type, type TypeVariant } from '../typography';
+import { tr } from '@/core/i18n/i18n';
 
 type Tone = 'ink' | 'muted' | 'faint' | 'brand' | 'go' | 'caution' | 'warn' | 'stop' | 'slate' | 'onBrand';
 
@@ -13,8 +15,19 @@ export interface AppTextProps extends TextProps {
 
 const toneColor = (t: Theme, tone: Tone) => (tone === 'caution' && t.scheme === 'light' ? '#B45309' : t[tone]);
 
-/** All text goes through this, so fonts, colors and system font scaling stay consistent. */
-export function AppText({ variant = 'body', tone = 'ink', align, style, ...rest }: AppTextProps) {
+/** Translates plain string children (the English text is the key, see core/i18n). */
+function translate(children: ReactNode): ReactNode {
+  if (typeof children === 'string') return tr(children);
+  if (Array.isArray(children)) return Children.map(children, (c) => (typeof c === 'string' ? tr(c) : c));
+  return children;
+}
+
+/** All text goes through this, so fonts, colors, system font scaling and translation stay consistent. */
+export function AppText({ variant = 'body', tone = 'ink', align, style, children, ...rest }: AppTextProps) {
   const t = useTheme();
-  return <Text {...rest} style={[type[variant], { color: toneColor(t, tone), textAlign: align }, style]} />;
+  return (
+    <Text {...rest} style={[type[variant], { color: toneColor(t, tone), textAlign: align }, style]}>
+      {translate(children)}
+    </Text>
+  );
 }

@@ -5,6 +5,7 @@ import { ActivityIndicator, Pressable, StyleSheet, View } from 'react-native';
 
 import { minTouch, radius, space, useTheme } from '../tokens';
 import { AppText } from './AppText';
+import { tr } from '@/core/i18n/i18n';
 
 type Kind = 'primary' | 'secondary' | 'ghost';
 
@@ -26,7 +27,7 @@ export function Button({ label, onPress, kind = 'primary', icon, loading, disabl
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={label}
+      accessibilityLabel={tr(label)}
       accessibilityHint={accessibilityHint}
       accessibilityState={{ disabled: !!inactive, busy: !!loading }}
       disabled={inactive}
@@ -36,7 +37,11 @@ export function Button({ label, onPress, kind = 'primary', icon, loading, disabl
       }}
       style={({ pressed }) => [
         styles.base,
-        { backgroundColor: bg, borderColor: kind === 'secondary' ? t.borderStrong : 'transparent', opacity: inactive ? 0.5 : pressed ? 0.85 : 1 },
+        {
+          backgroundColor: bg,
+          borderColor: kind === 'secondary' ? t.borderStrong : 'transparent',
+          opacity: inactive ? 0.5 : pressed ? 0.85 : 1,
+        },
         pressed && { transform: [{ scale: 0.985 }] },
       ]}>
       <View style={styles.row}>
