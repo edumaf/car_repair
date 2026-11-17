@@ -85,6 +85,12 @@ export function computeVerdict(input: VerdictInput): VerdictResult {
   else if (minor.length || input.pricePosition === 'above') verdict = 'NEGOTIATE';
   else verdict = 'LOOKS_GOOD_SO_FAR';
 
+  // The verdict came from a scam sign or a serious problem: don't say "finish more checks for a verdict".
+  if (verdict !== 'INCOMPLETE' && coverage < INCOMPLETE_COVERAGE) {
+    const pct = Math.round(coverage * 100);
+    const i = reasons.indexOf(REASON.lowCoverage(pct));
+    if (i !== -1) reasons[i] = REASON.lowCoverageAnyway(pct);
+  }
   if (verdict === 'LOOKS_GOOD_SO_FAR') reasons.push(REASON.allClear);
   if (input.openRecallCount > 0) reasons.push(REASON.openRecalls(input.openRecallCount));
 

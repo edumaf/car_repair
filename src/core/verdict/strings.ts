@@ -29,6 +29,8 @@ export const REASON = {
       ? tr('The listing has a serious warning sign (title, legal or structural).')
       : tr('The listing has {n} serious warning signs (title, legal or structural).', { n }),
   lowCoverage: (pct: number) => tr('Only {pct}% of the checks are done. Finish more checks for a verdict.', { pct }),
+  /** Low coverage when a verdict was reached anyway (a scam sign or a serious problem). */
+  lowCoverageAnyway: (pct: number) => tr('Only {pct}% of the checks are done, so there may be more to find.', { pct }),
   majorProblem: (title: string) => tr('Possibly expensive: you found a problem at “{title}”.', { title: tr(title) }),
   notSureCritical: (title: string) => tr('Not sure about an important check: “{title}”.', { title: tr(title) }),
   majorFlag: (n: number) =>

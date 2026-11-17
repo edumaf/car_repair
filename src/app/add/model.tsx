@@ -172,6 +172,7 @@ export default function PickModel() {
     const makes = listMakes().filter((m) => !s || m.toLowerCase().includes(s));
     return (
       <FlatList
+        key="makes"
         style={{ backgroundColor: t.bg }}
         contentContainerStyle={styles.list}
         keyboardShouldPersistTaps="handled"
@@ -205,6 +206,7 @@ export default function PickModel() {
       .sort((a, b) => Number(vinCandidates.has(b.id)) - Number(vinCandidates.has(a.id)));
     return (
       <FlatList
+        key="models"
         style={{ backgroundColor: t.bg }}
         contentContainerStyle={styles.list}
         keyboardShouldPersistTaps="handled"
@@ -301,6 +303,7 @@ export default function PickModel() {
     const years = Array.from({ length: model.years[1] - model.years[0] + 1 }, (_, i) => model.years[1] - i);
     return (
       <FlatList
+        key="years"
         style={{ backgroundColor: t.bg }}
         contentContainerStyle={styles.list}
         ListHeaderComponent={header('Which year?', `${model.make} ${model.model} · ${model.generation}`)}

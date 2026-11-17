@@ -180,3 +180,19 @@ describe('end-to-end scenarios', () => {
     extra?.(r);
   });
 });
+
+describe('low coverage wording', () => {
+  it('says "may be more to find" when a scam sign already decided the verdict', () => {
+    const r = computeVerdict({
+      items: [],
+      answers: {},
+      openRecallCount: 0,
+      topComplaintGroups: [],
+      listingFlags: [{ id: 'wire_or_gift_cards', severity: 'scam' }],
+      pricePosition: 'unknown',
+    });
+    expect(r.verdict).toBe('WALK_AWAY');
+    expect(r.reasons.join(' ')).toContain('may be more to find');
+    expect(r.reasons.join(' ')).not.toContain('for a verdict');
+  });
+});

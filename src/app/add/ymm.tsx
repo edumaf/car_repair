@@ -120,7 +120,9 @@ export default function PickYmm() {
 
   if (step === 'year') {
     return (
+      // Distinct keys: FlatList can't change numColumns (3 here, 1 below) on the same instance.
       <FlatList
+        key="years"
         style={{ backgroundColor: t.bg }}
         contentContainerStyle={styles.list}
         ListHeaderComponent={header}
@@ -167,6 +169,7 @@ export default function PickYmm() {
   const rows = step === 'make' ? makeRows : modelRows;
   return (
     <FlatList
+      key={`list-${step}`}
       style={{ backgroundColor: t.bg }}
       contentContainerStyle={styles.list}
       keyboardShouldPersistTaps="handled"

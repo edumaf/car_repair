@@ -704,5 +704,6 @@
   "Questions copied. Paste them into a message to the seller.": "Întrebările au fost copiate. Lipește-le într-un mesaj către vânzător.",
   "Asking {price}": "Cere {price}",
   "mileage ?": "kilometraj ?",
-  "If it needs fixing: {name}, typically {low}–{high} in the US.": "Dacă trebuie reparat: {name}, de obicei {low}–{high} în SUA."
+  "If it needs fixing: {name}, typically {low}–{high} in the US.": "Dacă trebuie reparat: {name}, de obicei {low}–{high} în SUA.",
+  "Only {pct}% of the checks are done, so there may be more to find.": "Doar {pct}% din verificări sunt făcute, deci s-ar putea să mai fie lucruri de găsit."
 }
