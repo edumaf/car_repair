@@ -1,7 +1,7 @@
 // Every reviewed data string shown in the app has a Romanian translation (data/i18n/ro.json).
 import learn from '../../../content/learn.json';
 import roData from '../../../data/i18n/ro.json';
-import { CHECKLIST_ITEMS, LISTING_FLAGS, SECTIONS } from '../data/seed';
+import { CHECKLIST_ITEMS, FIELD_FLAGS, LISTING_FLAGS, SECTIONS } from '../data/seed';
 
 const ro = roData as Record<string, string>;
 const missing = (strings: (string | undefined)[]) => [...new Set(strings.filter((s): s is string => !!s && !(s in ro)))];
@@ -13,7 +13,7 @@ describe('Romanian data translations', () => {
   });
 
   it('listing warning signs', () => {
-    expect(missing(LISTING_FLAGS.flatMap((f) => [f.explanation, f.ask_seller]))).toEqual([]);
+    expect(missing([...LISTING_FLAGS, ...FIELD_FLAGS].flatMap((f) => [f.explanation, f.ask_seller]))).toEqual([]);
   });
 
   it('Learn guides', () => {

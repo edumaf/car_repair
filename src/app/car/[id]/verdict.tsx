@@ -7,7 +7,7 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { useEffect, useMemo, useState } from 'react';
 import { Alert, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
-import { matchListingFlags } from '@/core/listing/matchListingFlags';
+import { listingFlagsForCar } from '@/core/listing/fieldFlags';
 import { complaintGroupLabel } from '@/core/vehicle/labels';
 import { negotiationScript, sellerQuestions, suggestedOffer, type Tone } from '@/core/verdict/negotiation';
 import { REPAIR_COST_DISCLAIMER, SELF_CHECK_DISCLAIMER } from '@/core/verdict/strings';
@@ -59,7 +59,8 @@ export default function VerdictScreen() {
 
   const car = inspection.car.data;
   const answers = useMemo(() => confirmedAnswers(inspection.answers.data ?? {}), [inspection.answers.data]);
-  const listingMatches = useMemo(() => matchListingFlags(car?.listingText ?? ''), [car?.listingText]);
+  // Same warning signs as the listing card: phrases in the listing text + price far below similar listings, etc.
+  const listingMatches = useMemo(() => (car ? listingFlagsForCar(car, priceResult) : []), [car, priceResult]);
   const result = useMemo(() => {
     if (!car) return null;
     return computeVerdict({

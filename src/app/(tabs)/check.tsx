@@ -1,5 +1,10 @@
 import { router } from 'expo-router';
-import { StyleSheet, View } from 'react-native';
+import { useState } from 'react';
+import { ActivityIndicator, Alert, Platform, StyleSheet, View } from 'react-native';
+
+import { listingClient } from '@/core/api/clients';
+import { aiIsSample } from '@/core/api/mode';
+import { tr } from '@/core/i18n/i18n';
 
 import { AppText } from '@/design/components/AppText';
 import { Button } from '@/design/components/Button';
@@ -8,8 +13,8 @@ import { Card } from '@/design/components/Card';
 import { NightPanel } from '@/design/components/NightPanel';
 import { Divider, Row } from '@/design/components/Row';
 import { Screen } from '@/design/components/Screen';
-import { Tag } from '@/design/components/Tag';
 import { radius, space, useTheme } from '@/design/tokens';
+import { PhotoPermissionError, captureTempPhoto, deleteTempImages, type PhotoSource } from '@/media/photos';
 
 /** Where the VIN is: a car outline with the two usual spots marked in road-paint yellow. */
 function VinSpots() {
@@ -27,6 +32,35 @@ function VinSpots() {
 // Add a car (CLAUDE.md §6.2).
 export default function CheckScreen() {
   const t = useTheme();
+  const [reading, setReading] = useState(false);
+
+  // VIN photo → our server reads the 17 characters (free, daily cap) → the user checks them on the VIN screen.
+  const readVinPhoto = async (source: PhotoSource) => {
+    let uri: string | null = null;
+    try {
+      uri = await captureTempPhoto(source);
+      if (!uri) return;
+      setReading(true);
+      const { vin } = await listingClient.readVin(uri);
+      if (vin) router.push({ pathname: '/add/vin', params: { vin, from: aiIsSample() ? 'sample' : 'photo' } });
+      else Alert.alert('Couldn’t read the VIN', 'Try again a bit closer, without glare, or type it.');
+    } catch (e) {
+      if (e instanceof PhotoPermissionError) Alert.alert('Permission needed', tr('{message} Turn it on in the iPhone Settings app.', { message: tr(e.message) }));
+      else Alert.alert('Couldn’t read the VIN', tr((e as Error).message));
+    } finally {
+      if (uri) deleteTempImages([uri]);
+      setReading(false);
+    }
+  };
+  const askSource = () => {
+    // The browser preview has no camera and no multi-button alerts: go straight to the photo library there.
+    if (Platform.OS === 'web') return void readVinPhoto('library');
+    Alert.alert('Photo of the VIN', 'Door-jamb sticker or the plate at the base of the windshield.', [
+      { text: 'Take a photo', onPress: () => readVinPhoto('camera') },
+      { text: 'Choose from photos', onPress: () => readVinPhoto('library') },
+      { text: 'Cancel', style: 'cancel' },
+    ]);
+  };
   return (
     <Screen>
       <NightPanel style={styles.hero}>
@@ -66,8 +100,8 @@ export default function CheckScreen() {
           icon="camera-outline"
           title="Take a photo of the VIN"
           subtitle="We read the 17 characters for you"
-          right={<Tag label="Soon" color="slate" />}
-          disabled
+          right={reading ? <ActivityIndicator color={t.brand} /> : undefined}
+          onPress={reading ? undefined : askSource}
         />
       </Card>
       <AppText variant="caption" tone="muted">

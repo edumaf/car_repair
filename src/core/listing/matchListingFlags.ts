@@ -5,7 +5,7 @@ import type { ListingFlag } from '../data/seedSchema';
 
 export interface ListingFlagMatch {
   flag: ListingFlag;
-  /** The phrases from flag.match that were found. */
+  /** The phrases from flag.match that were found (empty for field-based flags, see fieldFlags.ts). */
   matched: string[];
 }
 
@@ -35,7 +35,12 @@ export function matchListingFlags(text: string, flags: readonly ListingFlag[] = 
     const matched = flag.match.filter((phrase) => new RegExp(`(^|[^a-z0-9])${escape(clean(phrase))}(?=$|[^a-z0-9])`).test(hay));
     if (matched.length) out.push({ flag, matched });
   }
-  return out.sort((a, b) => SEVERITY_ORDER[a.flag.severity] - SEVERITY_ORDER[b.flag.severity]);
+  return sortMatches(out);
+}
+
+/** Most serious first (stable for equal severities). */
+export function sortMatches(matches: ListingFlagMatch[]): ListingFlagMatch[] {
+  return matches.sort((a, b) => SEVERITY_ORDER[a.flag.severity] - SEVERITY_ORDER[b.flag.severity]);
 }
 
 export function listingOverall(matches: readonly ListingFlagMatch[]): ListingOverall {

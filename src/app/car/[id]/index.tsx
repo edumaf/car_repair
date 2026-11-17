@@ -6,9 +6,12 @@ import { useEffect, useState } from 'react';
 import { Alert, Linking, Pressable, RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { vehicleClient } from '@/core/api/clients';
-import type { VehicleLookup } from '@/core/api/types';
-import { listingOverall, matchListingFlags } from '@/core/listing/matchListingFlags';
+import { listingClient, vehicleClient } from '@/core/api/clients';
+import { aiIsSample } from '@/core/api/mode';
+import { ApiError, type VehicleLookup } from '@/core/api/types';
+import { listingFlagsForCar } from '@/core/listing/fieldFlags';
+import { listingOverall } from '@/core/listing/matchListingFlags';
+import type { PriceCheckResult } from '@/core/price/priceCheck';
 import { historyLinks, money } from '@/core/region';
 import { complaintGroupLabel, recallComponentLabel } from '@/core/vehicle/labels';
 import type { ComplaintGroupStat, Recall, VehicleReport } from '@/core/vehicle/types';
@@ -28,6 +31,8 @@ import { META, getMeta, setMeta } from '@/db/appMeta';
 import { getDb, saveFlag } from '@/db/db';
 import { ModelCard } from '@/features/model/ModelCard';
 import { usePremium } from '@/hooks/usePremium';
+import { usePriceCheck } from '@/hooks/usePriceCheck';
+import { PhotoPermissionError, deleteTempImages, pickScreenshots } from '@/media/photos';
 import { getFlags } from '@/state/appFlags';
 import { useCar, useDeleteCar, useUpdateCar } from '@/hooks/useCars';
 import { useRegion } from '@/hooks/useRegion';
@@ -213,11 +218,56 @@ const FLAG_COLOR: Record<string, SignalColor> = { scam: 'stop', critical: 'stop'
 const FLAG_LABEL: Record<string, string> = { scam: 'Scam pattern', critical: 'Serious', major: 'Needs proof', caution: 'Worth asking' };
 
 /** Listing check, pasted text (CLAUDE.md §6.6): instant, on-device matching against our red-flag list. */
-function ListingCard({ car, onSave }: { car: CarRecord; onSave: (text: string | null) => void }) {
+function ListingCard({
+  car,
+  priceResult,
+  premium,
+  onSave,
+  onFill,
+}: {
+  car: CarRecord;
+  priceResult: PriceCheckResult | null;
+  premium: boolean;
+  onSave: (text: string | null) => void;
+  /** Asking price / mileage read from screenshots, for the fields the user hasn't filled in. */
+  onFill: (fields: { askingPrice?: number; mileage?: number }) => void;
+}) {
   const [editing, setEditing] = useState(!car.listingText);
   const [text, setText] = useState(car.listingText ?? '');
-  const matches = matchListingFlags(car.listingText ?? '');
+  const [reading, setReading] = useState(false);
+  const [readFrom, setReadFrom] = useState<'ai' | 'sample' | null>(null);
+  const matches = listingFlagsForCar(car, priceResult);
   const overall = OVERALL[listingOverall(matches)];
+
+  // Screenshots of the ad → our server reads the text (Premium, CLAUDE.md §9) → the user checks it, then we match.
+  const readScreenshots = async () => {
+    if (!premium) {
+      router.push({ pathname: '/paywall', params: { placement: 'premium_feature' } });
+      return;
+    }
+    let uris: string[] = [];
+    try {
+      uris = await pickScreenshots(3);
+      if (!uris.length) return;
+      setReading(true);
+      const r = await listingClient.extractListing(uris);
+      setText(r.extracted_text);
+      setReadFrom(aiIsSample() ? 'sample' : 'ai');
+      setEditing(true);
+      const fill: { askingPrice?: number; mileage?: number } = {};
+      if (car.askingPrice == null && r.fields.price) fill.askingPrice = r.fields.price;
+      if (car.mileage == null && r.fields.mileage) fill.mileage = r.fields.mileage;
+      if (Object.keys(fill).length) onFill(fill);
+    } catch (e) {
+      if (e instanceof PhotoPermissionError) Alert.alert('Permission needed', tr('{message} Turn it on in the iPhone Settings app.', { message: tr(e.message) }));
+      else if (e instanceof ApiError && e.code === 'quota_exceeded') router.push({ pathname: '/paywall', params: { placement: 'premium_feature' } });
+      else Alert.alert('Couldn’t read the screenshots', tr((e as Error).message));
+    } finally {
+      deleteTempImages(uris);
+      setReading(false);
+    }
+  };
+
   return (
     <Card>
       <AppText variant="overline" tone="muted">
@@ -225,8 +275,22 @@ function ListingCard({ car, onSave }: { car: CarRecord; onSave: (text: string | 
       </AppText>
       {editing ? (
         <>
+          <Button
+            label={premium ? 'Read it from screenshots' : 'Read it from screenshots (Premium)'}
+            icon="images-outline"
+            kind="secondary"
+            loading={reading}
+            onPress={readScreenshots}
+          />
+          {readFrom ? (
+            <AppText variant="caption" tone={readFrom === 'sample' ? 'caution' : 'muted'}>
+              {readFrom === 'sample'
+                ? 'Sample text: reading screenshots needs our server, which isn’t switched on yet.'
+                : 'Read by AI from your screenshots, which were then deleted. Check the text: AI can misread.'}
+            </AppText>
+          ) : null}
           <TextField
-            label="Paste the listing text"
+            label="Or paste the listing text"
             multiline
             value={text}
             onChangeText={setText}
@@ -243,7 +307,7 @@ function ListingCard({ car, onSave }: { car: CarRecord; onSave: (text: string | 
             }}
           />
           <AppText variant="caption" tone="muted">
-            Checked on your phone against common warning signs. Nothing is uploaded.
+            Pasted text is checked on your phone against common warning signs. Nothing is uploaded.
           </AppText>
         </>
       ) : (
@@ -258,10 +322,10 @@ function ListingCard({ car, onSave }: { car: CarRecord; onSave: (text: string | 
               <View key={m.flag.id} style={{ gap: space.xs }}>
                 <Divider />
                 <Tag label={FLAG_LABEL[m.flag.severity]} color={FLAG_COLOR[m.flag.severity]} />
-                <AppText variant="bodyStrong">“{m.matched.join('”, “')}”</AppText>
+                {m.matched.length ? <AppText variant="bodyStrong">“{m.matched.join('”, “')}”</AppText> : null}
                 <AppText variant="label">{m.flag.explanation}</AppText>
                 <AppText variant="label" tone="brand">
-                  Ask: {m.flag.ask_seller}
+                  {tr('Ask: {question}', { question: tr(m.flag.ask_seller) })}
                 </AppText>
               </View>
             ))
@@ -309,6 +373,7 @@ export default function CarReport() {
   const remove = useDeleteCar();
   const [refreshing, setRefreshing] = useState(false);
   const premium = usePremium();
+  const priceResult = usePriceCheck(id).result;
   const loaded = !!car.data;
 
   // Paywall placement 1 (CLAUDE.md §9): once, after the first vehicle report. Dismissible.
@@ -392,7 +457,13 @@ export default function CarReport() {
           <>
             <ModelCard car={c} />
             <OtherMarketCard />
-            <ListingCard car={c} onSave={(text) => update.mutate({ listingText: text })} />
+            <ListingCard
+              car={c}
+              priceResult={priceResult}
+              premium={premium}
+              onSave={(text) => update.mutate({ listingText: text })}
+              onFill={(fields) => update.mutate(fields)}
+            />
           </>
         ) : report ? (
           <>
@@ -400,7 +471,13 @@ export default function CarReport() {
             <ProblemAreasCard report={report} />
             <ModelCard car={c} />
             <SafetyCard report={report} />
-            <ListingCard car={c} onSave={(text) => update.mutate({ listingText: text })} />
+            <ListingCard
+              car={c}
+              priceResult={priceResult}
+              premium={premium}
+              onSave={(text) => update.mutate({ listingText: text })}
+              onFill={(fields) => update.mutate(fields)}
+            />
             <AppText variant="caption" tone="muted">
               Recall, complaint and rating data: U.S. National Highway Traffic Safety Administration (NHTSA), as of{' '}
               {new Date(report.fetchedAt).toLocaleDateString('en-US')}. Not a vehicle history report. Not affiliated with NHTSA or any

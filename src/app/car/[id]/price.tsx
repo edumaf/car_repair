@@ -3,7 +3,12 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
-import { KeyboardAvoidingView, Linking, Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Alert, KeyboardAvoidingView, Linking, Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+
+import { listingClient } from '@/core/api/clients';
+import { aiIsSample } from '@/core/api/mode';
+import { FIELD_FLAGS } from '@/core/data/seed';
+import { priceFarBelowSimilar } from '@/core/listing/fieldFlags';
 
 import { money, type Region } from '@/core/region';
 import type { PricePosition } from '@/core/types';
@@ -20,6 +25,7 @@ import { useUpdateCar } from '@/hooks/useCars';
 import { usePriceCheck } from '@/hooks/usePriceCheck';
 import { useRegion } from '@/hooks/useRegion';
 import { tr } from '@/core/i18n/i18n';
+import { PhotoPermissionError, deleteTempImages, pickScreenshots } from '@/media/photos';
 
 const POSITION: Record<PricePosition, { label: string; color: SignalColor; text: string }> = {
   below: {
@@ -54,6 +60,32 @@ export default function PriceCheckScreen() {
   const update = useUpdateCar(id);
   const [form, setForm] = useState({ price: '', mileage: '', year: '', note: '' });
   const [asking, setAsking] = useState('');
+  const [reading, setReading] = useState(false);
+  const [readFrom, setReadFrom] = useState<'ai' | 'sample' | null>(null);
+
+  // A screenshot of a similar ad → our server reads price / mileage / year → the user checks them and adds it.
+  const readScreenshot = async () => {
+    let uris: string[] = [];
+    try {
+      uris = await pickScreenshots(1);
+      if (!uris.length) return;
+      setReading(true);
+      const { fields } = await listingClient.extractListing(uris);
+      setForm({
+        price: fields.price ? String(fields.price) : '',
+        mileage: fields.mileage ? String(fields.mileage) : '',
+        year: fields.year ? String(fields.year) : '',
+        note: [fields.make, fields.model].filter(Boolean).join(' '),
+      });
+      setReadFrom(aiIsSample() ? 'sample' : 'ai');
+    } catch (e) {
+      if (e instanceof PhotoPermissionError) Alert.alert('Permission needed', tr('{message} Turn it on in the iPhone Settings app.', { message: tr(e.message) }));
+      else Alert.alert('Couldn’t read the screenshot', tr((e as Error).message));
+    } finally {
+      deleteTempImages(uris);
+      setReading(false);
+    }
+  };
 
   if (car.isPending || comps.isPending) return <LoadingState label="Loading…" />;
   if (!car.data) return <ErrorState title="Car not found" message="It may have been removed." />;
@@ -65,7 +97,9 @@ export default function PriceCheckScreen() {
     if (!price) return;
     add.mutate({ price, mileage: parseNumber(form.mileage), year: parseNumber(form.year), note: form.note.trim() || null });
     setForm({ price: '', mileage: '', year: '', note: '' });
+    setReadFrom(null);
   };
+  const farBelow = priceFarBelowSimilar(c.askingPrice, result) ? FIELD_FLAGS.find((f) => f.when === 'price_far_below_similar') : undefined;
 
   const pos = POSITION[result?.position ?? 'unknown'];
 
@@ -107,7 +141,7 @@ export default function PriceCheckScreen() {
           <AppText variant="overline" tone="muted">
             Result
           </AppText>
-          <Tag label={pos.label} color={pos.color} />
+          <Tag label={farBelow ? 'Far below typical' : pos.label} color={farBelow ? 'warn' : pos.color} />
           {result?.fairRange ? (
             <>
               <AppText variant="number">
@@ -135,6 +169,16 @@ export default function PriceCheckScreen() {
               Find 3 to 6 similar cars for sale (same model, ±1 year) and add their price and mileage below.
             </AppText>
           )}
+          {farBelow ? (
+            <View style={{ gap: space.xs }}>
+              <Divider />
+              <Tag label="Ask why it’s so cheap" color="warn" icon="alert-circle" />
+              <AppText variant="label">{farBelow.explanation}</AppText>
+              <AppText variant="label" tone="brand">
+                {tr('Ask: {question}', { question: tr(farBelow.ask_seller) })}
+              </AppText>
+            </View>
+          ) : null}
           <AppText variant="caption" tone="muted">
             Based only on the listings you entered. Asking prices aren’t sale prices.
           </AppText>
@@ -167,6 +211,14 @@ export default function PriceCheckScreen() {
             </View>
           ))}
           <Divider />
+          <Button label="Fill in from a screenshot" icon="images-outline" kind="ghost" loading={reading} onPress={readScreenshot} />
+          {readFrom ? (
+            <AppText variant="caption" tone={readFrom === 'sample' ? 'caution' : 'muted'}>
+              {readFrom === 'sample'
+                ? 'Sample numbers: reading screenshots needs our server, which isn’t switched on yet.'
+                : 'Read by AI from your screenshot (then deleted). Check the numbers, then add the listing.'}
+            </AppText>
+          ) : null}
           <TextField
             label="Price"
             keyboardType="number-pad"
