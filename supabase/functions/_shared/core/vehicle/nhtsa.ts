@@ -85,6 +85,27 @@ export function modelVariants(model: string): string[] {
   });
 }
 
+/**
+ * Other names NHTSA files a decoded car under, built from vPIC's trim/series (eval: docs/eval-vehicle.md):
+ * Mercedes-Benz decodes as "C-Class" + "C300-4M" but its recalls are filed as "C300"; Lexus decodes as "ES" + "350"
+ * but is filed as "ES350" / "ES 350". Never a different car: the alternatives come from this VIN's own decode.
+ */
+export function altModelNames(model: string | null, trim: string | null): string[] {
+  if (!model || !trim) return [];
+  const out: string[] = [];
+  // Mercedes-style class name + model code in the trim ("C300-4M", "GLC 300-4M", "E350").
+  if (/-CLASS$/i.test(model)) {
+    const m = trim.match(/^([A-Z]{1,3})\s?(\d{2,3})/i);
+    if (m) out.push(`${m[1].toUpperCase()}${m[2]}`, `${m[1].toUpperCase()} ${m[2]}`);
+  }
+  // Lexus-style letters-only model + displacement-style trim ("ES" + "350", "RX" + "450h").
+  if (/^[A-Z]{2,3}$/i.test(model)) {
+    const m = trim.match(/^(\d{3})([A-Z]{0,2})\b/i);
+    if (m) out.push(`${model.toUpperCase()}${m[1]}${m[2].toUpperCase()}`, `${model.toUpperCase()} ${m[1]}${m[2].toUpperCase()}`);
+  }
+  return out;
+}
+
 /** Model names NHTSA uses for a make/year (from recall and complaint records), deduped, as NHTSA writes them. */
 export async function listModels(http: HttpGet, year: number, make: string): Promise<string[]> {
   const [r, c] = await Promise.allSettled(
@@ -116,8 +137,9 @@ export async function listMakes(http: HttpGet, year: number): Promise<string[]> 
 }
 
 /**
- * Tries the model name and its variants until one returns rows; if none do, tries NHTSA's own model names for the
- * make/year that look like ours (e.g. "Civic" → "CIVIC SI"). Returns the union of rows found.
+ * Tries the model name and its spelling variants until one returns rows, then each alternative name from the VIN
+ * decode (altModelNames) the same way, and returns the union. If nothing is found, tries NHTSA's own model names for
+ * the make/year that look like ours (e.g. "Civic" → "CIVIC SI").
  */
 async function withVariants(
   http: HttpGet,
@@ -125,39 +147,80 @@ async function withVariants(
   make: string,
   model: string,
   fetchRows: (model: string) => Promise<any[]>,
+  alternates: readonly string[] = [],
 ): Promise<any[]> {
-  for (const v of modelVariants(model)) {
-    const rows = await fetchRows(v);
-    if (rows.length > 0) return rows;
-  }
+  const tried = new Set<string>();
+  const firstHit = async (name: string) => {
+    for (const v of modelVariants(name)) {
+      if (tried.has(v.toUpperCase())) continue;
+      tried.add(v.toUpperCase());
+      const rows = await fetchRows(v);
+      if (rows.length > 0) return rows;
+    }
+    return [];
+  };
+  const found: any[] = [...(await firstHit(model))];
+  for (const alt of alternates) found.push(...(await firstHit(alt)));
+  if (found.length > 0) return found;
+
   const target = normName(model);
   const known = await listModels(http, year, make).catch(() => [] as string[]);
+  // Same name spelled differently ("2500HD" vs "2500 HD"), or a longer/shorter form ("Civic" vs "Civic Si").
   const similar = known.filter((k) => {
     const n = normName(k);
-    return n !== target && (n.startsWith(target) || target.startsWith(n));
+    return !tried.has(k.toUpperCase()) && (n.startsWith(target) || target.startsWith(n));
   });
   const all: any[] = [];
   for (const k of similar.slice(0, 4)) all.push(...(await fetchRows(k)));
   return all;
 }
 
-export async function fetchRecalls(http: HttpGet, year: number, make: string, model: string): Promise<Recall[]> {
-  const rows = await withVariants(http, year, make, model, async (m) => {
-    const body = await http(`${API}/recalls/recallsByVehicle?make=${q(make)}&model=${q(m)}&modelYear=${year}`);
-    return body?.results ?? [];
-  });
-  return normalizeRecalls(rows);
+export async function fetchRecalls(http: HttpGet, year: number, make: string, model: string, alternates: readonly string[] = []): Promise<Recall[]> {
+  const rows = await withVariants(
+    http,
+    year,
+    make,
+    model,
+    async (m) => {
+      const body = await http(`${API}/recalls/recallsByVehicle?make=${q(make)}&model=${q(m)}&modelYear=${year}`);
+      return body?.results ?? [];
+    },
+    alternates,
+  );
+  return normalizeRecalls(rows); // de-duplicates by campaign
 }
 
-export async function fetchComplaintRows(http: HttpGet, year: number, make: string, model: string): Promise<any[]> {
-  return withVariants(http, year, make, model, async (m) => {
-    const body = await http(`${API}/complaints/complaintsByVehicle?make=${q(make)}&model=${q(m)}&modelYear=${year}`);
-    return body?.results ?? [];
+export async function fetchComplaintRows(
+  http: HttpGet,
+  year: number,
+  make: string,
+  model: string,
+  alternates: readonly string[] = [],
+): Promise<any[]> {
+  const rows = await withVariants(
+    http,
+    year,
+    make,
+    model,
+    async (m) => {
+      const body = await http(`${API}/complaints/complaintsByVehicle?make=${q(make)}&model=${q(m)}&modelYear=${year}`);
+      return body?.results ?? [];
+    },
+    alternates,
+  );
+  // The same complaint can be filed under two of the names we asked for: count it once.
+  const seen = new Set<string>();
+  return rows.filter((r) => {
+    const id = r?.odiNumber != null ? String(r.odiNumber) : null;
+    if (id === null) return true;
+    if (seen.has(id)) return false;
+    seen.add(id);
+    return true;
   });
 }
 
-export async function fetchSafety(http: HttpGet, year: number, make: string, model: string) {
-  for (const m of modelVariants(model).slice(0, 3)) {
+export async function fetchSafety(http: HttpGet, year: number, make: string, model: string, alternates: readonly string[] = []) {
+  for (const m of [...modelVariants(model).slice(0, 3), ...alternates]) {
     const list = await http(`${API}/SafetyRatings/modelyear/${year}/make/${q(make)}/model/${q(m)}`);
     const id = list?.Results?.[0]?.VehicleId;
     if (id) {
@@ -203,10 +266,13 @@ export async function getVehicleReport(
   const make = 'vin' in lookup ? (decode.make as string) : lookup.make;
   const model = 'vin' in lookup ? (decode.model as string) : lookup.model;
 
+  // VIN lookups: also the names NHTSA files this car under (Mercedes "C300", Lexus "ES 350"); a year/make/model
+  // pick already uses NHTSA's own name.
+  const alternates = 'vin' in lookup ? altModelNames(decode.model, decode.trim) : [];
   const [recalls, complaints, safety] = await Promise.allSettled([
-    fetchRecalls(http, year, make, model),
-    fetchComplaintRows(http, year, make, model).then((rows) => summarizeComplaints(rows, keywordGroups)),
-    fetchSafety(http, year, make, model),
+    fetchRecalls(http, year, make, model, alternates),
+    fetchComplaintRows(http, year, make, model, alternates).then((rows) => summarizeComplaints(rows, keywordGroups)),
+    fetchSafety(http, year, make, model, alternates),
   ]);
   return {
     decode,

@@ -69,7 +69,8 @@
     "fixtures": "tsx scripts/build-mock-fixtures.ts",
     "sync-functions": "tsx scripts/sync-functions.ts",
     "test:functions": "deno test --allow-env --allow-read --no-check=remote supabase/functions",
-    "i18n": "tsx scripts/i18n-extract.ts --where"
+    "i18n": "tsx scripts/i18n-extract.ts --where",
+    "eval:vehicle": "tsx scripts/eval-vehicle.ts"
   },
   "private": true
 }

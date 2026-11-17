@@ -74,6 +74,19 @@ function driveShort(drive: string | null): string | null {
   return drive;
 }
 
+/**
+ * Pickup load classes. vPIC returns them as "Series" ("Silverado" + "1500"), but NHTSA's recall and complaint
+ * records use them in the model name ("SILVERADO 1500"); without them a 2016 Silverado 1500 finds 2 of its 12
+ * recalls and none of its 800 complaints (docs/eval-vehicle.md).
+ */
+const TRUCK_CLASS = /^(1500|2500|3500|4500|5500)(\s?(HD|LD))?$/i;
+
+export function modelWithClass(model: string | null, series: string | null): string | null {
+  if (!model || !series || !TRUCK_CLASS.test(series)) return model;
+  const squash = (x: string) => x.toUpperCase().replace(/[^A-Z0-9]/g, '');
+  return squash(model).includes(squash(series)) ? model : `${model} ${series.toUpperCase()}`;
+}
+
 /** Normalizes one row of vPIC DecodeVinValues "Results". */
 export function normalizeDecode(r: Raw, vin: string | null): VehicleDecode {
   const powertrain = derivePowertrain({
@@ -91,8 +104,9 @@ export function normalizeDecode(r: Raw, vin: string | null): VehicleDecode {
     vin,
     year: Number.isFinite(year) && year > 1900 ? year : null,
     make: make ? displayMake(make) : null,
-    model: str(r.Model),
-    trim: str(r.Trim) ?? str(r.Series),
+    model: modelWithClass(str(r.Model), str(r.Series)),
+    // Series as a stand-in trim, unless it's the load class we just put in the model name.
+    trim: str(r.Trim) ?? (TRUCK_CLASS.test(str(r.Series) ?? '') ? null : str(r.Series)),
     body: str(r.BodyClass),
     powertrain,
     engineDesc: engineDesc(r, powertrain),

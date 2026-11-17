@@ -1,6 +1,6 @@
 import { COMPLAINT_KEYWORD_GROUPS } from '../data/seed';
 import { displayModel } from './normalize';
-import { NhtsaError, getVehicleReport, listMakes, listModels, makeHttpGet, modelVariants, type HttpGet } from './nhtsa';
+import { NhtsaError, altModelNames, getVehicleReport, listMakes, listModels, makeHttpGet, modelVariants, type HttpGet } from './nhtsa';
 
 /** A fake NHTSA: maps URL substrings to responses; records every URL asked for. */
 function fakeHttp(routes: [RegExp, unknown | (() => unknown)][]) {
@@ -164,5 +164,48 @@ describe('lists', () => {
   it('throws when both lists fail', async () => {
     const { http } = fakeHttp([[/makes/, new NhtsaError('network', 'down')]]);
     await expect(listMakes(http, 2018)).rejects.toMatchObject({ code: 'network' });
+  });
+});
+
+describe('altModelNames', () => {
+  it.each([
+    ['C-Class', 'C300-4M', ['C300', 'C 300']],
+    ['GLC-Class', 'GLC 300-4M', ['GLC300', 'GLC 300']],
+    ['E-Class', 'E350', ['E350', 'E 350']],
+    ['ES', '350', ['ES350', 'ES 350']],
+    ['RX', '450h', ['RX450H', 'RX 450H']],
+    ['Civic', 'EX', []],
+    ['C-Class', 'AMG', []],
+    ['Silverado 1500', 'LT', []],
+    ['ES', null, []],
+  ])('%s + %s → %j', (model, trim, out) => expect(altModelNames(model, trim)).toEqual(out));
+});
+
+describe('getVehicleReport with names NHTSA files differently', () => {
+  const benzDecode = {
+    Results: [{ ModelYear: '2016', Make: 'MERCEDES-BENZ', Model: 'C-Class', Trim: 'C300-4M', FuelTypePrimary: 'Gasoline', ErrorCode: '0' }],
+  };
+  const recall = (campaign: string) => ({ NHTSACampaignNumber: campaign, Component: 'AIR BAGS', Summary: 's', Consequence: 'c', Remedy: 'r' });
+  const complaint = (odi: number) => ({ odiNumber: odi, components: 'ELECTRICAL SYSTEM', summary: 'x', crash: false, fire: false });
+
+  it('finds Mercedes recalls filed under the model code from the trim, and merges without double counting', async () => {
+    const { http, calls } = fakeHttp([
+      [/DecodeVinValues/, benzDecode],
+      [/recallsByVehicle.*model=C300&/, { count: 2, results: [recall('16V001000'), recall('17V002000')] }],
+      [/recallsByVehicle.*model=C%20300&/, { count: 1, results: [recall('16V001000')] }],
+      [/complaintsByVehicle.*model=C-Class&/, { count: 2, results: [complaint(1), complaint(2)] }],
+      [/complaintsByVehicle.*model=C300&/, { count: 1, results: [complaint(2)] }],
+    ]);
+    const r = await getVehicleReport(http, { vin: '55SWF4KB7GU900001' }, COMPLAINT_KEYWORD_GROUPS);
+    expect(r.decode.model).toBe('C-Class');
+    expect(r.recalls?.map((x) => x.campaign).sort()).toEqual(['16V001000', '17V002000']);
+    expect(r.complaints?.total).toBe(2);
+    expect(calls.some((u) => /recallsByVehicle.*model=C300&/.test(u))).toBe(true);
+  });
+
+  it('a year/make/model pick uses only NHTSA’s own name', async () => {
+    const { http, calls } = fakeHttp([[/recallsByVehicle/, { count: 1, results: [recall('16V001000')] }]]);
+    await getVehicleReport(http, { year: 2016, make: 'MERCEDES-BENZ', model: 'C300' }, COMPLAINT_KEYWORD_GROUPS);
+    expect(calls.filter((u) => /recallsByVehicle/.test(u)).every((u) => /model=C300&/.test(u))).toBe(true);
   });
 });
