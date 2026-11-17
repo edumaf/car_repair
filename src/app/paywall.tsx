@@ -6,12 +6,14 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { Alert, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { StatusBar } from 'expo-status-bar';
 
 import { paywallHeadline, type PaywallPlacement } from '@/core/limits';
 import { META, getMeta } from '@/db/appMeta';
 import { getDb, saveFlag } from '@/db/db';
 import { AppText } from '@/design/components/AppText';
 import { Button } from '@/design/components/Button';
+import { RoadScene } from '@/design/components/RoadScene';
 import { Tag } from '@/design/components/Tag';
 import { minTouch, radius, space, useTheme } from '@/design/tokens';
 import { tr } from '@/core/i18n/i18n';
@@ -86,73 +88,88 @@ export default function Paywall() {
   };
 
   return (
-    <SafeAreaView edges={['top', 'bottom']} style={{ flex: 1, backgroundColor: t.bg }}>
-      <Pressable
-        accessibilityRole="button"
-        accessibilityLabel={tr('Close')}
-        onPress={() => router.back()}
-        style={styles.close}
-        hitSlop={10}>
-        <Ionicons name="close" size={28} color={t.ink} />
-      </Pressable>
-      <ScrollView contentContainerStyle={styles.content}>
-        {REASON[placement as PaywallPlacement] ? (
-          <AppText variant="label" tone="muted">
-            {REASON[placement as PaywallPlacement]}
-          </AppText>
-        ) : null}
-        <AppText variant="display" accessibilityRole="header">
-          {paywallHeadline(answers.data?.worry)}
-        </AppText>
-        <View style={{ gap: space.sm }}>
-          {BENEFITS.map((b) => (
-            <View key={b.text} style={styles.benefit}>
-              <Ionicons name={b.icon} size={20} color={t.brand} />
-              <AppText style={{ flex: 1 }}>{b.text}</AppText>
-            </View>
-          ))}
-        </View>
-        {PLANS.map((p) => {
-          const on = plan === p.id;
-          return (
+    <View style={{ flex: 1, backgroundColor: t.bg }}>
+      <StatusBar style="light" />
+      <ScrollView contentContainerStyle={styles.scroll} bounces={false}>
+        <View style={[styles.hero, { backgroundColor: t.night }]}>
+          <SafeAreaView edges={['top']}>
             <Pressable
-              key={p.id}
-              accessibilityRole="radio"
-              accessibilityState={{ checked: on }}
-              accessibilityLabel={`${tr(p.title)}, ${p.price}. ${tr(p.detail)}`}
-              onPress={() => setPlan(p.id)}
-              style={[styles.plan, { borderColor: on ? t.brand : t.border, backgroundColor: on ? t.tint.brand : t.surface }]}>
-              <View style={{ flex: 1, gap: 2 }}>
-                {p.badge ? <Tag label={p.badge} color="brand" /> : null}
-                <AppText variant="heading">{p.title}</AppText>
-                <AppText variant="label" tone="muted">
-                  {p.detail}
-                </AppText>
-              </View>
-              <AppText variant="bodyStrong">{p.price}</AppText>
+              accessibilityRole="button"
+              accessibilityLabel={tr('Close')}
+              onPress={() => router.back()}
+              style={styles.close}
+              hitSlop={10}>
+              <Ionicons name="close" size={28} color={t.onNight} />
             </Pressable>
-          );
-        })}
-        <AppText variant="label" tone="muted" align="center">
-          No subscription on the pass. It simply ends after 30 days.
-        </AppText>
-        <Button label="Continue" icon="arrow-forward" onPress={buy} />
-        <Button
-          label="Restore purchases"
-          kind="ghost"
-          onPress={() => Alert.alert('Nothing to restore yet', 'Purchases arrive with the test build.')}
-        />
-        <AppText variant="caption" tone="faint" align="center">
-          Prices are examples until the store products exist. Terms of use and privacy policy links will be added before launch.
-        </AppText>
+          </SafeAreaView>
+          <View style={styles.heroText}>
+            <AppText variant="overline" tone="lane">
+              {REASON[placement as PaywallPlacement] ?? 'Used Car Check Premium'}
+            </AppText>
+            <AppText variant="hero" tone="onNight" accessibilityRole="header" style={styles.headline}>
+              {paywallHeadline(answers.data?.worry)}
+            </AppText>
+          </View>
+          <RoadScene hero="suv" heroWidth={150} height={110} />
+        </View>
+        <View style={styles.content}>
+          <View style={{ gap: space.sm }}>
+            {BENEFITS.map((b) => (
+              <View key={b.text} style={styles.benefit}>
+                <View style={[styles.benefitIcon, { backgroundColor: t.night }]}>
+                  <Ionicons name={b.icon} size={18} color={t.lane} />
+                </View>
+                <AppText style={{ flex: 1 }}>{b.text}</AppText>
+              </View>
+            ))}
+          </View>
+          {PLANS.map((p) => {
+            const on = plan === p.id;
+            return (
+              <Pressable
+                key={p.id}
+                accessibilityRole="radio"
+                accessibilityState={{ checked: on }}
+                accessibilityLabel={`${tr(p.title)}, ${p.price}. ${tr(p.detail)}`}
+                onPress={() => setPlan(p.id)}
+                style={[styles.plan, { borderColor: on ? t.brand : t.border, backgroundColor: on ? t.tint.brand : t.surface }]}>
+                <View style={{ flex: 1, gap: 2 }}>
+                  {p.badge ? <Tag label={p.badge} color="brand" /> : null}
+                  <AppText variant="heading">{p.title}</AppText>
+                  <AppText variant="label" tone="muted">
+                    {p.detail}
+                  </AppText>
+                </View>
+                <AppText variant="bodyStrong">{p.price}</AppText>
+              </Pressable>
+            );
+          })}
+          <AppText variant="label" tone="muted" align="center">
+            No subscription on the pass. It simply ends after 30 days.
+          </AppText>
+          <Button label="Continue" icon="arrow-forward" onPress={buy} />
+          <Button
+            label="Restore purchases"
+            kind="ghost"
+            onPress={() => Alert.alert('Nothing to restore yet', 'Purchases arrive with the test build.')}
+          />
+          <AppText variant="caption" tone="faint" align="center">
+            Prices are examples until the store products exist. Terms of use and privacy policy links will be added before launch.
+          </AppText>
+        </View>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  close: { alignSelf: 'flex-end', padding: space.lg, minHeight: minTouch },
-  content: { padding: space.xl, paddingTop: 0, gap: space.lg, paddingBottom: space.xxxl },
+  scroll: { flexGrow: 1 },
+  hero: { borderBottomLeftRadius: radius.lg, borderBottomRightRadius: radius.lg, overflow: 'hidden', paddingBottom: space.sm },
+  heroText: { paddingHorizontal: space.xl, gap: space.sm },
+  headline: { fontSize: 46, lineHeight: 46 },
+  close: { alignSelf: 'flex-end', padding: space.lg, minHeight: minTouch, minWidth: minTouch },
+  content: { padding: space.xl, gap: space.lg, paddingBottom: space.xxxl },
   benefit: { flexDirection: 'row', alignItems: 'center', gap: space.md },
+  benefitIcon: { width: 34, height: 34, borderRadius: 17, alignItems: 'center', justifyContent: 'center' },
   plan: { flexDirection: 'row', alignItems: 'center', gap: space.md, padding: space.lg, borderRadius: radius.md, borderWidth: 2 },
 });

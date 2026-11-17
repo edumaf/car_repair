@@ -9,6 +9,7 @@ import { CODE_PATTERN, normalizeCode, searchCodes } from '@/core/diagnose/codes'
 import { AppText } from '@/design/components/AppText';
 import { Card } from '@/design/components/Card';
 import { Divider, Row } from '@/design/components/Row';
+import { NightPanel } from '@/design/components/NightPanel';
 import { Screen } from '@/design/components/Screen';
 import { radius, space, useTheme } from '@/design/tokens';
 import { type } from '@/design/typography';
@@ -47,40 +48,53 @@ export default function DiagnoseScreen() {
   const openCode = (code: string) => router.push({ pathname: '/diagnose/code/[code]', params: { code } });
 
   return (
-    <Screen overline="Diagnose" title="What’s wrong with the car?">
-      <Card>
-        <AppText variant="overline" tone="muted">
-          I have an error code
+    <Screen>
+      <NightPanel style={styles.hero}>
+        <AppText variant="overline" tone="lane">
+          Diagnose
         </AppText>
-        <View style={[styles.search, { backgroundColor: t.sunken, borderColor: t.border }]}>
-          <Ionicons name="search" size={18} color={t.muted} />
+        <AppText variant="hero" tone="onNight" accessibilityRole="header">
+          What’s wrong with the car?
+        </AppText>
+        <AppText tone="onNightMuted">Look up an error code, or answer a few questions about what the car is doing.</AppText>
+        <View style={[styles.search, { backgroundColor: t.nightRaised, borderColor: query ? t.lane : t.nightRaised }]}>
+          <Ionicons name="search" size={18} color={t.onNightMuted} />
           <TextInput
             value={query}
             onChangeText={setQuery}
             placeholder={tr('e.g. P0301 or “misfire”')}
-            placeholderTextColor={t.faint}
+            placeholderTextColor={t.onNightMuted}
             autoCapitalize="characters"
             autoCorrect={false}
             returnKeyType="search"
             onSubmitEditing={() => CODE_PATTERN.test(exact) && openCode(exact)}
             accessibilityLabel={tr('Search error codes')}
-            style={[type.mono, { flex: 1, color: t.ink, paddingVertical: space.sm }]}
+            style={[type.mono, { flex: 1, color: t.onNight, paddingVertical: space.md }]}
           />
         </View>
-        {CODE_PATTERN.test(exact) && !results.some((r) => r.code === exact) ? (
-          <Row icon="search-outline" title={tr('Look up {code}', { code: exact })} onPress={() => openCode(exact)} />
-        ) : null}
-        {results.map((c, i) => (
-          <Fragment key={c.code}>
-            {i > 0 ? <Divider /> : null}
-            <Row title={`${c.code} · ${c.title}`} subtitle={c.system} onPress={() => openCode(c.code)} />
-          </Fragment>
-        ))}
-        <AppText variant="caption" tone="muted">
-          Check-engine light on? You need the code first: plug a cheap OBD2 reader (about $20 / 100 lei) into the socket under the
-          dashboard, or ask a parts store or mechanic to read it.
-        </AppText>
-      </Card>
+      </NightPanel>
+      {query.trim() ? (
+        <Card>
+          {CODE_PATTERN.test(exact) && !results.some((r) => r.code === exact) ? (
+            <Row icon="search-outline" title={tr('Look up {code}', { code: exact })} onPress={() => openCode(exact)} />
+          ) : null}
+          {results.map((c, i) => (
+            <Fragment key={c.code}>
+              {i > 0 ? <Divider /> : null}
+              <Row title={`${c.code} · ${c.title}`} subtitle={c.system} onPress={() => openCode(c.code)} />
+            </Fragment>
+          ))}
+          {!results.length && !CODE_PATTERN.test(exact) ? (
+            <AppText variant="label" tone="muted">
+              No code matches. Type the code exactly as the reader shows it (e.g. P0420), or describe the problem below.
+            </AppText>
+          ) : null}
+        </Card>
+      ) : null}
+      <AppText variant="caption" tone="muted">
+        Check-engine light on? You need the code first: plug a cheap OBD2 reader (about $20 / 100 lei) into the socket under the
+        dashboard, or ask a parts store or mechanic to read it.
+      </AppText>
 
       <AppText variant="heading">Or describe what’s happening</AppText>
       {categories.map((cat) => (
@@ -116,6 +130,7 @@ export default function DiagnoseScreen() {
 }
 
 const styles = StyleSheet.create({
+  hero: { gap: space.md },
   search: {
     flexDirection: 'row',
     alignItems: 'center',
