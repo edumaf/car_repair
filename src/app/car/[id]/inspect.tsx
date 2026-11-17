@@ -16,6 +16,7 @@ import { checkVin } from '@/core/vin/vin';
 import { confirmedAnswers, type AnswerRecord, type PhotoCheckRecord } from '@/db/answersRepository';
 import { AnswerBar } from '@/design/components/AnswerBar';
 import { AppText } from '@/design/components/AppText';
+import { SECTION_ZONE, WalkaroundMap } from '@/design/components/WalkaroundMap';
 import { Button } from '@/design/components/Button';
 import { PhotoFindingChip } from '@/design/components/PhotoFindingChip';
 import { ErrorState, LoadingState } from '@/design/components/States';
@@ -246,25 +247,30 @@ function ItemCard({
     } catch (e) {
       Alert.alert(
         e instanceof PhotoPermissionError ? 'Permission needed' : 'Couldn’t add the photo',
-        e instanceof PhotoPermissionError ? `${e.message} Turn it on in the iPhone Settings app.` : (e as Error).message,
+        e instanceof PhotoPermissionError
+          ? tr('{message} Turn it on in the iPhone Settings app.', { message: tr(e.message) })
+          : tr((e as Error).message),
       );
     }
   };
 
   return (
     <View style={styles.card}>
-      <View style={styles.tags}>
-        <AppText variant="overline" tone="muted">
-          {sectionTitle} · {position}
-        </AppText>
+      <View style={styles.head}>
+        <View style={styles.headText}>
+          <AppText variant="overline" tone="muted">
+            {sectionTitle} · {position}
+          </AppText>
+          <View style={styles.tags}>
+            <SeverityTag severity={item.severity} />
+          </View>
+          <AppText variant="title" accessibilityRole="header">
+            {item.title}
+          </AppText>
+        </View>
+        <WalkaroundMap zone={SECTION_ZONE[item.section]} />
       </View>
-      <View style={styles.tags}>
-        <SeverityTag severity={item.severity} />
-        {entry.knownProblemArea ? <Tag label="Known problem area for this model" color="brand" icon="flag" /> : null}
-      </View>
-      <AppText variant="title" accessibilityRole="header">
-        {item.title}
-      </AppText>
+      {entry.knownProblemArea ? <Tag label="Known problem area for this model" color="brand" icon="flag" /> : null}
 
       <AppText variant="overline" tone="muted">
         How to check
@@ -522,6 +528,8 @@ const styles = StyleSheet.create({
   fill: { height: '100%', borderRadius: radius.pill },
   content: { padding: space.xl, paddingBottom: space.xxxl },
   card: { gap: space.md },
+  head: { flexDirection: 'row', alignItems: 'flex-start', gap: space.md },
+  headText: { flex: 1, gap: space.sm },
   tags: { flexDirection: 'row', flexWrap: 'wrap', gap: space.sm },
   step: { flexDirection: 'row', gap: space.md, alignItems: 'flex-start' },
   stepNum: { width: 18, textAlign: 'center' },

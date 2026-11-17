@@ -62,3 +62,20 @@ export function progress(
   }
   return { checked, touched, total: entries.length };
 }
+
+/** Checked / total for a car without building its sections (garage cards). Same counting as `progress`. */
+export function checklistProgress(
+  powertrain: Powertrain,
+  answers: ConfirmedAnswers,
+  items: readonly ChecklistItem[] = CHECKLIST_ITEMS,
+): { checked: number; total: number } {
+  let checked = 0;
+  let total = 0;
+  for (const i of items) {
+    if (!appliesTo(i, powertrain)) continue;
+    total++;
+    const a = answers[i.id];
+    if (a === 'ok' || a === 'problem' || a === 'not_sure') checked++;
+  }
+  return { checked, total };
+}

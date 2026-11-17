@@ -2,7 +2,8 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useCameraPermissions } from 'expo-camera';
 import { router } from 'expo-router';
-import { useState } from 'react';
+import * as Haptics from 'expo-haptics';
+import { useState, type ComponentProps } from 'react';
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
@@ -11,54 +12,64 @@ import { META, setMeta } from '@/db/appMeta';
 import { getDb, saveFlag } from '@/db/db';
 import { AppText } from '@/design/components/AppText';
 import { Button } from '@/design/components/Button';
+import { RoadProgress } from '@/design/components/RoadProgress';
 import { RoadScene } from '@/design/components/RoadScene';
+import { VinScanDemo } from '@/design/components/VinScanDemo';
 import { minTouch, radius, space, useTheme } from '@/design/tokens';
 import { tr } from '@/core/i18n/i18n';
 import { track } from '@/analytics/analytics';
 
+type IconName = ComponentProps<typeof Ionicons>['name'];
+
 interface Question {
   id: 'stage' | 'seller' | 'confidence' | 'worry';
   title: string;
-  options: { value: string; label: string }[];
+  /** Why we ask, in one line (people answer more honestly when they know). */
+  hint: string;
+  options: { value: string; label: string; icon: IconName }[];
 }
 
 const QUESTIONS: Question[] = [
   {
     id: 'stage',
     title: 'Where are you right now?',
+    hint: 'So we show you what matters first.',
     options: [
-      { value: 'browsing', label: 'Just browsing' },
-      { value: 'found', label: 'Found a car I like' },
-      { value: 'today', label: 'Seeing a car today' },
-      { value: 'owner', label: 'I own a car with a problem' },
+      { value: 'browsing', label: 'Just browsing', icon: 'search-outline' },
+      { value: 'found', label: 'Found a car I like', icon: 'heart-outline' },
+      { value: 'today', label: 'Seeing a car today', icon: 'time-outline' },
+      { value: 'owner', label: 'I own a car with a problem', icon: 'construct-outline' },
     ],
   },
   {
     id: 'seller',
     title: 'Who’s selling?',
+    hint: 'Private sellers and dealers need different questions.',
     options: [
-      { value: 'private', label: 'Private seller' },
-      { value: 'dealer', label: 'Dealer' },
-      { value: 'unknown', label: 'Not sure yet' },
+      { value: 'private', label: 'Private seller', icon: 'person-outline' },
+      { value: 'dealer', label: 'Dealer', icon: 'business-outline' },
+      { value: 'unknown', label: 'Not sure yet', icon: 'help-circle-outline' },
     ],
   },
   {
     id: 'confidence',
     title: 'How confident are you with cars?',
+    hint: 'If you’re new to this, we explain every check step by step.',
     options: [
-      { value: 'none', label: 'Not at all' },
-      { value: 'little', label: 'A little' },
-      { value: 'confident', label: 'Pretty confident' },
+      { value: 'none', label: 'Not at all', icon: 'school-outline' },
+      { value: 'little', label: 'A little', icon: 'build-outline' },
+      { value: 'confident', label: 'Pretty confident', icon: 'speedometer-outline' },
     ],
   },
   {
     id: 'worry',
     title: 'What worries you most?',
+    hint: 'We’ll put that first.',
     options: [
-      { value: 'hidden', label: 'Hidden problems' },
-      { value: 'overpaying', label: 'Overpaying' },
-      { value: 'scams', label: 'Scams' },
-      { value: 'paperwork', label: 'Paperwork' },
+      { value: 'hidden', label: 'Hidden problems', icon: 'eye-outline' },
+      { value: 'overpaying', label: 'Overpaying', icon: 'pricetag-outline' },
+      { value: 'scams', label: 'Scams', icon: 'shield-outline' },
+      { value: 'paperwork', label: 'Paperwork', icon: 'document-text-outline' },
     ],
   },
 ];
@@ -122,86 +133,145 @@ export default function Onboarding() {
   if (step <= QUESTIONS.length) {
     const q = QUESTIONS[step - 1];
     const pick = (value: string) => {
+      Haptics.selectionAsync().catch(() => {});
       const next = { ...answers, [q.id]: value };
       setAnswers(next);
       track('onboarding_answer', { question: q.id, answer: value });
-      // Owners skip the buying questions and go straight to Diagnose.
-      if (q.id === 'stage' && value === 'owner') return finish(next);
-      setStep(step + 1);
+      // A beat to see the choice light up, then move on. Owners skip the buying questions and go to Diagnose.
+      setTimeout(() => (q.id === 'stage' && value === 'owner' ? finish(next) : setStep(step + 1)), 180);
     };
     return (
-      <SafeAreaView style={[styles.root, { backgroundColor: t.bg }]}>
-        <ScrollView contentContainerStyle={styles.content}>
-          <View style={styles.progress}>
-            {QUESTIONS.map((_, i) => (
-              <View key={i} style={[styles.dot, { backgroundColor: i < step ? t.brand : t.border }]} />
-            ))}
-          </View>
-          <AppText variant="display" accessibilityRole="header">
-            {q.title}
-          </AppText>
-          {q.options.map((o) => (
-            <Pressable
-              key={o.value}
-              accessibilityRole="button"
-              accessibilityLabel={tr(o.label)}
-              onPress={() => pick(o.value)}
-              style={({ pressed }) => [
-                styles.option,
-                {
-                  backgroundColor: pressed || answers[q.id] === o.value ? t.tint.brand : t.surface,
-                  borderColor: answers[q.id] === o.value ? t.brand : t.border,
-                },
-              ]}>
-              <AppText variant="bodyStrong">{o.label}</AppText>
-            </Pressable>
-          ))}
-          <Button label="Back" kind="ghost" onPress={() => setStep(step - 1)} />
-        </ScrollView>
-      </SafeAreaView>
+      <View style={[styles.root, { backgroundColor: t.night }]}>
+        <StatusBar style="light" />
+        <SafeAreaView style={styles.root}>
+          <ScrollView contentContainerStyle={styles.content}>
+            <View style={styles.topBar}>
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel={tr('Back')}
+                onPress={() => setStep(step - 1)}
+                hitSlop={8}
+                style={styles.back}>
+                <Ionicons name="chevron-back" size={26} color={t.onNight} />
+              </Pressable>
+              <View style={{ flex: 1 }}>
+                <RoadProgress total={QUESTIONS.length} current={step - 1} />
+              </View>
+            </View>
+            <AppText variant="overline" tone="lane">
+              {tr('Question {n} of {total}', { n: step, total: QUESTIONS.length })}
+            </AppText>
+            <AppText variant="hero" tone="onNight" accessibilityRole="header" style={styles.question}>
+              {q.title}
+            </AppText>
+            <AppText tone="onNightMuted">{q.hint}</AppText>
+            <View style={styles.options}>
+              {q.options.map((o) => {
+                const on = answers[q.id] === o.value;
+                return (
+                  <Pressable
+                    key={o.value}
+                    accessibilityRole="radio"
+                    accessibilityState={{ checked: on }}
+                    accessibilityLabel={tr(o.label)}
+                    onPress={() => pick(o.value)}
+                    style={({ pressed }) => [
+                      styles.option,
+                      {
+                        backgroundColor: t.nightRaised,
+                        borderColor: on || pressed ? t.lane : t.nightRaised,
+                        transform: [{ scale: pressed ? 0.985 : 1 }],
+                      },
+                    ]}>
+                    <View style={[styles.optionIcon, { backgroundColor: on ? t.lane : 'rgba(244,247,251,0.08)' }]}>
+                      <Ionicons name={o.icon} size={20} color={on ? t.night : t.lane} />
+                    </View>
+                    <AppText variant="bodyStrong" tone="onNight" style={{ flex: 1 }}>
+                      {o.label}
+                    </AppText>
+                    <Ionicons name={on ? 'checkmark-circle' : 'chevron-forward'} size={20} color={on ? t.lane : t.onNightMuted} />
+                  </Pressable>
+                );
+              })}
+            </View>
+          </ScrollView>
+        </SafeAreaView>
+      </View>
     );
   }
 
   return (
-    <SafeAreaView style={[styles.root, { backgroundColor: t.bg }]}>
-      <View style={styles.welcome}>
-        <View style={[styles.badge, { backgroundColor: t.tint.brand }]}>
-          <Ionicons name="camera" size={40} color={t.brand} />
-        </View>
-        <AppText variant="display" align="center">
-          The camera does the reading
-        </AppText>
-        <AppText tone="muted" align="center">
-          You’ll scan the VIN barcode and photograph tires, rust and the dashboard. Photos stay on your phone; nothing is recorded in the
-          background.
-        </AppText>
-      </View>
-      <View style={styles.bottom}>
-        <Button
-          label="Allow camera"
-          icon="camera"
-          onPress={async () => {
-            await requestCamera().catch(() => null);
-            await finish(answers);
-          }}
-        />
-        <Button label="Not now" kind="ghost" onPress={() => finish(answers)} />
-      </View>
-    </SafeAreaView>
+    <View style={[styles.root, { backgroundColor: t.night }]}>
+      <StatusBar style="light" />
+      <SafeAreaView style={styles.root}>
+        <ScrollView contentContainerStyle={[styles.content, { flexGrow: 1 }]}>
+          <View style={styles.topBar}>
+            <Pressable accessibilityRole="button" accessibilityLabel={tr('Back')} onPress={() => setStep(step - 1)} hitSlop={8} style={styles.back}>
+              <Ionicons name="chevron-back" size={26} color={t.onNight} />
+            </Pressable>
+          </View>
+          <AppText variant="overline" tone="lane">
+            Last step
+          </AppText>
+          <AppText variant="hero" tone="onNight" accessibilityRole="header" style={styles.question}>
+            The camera does the reading
+          </AppText>
+          <VinScanDemo />
+          <View style={{ gap: space.md }}>
+            {CAMERA_POINTS.map((p) => (
+              <View key={p.text} style={styles.point}>
+                <Ionicons name={p.icon} size={20} color={t.lane} />
+                <AppText tone="onNight" style={{ flex: 1 }}>
+                  {p.text}
+                </AppText>
+              </View>
+            ))}
+          </View>
+          <View style={{ flex: 1 }} />
+          <Button
+            label="Allow camera"
+            kind="road"
+            icon="camera"
+            onPress={async () => {
+              await requestCamera().catch(() => null);
+              await finish(answers);
+            }}
+          />
+          <Button label="Not now" kind="roadGhost" onPress={() => finish(answers)} />
+        </ScrollView>
+      </SafeAreaView>
+    </View>
   );
 }
 
+const CAMERA_POINTS: { icon: IconName; text: string }[] = [
+  { icon: 'barcode-outline', text: 'Scan the VIN barcode instead of typing 17 characters.' },
+  { icon: 'camera-outline', text: 'Photograph tires, rust and the dashboard: the AI points out what it sees.' },
+  { icon: 'lock-closed-outline', text: 'Photos stay on your phone. Nothing is recorded in the background.' },
+];
+
 const styles = StyleSheet.create({
   root: { flex: 1 },
-  welcome: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: space.xxl, gap: space.md },
-  badge: { width: 96, height: 96, borderRadius: radius.lg, alignItems: 'center', justifyContent: 'center', marginBottom: space.md },
   bottom: { padding: space.xl, gap: space.md },
   brandRow: { flexDirection: 'row', alignItems: 'center', gap: space.sm, paddingHorizontal: space.xl, paddingTop: space.lg },
   brandDot: { width: 10, height: 10, borderRadius: 5 },
   welcomeText: { flex: 1, justifyContent: 'flex-end', paddingHorizontal: space.xl, paddingBottom: space.xl, gap: space.md },
   bigHero: { fontSize: 68, lineHeight: 66 },
   content: { padding: space.xl, gap: space.md },
-  progress: { flexDirection: 'row', gap: space.xs, marginBottom: space.md },
-  dot: { flex: 1, height: 4, borderRadius: 2 },
-  option: { minHeight: minTouch + 12, borderRadius: radius.md, borderWidth: 1.5, paddingHorizontal: space.lg, justifyContent: 'center' },
+  topBar: { flexDirection: 'row', alignItems: 'center', gap: space.sm, marginBottom: space.lg },
+  back: { minWidth: minTouch, minHeight: minTouch, justifyContent: 'center', marginLeft: -space.sm },
+  question: { fontSize: 46, lineHeight: 46 },
+  options: { gap: space.sm, marginTop: space.md },
+  option: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: space.md,
+    minHeight: minTouch + 20,
+    borderRadius: radius.md,
+    borderWidth: 1.5,
+    paddingHorizontal: space.lg,
+    paddingVertical: space.md,
+  },
+  optionIcon: { width: 38, height: 38, borderRadius: 19, alignItems: 'center', justifyContent: 'center' },
+  point: { flexDirection: 'row', alignItems: 'flex-start', gap: space.md },
 });

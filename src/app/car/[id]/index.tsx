@@ -2,8 +2,8 @@
 // Everything shown here comes from NHTSA responses stored with the car.
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router, Stack, useLocalSearchParams } from 'expo-router';
-import { useEffect, useState } from 'react';
-import { Alert, Linking, Pressable, RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
+import { useEffect, useRef, useState, type ComponentProps, type ComponentRef } from 'react';
+import { Alert, Linking, Pressable, RefreshControl, ScrollView, StyleSheet, View, type LayoutChangeEvent } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { listingClient, vehicleClient } from '@/core/api/clients';
@@ -25,7 +25,7 @@ import { Divider } from '@/design/components/Row';
 import { ErrorState, LoadingState } from '@/design/components/States';
 import { Tag } from '@/design/components/Tag';
 import { TextField } from '@/design/components/TextField';
-import { space, useTheme, type SignalColor } from '@/design/tokens';
+import { radius, space, useTheme, type SignalColor } from '@/design/tokens';
 import { canInspectFree } from '@/core/limits';
 import { META, getMeta, setMeta } from '@/db/appMeta';
 import { getDb, saveFlag } from '@/db/db';
@@ -36,9 +36,10 @@ import { PhotoPermissionError, deleteTempImages, pickScreenshots } from '@/media
 import { getFlags } from '@/state/appFlags';
 import { useCar, useDeleteCar, useUpdateCar } from '@/hooks/useCars';
 import { useRegion } from '@/hooks/useRegion';
-import { tr } from '@/core/i18n/i18n';
+import { plural, tr } from '@/core/i18n/i18n';
 import { getModel } from '@/core/data/knowledge';
 import { bodyKind } from '@/core/vehicle/bodyKind';
+import { engineFromDecode, problemsFor } from '@/core/models/matchModels';
 import { track } from '@/analytics/analytics';
 import { recallsBucket } from '@/core/analyticsEvents';
 
@@ -98,9 +99,7 @@ function RecallsCard({ recalls }: { recalls: Recall[] | null }) {
         <AppText>No recalls found for this model year.</AppText>
       ) : (
         <>
-          <AppText variant="title">
-            {recalls.length} recall{recalls.length === 1 ? '' : 's'}
-          </AppText>
+          <AppText variant="title">{plural(recalls.length, '{n} recall', '{n} recalls', '{n} de rechemări')}</AppText>
           <AppText variant="label" tone="muted">
             Ask the seller for proof each recall was completed. Recall repairs are free at dealers.
           </AppText>
@@ -374,6 +373,79 @@ function OtherMarketCard() {
   );
 }
 
+type Anchor = 'recalls' | 'complaints' | 'model' | 'safety';
+
+/** The four numbers people look for first, as tiles; each one jumps to its section. */
+function GlanceTiles({ car, report, onJump }: { car: CarRecord; report: VehicleReport | null; onJump: (a: Anchor) => void }) {
+  const t = useTheme();
+  const us = report?.coverage !== 'none';
+  const recalls = report?.recalls ?? null;
+  const complaints = report?.complaints ?? null;
+  const model = car.modelId ? getModel(car.modelId) : undefined;
+  const engine = model?.engines.find((e) => e.id === car.engineId) ?? (model ? engineFromDecode(model, car.powertrain, car.engineDesc) : null);
+  const known = model ? problemsFor(model, engine?.id ?? null, car.year).relevant : null;
+  const topGroup = complaints?.groups[0]?.group;
+  const tiles: { anchor: Anchor; icon: ComponentProps<typeof Ionicons>['name']; label: string; value: string; sub: string; color: SignalColor }[] = [
+    {
+      anchor: 'recalls',
+      icon: 'alert-circle-outline',
+      label: 'Recalls',
+      value: us && recalls ? String(recalls.length) : '—',
+      sub: !us ? tr('Not available here') : recalls === null ? tr('Couldn’t load') : recalls.length ? tr('Ask for proof') : tr('None found'),
+      color: !us || recalls === null ? 'slate' : recalls.some((r) => r.parkIt || r.parkOutside) ? 'stop' : recalls.length ? 'warn' : 'go',
+    },
+    {
+      anchor: 'complaints',
+      icon: 'chatbubbles-outline',
+      label: 'Complaints',
+      value: us && complaints ? formatNumber(complaints.total) : '—',
+      sub: !us ? tr('Not available here') : topGroup ? tr('Most: {area}', { area: tr(complaintGroupLabel(topGroup)) }) : tr('None on file'),
+      color: 'slate',
+    },
+    {
+      anchor: 'model',
+      icon: 'construct-outline',
+      label: 'Known problems',
+      value: known ? String(known.length) : '—',
+      sub: known ? (engine ? tr('For this engine') : tr('For this model')) : tr('Choose the model'),
+      color: known && known.some((p) => p.severity === 'critical' || p.severity === 'major') ? 'warn' : 'slate',
+    },
+    {
+      anchor: 'safety',
+      icon: 'star-outline',
+      label: 'Crash rating',
+      value: us && report?.safety?.overall ? `${report.safety.overall}/5` : '—',
+      sub: !us ? tr('Not available here') : report?.safety?.overall ? tr('NHTSA overall') : tr('Not rated'),
+      color: 'slate',
+    },
+  ];
+  return (
+    <View style={styles.tiles}>
+      {tiles.map((x) => (
+        <Pressable
+          key={x.anchor}
+          accessibilityRole="button"
+          accessibilityLabel={`${tr(x.label)}: ${x.value}. ${x.sub}`}
+          onPress={() => onJump(x.anchor)}
+          style={({ pressed }) => [styles.tile, { backgroundColor: t.surface, borderColor: t.border, opacity: pressed ? 0.75 : 1 }]}>
+          <View style={styles.tileHead}>
+            <Ionicons name={x.icon} size={16} color={x.color === 'slate' ? t.muted : t[x.color]} />
+            <AppText variant="overline" tone="muted" numberOfLines={1} style={{ flex: 1 }}>
+              {x.label}
+            </AppText>
+          </View>
+          <AppText variant="number" style={{ color: x.color === 'slate' ? t.ink : x.color === 'caution' && t.scheme === 'light' ? '#B45309' : t[x.color] }}>
+            {x.value}
+          </AppText>
+          <AppText variant="caption" tone="muted" numberOfLines={1}>
+            {x.sub}
+          </AppText>
+        </Pressable>
+      ))}
+    </View>
+  );
+}
+
 export default function CarReport() {
   const t = useTheme();
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -383,6 +455,15 @@ export default function CarReport() {
   const [refreshing, setRefreshing] = useState(false);
   const premium = usePremium();
   const priceResult = usePriceCheck(id).result;
+  const scroll = useRef<ComponentRef<typeof ScrollView>>(null);
+  const anchors = useRef<Partial<Record<Anchor, number>>>({});
+  const mark = (a: Anchor) => (e: LayoutChangeEvent) => {
+    anchors.current[a] = e.nativeEvent.layout.y;
+  };
+  const jump = (a: Anchor) => {
+    const y = anchors.current[a];
+    if (y !== undefined) scroll.current?.scrollTo({ y: Math.max(0, y - space.md), animated: true });
+  };
   const loaded = !!car.data;
 
   // §14: once per opening of the report (counts only, no VIN).
@@ -443,7 +524,10 @@ export default function CarReport() {
   return (
     <View style={{ flex: 1, backgroundColor: t.bg }}>
       <Stack.Screen options={{ title: '' }} />
-      <ScrollView contentContainerStyle={styles.content} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={refresh} />}>
+      <ScrollView
+        ref={scroll}
+        contentContainerStyle={styles.content}
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={refresh} />}>
         <CarHeader
           overline="Vehicle report"
           title={carTitle(c)}
@@ -455,6 +539,7 @@ export default function CarReport() {
           kind={bodyKind(c.body, c.modelId ? getModel(c.modelId)?.body[0] : null)}
         />
         <DetailsCard car={c} />
+        <GlanceTiles car={c} report={report ?? null} onJump={jump} />
         <Button
           label={premium ? 'Price check' : 'Price check (Premium)'}
           icon="pricetag-outline"
@@ -475,8 +560,12 @@ export default function CarReport() {
         ) : null}
         {report && report.coverage === 'none' ? (
           <>
-            <ModelCard car={c} />
-            <OtherMarketCard />
+            <View onLayout={mark('model')}>
+              <ModelCard car={c} />
+            </View>
+            <View onLayout={mark('recalls')}>
+              <OtherMarketCard />
+            </View>
             <ListingCard
               car={c}
               priceResult={priceResult}
@@ -487,10 +576,18 @@ export default function CarReport() {
           </>
         ) : report ? (
           <>
-            <RecallsCard recalls={report.recalls} />
-            <ProblemAreasCard report={report} />
-            <ModelCard car={c} />
-            <SafetyCard report={report} />
+            <View onLayout={mark('recalls')}>
+              <RecallsCard recalls={report.recalls} />
+            </View>
+            <View onLayout={mark('complaints')}>
+              <ProblemAreasCard report={report} />
+            </View>
+            <View onLayout={mark('model')}>
+              <ModelCard car={c} />
+            </View>
+            <View onLayout={mark('safety')}>
+              <SafetyCard report={report} />
+            </View>
             <ListingCard
               car={c}
               priceResult={priceResult}
@@ -532,6 +629,9 @@ export default function CarReport() {
 
 const styles = StyleSheet.create({
   content: { padding: space.xl, gap: space.lg, paddingBottom: space.xxxl },
+  tiles: { flexDirection: 'row', flexWrap: 'wrap', gap: space.sm },
+  tile: { flexBasis: '48%', flexGrow: 1, borderWidth: 1, borderRadius: radius.md, padding: space.md, gap: 2 },
+  tileHead: { flexDirection: 'row', alignItems: 'center', gap: space.xs },
   recall: { gap: space.sm },
   recallHead: { flexDirection: 'row', alignItems: 'flex-start', gap: space.sm },
   quote: { fontStyle: 'italic', paddingLeft: space.md },

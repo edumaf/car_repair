@@ -6,6 +6,10 @@ import { Pressable, StyleSheet, View } from 'react-native';
 import { getModel } from '@/core/data/knowledge';
 import { formatNumber, money } from '@/core/region';
 import { bodyKind } from '@/core/vehicle/bodyKind';
+import { checklistProgress } from '@/core/checklist/buildChecklist';
+import { answerSummaries } from '@/db/answersRepository';
+import { getDb } from '@/db/db';
+import { useQuery } from '@tanstack/react-query';
 import { VERDICTS, type CarStatus, type Verdict } from '@/core/types';
 import { POSSIBLE_SCAM_HEADLINE, VERDICT_HEADLINE } from '@/core/verdict/strings';
 import { carTitle, type CarRecord } from '@/db/carsRepository';
@@ -17,18 +21,68 @@ import { RoadScene } from '@/design/components/RoadScene';
 import { ChoiceChips } from '@/design/components/ChoiceChips';
 import { Screen } from '@/design/components/Screen';
 import { Tag } from '@/design/components/Tag';
-import { radius, space, useTheme, verdictColor } from '@/design/tokens';
-import { useCars } from '@/hooks/useCars';
+import { minTouch, radius, space, useTheme, verdictColor } from '@/design/tokens';
+import { carKeys, useCars } from '@/hooks/useCars';
 import { usePremium } from '@/hooks/usePremium';
 import { plural, tr } from '@/core/i18n/i18n';
 
+type Progress = { checked: number; total: number };
+
+/** The one thing to do next with this car: start, continue, or read the verdict. */
+function NextStep({ car, progress, verdict, verdictLabel }: { car: CarRecord; progress: Progress; verdict: Verdict | null; verdictLabel: string | null }) {
+  const t = useTheme();
+  const decided = verdict && verdict !== 'INCOMPLETE';
+  const started = progress.checked > 0;
+  const go = () =>
+    decided
+      ? router.push({ pathname: '/car/[id]/verdict', params: { id: car.id } })
+      : started
+        ? router.push({ pathname: '/car/[id]/inspect', params: { id: car.id } })
+        : router.push({ pathname: '/car/[id]', params: { id: car.id } }); // the report gates the free inspection
+  const action = decided ? 'See the verdict' : started ? 'Continue' : 'Start the inspection';
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={tr(action)}
+      onPress={go}
+      style={({ pressed }) => [styles.next, { borderTopColor: t.border, opacity: pressed ? 0.7 : 1 }]}>
+      {decided ? (
+        <View style={{ flex: 1 }}>
+          <Tag label={verdictLabel ?? VERDICT_HEADLINE[verdict]} color={verdictColor[verdict]} />
+        </View>
+      ) : started ? (
+        <View style={styles.progressWrap}>
+          <View style={[styles.track, { backgroundColor: t.sunken }]}>
+            <View style={[styles.fill, { backgroundColor: t.brand, width: `${Math.round((progress.checked / Math.max(1, progress.total)) * 100)}%` }]} />
+          </View>
+          <AppText variant="caption" tone="muted">
+            {tr('{checked} of {total} checked', progress)}
+          </AppText>
+        </View>
+      ) : (
+        <AppText variant="label" tone="muted" style={{ flex: 1 }}>
+          Not inspected yet
+        </AppText>
+      )}
+      <View style={styles.nextAction}>
+        <AppText variant="label" tone="brand">
+          {action}
+        </AppText>
+        <Ionicons name="chevron-forward" size={16} color={t.brand} />
+      </View>
+    </Pressable>
+  );
+}
+
 function CarCard({
   car,
+  progress,
   selecting,
   selected,
   onSelect,
 }: {
   car: CarRecord;
+  progress: Progress;
   selecting?: boolean;
   selected?: boolean;
   onSelect?: () => void;
@@ -44,46 +98,43 @@ function CarCard({
     recalls != null ? plural(recalls, '{n} recall', '{n} recalls', '{n} de rechemări') : null,
   ].filter(Boolean);
   return (
-    <Pressable
-      accessibilityRole="button"
-      accessibilityLabel={carTitle(car) + (verdictLabel ? tr(', verdict {verdict}', { verdict: tr(verdictLabel) }) : '')}
-      accessibilityState={selecting ? { checked: !!selected } : undefined}
-      onPress={() => (selecting ? onSelect?.() : router.push({ pathname: '/car/[id]', params: { id: car.id } }))}
-      style={({ pressed }) => [
-        styles.card,
-        { backgroundColor: t.surface, borderColor: selected ? t.brand : t.border, opacity: pressed ? 0.85 : 1 },
-      ]}>
-      <View style={[styles.art, { backgroundColor: t.night }]}>
-        <CarArt kind={bodyKind(car.body, car.modelId ? getModel(car.modelId)?.body[0] : null)} width={70} color={t.onNight} />
-        <View style={[styles.artLane, { backgroundColor: verdict ? t[verdictColor[verdict]] : t.lane }]} />
-      </View>
-      <View style={styles.text}>
-        <AppText variant="heading">{carTitle(car)}</AppText>
-        {car.trim || car.engineDesc ? (
-          <AppText variant="caption" tone="muted" numberOfLines={1}>
-            {[car.trim, car.engineDesc].filter(Boolean).join(' · ')}
-          </AppText>
-        ) : null}
-        {facts.length ? (
-          <AppText variant="label" tone="muted">
-            {facts.join(' · ')}
-          </AppText>
-        ) : null}
-        <View style={styles.tags}>
-          {verdict ? (
-            <Tag label={verdictLabel ?? VERDICT_HEADLINE[verdict]} color={verdictColor[verdict]} />
-          ) : (
-            <Tag label="Not inspected yet" color="slate" />
-          )}
-          {car.status !== 'considering' ? <Tag label={car.status === 'bought' ? 'Bought' : 'Passed'} color="slate" /> : null}
+    <View style={[styles.card, { backgroundColor: t.surface, borderColor: selected ? t.brand : t.border }]}>
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={carTitle(car) + (verdictLabel ? tr(', verdict {verdict}', { verdict: tr(verdictLabel) }) : '')}
+        accessibilityState={selecting ? { checked: !!selected } : undefined}
+        onPress={() => (selecting ? onSelect?.() : router.push({ pathname: '/car/[id]', params: { id: car.id } }))}
+        style={({ pressed }) => [styles.cardMain, { opacity: pressed ? 0.85 : 1 }]}>
+        <View style={[styles.art, { backgroundColor: t.night }]}>
+          <CarArt kind={bodyKind(car.body, car.modelId ? getModel(car.modelId)?.body[0] : null)} width={70} color={t.onNight} />
+          <View style={[styles.artLane, { backgroundColor: verdict ? t[verdictColor[verdict]] : t.lane }]} />
         </View>
-      </View>
-      {selecting ? (
-        <Ionicons name={selected ? 'checkbox' : 'square-outline'} size={24} color={selected ? t.brand : t.faint} />
-      ) : (
-        <Ionicons name="chevron-forward" size={18} color={t.faint} />
-      )}
-    </Pressable>
+        <View style={styles.text}>
+          <AppText variant="heading">{carTitle(car)}</AppText>
+          {car.trim || car.engineDesc ? (
+            <AppText variant="caption" tone="muted" numberOfLines={1}>
+              {[car.trim, car.engineDesc].filter(Boolean).join(' · ')}
+            </AppText>
+          ) : null}
+          {facts.length ? (
+            <AppText variant="label" tone="muted">
+              {facts.join(' · ')}
+            </AppText>
+          ) : null}
+          {car.status !== 'considering' ? (
+            <View style={styles.tags}>
+              <Tag label={car.status === 'bought' ? 'Bought' : 'Passed'} color="slate" />
+            </View>
+          ) : null}
+        </View>
+        {selecting ? (
+          <Ionicons name={selected ? 'checkbox' : 'square-outline'} size={24} color={selected ? t.brand : t.faint} />
+        ) : (
+          <Ionicons name="chevron-forward" size={18} color={t.faint} />
+        )}
+      </Pressable>
+      {selecting ? null : <NextStep car={car} progress={progress} verdict={verdict} verdictLabel={verdictLabel} />}
+    </View>
   );
 }
 
@@ -100,6 +151,12 @@ export default function GarageScreen() {
   const list = cars.data ?? [];
 
   const premium = usePremium();
+  const summaries = useQuery({ queryKey: [...carKeys.all, 'progress'], queryFn: () => answerSummaries(getDb()) });
+  const progressOf = (c: CarRecord): Progress => checklistProgress(c.powertrain, summaries.data?.[c.id]?.answers ?? {});
+  // The inspection you were in the middle of most recently (for the "Continue" button).
+  const resume = list
+    .filter((c) => (!c.verdict || c.verdict === 'INCOMPLETE') && progressOf(c).checked > 0)
+    .sort((a, b) => (summaries.data?.[b.id]?.lastAt ?? 0) - (summaries.data?.[a.id]?.lastAt ?? 0))[0];
   const [filter, setFilter] = useState<'all' | CarStatus>('all');
   const [selecting, setSelecting] = useState(false);
   const [selected, setSelected] = useState<string[]>([]);
@@ -123,7 +180,19 @@ export default function GarageScreen() {
             })}
           </AppText>
           <RoadScene hero={bodyKind(list[0].body)} heroWidth={120} height={92} />
-          {!selecting ? <Button label="Check another car" kind="road" icon="add" onPress={() => router.navigate('/check')} /> : null}
+          {!selecting && resume ? (
+            <>
+              <Button
+                label={tr('Continue: {car}', { car: carTitle(resume) })}
+                kind="road"
+                icon="play"
+                onPress={() => router.push({ pathname: '/car/[id]/inspect', params: { id: resume.id } })}
+              />
+              <Button label="Check another car" kind="roadGhost" icon="add" onPress={() => router.navigate('/check')} />
+            </>
+          ) : !selecting ? (
+            <Button label="Check another car" kind="road" icon="add" onPress={() => router.navigate('/check')} />
+          ) : null}
         </NightPanel>
         {list.length > 2 ? <ChoiceChips choices={FILTERS} value={filter} onChange={setFilter} /> : null}
         {selecting ? (
@@ -132,7 +201,14 @@ export default function GarageScreen() {
           </AppText>
         ) : null}
         {shown.map((c) => (
-          <CarCard key={c.id} car={c} selecting={selecting} selected={selected.includes(c.id)} onSelect={() => toggle(c.id)} />
+          <CarCard
+            key={c.id}
+            car={c}
+            progress={progressOf(c)}
+            selecting={selecting}
+            selected={selected.includes(c.id)}
+            onSelect={() => toggle(c.id)}
+          />
         ))}
         {shown.length === 0 ? (
           <AppText tone="muted" align="center">
@@ -225,7 +301,20 @@ const styles = StyleSheet.create({
   banner: { gap: space.xs, paddingBottom: space.lg },
   step: { flexDirection: 'row', alignItems: 'center', gap: space.md, padding: space.lg, borderRadius: radius.md, borderWidth: 1 },
   stepNum: { width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' },
-  card: { flexDirection: 'row', alignItems: 'center', gap: space.md, padding: space.lg, borderRadius: radius.md, borderWidth: 1 },
+  card: { borderRadius: radius.md, borderWidth: 1, overflow: 'hidden' },
+  cardMain: { flexDirection: 'row', alignItems: 'center', gap: space.md, padding: space.lg },
+  next: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: space.md,
+    minHeight: minTouch + 4,
+    paddingHorizontal: space.lg,
+    borderTopWidth: 1,
+  },
+  nextAction: { flexDirection: 'row', alignItems: 'center', gap: 2 },
+  progressWrap: { flex: 1, gap: 4 },
+  track: { height: 6, borderRadius: 3, overflow: 'hidden' },
+  fill: { height: '100%', borderRadius: 3 },
   art: { width: 88, height: 64, borderRadius: radius.sm, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-start', overflow: 'hidden' },
   artLane: { position: 'absolute', left: 10, right: 10, bottom: 7, height: 3, borderRadius: 2 },
   text: { flex: 1, gap: 2 },

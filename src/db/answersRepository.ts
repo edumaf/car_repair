@@ -93,6 +93,22 @@ export function clearAnswer(db: SqlDb, carId: string, itemId: string, now = Date
 }
 
 /** The answers that count (CLAUDE.md §2.3, §8): item id → answer, unanswered items left out. */
+/** Every car's answered items and when its inspection last changed (garage progress and "continue" button). */
+export async function answerSummaries(
+  db: SqlDb,
+): Promise<Record<string, { answers: Record<string, Answer>; lastAt: number }>> {
+  const rows = await db.getAllAsync<{ car_id: string; item_id: string; answer: Answer; updated_at: number }>(
+    'SELECT car_id, item_id, answer, updated_at FROM answers WHERE answer IS NOT NULL',
+  );
+  const out: Record<string, { answers: Record<string, Answer>; lastAt: number }> = {};
+  for (const r of rows) {
+    const s = (out[r.car_id] ??= { answers: {}, lastAt: 0 });
+    s.answers[r.item_id] = r.answer;
+    s.lastAt = Math.max(s.lastAt, r.updated_at);
+  }
+  return out;
+}
+
 export function confirmedAnswers(records: Record<string, AnswerRecord>): Record<string, Answer> {
   const out: Record<string, Answer> = {};
   for (const r of Object.values(records)) if (r.answer) out[r.itemId] = r.answer;

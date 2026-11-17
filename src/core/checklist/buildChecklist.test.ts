@@ -1,5 +1,5 @@
 import { CHECKLIST_ITEMS } from '../data/seed';
-import { buildChecklist, flattenChecklist, progress } from './buildChecklist';
+import { buildChecklist, checklistProgress, flattenChecklist, progress } from './buildChecklist';
 
 const ids = (pt: 'gas' | 'diesel' | 'hybrid' | 'ev') => flattenChecklist(buildChecklist({ powertrain: pt }, [])).map((e) => e.item.id);
 
@@ -57,5 +57,19 @@ describe('progress', () => {
       touched: 4,
       total: entries.length,
     });
+  });
+});
+
+describe('checklistProgress', () => {
+  it('counts checked items that apply to the powertrain, like progress()', () => {
+    const ev = checklistProgress('ev', {});
+    const gas = checklistProgress('gas', {});
+    expect(ev.total).toBeGreaterThan(0);
+    expect(ev.total).not.toBe(gas.total);
+    const sections = buildChecklist({ powertrain: 'gas' }, []);
+    const entries = flattenChecklist(sections);
+    const answers = { [entries[0].item.id]: 'ok' as const, [entries[1].item.id]: 'skip' as const, [entries[2].item.id]: 'problem' as const };
+    expect(checklistProgress('gas', answers)).toEqual({ checked: 2, total: entries.length });
+    expect(progress(entries, answers).checked).toBe(2);
   });
 });
