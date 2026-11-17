@@ -24,7 +24,7 @@
 > ```
 
 Last updated: **2026-11-17, end of session** (phone-test fixes, listing/VIN photo features, data eval, analytics,
-full Romanian, release prep, bug hunt; **owner to test**).
+full Romanian, release prep, bug hunt, design round 2; **owner to test**).
 
 ## ▶ NEXT CHAT: START HERE
 
@@ -53,6 +53,11 @@ clear VIN model match).
    "8.500 €").
 6. Diagnose search finds **symptoms by words** ("shakes", "nu pornește").
 7. Settings → **Share anonymous usage stats** switch (analytics stay off until a PostHog key exists).
+8. **Design round 2** (owner asked for "very cool, very intuitive"): night onboarding where your progress is a car
+   driving along a road; Garage cards with one clear next step (Start / Continue / See the verdict) and a
+   **"Continue: <car>"** button; report **tiles** (recalls, complaints, known problems, crash rating) that jump to
+   their section; inspection **walk-around map** (the part of the car you're checking lights up); verdict reveal
+   (the traffic light sweeps, then lands on the verdict).
 
 ## ⚠️ Scope change (owner decision, 2026-11-16) — read CLAUDE.md "Scope change" first
 
@@ -95,6 +100,9 @@ products; Expo/EAS account → dev build; app name + bundle ID; privacy/terms UR
   (name/subtitle/description/keywords/privacy label/review notes/screenshot plan, Romanian page),
   `docs/legal/privacy-policy.md` and `docs/legal/terms-of-use.md` drafts (owner fills brackets, has them checked,
   hosts them).
+- **Design round 2**: `RoadProgress`, `VinScanDemo`, `WalkaroundMap` (top view built from plain shapes, no SVG),
+  `GlanceTiles`, garage `NextStep` + `answerSummaries`/`checklistProgress` (tested), `VerdictSignal reveal`.
+  Also fixed "12 rechemares" (recall plural) and an untranslated photo-permission message.
 - **Bug hunt** (browser click-through of every flow, EN + RO, light + dark, iPhone SE size; code review):
   - **Crash**: picking a year in "US car not in our list?" crashed (FlatList numColumns change). Fixed.
   - Notes typed in the inspection were lost when tapping Next with the keyboard open. Fixed.
@@ -306,6 +314,13 @@ show it too.
 
 **P. Looks** — welcome, Garage, Check, car report header, paywall, Diagnose, Learn, share card: night panels with
 line-art cars and moving road (still when iPhone Settings → Accessibility → Reduce Motion is on). Try dark mode.
+
+**Q. Design round 2** — Settings → Developer → Show onboarding again: the 4 questions show a little car driving along a
+road as you answer; the camera screen shows a scanner. Garage: each car has one action at the bottom (Start /
+Continue with a progress bar / See the verdict); the yellow **Continue** button reopens the inspection you were doing.
+Car report: tap a tile (e.g. **Known problems**) → it scrolls to that section. Inspection: the small car top-right
+lights up the part you're checking (papers, body, wheels, bonnet, cabin…). Verdict: the lamps sweep, then stop on
+the verdict.
 
 ## Next steps
 
