@@ -65,7 +65,7 @@ export function ProblemRow({ problem, showCost }: { problem: ModelProblem; showC
           ))}
           {showCost && cost ? (
             <AppText variant="caption" tone="muted">
-              If it needs fixing: {cost.name}, typically {usd(cost.low)}–{usd(cost.high)} in the US.
+              {tr('If it needs fixing: {name}, typically {low}–{high} in the US.', { name: tr(cost.name), low: usd(cost.low), high: usd(cost.high) })}
             </AppText>
           ) : null}
         </View>

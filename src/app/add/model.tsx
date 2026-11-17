@@ -59,7 +59,7 @@ function Row({ title, subtitle, onPress, highlight }: { title: string; subtitle?
   );
 }
 
-const yearsLabel = (m: CarModel) => `${m.years[0]}–${m.years[1] >= new Date().getFullYear() ? 'now' : m.years[1]}`;
+const yearsLabel = (m: CarModel) => `${m.years[0]}–${m.years[1] >= new Date().getFullYear() ? tr('now') : m.years[1]}`;
 
 export default function PickModel() {
   const t = useTheme();

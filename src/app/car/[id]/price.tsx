@@ -123,7 +123,7 @@ export default function PriceCheckScreen() {
         <AppText variant="title">{carTitle(c)}</AppText>
         <AppText tone="muted">
           {[
-            c.askingPrice != null ? `Asking ${money(c.askingPrice, region)}` : null,
+            c.askingPrice != null ? tr('Asking {price}', { price: money(c.askingPrice, region) }) : null,
             c.mileage != null ? `${formatNumber(c.mileage)} ${unit}` : null,
           ]
             .filter(Boolean)
@@ -206,7 +206,7 @@ export default function PriceCheckScreen() {
                 <View style={{ flex: 1 }}>
                   <AppText variant="bodyStrong">{money(x.price, region)}</AppText>
                   <AppText variant="caption" tone="muted">
-                    {[x.mileage != null ? `${formatNumber(x.mileage)} ${unit}` : 'mileage ?', x.year, x.note]
+                    {[x.mileage != null ? `${formatNumber(x.mileage)} ${unit}` : tr('mileage ?'), x.year, x.note]
                       .filter(Boolean)
                       .join(' · ')}
                   </AppText>

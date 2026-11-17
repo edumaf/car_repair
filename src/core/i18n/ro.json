@@ -698,5 +698,11 @@
   "Which screens and buttons are used. Never VINs, prices, text or photos.": "Ce ecrane și butoane sunt folosite. Niciodată VIN-uri, prețuri, text sau poze.",
   "Look up an error code, or answer a few questions about what the car is doing.": "Caută un cod de eroare sau răspunde la câteva întrebări despre ce face mașina.",
   "No code matches. Type the code exactly as the reader shows it (e.g. P0420), or describe the problem below.": "Niciun cod nu se potrivește. Scrie codul exact cum îl arată testerul (de ex. P0420) sau descrie problema mai jos.",
-  "Used Car Check Premium": "Used Car Check Premium"
+  "Used Car Check Premium": "Used Car Check Premium",
+  "now": "prezent",
+  "Script copied. Paste it into a message to the seller.": "Textul a fost copiat. Lipește-l într-un mesaj către vânzător.",
+  "Questions copied. Paste them into a message to the seller.": "Întrebările au fost copiate. Lipește-le într-un mesaj către vânzător.",
+  "Asking {price}": "Cere {price}",
+  "mileage ?": "kilometraj ?",
+  "If it needs fixing: {name}, typically {low}–{high} in the US.": "Dacă trebuie reparat: {name}, de obicei {low}–{high} în SUA."
 }

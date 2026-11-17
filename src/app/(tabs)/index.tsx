@@ -20,7 +20,7 @@ import { Tag } from '@/design/components/Tag';
 import { radius, space, useTheme, verdictColor } from '@/design/tokens';
 import { useCars } from '@/hooks/useCars';
 import { usePremium } from '@/hooks/usePremium';
-import { tr } from '@/core/i18n/i18n';
+import { plural, tr } from '@/core/i18n/i18n';
 
 function CarCard({
   car,
@@ -41,7 +41,7 @@ function CarCard({
   const facts = [
     car.askingPrice != null ? money(car.askingPrice) : null,
     car.mileage != null ? `${formatNumber(car.mileage)} ${car.mileageUnit}` : null,
-    recalls != null ? `${recalls} recall${recalls === 1 ? '' : 's'}` : null,
+    recalls != null ? plural(recalls, '{n} recall', '{n} recalls', '{n} de rechemări') : null,
   ].filter(Boolean);
   return (
     <Pressable

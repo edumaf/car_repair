@@ -2,7 +2,7 @@
 import learn from '../../../content/learn.json';
 import roData from '../../../data/i18n/ro.json';
 import { OBD_CODES, SYMPTOMS } from '../data/knowledge';
-import { CHECKLIST_ITEMS, FIELD_FLAGS, LISTING_FLAGS, SECTIONS } from '../data/seed';
+import { CHECKLIST_ITEMS, FIELD_FLAGS, LISTING_FLAGS, REPAIR_COSTS, SECTIONS } from '../data/seed';
 
 const ro = roData as Record<string, string>;
 const missing = (strings: (string | undefined)[]) => [...new Set(strings.filter((s): s is string => !!s && !(s in ro)))];
@@ -11,6 +11,10 @@ describe('Romanian data translations', () => {
   it('inspection checklist', () => {
     expect(missing(SECTIONS.map((s) => s.title))).toEqual([]);
     expect(missing(CHECKLIST_ITEMS.flatMap((i) => [i.title, ...i.how_to_check, ...i.bad_signs]))).toEqual([]);
+  });
+
+  it('repair cost names', () => {
+    expect(missing(REPAIR_COSTS.map((c) => c.name))).toEqual([]);
   });
 
   it('listing warning signs', () => {

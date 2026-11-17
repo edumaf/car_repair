@@ -194,13 +194,15 @@ function SafetyCard({ report }: { report: VehicleReport }) {
   );
 }
 
+const SELLER_LABELS = { private: 'Private seller', dealer: 'Dealer', unknown: 'Seller not set' } as const;
+
 function DetailsCard({ car }: { car: CarRecord }) {
-  const seller = { private: 'Private seller', dealer: 'Dealer', unknown: 'Seller not set' }[car.sellerType];
+  const seller = tr(SELLER_LABELS[car.sellerType]);
   return (
     <View style={styles.details}>
       <AppText variant="label" tone="muted">
         {[
-          car.askingPrice != null ? `Asking ${money(car.askingPrice)}` : 'No asking price',
+          car.askingPrice != null ? tr('Asking {price}', { price: money(car.askingPrice) }) : tr('No asking price'),
           car.mileage != null ? `${formatNumber(car.mileage)} ${car.mileageUnit}` : null,
           seller,
         ]

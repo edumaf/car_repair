@@ -110,7 +110,7 @@ export default function VerdictScreen() {
     recalls: car.report?.recalls ?? [],
   });
   const offer = costs ? suggestedOffer(car.askingPrice, result.repairEstimate, priceResult?.fairRange?.low ?? null) : null;
-  const issueNames = result.repairs.map((r) => r.cost.name);
+  const issueNames = result.repairs.map((r) => tr(r.cost.name));
   const script = negotiationScript(tone, {
     issues: issueNames.length ? issueNames : result.problemItems.map((i) => i.title),
     estimate: costs ? result.repairEstimate : null,
@@ -119,10 +119,15 @@ export default function VerdictScreen() {
   const checked = Math.round(result.coverage * inspection.entries.length);
   const showScript = result.problemItems.length > 0 && result.verdict !== 'INCOMPLETE';
 
-  const copy = async (text: string, what: string) => {
+  const copy = async (text: string, what: 'questions' | 'script') => {
     await Clipboard.setStringAsync(text);
     Haptics.selectionAsync().catch(() => {});
-    Alert.alert('Copied', `${what} copied. Paste it into a message to the seller.`);
+    Alert.alert(
+      'Copied',
+      what === 'script'
+        ? 'Script copied. Paste it into a message to the seller.'
+        : 'Questions copied. Paste them into a message to the seller.',
+    );
   };
 
   return (
@@ -182,7 +187,7 @@ export default function VerdictScreen() {
             <Pressable
               accessibilityRole="button"
               accessibilityLabel={tr('Copy all questions')}
-              onPress={() => copy(questions.join('\n'), 'Questions')}
+              onPress={() => copy(questions.join('\n'), 'questions')}
               hitSlop={8}>
               <Ionicons name="copy-outline" size={20} color={t.brand} />
             </Pressable>
@@ -232,7 +237,7 @@ export default function VerdictScreen() {
               kind="secondary"
               onPress={() => {
                 track('script_copied', { tone });
-                copy(script, 'Script');
+                copy(script, 'script');
               }}
             />
           </Card>
