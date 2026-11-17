@@ -90,6 +90,29 @@ export function enginesForPowertrain(model: CarModel, powertrain: Powertrain | n
   return powertrain ? model.engines.filter((e) => e.fuel === powertrain) : model.engines;
 }
 
+/**
+ * The engine that fits what NHTSA decoded from the VIN (fuel + displacement, e.g. "2.5L 4-cyl"), when exactly one
+ * engine of the generation fits. Engine names can list several sizes ("1.4/1.6 TDCi"); any of them counts.
+ */
+export function engineFromDecode(
+  model: CarModel,
+  powertrain: Powertrain | null,
+  engineDesc: string | null,
+): CarModel['engines'][number] | null {
+  const pool = enginesForPowertrain(model, powertrain);
+  if (pool.length === 1) return pool[0];
+  const m = engineDesc?.match(/(\d+(?:\.\d+)?)\s*L\b/i);
+  if (!m) return null;
+  const liters = Number(m[1]);
+  const hits = pool.filter((e) => (e.name.match(/\d\.\d+/g) ?? []).some((x) => Math.abs(Number(x) - liters) < 0.06));
+  return hits.length === 1 ? hits[0] : null;
+}
+
+/** True when the generation's problems differ by engine, i.e. choosing the engine changes what we show. */
+export function engineChangesProblems(model: CarModel): boolean {
+  return model.problems.some((p) => !p.engines.includes('all'));
+}
+
 export interface ProblemsForCar {
   /** Problems for this engine (or "all" engines) and year. */
   relevant: ModelProblem[];

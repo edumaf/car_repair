@@ -33,11 +33,12 @@ export function makeHttpGet(fetchImpl: typeof fetch, timeoutMs = NHTSA_TIMEOUT_M
       const body = await res.json().catch(() => null);
       if (res.ok && body) return body;
       if (res.status === 400 && body && (Array.isArray(body.results) || Array.isArray(body.Results))) return body;
-      throw new NhtsaError('network', `NHTSA answered HTTP ${res.status}`);
+      throw new NhtsaError('network', 'NHTSA isn’t answering right now. Try again in a minute.');
     } catch (e) {
       if (e instanceof NhtsaError) throw e;
-      if ((e as Error)?.name === 'AbortError') throw new NhtsaError('timeout', 'NHTSA took too long to answer');
-      throw new NhtsaError('network', (e as Error)?.message ?? 'Network error');
+      if ((e as Error)?.name === 'AbortError') throw new NhtsaError('timeout', 'NHTSA took too long to answer. Try again.');
+      // fetch() itself failed ("Failed to fetch" / "Network request failed"): no connection.
+      throw new NhtsaError('network', 'No connection. Check your internet and try again.');
     } finally {
       clearTimeout(timer);
     }

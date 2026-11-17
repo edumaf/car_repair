@@ -2,7 +2,7 @@
 //   npx tsx scripts/i18n-extract.ts            → prints missing Romanian keys as JSON (to paste and translate)
 //   npx tsx scripts/i18n-extract.ts --stale    → also lists ro.json keys no longer used
 // What counts as visible: JSX text; string literals used as JSX children (incl. `a ? 'x' : 'y'`); string props
-// in TEXT_PROPS; `title:`-like object properties; arguments of t(), tk(), plural() and Alert.alert().
+// in TEXT_PROPS; `title:`-like object properties; arguments of t(), tk(), plural() and Alert.alert(); ApiError messages.
 // Template literals with ${…} in those places can't be keys: they're reported as "dynamic" to rewrite with t().
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
@@ -144,6 +144,10 @@ export function extract(): { found: Found[]; dynamic: Found[] } {
               }
             }
           }
+        } else if (ts.isNewExpression(n) && /^(Api|Nhtsa)Error$/.test(n.expression.getText(src)) && n.arguments?.[1]) {
+          // new ApiError(code, 'message'): the message is shown to the user (error screens, alerts).
+          const m = n.arguments[1];
+          if (ts.isStringLiteral(m) || ts.isNoSubstitutionTemplateLiteral(m)) add(m.text, m);
         } else if ((ts.isStringLiteral(n) || ts.isNoSubstitutionTemplateLiteral(n)) && shownPosition(n)) {
           add(n.text, n);
         } else if (ts.isVariableDeclaration(n) && ts.isIdentifier(n.name) && /^[A-Z][A-Z0-9_]+$/.test(n.name.text) && n.initializer) {

@@ -244,9 +244,29 @@ export default function PickModel() {
   }
 
   if (step === 'engine' && model) {
+    // The VIN pointed to exactly this model, so we skipped the model list: say so clearly, with a way out.
+    const fromVin = !!only && only.id === model.id;
     return (
       <ScrollView style={{ backgroundColor: t.bg }} contentContainerStyle={styles.list}>
-        {header('Which engine?', `${model.make} ${model.model} · ${model.generation}`)}
+        {fromVin ? (
+          <View style={[styles.vinPick, { borderColor: t.brand, backgroundColor: t.tint.brand }]}>
+            <AppText variant="overline" tone="brand">
+              From your VIN
+            </AppText>
+            <AppText variant="title">{`${model.make} ${model.model} ${model.generation}`}</AppText>
+            <AppText variant="label" tone="muted">
+              {vinMatch?.year ? tr('Built {years} · probably {year}', { years: yearsLabel(model), year: vinMatch.year }) : yearsLabel(model)}
+            </AppText>
+            <Button label="Not this car? Change the model" kind="ghost" onPress={() => setStep('model')} />
+          </View>
+        ) : null}
+        {fromVin ? (
+          <AppText variant="title" accessibilityRole="header">
+            Which engine?
+          </AppText>
+        ) : (
+          header('Which engine?', `${model.make} ${model.model} · ${model.generation}`)
+        )}
         <AppText variant="label" tone="muted">
           It’s on the registration document, the listing, or the back of the car. Not sure? Pick “Not sure”: you’ll see the problems for all
           engines.
@@ -374,6 +394,7 @@ export default function PickModel() {
 }
 
 const styles = StyleSheet.create({
+  vinPick: { borderWidth: 1.5, borderRadius: radius.md, padding: space.lg, gap: space.xs },
   list: { padding: space.xl, gap: space.sm, paddingBottom: space.xxxl },
   header: { gap: space.xs, marginBottom: space.sm },
   row: {

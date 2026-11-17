@@ -183,7 +183,11 @@ export default function PickYmm() {
         q.isPending ? (
           <LoadingState label={step === 'make' ? 'Loading makes from NHTSA…' : 'Loading models from NHTSA…'} />
         ) : q.isError ? (
-          <ErrorState title="Couldn’t load the list" message={(q.error as Error).message} onRetry={() => q.refetch()} />
+          <View>
+            <ErrorState title="Couldn’t load the list" message={(q.error as Error).message} onRetry={() => q.refetch()} />
+            {/* NHTSA's list needs the internet; ours doesn't. */}
+            <Button label="Pick make and model instead" kind="ghost" icon="list-outline" onPress={() => router.replace('/add/model')} />
+          </View>
         ) : (
           <AppText tone="muted" align="center" style={{ padding: space.xl }}>
             {search ? 'No match. Try a shorter search.' : 'NHTSA has no records for this year.'}

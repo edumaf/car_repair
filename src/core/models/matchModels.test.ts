@@ -1,6 +1,8 @@
 import { getModel, MODELS } from '../data/knowledge';
 import { computeCheckDigit } from '../vin/vin';
 import {
+  engineChangesProblems,
+  engineFromDecode,
   enginesForPowertrain,
   findModelsByName,
   findModelsByVin,
@@ -103,5 +105,39 @@ describe('problems and engines', () => {
     expect(enginesForPowertrain(golf6, 'diesel').map((e) => e.id)).toEqual(['tdi16', 'tdi20']);
     expect(listMakes()).toEqual(expect.arrayContaining(['Dacia', 'Volkswagen', 'Toyota', 'Tesla']));
     expect(modelsForMake('Dacia').length).toBeGreaterThanOrEqual(5);
+  });
+});
+
+describe('engineFromDecode', () => {
+  const altima = getModel('nissan_altima_l33')!;
+  it('picks the engine whose size matches the VIN decode', () => {
+    expect(engineFromDecode(altima, 'gas', '2.5L 4-cyl')?.id).toBe('qr25');
+    expect(engineFromDecode(altima, 'gas', '3.5L 6-cyl')?.id).toBe('v6');
+  });
+  it('returns null when the size is unknown or fits nothing', () => {
+    expect(engineFromDecode(altima, 'gas', null)).toBeNull();
+    expect(engineFromDecode(altima, 'gas', '1.8L 4-cyl')).toBeNull();
+  });
+  it('picks the only engine for the fuel without needing a size', () => {
+    const withEv = MODELS.find((m) => m.engines.filter((e) => e.fuel === 'ev').length === 1)!;
+    expect(engineFromDecode(withEv, 'ev', 'Electric motor')?.fuel).toBe('ev');
+  });
+  it('matches any size listed in a shared engine name ("1.4/1.6 …")', () => {
+    const shared = MODELS.find((m) => m.engines.some((e) => /^1\.4\/1\.6/.test(e.name)))!;
+    const engine = shared.engines.find((e) => /^1\.4\/1\.6/.test(e.name))!;
+    const sameFuelSameSize = shared.engines.filter(
+      (e) => e.fuel === engine.fuel && (e.name.match(/\d\.\d+/g) ?? []).some((x) => Math.abs(Number(x) - 1.6) < 0.06),
+    );
+    const picked = engineFromDecode(shared, engine.fuel, '1.6L 4-cyl');
+    expect(picked?.id ?? null).toBe(sameFuelSameSize.length === 1 ? engine.id : null);
+  });
+});
+
+describe('engineChangesProblems', () => {
+  it('is false when every problem applies to all engines (2013 Altima)', () => {
+    expect(engineChangesProblems(getModel('nissan_altima_l33')!)).toBe(false);
+  });
+  it('is true for the Golf Mk6 (TSI chain, DSG, diesel problems differ)', () => {
+    expect(engineChangesProblems(getModel('vw_golf_mk6')!)).toBe(true);
   });
 });

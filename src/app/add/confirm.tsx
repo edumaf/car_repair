@@ -6,7 +6,7 @@ import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, View } from 're
 
 import { vehicleClient } from '@/core/api/clients';
 import { ApiError, type VehicleLookup } from '@/core/api/types';
-import { enginesForPowertrain, findModelsByName } from '@/core/models/matchModels';
+import { engineFromDecode, findModelsByName } from '@/core/models/matchModels';
 import type { Powertrain } from '@/core/types';
 import { carTitle } from '@/db/carsRepository';
 import { AppText } from '@/design/components/AppText';
@@ -59,6 +59,12 @@ export default function ConfirmCar() {
           onRetry={notFound ? undefined : () => report.refetch()}
         />
         <View style={styles.errorActions}>
+          {/* Our model list works offline, so it's the way forward when NHTSA can't be reached. */}
+          <Button
+            label="Pick make and model instead"
+            icon="list-outline"
+            onPress={() => router.replace({ pathname: '/add/model', params: p.vin ? { vin: p.vin } : {} })}
+          />
           {p.vin ? (
             <Button
               label="Edit the VIN"
@@ -66,7 +72,6 @@ export default function ConfirmCar() {
               onPress={() => router.replace({ pathname: '/add/vin', params: { vin: p.vin } })}
             />
           ) : null}
-          <Button label="Pick year, make and model" kind="ghost" onPress={() => router.replace('/add/ymm')} />
         </View>
       </View>
     );
@@ -83,17 +88,18 @@ export default function ConfirmCar() {
     router.push({ pathname: '/car/[id]', params: { id } });
   };
 
-  // Link to our model database when exactly one generation fits; the engine only if the fuel narrows it to one.
+  // Link to our model database when exactly one generation fits; the engine when the fuel and the engine size
+  // NHTSA decoded from the VIN point to exactly one engine.
   const matches = findModelsByName(d.make, d.model, d.year);
   const matched = matches.length === 1 ? matches[0] : null;
-  const engines = matched ? enginesForPowertrain(matched, powertrain) : [];
+  const engine = matched ? engineFromDecode(matched, powertrain, d.engineDesc) : null;
 
   const save = async () => {
     const id = await create.mutateAsync({
       report: r,
       powertrain,
       modelId: matched?.id ?? null,
-      engineId: engines.length === 1 ? engines[0].id : null,
+      engineId: engine?.id ?? null,
       ...values,
     });
     openCar(id);

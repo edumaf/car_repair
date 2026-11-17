@@ -8,7 +8,7 @@ const getHttp = () => (http ??= makeHttpGet(fetch));
 
 function mapError(e: unknown): never {
   if (e instanceof NhtsaError) throw new ApiError(e.code, e.message);
-  throw new ApiError('network', (e as Error)?.message ?? 'Network error');
+  throw new ApiError('network', 'No connection. Check your internet and try again.');
 }
 
 export const directVehicleClient: VehicleClient = {
