@@ -23,33 +23,36 @@
 > - Crystal Check (edumaf/crystal_app) has priority if Apple asks for fixes.
 > ```
 
-Last updated: **2026-11-17** (phone test half done; new "night road" look; fix list from the test).
+Last updated: **2026-11-17, end of session** (phone-test fixes, listing/VIN photo features, data eval, analytics,
+full Romanian, release prep, bug hunt; **owner to test**).
 
 ## ▶ NEXT CHAT: START HERE
 
 **State:**
 - PR edumaf/car_repair#2 (branch `claude/fervent-bohr-s8o6sg`): everything up to 2026-11-16. Not merged.
-- PR "Night road look" (branch `claude/vibrant-cori-kyx5fo`) is **built on top of #2**: merge #2 first, then this one.
-- **Test from branch `claude/vibrant-cori-kyx5fo` from now on** (it has everything in #2 plus the new look).
+- PR edumaf/car_repair#3 (branch `claude/vibrant-cori-kyx5fo`) is **built on top of #2**: merge #2 first, then #3.
+- **Test from branch `claude/vibrant-cori-kyx5fo`** (it has everything in #2 plus this session's work).
 
 **Phone test progress (tests A–L in "How to test on the phone"):**
-- ✅ A onboarding · ✅ B language · ✅ C region/data source · ✅ D US car by VIN (recalls, complaint bars, crash rating OK).
-- ⏸ **E (European VIN) — stopped here.** Owner typed `WVWZZZ1KZBW123456` and got to the engine step (the model step is
-  skipped on purpose when the VIN fits exactly one model). **Resume at:** pick an engine → Save → check "About this model"
-  (tap a problem → Signs / What to check) and the RAR button.
-- ⏳ F–L not done yet. Also look at the **new design** on the phone (welcome, Garage, Check, car report).
+- ✅ A onboarding · ✅ B language · ✅ C region/data source · ✅ D US car by VIN.
+- ⏸ **E (European VIN) — resume here**: `WVWZZZ1KZBW123456` → the engine step now shows **"From your VIN: Volkswagen
+  Golf Mk6"** at the top → pick an engine → Save → "About this model" (tap a problem) and the RAR button (region Romania).
+- ⏳ F–L, then the **new things from this session** (list "New since the last phone test" below).
+- The owner said the new night-road look is good from the preview; check it on the phone.
 
-**Fix list from the test (do these next, same PR or the next one):**
-1. **No internet** on lookup → "Couldn't reach NHTSA" only offers Retry. Add "Pick make and model instead" (offline list).
-2. **Engine buttons on the "About this model" card are too small** (36 pt, look like tags). Make them real 44 pt buttons
-   with a clear selected state.
-3. **Pick the engine automatically from the VIN** (vPIC gives displacement + cylinders, e.g. Altima 2.5 L 4-cyl), and hide
-   the engine choice when all engines have the same problems (2013 Altima: choosing changed nothing visible).
-4. **VIN → single model skips the model step**: make it obvious: big "Golf Mk6 (from your VIN) · Change" line at the
-   top of the engine step instead of small grey text.
+**The 4 fixes from the phone test are done** (offline fallback, 44 pt engine buttons, engine picked from the VIN,
+clear VIN model match).
 
-Owner questions answered in this session: the "Data source" switch is dev-only (hidden in store builds); region is
-auto-detected from the phone and only changes km/mi, history links (RAR / MOT), US repair prices and price-check links.
+**New since the last phone test (needs a phone check):**
+1. Check tab → **Take a photo of the VIN** (camera or photo library; sample VIN until the server is live).
+2. Car report → Listing check → **Read it from screenshots** (Premium; sample text until the server is live).
+3. Price check → **Fill in from a screenshot**; asking price far below similar listings → **"Far below typical"**
+   warning, also in the verdict and compare.
+4. Night look on the **paywall, Diagnose, Learn, share card**; car drawings by body type in the garage and report.
+5. **Everything in Romanian**, including Diagnose codes, symptom flows and model pages; Romanian numbers ("118.000 km",
+   "8.500 €").
+6. Diagnose search finds **symptoms by words** ("shakes", "nu pornește").
+7. Settings → **Share anonymous usage stats** switch (analytics stay off until a PostHog key exists).
 
 ## ⚠️ Scope change (owner decision, 2026-11-16) — read CLAUDE.md "Scope change" first
 
@@ -61,16 +64,46 @@ cut. **New submission target: ~Dec 20** (early January if it slips past Dec 22).
 | Milestone | Status |
 |---|---|
 | M0 — Skeleton, data, design | ✅ Done, tested on the owner's iPhone (edumaf/car_repair#1) |
-| M1 — Add a car + vehicle report | 🟡 App + backend code built (`supabase/functions/vehicle`). **Waits for the Supabase project to deploy** |
+| M1 — Add a car + vehicle report | 🟡 App + backend code built and **evaluated on 41 US models** (docs/eval-vehicle.md). **Waits for the Supabase project to deploy** |
 | M2 — Guided inspection + photo checks | 🟡 Built, `/photo-check` written + tested. **Real AI waits for deploy + an AI key** |
 | M3 — Verdict, repairs, questions, script | ✅ Built + tested |
-| **M-D — Model database + Diagnose (new)** | 🟡 Data + screens built. Romanian: UI, checklist, listing signs, guides done; **left: OBD codes, symptoms, models**; mechanic review |
-| M4 — Listing check + price check | 🟡 Pasted-text check + **price check** done. Left (backend): screenshots, VIN photo |
-| M5 — Garage/compare, onboarding, paywall, quotas, dev build | 🟡 Filters, **compare**, **onboarding**, **paywall (simulated)**, local free limits done. Left: RevenueCat, server quotas, pass-expiry reminder, dev build |
-| M6 — Share, Learn, analytics, settings, polish, store assets | 🟡 **Share card**, **Learn guides**, Settings (Premium, restore, delete my data) done. Left: analytics, store assets, eval light |
+| M-D — Model database + Diagnose | ✅ Data + screens + **full Romanian**. Left: mechanic review of the data |
+| M4 — Listing check + price check | ✅ App side done (paste, screenshots, VIN photo, comps by screenshot, field flags). Real AI waits for deploy |
+| M5 — Garage/compare, onboarding, paywall, quotas, dev build | 🟡 All app screens done; `eas.json` ready. Left: **RevenueCat** (owner account), server quotas live (deploy), pass-expiry reminder, dev build |
+| M6 — Share, Learn, analytics, settings, polish, store assets | 🟡 Share card, Learn, Settings, **analytics (§14 events)**, eval §16.1, **store listing draft**, **privacy/terms drafts** done. Left: PostHog key, eval photos §16.2 (owner), screenshots |
 | M7 — Submit | **~Dec 20** |
 
-**Critical path:** Supabase project from the owner (deploy the ready backend), Romanian data translation, RevenueCat, dev build.
+**Critical path (all need the owner):** Supabase project → deploy backend + AI key; RevenueCat + App Store Connect
+products; Expo/EAS account → dev build; app name + bundle ID; privacy/terms URLs.
+
+### Session 2026-11-17 (this session)
+- **Phone-test fixes 1–4** done (see above). Network errors are friendly and translated (were "Failed to fetch").
+- **Listing check from screenshots, VIN from a photo, similar listings from a screenshot** (mock until the server is
+  live). Temporary images go to a cache folder and are deleted after reading.
+- **Field-based warning signs** (`data/listing_red_flags.json` → `field_flags`): asking price far below the similar
+  listings (< 75% of the fitted price), mileage not stated. Listing card, verdict and compare share
+  `listingFlagsForCar`.
+- **Eval light §16.1** (`npm run eval:vehicle` → `docs/eval-vehicle.md`): 41 popular US models by VIN, **41/41 OK**.
+  Fixed: Silverado/Sierra 1500 lost 10 of 12 recalls and all 800 complaints (load class now in the model name);
+  Mercedes ("C-Class" + "C300") and Lexus ("ES" + "350") recalls are now found. 20 Deno function tests pass.
+- **Analytics**: typed §14 events, PostHog (EU, no autocapture/replay/person profiles), off without a key,
+  console-only in dev, user switch in Settings, reset on "Delete all my data".
+- **Night look** extended to paywall, Diagnose, Learn, share card (our own line-art car by body type).
+- **Romanian complete**: 1,090 Diagnose texts, 1,264 model-page texts, 76 repair-cost names, error messages; tests
+  fail on any missing string. Romanian number/price format.
+- **Release prep**: `eas.json` (development/preview/production), export-compliance flag, `docs/store-listing.md`
+  (name/subtitle/description/keywords/privacy label/review notes/screenshot plan, Romanian page),
+  `docs/legal/privacy-policy.md` and `docs/legal/terms-of-use.md` drafts (owner fills brackets, has them checked,
+  hosts them).
+- **Bug hunt** (browser click-through of every flow, EN + RO, light + dark, iPhone SE size; code review):
+  - **Crash**: picking a year in "US car not in our list?" crashed (FlatList numColumns change). Fixed.
+  - Notes typed in the inspection were lost when tapping Next with the keyboard open. Fixed.
+  - Section chips 36 pt → 44 pt; filter chips fit on one line; engine chips 44 pt.
+  - Low-coverage reason said "finish more checks for a verdict" next to a "Possible scam" verdict. Fixed.
+  - Garage counted "Keep checking" as a verdict; compare said "Below typical" for "Far below". Fixed.
+  - Untranslated bits in Romanian (asking price, seller type, recall counts, copy alerts, "now"). Fixed.
+  - Huge headlines capped at 1.3× system text size so large text can't break layouts.
+  - Checked: iOS bundle exports, `tsc`, 370 Jest + 20 Deno tests, lint (0 errors), expo-doctor 20/20.
 
 ### Session 2026-11-16 (later)
 - **Backend written, ready to deploy** (`supabase/`, README "Backend"): migration (usage counters, cache, RLS),
@@ -165,22 +198,41 @@ with "Known for this model" → Diagnose: P0301, "shakes at idle" flow, manufact
 - VIN model codes and years are only hints: the user always confirms.
 - Repair costs are US ranges: shown only when the region is the US. Romanian (RON) costs need a reviewed price list.
 - `ProgressRing` (§12) still waits for `react-native-svg` (not in §3). **Owner: OK to add it? (works in Expo Go)**
+- **Night-road look** (owner liked it): line-art cars are our own SVGs rendered to PNG and tinted (no new dependency);
+  night panels only in hero areas; signal colors unchanged.
+- **Field-based listing flags** live in `data/listing_red_flags.json` (`field_flags`), so texts stay in reviewed data.
+- **Analytics** is opt-out (Settings switch), anonymous, never identifies a person; off until the key exists.
+  Owner/lawyer to confirm opt-out vs opt-in for EU users when writing the privacy policy.
+- RevenueCat wiring and the pass-expiry reminder wait for the owner's RevenueCat project (can't be tested without it);
+  Crystal Check's working RevenueCat module should be reused then.
+- `expo-dev-client` is **not** installed yet: installing it makes `npx expo start` default to dev-build mode instead of
+  Expo Go. Install it in the dev-build session and use `npx expo start --go` for Expo Go after that.
 
 ## Things learned about NHTSA
 
 - "No results" comes back as HTTP 400 with a normal body (handled). 2015 F-150 has 0 complaints in the API.
 - vPIC decodes European VINs to the make at most (Dacia/Skoda: "manufacturer not registered"), so non-US cars use our
   model list.
+- vPIC puts the pickup load class in `Series` ("Silverado" + "1500"); NHTSA records say "SILVERADO 1500". Mercedes
+  decodes as "C-Class" + trim "C300-4M" but recalls are filed under "C300"; Lexus as "ES" + "350" vs "ES350"/"ES 350".
+  All handled; re-run `npm run eval:vehicle` after any change to the lookup.
 
 ## Owner actions (open)
 
-1. **Test this PR on the iPhone** (steps below).
-2. **By Nov 20: Supabase project** for this app (separate from Crystal Check). Steps come at the start of that session.
-3. **Find a mechanic to review the data** before launch: `data/models/*.json` (start with the most common models in
-   Romania: Logan, Golf, Octavia, Astra, Focus, Passat, Duster), `obd_codes.json`, `symptoms.json`, repair costs.
-4. Final app name; employment-contract check; eval photos by Dec 6 (unchanged).
-5. **Review the Romanian texts:** `src/core/i18n/ro.json` and `data/i18n/ro.json` (English → Romanian, one per line).
-6. Provide **terms of use + privacy policy URLs** and a **support email** (paywall and Settings need them).
+1. **Test PR #3 on the iPhone** (resume at test E, then the new items M–P below).
+2. **Supabase project** for this app (separate from Crystal Check) → then I deploy the backend step by step. Needs an
+   **AI key** (Anthropic or Gemini) as a Supabase secret. Never paste keys in the chat.
+3. **RevenueCat + App Store Connect**: products `car_hunt_pass_30d` ($14.99 non-renewing) and `pro_annual` ($39.99),
+   trial yes/no; Apple Developer account in good standing.
+4. **Expo account** (for EAS builds) → dev build on the iPhone.
+5. **App name + bundle ID** (§18.1); check the name is free on the App Store. Draft options in `docs/store-listing.md`.
+6. **Privacy policy + terms**: fill in the [brackets] in `docs/legal/*.md`, have them checked, publish them (e.g. GitHub
+   Pages), send me the URLs + a **support email**.
+7. **PostHog** (optional): EU project key, if you want analytics at launch.
+8. **Mechanic review** of `data/models/*.json`, `obd_codes.json`, `symptoms.json`, `repair_costs.json`,
+   `listing_red_flags.json` (start with Logan, Golf, Octavia, Astra, Focus, Passat, Duster).
+9. **Review the Romanian texts**: `src/core/i18n/ro.json` (UI) and `data/i18n/ro.json` (data, now ~2,900 lines).
+10. Employment-contract check; **eval photos by Dec 6** (§16.2).
 
 ## How to test on the phone
 
@@ -231,7 +283,7 @@ note, take a photo of a tire (AI result is a **sample** until the backend is liv
 
 **I. Diagnose tab** — search `P0301` → causes, "Try yourself", urgency banner. Search `P1234` → "manufacturer-specific".
 Pick **Engine shakes or runs rough at idle** → answer the questions → an outcome with likely causes.
-(Code/symptom texts are still English: Romanian data translation is next.)
+Type a word (`shakes`) → matching symptoms appear above the codes. In Romanian everything is Romanian (try `rateu`).
 
 **J. Premium features** — Settings → Developer → **Simulate Premium** on. Then: car → **Price check** (add 3 similar
 listings with price + mileage → fair range), Garage → **Compare cars** (pick 2), verdict → **Share card**
@@ -242,13 +294,26 @@ listings with price + mileage → fair range), Garage → **Compare cars** (pick
 **L. App icon + delete data** — home screen icon is Expo Go's (the real icon shows only in a dev/store build: OK).
 Settings → **Delete all my data** → confirm → back to onboarding, garage empty.
 
+**M. VIN photo** — Check → **Take a photo of the VIN** → Take a photo (or Choose from photos) → the VIN screen opens
+pre-filled with an orange "Sample VIN" note (real reading needs the server) → Look it up.
+
+**N. Listing screenshots** — Settings → Developer → Simulate Premium on → car report → Listing check → **Read it from
+screenshots** → pick 1–3 screenshots → sample text appears for review → Check the listing.
+
+**O. Price far below** — Price check on a car asking much less than 3 similar listings (e.g. asking 6,500 vs listings
+9,800 / 10,400 / 9,200 with mileage) → orange **"Far below typical"** with a question to ask; the verdict and Compare
+show it too.
+
+**P. Looks** — welcome, Garage, Check, car report header, paywall, Diagnose, Learn, share card: night panels with
+line-art cars and moving road (still when iPhone Settings → Accessibility → Reduce Motion is on). Try dark mode.
+
 ## Next steps
 
-1. Owner finishes the phone test (resume at E) and reviews the new look → fix list 1–4 → merge #2, then the
-   "Night road look" PR.
-2. If the owner likes the look: carry it to inspection, verdict, paywall, Diagnose, Learn, Settings, share card.
-3. **Deploy the backend** once the owner creates the Supabase project (README "Backend"); free-text symptom →
-   symptom id (AI) for Diagnose.
-4. **Romanian data:** OBD codes, symptom flows, model pages (same dictionary approach), then owner review.
-5. Listing screenshot + VIN photo buttons in the app (backend + clients are ready).
-6. RevenueCat + dev build (real purchases), analytics, store assets, eval light.
+1. Owner finishes the phone test (E → P) → fixes → merge #2, then #3.
+2. **Deploy the backend** once the Supabase project + AI key exist (README "Backend"); switch the app to Live; check
+   real AI photo checks, screenshot reading and VIN photos; tune the prompt with the eval photos (§16.2).
+3. **RevenueCat** (reuse Crystal Check's module): real purchases behind `EXPO_PUBLIC_REVENUECAT_IOS_KEY`, entitlement
+   drives Premium, restore, pass-expiry local reminder (expo-notifications) 2 days before the end.
+4. **Dev build** (install `expo-dev-client`, EAS development profile) → sandbox purchase test.
+5. Paywall terms/privacy links once the URLs exist; App Store screenshots (plan in `docs/store-listing.md`).
+6. Optional: AI free-text symptom → symptom id (backend); `react-native-svg` for `ProgressRing` if the owner agrees.
