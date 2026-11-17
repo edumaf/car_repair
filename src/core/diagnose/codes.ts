@@ -1,8 +1,8 @@
 // OBD-II code lookup for the Diagnose tab (CLAUDE.md §20). Generic codes come from data/obd_codes.json;
 // manufacturer-specific codes get an honest "look it up for your make" answer.
-import { OBD_CODES } from '../data/knowledge';
+import { OBD_CODES, SYMPTOMS } from '../data/knowledge';
 import { tr } from '../i18n/i18n';
-import type { ObdCode } from '../data/knowledgeSchema';
+import type { ObdCode, Symptom } from '../data/knowledgeSchema';
 
 export const CODE_PATTERN = /^[PCBU][0-3][0-9A-F]{3}$/;
 
@@ -56,6 +56,22 @@ const fold = (s: string) =>
     .toLowerCase()
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '');
+
+/**
+ * Symptom flows whose title, category or outcomes contain every word ("shakes idle", "scartaie franare"), in English
+ * and, in Romanian, the translation. Short words (≤ 2 letters) are ignored.
+ */
+export function searchSymptoms(query: string, symptoms: readonly Symptom[] = SYMPTOMS, limit = 5): Symptom[] {
+  const words = fold(query)
+    .split(/[^a-z0-9]+/)
+    .filter((w) => w.length > 2);
+  if (!words.length) return [];
+  const haystack = (s: Symptom) => {
+    const texts = [s.title, s.category, ...s.outcomes.map((o) => o.title)];
+    return fold([...texts, ...texts.map((x) => tr(x))].join(' '));
+  };
+  return symptoms.filter((s) => words.every((w) => haystack(s).includes(w))).slice(0, limit);
+}
 
 const LIKELIHOOD_ORDER = { common: 0, possible: 1, rare: 2 } as const;
 export const sortCauses = <T extends { likelihood: keyof typeof LIKELIHOOD_ORDER }>(causes: readonly T[]): T[] =>

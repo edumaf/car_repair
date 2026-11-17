@@ -1,5 +1,5 @@
 import { setLang } from '../i18n/i18n';
-import { lookupCode, normalizeCode, searchCodes, sortCauses } from './codes';
+import { lookupCode, normalizeCode, searchCodes, searchSymptoms, sortCauses } from './codes';
 
 describe('normalizeCode', () => {
   it.each([
@@ -57,4 +57,22 @@ it('sorts causes by likelihood', () => {
       (c) => c.likelihood,
     ),
   ).toEqual(['common', 'possible', 'rare']);
+});
+
+describe('searchSymptoms', () => {
+  it('finds symptom flows by words', () => {
+    expect(searchSymptoms('shakes idle').map((s) => s.id)).toContain('shakes_idle');
+    expect(searchSymptoms('noise braking').length).toBeGreaterThan(0);
+    expect(searchSymptoms('P0')).toEqual([]);
+    expect(searchSymptoms('')).toEqual([]);
+  });
+  it('in Romanian, by Romanian words without diacritics', () => {
+    setLang('ro');
+    try {
+      expect(searchSymptoms('nu porneste').length).toBeGreaterThan(0);
+      expect(searchSymptoms('zgomot franare').length).toBeGreaterThan(0);
+    } finally {
+      setLang('en');
+    }
+  });
 });

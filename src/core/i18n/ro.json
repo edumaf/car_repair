@@ -705,5 +705,6 @@
   "Asking {price}": "Cere {price}",
   "mileage ?": "kilometraj ?",
   "If it needs fixing: {name}, typically {low}–{high} in the US.": "Dacă trebuie reparat: {name}, de obicei {low}–{high} în SUA.",
-  "Only {pct}% of the checks are done, so there may be more to find.": "Doar {pct}% din verificări sunt făcute, deci s-ar putea să mai fie lucruri de găsit."
+  "Only {pct}% of the checks are done, so there may be more to find.": "Doar {pct}% din verificări sunt făcute, deci s-ar putea să mai fie lucruri de găsit.",
+  "e.g. P0301, “misfire” or “shakes”": "de ex. P0301, „rateuri” sau „vibrează”"
 }

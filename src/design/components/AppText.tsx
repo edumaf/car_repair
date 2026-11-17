@@ -25,8 +25,10 @@ function translate(children: ReactNode): ReactNode {
 /** All text goes through this, so fonts, colors, system font scaling and translation stay consistent. */
 export function AppText({ variant = 'body', tone = 'ink', align, style, children, ...rest }: AppTextProps) {
   const t = useTheme();
+  // Huge display headlines still grow with the system text size, but capped so they can't push the screen apart.
+  const maxScale = rest.maxFontSizeMultiplier ?? (variant === 'hero' ? 1.3 : variant === 'display' ? 1.6 : undefined);
   return (
-    <Text {...rest} style={[type[variant], { color: toneColor(t, tone), textAlign: align }, style]}>
+    <Text {...rest} maxFontSizeMultiplier={maxScale} style={[type[variant], { color: toneColor(t, tone), textAlign: align }, style]}>
       {translate(children)}
     </Text>
   );

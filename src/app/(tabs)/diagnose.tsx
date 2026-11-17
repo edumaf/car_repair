@@ -5,7 +5,7 @@ import { Fragment, useMemo, useState } from 'react';
 import { Pressable, StyleSheet, TextInput, View } from 'react-native';
 
 import { SYMPTOMS } from '@/core/data/knowledge';
-import { CODE_PATTERN, normalizeCode, searchCodes } from '@/core/diagnose/codes';
+import { CODE_PATTERN, normalizeCode, searchCodes, searchSymptoms } from '@/core/diagnose/codes';
 import { AppText } from '@/design/components/AppText';
 import { Card } from '@/design/components/Card';
 import { Divider, Row } from '@/design/components/Row';
@@ -42,6 +42,7 @@ export default function DiagnoseScreen() {
   const t = useTheme();
   const [query, setQuery] = useState('');
   const results = useMemo(() => searchCodes(query), [query]);
+  const symptomHits = useMemo(() => searchSymptoms(query), [query]);
   const exact = normalizeCode(query);
   const categories = useMemo(() => [...new Set(SYMPTOMS.map((s) => s.category))], []);
 
@@ -62,9 +63,9 @@ export default function DiagnoseScreen() {
           <TextInput
             value={query}
             onChangeText={setQuery}
-            placeholder={tr('e.g. P0301 or “misfire”')}
+            placeholder={tr('e.g. P0301, “misfire” or “shakes”')}
             placeholderTextColor={t.onNightMuted}
-            autoCapitalize="characters"
+            autoCapitalize="none"
             autoCorrect={false}
             returnKeyType="search"
             onSubmitEditing={() => CODE_PATTERN.test(exact) && openCode(exact)}
@@ -75,6 +76,18 @@ export default function DiagnoseScreen() {
       </NightPanel>
       {query.trim() ? (
         <Card>
+          {symptomHits.map((sy, i) => (
+            <Fragment key={sy.id}>
+              {i > 0 ? <Divider /> : null}
+              <Row
+                icon={CATEGORY_ICON[sy.category] ?? 'help-circle-outline'}
+                title={sy.title}
+                subtitle={sy.category}
+                onPress={() => router.push({ pathname: '/diagnose/symptom/[id]', params: { id: sy.id } })}
+              />
+            </Fragment>
+          ))}
+          {symptomHits.length && (results.length || CODE_PATTERN.test(exact)) ? <Divider /> : null}
           {CODE_PATTERN.test(exact) && !results.some((r) => r.code === exact) ? (
             <Row icon="search-outline" title={tr('Look up {code}', { code: exact })} onPress={() => openCode(exact)} />
           ) : null}
@@ -84,7 +97,7 @@ export default function DiagnoseScreen() {
               <Row title={`${c.code} · ${tr(c.title)}`} subtitle={c.system} onPress={() => openCode(c.code)} />
             </Fragment>
           ))}
-          {!results.length && !CODE_PATTERN.test(exact) ? (
+          {!results.length && !symptomHits.length && !CODE_PATTERN.test(exact) ? (
             <AppText variant="label" tone="muted">
               No code matches. Type the code exactly as the reader shows it (e.g. P0420), or describe the problem below.
             </AppText>
