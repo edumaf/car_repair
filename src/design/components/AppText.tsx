@@ -5,7 +5,7 @@ import { useTheme, type Theme } from '../tokens';
 import { type, type TypeVariant } from '../typography';
 import { tr } from '@/core/i18n/i18n';
 
-type Tone = 'ink' | 'muted' | 'faint' | 'brand' | 'go' | 'caution' | 'warn' | 'stop' | 'slate' | 'onBrand';
+type Tone = 'ink' | 'muted' | 'faint' | 'brand' | 'go' | 'caution' | 'warn' | 'stop' | 'slate' | 'onBrand' | 'onNight' | 'onNightMuted' | 'lane';
 
 export interface AppTextProps extends TextProps {
   variant?: TypeVariant;

@@ -32,6 +32,8 @@ import { getFlags } from '@/state/appFlags';
 import { useCar, useDeleteCar, useUpdateCar } from '@/hooks/useCars';
 import { useRegion } from '@/hooks/useRegion';
 import { tr } from '@/core/i18n/i18n';
+import { getModel } from '@/core/data/knowledge';
+import { bodyKind } from '@/core/vehicle/bodyKind';
 
 function RecallItem({ recall }: { recall: Recall }) {
   const [open, setOpen] = useState(false);
@@ -365,6 +367,7 @@ export default function CarReport() {
           drive={c.drive}
           powertrain={c.powertrain}
           vin={c.vin}
+          kind={bodyKind(c.body, c.modelId ? getModel(c.modelId)?.body[0] : null)}
         />
         <DetailsCard car={c} />
         <Button

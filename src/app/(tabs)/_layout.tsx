@@ -18,14 +18,14 @@ function icon(active: IconName, inactive: IconName) {
   };
 }
 
-/** The center "Check" tab is the main action: a raised brand-blue button. */
+/** The center "Check" tab is the main action: a raised night-road button with a road-paint icon. */
 function CheckIcon({ focused }: { focused: boolean }) {
   const t = useTheme();
   return (
     // The slot keeps the normal icon size so labels stay aligned; the button rises out of it.
     <View style={styles.slot}>
-      <View style={[styles.check, { backgroundColor: t.brand, borderColor: t.surface, opacity: focused ? 1 : 0.92 }]}>
-        <Ionicons name="scan" size={26} color={t.onBrand} />
+      <View style={[styles.check, { backgroundColor: t.night, borderColor: focused ? t.lane : t.surface }]}>
+        <Ionicons name="scan" size={26} color={t.lane} />
       </View>
     </View>
   );

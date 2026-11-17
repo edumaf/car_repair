@@ -23,24 +23,33 @@
 > - Crystal Check (edumaf/crystal_app) has priority if Apple asks for fixes.
 > ```
 
-Last updated: **2026-11-16, end of session** (backend code ready to deploy, English + Romanian, app icon; **owner to test**).
+Last updated: **2026-11-17** (phone test half done; new "night road" look; fix list from the test).
 
 ## ▶ NEXT CHAT: START HERE
 
-**State:** everything is on branch `claude/fervent-bohr-s8o6sg`, open as PR edumaf/car_repair#2 (not merged).
-Nothing has been tested on the iPhone since the M0 test. **The owner must test it now** using the step-by-step list in
-"How to test on the phone" below (tests A–L). Walk the owner through it **one step at a time**, wait for "done" or a
-description/screenshot of the problem, write down every failure, then fix them in the same PR before merging.
+**State:**
+- PR edumaf/car_repair#2 (branch `claude/fervent-bohr-s8o6sg`): everything up to 2026-11-16. Not merged.
+- PR "Night road look" (branch `claude/vibrant-cori-kyx5fo`) is **built on top of #2**: merge #2 first, then this one.
+- **Test from branch `claude/vibrant-cori-kyx5fo` from now on** (it has everything in #2 plus the new look).
 
-What's new since the last phone test (all needs testing):
-1. Price check, compare cars, onboarding, paywall (simulated) + free limits, share card, Learn guides.
-2. Worldwide add-car (European VINs → pick model/engine), model pages, Diagnose tab (error codes + symptom flows).
-3. **English + Romanian**: phone language picks it; Settings → Language switches.
-4. App icon + splash.
-5. Backend code (`supabase/`) is written and unit-tested but **not deployed**: it can't be tested on the phone until the
-   owner creates the Supabase project (owner action 2). Until then the app uses "Real NHTSA (dev)" or "Sample cars".
+**Phone test progress (tests A–L in "How to test on the phone"):**
+- ✅ A onboarding · ✅ B language · ✅ C region/data source · ✅ D US car by VIN (recalls, complaint bars, crash rating OK).
+- ⏸ **E (European VIN) — stopped here.** Owner typed `WVWZZZ1KZBW123456` and got to the engine step (the model step is
+  skipped on purpose when the VIN fits exactly one model). **Resume at:** pick an engine → Save → check "About this model"
+  (tap a problem → Signs / What to check) and the RAR button.
+- ⏳ F–L not done yet. Also look at the **new design** on the phone (welcome, Garage, Check, car report).
 
-After the test passes: owner merges PR #2 → next work is in "Next steps" below.
+**Fix list from the test (do these next, same PR or the next one):**
+1. **No internet** on lookup → "Couldn't reach NHTSA" only offers Retry. Add "Pick make and model instead" (offline list).
+2. **Engine buttons on the "About this model" card are too small** (36 pt, look like tags). Make them real 44 pt buttons
+   with a clear selected state.
+3. **Pick the engine automatically from the VIN** (vPIC gives displacement + cylinders, e.g. Altima 2.5 L 4-cyl), and hide
+   the engine choice when all engines have the same problems (2013 Altima: choosing changed nothing visible).
+4. **VIN → single model skips the model step**: make it obvious: big "Golf Mk6 (from your VIN) · Change" line at the
+   top of the engine step instead of small grey text.
+
+Owner questions answered in this session: the "Data source" switch is dev-only (hidden in store builds); region is
+auto-detected from the phone and only changes km/mi, history links (RAR / MOT), US repair prices and price-check links.
 
 ## ⚠️ Scope change (owner decision, 2026-11-16) — read CLAUDE.md "Scope change" first
 
@@ -77,6 +86,19 @@ cut. **New submission target: ~Dec 20** (early January if it slips past Dec 22).
 - App icon + splash (white car with a green check on blue).
 
 ## What exists today
+
+**"Night road" look (2026-11-17, owner asked for a more distinctive, attractive design)**
+- Our own **line-art car drawings** (sedan, hatchback, SUV, pickup, coupe, van): `assets/source/cars/*.svg`, rendered to
+  PNG (1x/2x/3x) and tinted at runtime (`CarArt`). Body type from vPIC body class or our model database (`bodyKind`,
+  tested). Also the planned silhouette for the share card (§13).
+- **Night panels** (`NightPanel`, tokens `night`, `onNight`, `lane` = road-paint yellow) for hero areas only: welcome
+  screen, Garage, Check tab, car report header. `RoadScene`: animated road (oncoming traffic, lane marks); still when
+  Reduce Motion is on. Yellow `road` button only on night panels. Signal colors unchanged.
+- Welcome: huge headline with the last word in yellow (works in Romanian too). Garage empty state: "How it works" in 3
+  steps. Check tab: VIN-first hero with the two VIN spots marked on the drawing. Tab bar: night Check button.
+- Browser preview fixed (web only: SQLite worker warm-up, no exclusive transactions on web).
+- Not restyled yet: inspection, verdict, paywall, Diagnose, Learn, Settings (next, after the owner likes the direction).
+
 
 **From the earlier sessions (edumaf/car_repair#1, #2):** Expo SDK 58 app; VIN scan/typing; NHTSA lookup (dev-only
 direct mode); report; guided inspection with notes, photos and AI-suggestion chips (samples); verdict engine (§8) with
@@ -166,7 +188,7 @@ Setup (once, on the Windows PC):
 ```
 cd F:\projects\car_repair
 git fetch
-git checkout claude/fervent-bohr-s8o6sg
+git checkout claude/vibrant-cori-kyx5fo
 git pull
 npm install
 npx expo start --clear
@@ -222,9 +244,11 @@ Settings → **Delete all my data** → confirm → back to onboarding, garage e
 
 ## Next steps
 
-1. Owner tests → merge PR edumaf/car_repair#2.
-2. **Deploy the backend** once the owner creates the Supabase project (README "Backend"); free-text symptom →
+1. Owner finishes the phone test (resume at E) and reviews the new look → fix list 1–4 → merge #2, then the
+   "Night road look" PR.
+2. If the owner likes the look: carry it to inspection, verdict, paywall, Diagnose, Learn, Settings, share card.
+3. **Deploy the backend** once the owner creates the Supabase project (README "Backend"); free-text symptom →
    symptom id (AI) for Diagnose.
-3. **Romanian data:** OBD codes, symptom flows, model pages (same dictionary approach), then owner review.
-4. Listing screenshot + VIN photo buttons in the app (backend + clients are ready).
-5. RevenueCat + dev build (real purchases), analytics, store assets, eval light.
+4. **Romanian data:** OBD codes, symptom flows, model pages (same dictionary approach), then owner review.
+5. Listing screenshot + VIN photo buttons in the app (backend + clients are ready).
+6. RevenueCat + dev build (real purchases), analytics, store assets, eval light.

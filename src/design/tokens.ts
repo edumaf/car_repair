@@ -49,6 +49,15 @@ function palette(scheme: 'light' | 'dark') {
       stop: withAlpha(base.stop, light ? 0.08 : 0.2),
       slate: withAlpha(base.slate, light ? 0.1 : 0.22),
     },
+    /**
+     * "Night road" hero panels (garage, check, onboarding): a deep blue-black that stays dark in both themes,
+     * with white line-art cars and road-paint yellow lane marks. Used for a few hero areas only.
+     */
+    night: light ? '#0E1A2B' : '#0A121E',
+    nightRaised: light ? '#182840' : '#142236',
+    onNight: '#F4F7FB',
+    onNightMuted: 'rgba(244,247,251,0.68)',
+    lane: '#FFC83D',
     /** Unlit lamp of the VerdictSignal. */
     lampOff: light ? '#DAD6CC' : '#2C3035',
   };

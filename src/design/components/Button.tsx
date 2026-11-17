@@ -7,7 +7,8 @@ import { minTouch, radius, space, useTheme } from '../tokens';
 import { AppText } from './AppText';
 import { tr } from '@/core/i18n/i18n';
 
-type Kind = 'primary' | 'secondary' | 'ghost';
+/** `road` (road-paint yellow) and `roadGhost` (white text) are only for dark night panels. */
+type Kind = 'primary' | 'secondary' | 'ghost' | 'road' | 'roadGhost';
 
 export interface ButtonProps {
   label: string;
@@ -22,8 +23,8 @@ export interface ButtonProps {
 export function Button({ label, onPress, kind = 'primary', icon, loading, disabled, accessibilityHint }: ButtonProps) {
   const t = useTheme();
   const inactive = disabled || loading;
-  const bg = kind === 'primary' ? t.brand : kind === 'secondary' ? t.surface : 'transparent';
-  const fg = kind === 'primary' ? t.onBrand : t.brand;
+  const bg = { primary: t.brand, secondary: t.surface, ghost: 'transparent', road: t.lane, roadGhost: 'transparent' }[kind];
+  const fg = { primary: t.onBrand, secondary: t.brand, ghost: t.brand, road: t.night, roadGhost: t.onNight }[kind];
   return (
     <Pressable
       accessibilityRole="button"

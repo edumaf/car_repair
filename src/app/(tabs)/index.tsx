@@ -3,13 +3,17 @@ import { router } from 'expo-router';
 import { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
+import { getModel } from '@/core/data/knowledge';
 import { money } from '@/core/region';
+import { bodyKind } from '@/core/vehicle/bodyKind';
 import { VERDICTS, type CarStatus, type Verdict } from '@/core/types';
 import { POSSIBLE_SCAM_HEADLINE, VERDICT_HEADLINE } from '@/core/verdict/strings';
 import { carTitle, type CarRecord } from '@/db/carsRepository';
 import { AppText } from '@/design/components/AppText';
 import { Button } from '@/design/components/Button';
-import { Card } from '@/design/components/Card';
+import { CarArt } from '@/design/components/CarArt';
+import { NightPanel } from '@/design/components/NightPanel';
+import { RoadScene } from '@/design/components/RoadScene';
 import { ChoiceChips } from '@/design/components/ChoiceChips';
 import { Screen } from '@/design/components/Screen';
 import { Tag } from '@/design/components/Tag';
@@ -49,8 +53,9 @@ function CarCard({
         styles.card,
         { backgroundColor: t.surface, borderColor: selected ? t.brand : t.border, opacity: pressed ? 0.85 : 1 },
       ]}>
-      <View style={[styles.icon, { backgroundColor: t.tint.brand }]}>
-        <Ionicons name="car-sport-outline" size={26} color={t.brand} />
+      <View style={[styles.art, { backgroundColor: t.night }]}>
+        <CarArt kind={bodyKind(car.body, car.modelId ? getModel(car.modelId)?.body[0] : null)} width={70} color={t.onNight} />
+        <View style={[styles.artLane, { backgroundColor: verdict ? t[verdictColor[verdict]] : t.lane }]} />
       </View>
       <View style={styles.text}>
         <AppText variant="heading">{carTitle(car)}</AppText>
@@ -103,7 +108,20 @@ export default function GarageScreen() {
     const shown = filter === 'all' ? list : list.filter((c) => c.status === filter);
     const toggle = (id: string) => setSelected((s) => (s.includes(id) ? s.filter((x) => x !== id) : s.length >= 3 ? s : [...s, id]));
     return (
-      <Screen overline="Your garage" title="Cars you’re checking">
+      <Screen>
+        <NightPanel style={styles.banner}>
+          <AppText variant="overline" tone="lane">
+            Your garage
+          </AppText>
+          <AppText variant="display" tone="onNight" accessibilityRole="header">
+            Cars you’re checking
+          </AppText>
+          <AppText variant="label" tone="onNightMuted">
+            {tr('{n} cars · {checked} with a verdict', { n: list.length, checked: list.filter((c) => c.verdict).length })}
+          </AppText>
+          <RoadScene hero={bodyKind(list[0].body)} heroWidth={120} height={92} />
+          {!selecting ? <Button label="Check another car" kind="road" icon="add" onPress={() => router.navigate('/check')} /> : null}
+        </NightPanel>
         {list.length > 2 ? <ChoiceChips choices={FILTERS} value={filter} onChange={setFilter} /> : null}
         {selecting ? (
           <AppText variant="label" tone="muted">
@@ -151,37 +169,62 @@ export default function GarageScreen() {
             />
           )
         ) : null}
-        {!selecting ? <Button label="Check another car" icon="add" kind="ghost" onPress={() => router.navigate('/check')} /> : null}
       </Screen>
     );
   }
 
   return (
-    <Screen overline="Your garage" title="Cars you’re checking">
-      <Card style={styles.empty}>
-        <View style={[styles.badge, { backgroundColor: t.tint.brand }]}>
-          <Ionicons name="car-sport-outline" size={34} color={t.brand} />
-        </View>
-        <AppText variant="hero" align="center">
-          Don’t buy a lemon.
+    <Screen>
+      <NightPanel style={styles.hero}>
+        <AppText variant="overline" tone="lane">
+          Your garage
         </AppText>
-        <AppText tone="muted" align="center">
+        <AppText variant="hero" tone="onNight" accessibilityRole="header">
+          Check your first car
+        </AppText>
+        <AppText tone="onNightMuted">
           Add the car you’re looking at. We’ll pull its recalls and known problem areas, then guide you through a 15-minute check.
         </AppText>
-        <View style={styles.cta}>
-          <Button label="Check a car" icon="scan" onPress={() => router.navigate('/check')} />
+        <RoadScene hero="hatchback" heroWidth={170} height={128} />
+        <Button label="Check a car" kind="road" icon="scan" onPress={() => router.navigate('/check')} />
+      </NightPanel>
+      <AppText variant="overline" tone="muted">
+        How it works
+      </AppText>
+      {STEPS.map((x, i) => (
+        <View key={x.title} style={[styles.step, { backgroundColor: t.surface, borderColor: t.border }]}>
+          <View style={[styles.stepNum, { backgroundColor: t.night }]}>
+            <AppText variant="heading" tone="lane">
+              {String(i + 1)}
+            </AppText>
+          </View>
+          <View style={{ flex: 1, gap: 2 }}>
+            <AppText variant="heading">{x.title}</AppText>
+            <AppText variant="label" tone="muted">
+              {x.text}
+            </AppText>
+          </View>
+          <Ionicons name={x.icon} size={22} color={t.brand} />
         </View>
-      </Card>
+      ))}
     </Screen>
   );
 }
 
+const STEPS = [
+  { title: 'Add the car', text: 'Scan the VIN or pick the make and model.', icon: 'barcode-outline' },
+  { title: 'Walk around it', text: 'A 15-minute guided check, problem areas first.', icon: 'clipboard-outline' },
+  { title: 'Get a clear verdict', text: 'Likely repairs, questions for the seller and an offer.', icon: 'speedometer-outline' },
+] as const;
+
 const styles = StyleSheet.create({
-  empty: { alignItems: 'center', paddingVertical: space.xxl, gap: space.md },
-  badge: { width: 72, height: 72, borderRadius: radius.lg, alignItems: 'center', justifyContent: 'center' },
-  cta: { alignSelf: 'stretch', marginTop: space.sm },
+  hero: { gap: space.md, paddingBottom: space.xl },
+  banner: { gap: space.xs, paddingBottom: space.lg },
+  step: { flexDirection: 'row', alignItems: 'center', gap: space.md, padding: space.lg, borderRadius: radius.md, borderWidth: 1 },
+  stepNum: { width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' },
   card: { flexDirection: 'row', alignItems: 'center', gap: space.md, padding: space.lg, borderRadius: radius.md, borderWidth: 1 },
-  icon: { width: 48, height: 48, borderRadius: radius.sm, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-start' },
+  art: { width: 88, height: 64, borderRadius: radius.sm, alignItems: 'center', justifyContent: 'center', alignSelf: 'flex-start', overflow: 'hidden' },
+  artLane: { position: 'absolute', left: 10, right: 10, bottom: 7, height: 3, borderRadius: 2 },
   text: { flex: 1, gap: 2 },
   tags: { flexDirection: 'row', flexWrap: 'wrap', gap: space.xs, marginTop: space.xs },
 });

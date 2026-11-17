@@ -6,12 +6,13 @@ import { groupVin } from '@/core/vin/vin';
 import { space } from '../tokens';
 import { AppText } from './AppText';
 
-export function VinText({ vin }: { vin: string }) {
+/** `onNight`: white text for dark night panels. */
+export function VinText({ vin, onNight }: { vin: string; onNight?: boolean }) {
   const groups = groupVin(vin);
   return (
     <View style={styles.row} accessible accessibilityLabel={`VIN ${vin.split('').join(' ')}`}>
       {groups.map((g, i) => (
-        <AppText key={i} variant="mono" tone={i === 2 ? 'ink' : 'muted'}>
+        <AppText key={i} variant="mono" tone={onNight ? (i === 2 ? 'onNight' : 'onNightMuted') : i === 2 ? 'ink' : 'muted'}>
           {g}
         </AppText>
       ))}

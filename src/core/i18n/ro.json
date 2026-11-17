@@ -637,5 +637,18 @@
   "{price} / year": "{price} / an",
   "{section}, {done} of {total} done": "{section}, {done} din {total} gata",
   "· Change": "· Schimbă",
-  "— doesn’t match {vin}. Check it yourself.": "— nu se potrivește cu {vin}. Verifică-l tu."
+  "— doesn’t match {vin}. Check it yourself.": "— nu se potrivește cu {vin}. Verifică-l tu.",
+  "Start with the VIN": "Începe cu VIN-ul",
+  "The 17-character code on the windshield or the driver’s door frame.": "Codul de 17 caractere de pe parbriz sau din rama ușii șoferului.",
+  "No VIN yet?": "Nu ai încă VIN-ul?",
+  "Works for cars from any country": "Merge pentru mașini din orice țară",
+  "{n} cars · {checked} with a verdict": "{n} mașini · {checked} cu verdict",
+  "Check your first car": "Verifică prima ta mașină",
+  "How it works": "Cum funcționează",
+  "Add the car": "Adaugă mașina",
+  "Scan the VIN or pick the make and model.": "Scanează VIN-ul sau alege marca și modelul.",
+  "Walk around it": "Ia-o la mână",
+  "A 15-minute guided check, problem areas first.": "O verificare ghidată de 15 minute, întâi zonele cu probleme.",
+  "Get a clear verdict": "Primești un verdict clar",
+  "Likely repairs, questions for the seller and an offer.": "Reparații probabile, întrebări pentru vânzător și o ofertă."
 }

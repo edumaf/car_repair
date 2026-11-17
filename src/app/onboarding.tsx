@@ -5,11 +5,13 @@ import { router } from 'expo-router';
 import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { StatusBar } from 'expo-status-bar';
 
 import { META, setMeta } from '@/db/appMeta';
 import { getDb, saveFlag } from '@/db/db';
 import { AppText } from '@/design/components/AppText';
 import { Button } from '@/design/components/Button';
+import { RoadScene } from '@/design/components/RoadScene';
 import { minTouch, radius, space, useTheme } from '@/design/tokens';
 import { tr } from '@/core/i18n/i18n';
 
@@ -73,26 +75,39 @@ export default function Onboarding() {
   };
 
   if (step === 0) {
+    // Highlight the last word of the headline ("lemon." / "rablă.") in road-paint yellow, in any language.
+    const headline = tr('Don’t buy a lemon.');
+    const cut = headline.lastIndexOf(' ');
     return (
-      <SafeAreaView style={[styles.root, { backgroundColor: t.bg }]}>
-        <View style={styles.welcome}>
-          <View style={[styles.badge, { backgroundColor: t.tint.brand }]}>
-            <Ionicons name="car-sport" size={44} color={t.brand} />
+      <View style={[styles.root, { backgroundColor: t.night }]}>
+        <StatusBar style="light" />
+        <SafeAreaView style={styles.root}>
+          <View style={styles.brandRow}>
+            <View style={[styles.brandDot, { backgroundColor: t.lane }]} />
+            <AppText variant="overline" tone="onNightMuted">
+              Used Car Check
+            </AppText>
           </View>
-          <AppText variant="hero" align="center">
-            Don’t buy a lemon.
-          </AppText>
-          <AppText variant="heading" tone="muted" align="center">
-            Check any used car in 15 minutes.
-          </AppText>
-        </View>
-        <View style={styles.bottom}>
-          <Button label="Get started" icon="arrow-forward" onPress={() => setStep(1)} />
-          <AppText variant="caption" tone="faint" align="center">
-            A guided self-check, not a professional inspection or vehicle history report. Not affiliated with NHTSA or any manufacturer.
-          </AppText>
-        </View>
-      </SafeAreaView>
+          <View style={styles.welcomeText}>
+            <AppText variant="hero" tone="onNight" accessibilityRole="header" style={styles.bigHero}>
+              {headline.slice(0, cut + 1)}
+              <AppText variant="hero" tone="lane" style={styles.bigHero}>
+                {headline.slice(cut + 1)}
+              </AppText>
+            </AppText>
+            <AppText variant="heading" tone="onNightMuted">
+              Check any used car in 15 minutes.
+            </AppText>
+          </View>
+          <RoadScene hero="sedan" heroWidth={230} height={170} />
+          <View style={styles.bottom}>
+            <Button label="Get started" kind="road" icon="arrow-forward" onPress={() => setStep(1)} />
+            <AppText variant="caption" tone="onNightMuted" align="center">
+              A guided self-check, not a professional inspection or vehicle history report. Not affiliated with NHTSA or any manufacturer.
+            </AppText>
+          </View>
+        </SafeAreaView>
+      </View>
     );
   }
 
@@ -172,6 +187,10 @@ const styles = StyleSheet.create({
   welcome: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: space.xxl, gap: space.md },
   badge: { width: 96, height: 96, borderRadius: radius.lg, alignItems: 'center', justifyContent: 'center', marginBottom: space.md },
   bottom: { padding: space.xl, gap: space.md },
+  brandRow: { flexDirection: 'row', alignItems: 'center', gap: space.sm, paddingHorizontal: space.xl, paddingTop: space.lg },
+  brandDot: { width: 10, height: 10, borderRadius: 5 },
+  welcomeText: { flex: 1, justifyContent: 'flex-end', paddingHorizontal: space.xl, paddingBottom: space.xl, gap: space.md },
+  bigHero: { fontSize: 68, lineHeight: 66 },
   content: { padding: space.xl, gap: space.md },
   progress: { flexDirection: 'row', gap: space.xs, marginBottom: space.md },
   dot: { flex: 1, height: 4, borderRadius: 2 },

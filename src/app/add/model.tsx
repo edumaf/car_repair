@@ -20,6 +20,7 @@ import { type } from '@/design/typography';
 import { CarDetailsForm, EMPTY_DETAILS, useDetailsValues } from '@/features/add/CarDetailsForm';
 import { useCar, useCreateCar, useUpdateCar } from '@/hooks/useCars';
 import { tr } from '@/core/i18n/i18n';
+import { bodyKind } from '@/core/vehicle/bodyKind';
 
 type Step = 'make' | 'model' | 'engine' | 'year' | 'save' | 'manual';
 
@@ -353,6 +354,7 @@ export default function PickModel() {
             engineDesc={engine?.name ?? 'Engine not chosen'}
             powertrain={engine?.fuel ?? model.engines[0].fuel}
             vin={p.vin ?? null}
+            kind={bodyKind(model.body[0])}
           />
           <Button label="Change" kind="ghost" onPress={() => setStep('engine')} />
           <CarDetailsForm value={details} onChange={setDetails} />

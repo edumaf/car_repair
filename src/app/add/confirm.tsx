@@ -18,6 +18,7 @@ import { space, useTheme } from '@/design/tokens';
 import { CarDetailsForm, EMPTY_DETAILS, useDetailsValues } from '@/features/add/CarDetailsForm';
 import { useCars, useCreateCar } from '@/hooks/useCars';
 import { plural } from '@/core/i18n/i18n';
+import { bodyKind } from '@/core/vehicle/bodyKind';
 
 export default function ConfirmCar() {
   const t = useTheme();
@@ -109,6 +110,7 @@ export default function ConfirmCar() {
           drive={d.drive}
           powertrain={powertrain}
           vin={d.vin}
+          kind={bodyKind(d.body)}
         />
         {d.decodeWarnings.length > 0 && p.vin ? (
           <AppText variant="caption" tone="caution">
