@@ -1,7 +1,7 @@
 // Every reviewed data string shown in the app has a Romanian translation (data/i18n/ro.json).
 import learn from '../../../content/learn.json';
 import roData from '../../../data/i18n/ro.json';
-import { OBD_CODES, SYMPTOMS } from '../data/knowledge';
+import { MODELS, OBD_CODES, SYMPTOMS } from '../data/knowledge';
 import { CHECKLIST_ITEMS, FIELD_FLAGS, LISTING_FLAGS, REPAIR_COSTS, SECTIONS } from '../data/seed';
 
 const ro = roData as Record<string, string>;
@@ -35,6 +35,18 @@ describe('Romanian data translations', () => {
           s.category,
           ...s.questions.flatMap((q) => [q.text, ...q.options.map((o) => o.label)]),
           ...s.outcomes.flatMap((o) => [o.title, ...o.see_mechanic_if, ...o.causes.flatMap((x) => [x.text, x.diy_check])]),
+        ]),
+      ),
+    ).toEqual([]);
+  });
+
+  it('model pages: strengths, problems, buying tips', () => {
+    expect(
+      missing(
+        MODELS.flatMap((m) => [
+          ...m.strengths,
+          ...m.buying_tips,
+          ...m.problems.flatMap((p) => [p.title, ...p.symptoms, ...p.what_to_check]),
         ]),
       ),
     ).toEqual([]);
