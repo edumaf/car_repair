@@ -14,6 +14,7 @@ import { Button } from '@/design/components/Button';
 import { RoadScene } from '@/design/components/RoadScene';
 import { minTouch, radius, space, useTheme } from '@/design/tokens';
 import { tr } from '@/core/i18n/i18n';
+import { track } from '@/analytics/analytics';
 
 interface Question {
   id: 'stage' | 'seller' | 'confidence' | 'worry';
@@ -69,6 +70,13 @@ export default function Onboarding() {
   const [answers, setAnswers] = useState<Record<string, string>>({});
 
   const finish = async (final: Record<string, string>) => {
+    // Only the options picked (CLAUDE.md §11), never free text.
+    track('onboarding_completed', {
+      stage: final.stage ?? null,
+      seller: final.seller ?? null,
+      confidence: final.confidence ?? null,
+      worry: final.worry ?? null,
+    });
     await setMeta(getDb(), META.onboardingAnswers, JSON.stringify(final));
     await saveFlag('onboardingDone', true);
     router.replace(final.stage === 'owner' ? '/diagnose' : '/check');
@@ -116,6 +124,7 @@ export default function Onboarding() {
     const pick = (value: string) => {
       const next = { ...answers, [q.id]: value };
       setAnswers(next);
+      track('onboarding_answer', { question: q.id, answer: value });
       // Owners skip the buying questions and go straight to Diagnose.
       if (q.id === 'stage' && value === 'owner') return finish(next);
       setStep(step + 1);

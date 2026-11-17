@@ -30,6 +30,8 @@ import { usePriceCheck } from '@/hooks/usePriceCheck';
 import { useRegion } from '@/hooks/useRegion';
 import { showRepairCosts } from '@/core/region';
 import { tr } from '@/core/i18n/i18n';
+import { track } from '@/analytics/analytics';
+import { coverageBucket } from '@/core/analyticsEvents';
 
 const TONES = [
   { value: 'friendly', label: 'Friendly' },
@@ -79,6 +81,7 @@ export default function VerdictScreen() {
     if (!car || !result || inspection.answers.isPending) return;
     const saved = car.verdictJson ? (JSON.parse(car.verdictJson) as { signature?: string }).signature : null;
     if (saved !== signature) {
+      track('verdict_shown', { verdict: result.verdict, coverage: coverageBucket(result.coverage) });
       update.mutate({
         verdict: result.verdict,
         verdictJson: JSON.stringify({
@@ -223,7 +226,15 @@ export default function VerdictScreen() {
             <View style={[styles.script, { backgroundColor: t.sunken }]}>
               <AppText>“{script}”</AppText>
             </View>
-            <Button label="Copy the script" icon="copy-outline" kind="secondary" onPress={() => copy(script, 'Script')} />
+            <Button
+              label="Copy the script"
+              icon="copy-outline"
+              kind="secondary"
+              onPress={() => {
+                track('script_copied', { tone });
+                copy(script, 'Script');
+              }}
+            />
           </Card>
         ) : null}
 

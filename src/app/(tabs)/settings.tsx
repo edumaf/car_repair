@@ -17,13 +17,15 @@ import { ChoiceChips } from '@/design/components/ChoiceChips';
 import { Tag } from '@/design/components/Tag';
 import { REGIONS } from '@/core/region';
 import { saveApiMode, saveFlag, saveLang, saveRegion, wipeLocalData } from '@/db/db';
-import { LANG_NAMES, LANGS } from '@/core/i18n/i18n';
+import { LANG_NAMES, LANGS, tr } from '@/core/i18n/i18n';
 import { useLang } from '@/hooks/useLang';
 import { Button } from '@/design/components/Button';
 import { useTheme } from '@/design/tokens';
 import { usePremium } from '@/hooks/usePremium';
 import { deleteAllPhotos } from '@/media/photos';
 import { useRegion } from '@/hooks/useRegion';
+import { resetAnalytics, track } from '@/analytics/analytics';
+import { useFlags } from '@/hooks/useFlags';
 
 const MODE_LABEL: Record<ApiMode, string> = { mock: 'Sample cars (offline)', direct: 'Real NHTSA (dev)', live: 'Live backend' };
 const MODE_HELP: Record<ApiMode, string> = {
@@ -103,7 +105,9 @@ function PremiumCard() {
 }
 
 function DataCard() {
+  const t = useTheme();
   const qc = useQueryClient();
+  const flags = useFlags();
   const confirm = () =>
     Alert.alert('Delete all your data?', 'Every car, check, note and photo on this phone will be deleted. This can’t be undone.', [
       { text: 'Cancel', style: 'cancel' },
@@ -132,6 +136,8 @@ function DataCard() {
       },
     ]);
   const wipeLocal = async () => {
+    track('data_deleted', {});
+    resetAnalytics();
     await signOutLocal();
     await wipeLocalData();
     deleteAllPhotos();
@@ -146,6 +152,19 @@ function DataCard() {
       <AppText variant="label" tone="muted">
         Cars, checks, notes and photos are stored only on this phone. Photos sent for an AI check aren’t kept on our server.
       </AppText>
+      <Row
+        icon="stats-chart-outline"
+        title="Share anonymous usage stats"
+        subtitle="Which screens and buttons are used. Never VINs, prices, text or photos."
+        right={
+          <Switch
+            value={!flags.analyticsOff}
+            onValueChange={(on) => saveFlag('analyticsOff', !on)}
+            trackColor={{ true: t.brand }}
+            accessibilityLabel={tr('Share anonymous usage stats')}
+          />
+        }
+      />
       <Button label="Delete all my data" kind="ghost" icon="trash-outline" onPress={confirm} />
     </Card>
   );

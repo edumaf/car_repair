@@ -19,10 +19,19 @@ import { CarDetailsForm, EMPTY_DETAILS, useDetailsValues } from '@/features/add/
 import { useCars, useCreateCar } from '@/hooks/useCars';
 import { plural } from '@/core/i18n/i18n';
 import { bodyKind } from '@/core/vehicle/bodyKind';
+import { track } from '@/analytics/analytics';
+import type { CarAddedMethod } from '@/core/analyticsEvents';
 
 export default function ConfirmCar() {
   const t = useTheme();
-  const p = useLocalSearchParams<{ vin?: string; year?: string; make?: string; model?: string; powertrain?: Powertrain }>();
+  const p = useLocalSearchParams<{
+    vin?: string;
+    year?: string;
+    make?: string;
+    model?: string;
+    powertrain?: Powertrain;
+    method?: CarAddedMethod;
+  }>();
   const lookup: VehicleLookup | null = p.vin
     ? { vin: p.vin }
     : p.year && p.make && p.model
@@ -102,6 +111,7 @@ export default function ConfirmCar() {
       engineId: engine?.id ?? null,
       ...values,
     });
+    track('car_added', { method: p.method ?? (p.vin ? 'vin_typed' : 'ymm'), powertrain, has_report: true });
     openCar(id);
   };
 

@@ -21,6 +21,7 @@ import { CarDetailsForm, EMPTY_DETAILS, useDetailsValues } from '@/features/add/
 import { useCar, useCreateCar, useUpdateCar } from '@/hooks/useCars';
 import { tr } from '@/core/i18n/i18n';
 import { bodyKind } from '@/core/vehicle/bodyKind';
+import { track } from '@/analytics/analytics';
 
 type Step = 'make' | 'model' | 'engine' | 'year' | 'save' | 'manual';
 
@@ -104,6 +105,7 @@ export default function PickModel() {
     if (!model) return;
     const report = manualReport({ model, engine, year, vin: p.vin ?? null });
     const id = await create.mutateAsync({ report, modelId: model.id, engineId: engine?.id ?? null, ...values });
+    track('car_added', { method: 'model_list', powertrain: report.decode.powertrain, has_report: false });
     openCar(id);
   };
 
@@ -116,6 +118,7 @@ export default function PickModel() {
       vin: p.vin ?? null,
     });
     const id = await create.mutateAsync({ report, ...values });
+    track('car_added', { method: 'model_list', powertrain: report.decode.powertrain, has_report: false });
     openCar(id);
   };
 

@@ -693,5 +693,7 @@
   "Fill in from a screenshot": "Completează dintr-o captură de ecran",
   "Sample numbers: reading screenshots needs our server, which isn’t switched on yet.": "Cifre de test: citirea capturilor are nevoie de serverul nostru, care nu e pornit încă.",
   "Read by AI from your screenshot (then deleted). Check the numbers, then add the listing.": "Citit de AI din captura ta (apoi ștearsă). Verifică cifrele, apoi adaugă anunțul.",
-  "Far below typical": "Mult sub prețul obișnuit"
+  "Far below typical": "Mult sub prețul obișnuit",
+  "Share anonymous usage stats": "Trimite statistici anonime de utilizare",
+  "Which screens and buttons are used. Never VINs, prices, text or photos.": "Ce ecrane și butoane sunt folosite. Niciodată VIN-uri, prețuri, text sau poze."
 }

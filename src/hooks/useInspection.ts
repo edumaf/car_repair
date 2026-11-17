@@ -25,6 +25,7 @@ import { getDb } from '@/db/db';
 import { deletePhotoFile } from '@/media/photos';
 
 import { carKeys, useCar } from './useCars';
+import { track } from '@/analytics/analytics';
 
 export const inspectionKeys = {
   answers: (carId: string) => ['answers', carId] as const,
@@ -60,7 +61,10 @@ export function useInspection(carId: string) {
   const answer = useMutation({
     mutationFn: ({ itemId, value, fromAi }: { itemId: string; value: Answer | null; fromAi?: boolean }) =>
       value === null ? clearAnswer(getDb(), carId, itemId) : setAnswer(getDb(), carId, itemId, value, { fromAi }),
-    onSuccess: invalidate,
+    onSuccess: (_r, { itemId, value }) => {
+      if (value !== null) track('item_answered', { item_id: itemId, answer: value });
+      invalidate();
+    },
   });
 
   const note = useMutation({
@@ -75,12 +79,20 @@ export function useInspection(carId: string) {
       invalidate();
       if (!photoType || !car.data) return;
       const c = car.data;
+      const started = Date.now();
       const raw = await photoCheckClient.check({
         imageUri: uri,
         photoType,
         car: { year: c.year, make: c.make, model: c.model, powertrain: c.powertrain },
       });
-      await addPhotoCheck(getDb(), carId, itemId, uri, sanitizePhotoResult(raw, photoType), aiIsSample());
+      const result = sanitizePhotoResult(raw, photoType);
+      await addPhotoCheck(getDb(), carId, itemId, uri, result, aiIsSample());
+      track('photo_check_completed', {
+        photo_type: photoType,
+        findings_count: result.findings.length + result.lights.length,
+        latency_ms: Date.now() - started,
+        sample: aiIsSample(),
+      });
     },
     onSettled: invalidate,
   });
@@ -109,7 +121,10 @@ export function useInspection(carId: string) {
       await setDecision(getDb(), photoCheckId, key, decision);
       if (decision === 'confirmed') await setAnswer(getDb(), carId, targetItemId, 'problem', { fromAi: true });
     },
-    onSuccess: invalidate,
+    onSuccess: (_r, { key, decision }) => {
+      track(decision === 'confirmed' ? 'photo_finding_confirmed' : 'photo_finding_dismissed', { code: key });
+      invalidate();
+    },
   });
 
   return {

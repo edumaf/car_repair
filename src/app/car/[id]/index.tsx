@@ -39,6 +39,8 @@ import { useRegion } from '@/hooks/useRegion';
 import { tr } from '@/core/i18n/i18n';
 import { getModel } from '@/core/data/knowledge';
 import { bodyKind } from '@/core/vehicle/bodyKind';
+import { track } from '@/analytics/analytics';
+import { recallsBucket } from '@/core/analyticsEvents';
 
 function RecallItem({ recall }: { recall: Recall }) {
   const [open, setOpen] = useState(false);
@@ -302,7 +304,12 @@ function ListingCard({
             kind="secondary"
             disabled={!text.trim()}
             onPress={() => {
-              onSave(text.trim() || null);
+              const saved = text.trim() || null;
+              track('listing_check_result', {
+                overall: listingOverall(listingFlagsForCar({ ...car, listingText: saved }, priceResult)),
+                source: readFrom ? 'screenshot' : 'paste',
+              });
+              onSave(saved);
               setEditing(false);
             }}
           />
@@ -375,6 +382,17 @@ export default function CarReport() {
   const premium = usePremium();
   const priceResult = usePriceCheck(id).result;
   const loaded = !!car.data;
+
+  // §14: once per opening of the report (counts only, no VIN).
+  const reportFacts = car.data
+    ? `${recallsBucket(car.data.report?.recalls?.length)}|${(car.data.report?.complaints?.total ?? 0) > 0}|${car.data.report?.coverage ?? 'nhtsa'}`
+    : null;
+  useEffect(() => {
+    if (!reportFacts) return;
+    const [recalls_count, hasComplaints, coverage] = reportFacts.split('|');
+    track('vehicle_report_viewed', { recalls_count, has_complaints: hasComplaints === 'true', coverage: coverage as 'nhtsa' | 'none' });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id, !!reportFacts]);
 
   // Paywall placement 1 (CLAUDE.md §9): once, after the first vehicle report. Dismissible.
   useEffect(() => {
@@ -501,6 +519,7 @@ export default function CarReport() {
               return;
             }
             if (!freeId && !premium) await setMeta(getDb(), META.freeInspectionCarId, c.id);
+            if (!c.verdict) track('inspection_started', {});
             router.push({ pathname: '/car/[id]/inspect', params: { id: c.id } });
           }}
         />

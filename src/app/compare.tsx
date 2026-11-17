@@ -1,6 +1,7 @@
 // Compare 2-3 cars side by side (CLAUDE.md §6.8): verdict, repairs, recalls, known problem areas, price, mileage.
 import { useQuery } from '@tanstack/react-query';
 import { router, useLocalSearchParams } from 'expo-router';
+import { useEffect } from 'react';
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
 import { getModel } from '@/core/data/knowledge';
@@ -20,6 +21,7 @@ import { Tag } from '@/design/components/Tag';
 import { hairline, radius, space, useTheme, verdictColor } from '@/design/tokens';
 import { useRegion } from '@/hooks/useRegion';
 import { tr } from '@/core/i18n/i18n';
+import { track } from '@/analytics/analytics';
 
 interface Column {
   car: CarRecord;
@@ -60,6 +62,7 @@ export default function CompareScreen() {
   const region = useRegion();
   const { ids } = useLocalSearchParams<{ ids?: string }>();
   const idList = (ids ?? '').split(',').filter(Boolean).slice(0, 3);
+  useEffect(() => track('compare_opened', { cars: idList.length }), [idList.length]);
   const q = useQuery({
     queryKey: ['cars', 'compare', ...idList],
     queryFn: async () => (await Promise.all(idList.map(loadColumn))).filter((c): c is Column => !!c),

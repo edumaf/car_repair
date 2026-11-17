@@ -2,7 +2,7 @@
 // car sits. Never a price from the LLM. Links out to valuation / listing sites for the region (no scraping).
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useLocalSearchParams } from 'expo-router';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Alert, KeyboardAvoidingView, Linking, Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
 import { listingClient } from '@/core/api/clients';
@@ -26,6 +26,7 @@ import { usePriceCheck } from '@/hooks/usePriceCheck';
 import { useRegion } from '@/hooks/useRegion';
 import { tr } from '@/core/i18n/i18n';
 import { PhotoPermissionError, deleteTempImages, pickScreenshots } from '@/media/photos';
+import { track } from '@/analytics/analytics';
 
 const POSITION: Record<PricePosition, { label: string; color: SignalColor; text: string }> = {
   below: {
@@ -61,6 +62,16 @@ export default function PriceCheckScreen() {
   const [form, setForm] = useState({ price: '', mileage: '', year: '', note: '' });
   const [asking, setAsking] = useState('');
   const [reading, setReading] = useState(false);
+  const compsCount = comps.data?.length;
+  const lastCount = useRef<number | undefined>(undefined);
+  useEffect(() => {
+    if (compsCount === undefined) return;
+    if (lastCount.current !== undefined && lastCount.current !== compsCount && compsCount > 0) {
+      track('price_check_done', { comps_count: compsCount, position: result?.position ?? 'unknown' });
+    }
+    lastCount.current = compsCount;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [compsCount]);
   const [readFrom, setReadFrom] = useState<'ai' | 'sample' | null>(null);
 
   // A screenshot of a similar ad → our server reads price / mileage / year → the user checks them and adds it.

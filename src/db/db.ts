@@ -5,7 +5,8 @@ import { Platform } from 'react-native';
 import { setApiMode, type ApiMode } from '@/core/api/mode';
 import { setLang, type Lang } from '@/core/i18n/i18n';
 import { setRegion, type Region } from '@/core/region';
-import { setFlags } from '@/state/appFlags';
+import { setAnalyticsOptOut } from '@/analytics/analytics';
+import { getFlags, setFlags } from '@/state/appFlags';
 import { DATA_VERSION } from '@/core/data/seed';
 
 import { META, getMeta, setMeta } from './appMeta';
@@ -63,15 +64,24 @@ export async function restoreSettings(): Promise<void> {
     onboardingDone: (await getMeta(db, META.onboardingDone)) === '1',
     firstPaywallShown: (await getMeta(db, META.firstPaywallShown)) === '1',
     simulatePremium: __DEV__ && (await getMeta(db, META.simulatePremium)) === '1',
+    analyticsOff: (await getMeta(db, META.analyticsOff)) === '1',
   });
+  setAnalyticsOptOut(getFlags().analyticsOff);
 }
 
 /** Saves a flag both in memory and in app_meta. */
-export async function saveFlag(key: 'onboardingDone' | 'firstPaywallShown' | 'simulatePremium', value: boolean): Promise<void> {
+export async function saveFlag(
+  key: 'onboardingDone' | 'firstPaywallShown' | 'simulatePremium' | 'analyticsOff',
+  value: boolean,
+): Promise<void> {
   setFlags({ [key]: value });
-  const metaKey = { onboardingDone: META.onboardingDone, firstPaywallShown: META.firstPaywallShown, simulatePremium: META.simulatePremium }[
-    key
-  ];
+  if (key === 'analyticsOff') setAnalyticsOptOut(value);
+  const metaKey = {
+    onboardingDone: META.onboardingDone,
+    firstPaywallShown: META.firstPaywallShown,
+    simulatePremium: META.simulatePremium,
+    analyticsOff: META.analyticsOff,
+  }[key];
   await setMeta(getDb(), metaKey, value ? '1' : '0');
 }
 
@@ -95,5 +105,6 @@ export async function wipeLocalData(): Promise<void> {
   const db = getDb();
   await db.execAsync('DELETE FROM photo_checks; DELETE FROM answers; DELETE FROM comparables; DELETE FROM cars; DELETE FROM app_meta;');
   await setMeta(db, META.dataVersion, DATA_VERSION);
-  setFlags({ onboardingDone: false, firstPaywallShown: false, simulatePremium: false });
+  setFlags({ onboardingDone: false, firstPaywallShown: false, simulatePremium: false, analyticsOff: false });
+  setAnalyticsOptOut(false);
 }

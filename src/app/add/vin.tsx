@@ -8,6 +8,7 @@ import { AppText } from '@/design/components/AppText';
 import { Button } from '@/design/components/Button';
 import { VinField } from '@/design/components/VinField';
 import { space, useTheme } from '@/design/tokens';
+import { track } from '@/analytics/analytics';
 
 export default function TypeVin() {
   const t = useTheme();
@@ -34,7 +35,10 @@ export default function TypeVin() {
           label="Look it up"
           icon="search"
           disabled={check.problem !== null}
-          onPress={() => router.push({ pathname: '/add/confirm', params: { vin: check.vin, method: params.from === 'photo' ? 'vin_photo' : 'vin_typed' } })}
+          onPress={() => {
+            if (!check.checkDigitOk) track('vin_check_digit_failed', {});
+            router.push({ pathname: '/add/confirm', params: { vin: check.vin, method: params.from ? 'vin_photo' : 'vin_typed' } });
+          }}
         />
       </ScrollView>
     </KeyboardAvoidingView>

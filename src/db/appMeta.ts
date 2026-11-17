@@ -15,6 +15,8 @@ export const META = {
   apiMode: 'dev_api_mode',
   /** Region picked in Settings (us / uk / ro / eu / other); otherwise detected from the phone. */
   region: 'region',
+  /** '1' = the user turned off anonymous usage stats (Settings). */
+  analyticsOff: 'analytics_off',
   lang: 'lang',
 } as const;
 

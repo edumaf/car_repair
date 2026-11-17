@@ -3,7 +3,7 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useQuery } from '@tanstack/react-query';
 import { router, useLocalSearchParams } from 'expo-router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Alert, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -15,6 +15,7 @@ import { Button } from '@/design/components/Button';
 import { Tag } from '@/design/components/Tag';
 import { minTouch, radius, space, useTheme } from '@/design/tokens';
 import { tr } from '@/core/i18n/i18n';
+import { track } from '@/analytics/analytics';
 
 const PLANS = [
   {
@@ -59,7 +60,10 @@ export default function Paywall() {
     queryFn: async () => JSON.parse((await getMeta(getDb(), META.onboardingAnswers)) ?? '{}') as Record<string, string>,
   });
 
+  useEffect(() => track('paywall_shown', { placement }), [placement]);
+
   const buy = () => {
+    track('purchase_started', { product: plan });
     if (__DEV__) {
       Alert.alert(
         'Purchases come with the test build',
@@ -70,6 +74,7 @@ export default function Paywall() {
             text: 'Simulate Premium',
             onPress: async () => {
               await saveFlag('simulatePremium', true);
+              track('purchase_completed', { product: plan });
               router.back();
             },
           },
