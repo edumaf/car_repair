@@ -10,7 +10,7 @@ import { aiIsSample } from '@/core/api/mode';
 import { FIELD_FLAGS } from '@/core/data/seed';
 import { priceFarBelowSimilar } from '@/core/listing/fieldFlags';
 
-import { money, type Region } from '@/core/region';
+import { formatNumber, money, type Region } from '@/core/region';
 import type { PricePosition } from '@/core/types';
 import { carTitle } from '@/db/carsRepository';
 import { AppText } from '@/design/components/AppText';
@@ -124,7 +124,7 @@ export default function PriceCheckScreen() {
         <AppText tone="muted">
           {[
             c.askingPrice != null ? `Asking ${money(c.askingPrice, region)}` : null,
-            c.mileage != null ? `${c.mileage.toLocaleString('en-US')} ${unit}` : null,
+            c.mileage != null ? `${formatNumber(c.mileage)} ${unit}` : null,
           ]
             .filter(Boolean)
             .join(' · ') || 'Add the asking price and mileage to compare.'}
@@ -159,7 +159,7 @@ export default function PriceCheckScreen() {
                 {money(result.fairRange.low, region)}–{money(result.fairRange.high, region)}
               </AppText>
               <AppText variant="label" tone="muted">
-                Estimated fair range at {c.mileage?.toLocaleString('en-US')} {unit}, from {result.compsUsed} similar listings.
+                Estimated fair range at {c.mileage != null ? formatNumber(c.mileage) : ''} {unit}, from {result.compsUsed} similar listings.
               </AppText>
               {pos.text ? <AppText variant="label">{pos.text}</AppText> : null}
             </>
@@ -206,7 +206,7 @@ export default function PriceCheckScreen() {
                 <View style={{ flex: 1 }}>
                   <AppText variant="bodyStrong">{money(x.price, region)}</AppText>
                   <AppText variant="caption" tone="muted">
-                    {[x.mileage != null ? `${x.mileage.toLocaleString('en-US')} ${unit}` : 'mileage ?', x.year, x.note]
+                    {[x.mileage != null ? `${formatNumber(x.mileage)} ${unit}` : 'mileage ?', x.year, x.note]
                       .filter(Boolean)
                       .join(' · ')}
                   </AppText>

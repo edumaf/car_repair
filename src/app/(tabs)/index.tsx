@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
 import { getModel } from '@/core/data/knowledge';
-import { money } from '@/core/region';
+import { formatNumber, money } from '@/core/region';
 import { bodyKind } from '@/core/vehicle/bodyKind';
 import { VERDICTS, type CarStatus, type Verdict } from '@/core/types';
 import { POSSIBLE_SCAM_HEADLINE, VERDICT_HEADLINE } from '@/core/verdict/strings';
@@ -40,7 +40,7 @@ function CarCard({
   const verdictLabel = verdict ? (verdict === 'WALK_AWAY' && scam ? POSSIBLE_SCAM_HEADLINE : VERDICT_HEADLINE[verdict]) : null;
   const facts = [
     car.askingPrice != null ? money(car.askingPrice) : null,
-    car.mileage != null ? `${car.mileage.toLocaleString('en-US')} ${car.mileageUnit}` : null,
+    car.mileage != null ? `${formatNumber(car.mileage)} ${car.mileageUnit}` : null,
     recalls != null ? `${recalls} recall${recalls === 1 ? '' : 's'}` : null,
   ].filter(Boolean);
   return (
@@ -117,7 +117,10 @@ export default function GarageScreen() {
             Cars you’re checking
           </AppText>
           <AppText variant="label" tone="onNightMuted">
-            {tr('{n} cars · {checked} with a verdict', { n: list.length, checked: list.filter((c) => c.verdict).length })}
+            {tr('{n} cars · {checked} with a verdict', {
+              n: list.length,
+              checked: list.filter((c) => c.verdict && c.verdict !== 'INCOMPLETE').length,
+            })}
           </AppText>
           <RoadScene hero={bodyKind(list[0].body)} heroWidth={120} height={92} />
           {!selecting ? <Button label="Check another car" kind="road" icon="add" onPress={() => router.navigate('/check')} /> : null}

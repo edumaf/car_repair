@@ -111,8 +111,18 @@ export function currencySymbol(r: Region = region): string {
   return { us: '$', uk: '£', ro: '€', eu: '€', other: '' }[r];
 }
 
-/** "€8,500" / "$15,900" / "8,500" (no symbol for "other"). */
+/** Thousands separator as people write it there: "118,000" in the US/UK, "118.000" in Romania and Europe. */
+export function formatNumber(n: number, r: Region = region): string {
+  const sep = r === 'ro' || r === 'eu' ? '.' : ',';
+  const digits = Math.round(Math.abs(n))
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, sep);
+  return n < 0 ? `-${digits}` : digits;
+}
+
+/** "$15,900" / "£8,500" / "8.500 €" (Romania, Europe) / "8,500" (no symbol for "other"). */
 export function money(n: number, r: Region = region): string {
   const sym = currencySymbol(r);
-  return `${sym}${Math.round(n).toLocaleString('en-US')}`;
+  const v = formatNumber(n, r);
+  return r === 'ro' || r === 'eu' ? `${v} ${sym}` : `${sym}${v}`;
 }

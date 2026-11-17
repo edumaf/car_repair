@@ -12,7 +12,7 @@ import { ApiError, type VehicleLookup } from '@/core/api/types';
 import { listingFlagsForCar } from '@/core/listing/fieldFlags';
 import { listingOverall } from '@/core/listing/matchListingFlags';
 import type { PriceCheckResult } from '@/core/price/priceCheck';
-import { historyLinks, money } from '@/core/region';
+import { formatNumber, historyLinks, money } from '@/core/region';
 import { complaintGroupLabel, recallComponentLabel } from '@/core/vehicle/labels';
 import type { ComplaintGroupStat, Recall, VehicleReport } from '@/core/vehicle/types';
 import { carTitle, type CarRecord } from '@/db/carsRepository';
@@ -139,7 +139,7 @@ function ProblemAreasCard({ report }: { report: VehicleReport }) {
       ) : (
         <>
           <AppText variant="label" tone="muted">
-            {c.total.toLocaleString('en-US')} complaints from owners
+            {formatNumber(c.total)} complaints from owners
             {c.crashes || c.fires ? ` · ${tr('{crashes} mention a crash, {fires} a fire', { crashes: c.crashes, fires: c.fires })}` : ''}
           </AppText>
           {top.map((g) => (
@@ -201,7 +201,7 @@ function DetailsCard({ car }: { car: CarRecord }) {
       <AppText variant="label" tone="muted">
         {[
           car.askingPrice != null ? `Asking ${money(car.askingPrice)}` : 'No asking price',
-          car.mileage != null ? `${car.mileage.toLocaleString('en-US')} ${car.mileageUnit}` : null,
+          car.mileage != null ? `${formatNumber(car.mileage)} ${car.mileageUnit}` : null,
           seller,
         ]
           .filter(Boolean)

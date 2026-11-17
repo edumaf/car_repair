@@ -54,5 +54,5 @@ export function ChoiceChips<T extends string>({
 const styles = StyleSheet.create({
   wrap: { gap: space.xs },
   row: { flexDirection: 'row', flexWrap: 'wrap', gap: space.sm },
-  chip: { minHeight: minTouch, paddingHorizontal: space.lg, borderRadius: radius.pill, borderWidth: 1, justifyContent: 'center' },
+  chip: { minHeight: minTouch, paddingHorizontal: space.md, borderRadius: radius.pill, borderWidth: 1, justifyContent: 'center' },
 });

@@ -1,4 +1,4 @@
-import { defaultMileageUnit, historyLinks, money, regionFromLocale, showRepairCosts } from './region';
+import { defaultMileageUnit, formatNumber, historyLinks, money, regionFromLocale, showRepairCosts } from './region';
 
 describe('region', () => {
   it.each([
@@ -28,6 +28,16 @@ describe('region', () => {
 
 it('formats prices in the region currency', () => {
   expect(money(15900, 'us')).toBe('$15,900');
-  expect(money(8500, 'ro')).toBe('€8,500');
+  expect(money(8500, 'uk')).toBe('£8,500');
+  expect(money(8500, 'ro')).toBe('8.500 €');
+  expect(money(12500, 'eu')).toBe('12.500 €');
   expect(money(8500, 'other')).toBe('8,500');
+});
+
+it('groups thousands the local way', () => {
+  expect(formatNumber(118000, 'us')).toBe('118,000');
+  expect(formatNumber(118000, 'ro')).toBe('118.000');
+  expect(formatNumber(1234567, 'eu')).toBe('1.234.567');
+  expect(formatNumber(950, 'ro')).toBe('950');
+  expect(formatNumber(-1500, 'us')).toBe('-1,500');
 });

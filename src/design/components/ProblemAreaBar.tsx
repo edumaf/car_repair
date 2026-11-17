@@ -4,6 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import { radius, space, useTheme } from '../tokens';
 import { AppText } from './AppText';
 import { tr, plural } from '@/core/i18n/i18n';
+import { formatNumber } from '@/core/region';
 
 export function ProblemAreaBar({ label, count, max }: { label: string; count: number; max: number }) {
   const t = useTheme();
@@ -16,7 +17,7 @@ export function ProblemAreaBar({ label, count, max }: { label: string; count: nu
       <View style={styles.labels}>
         <AppText variant="label">{label}</AppText>
         <AppText variant="label" tone="muted" style={styles.count}>
-          {count.toLocaleString('en-US')}
+          {formatNumber(count)}
         </AppText>
       </View>
       <View style={[styles.track, { backgroundColor: t.sunken }]}>

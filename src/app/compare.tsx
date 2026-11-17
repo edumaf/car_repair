@@ -6,8 +6,9 @@ import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
 import { getModel } from '@/core/data/knowledge';
 import { problemsFor } from '@/core/models/matchModels';
+import { priceFarBelowSimilar } from '@/core/listing/fieldFlags';
 import { priceCheck, type PriceCheckResult } from '@/core/price/priceCheck';
-import { money, showRepairCosts } from '@/core/region';
+import { formatNumber, money, showRepairCosts } from '@/core/region';
 import { VERDICTS, type CostRange, type Verdict } from '@/core/types';
 import { complaintGroupLabel } from '@/core/vehicle/labels';
 import { topComplaintGroups } from '@/core/vehicle/normalize';
@@ -26,6 +27,7 @@ import { track } from '@/analytics/analytics';
 interface Column {
   car: CarRecord;
   price: PriceCheckResult;
+  farBelow: boolean;
   repairEstimate: CostRange | null;
   possibleScam: boolean;
   problemAreas: string[];
@@ -45,9 +47,11 @@ async function loadColumn(id: string): Promise<Column | null> {
       ...modelProblems.map((p) => p.complaint_group).filter((g): g is string => !!g),
     ]),
   ];
+  const price = priceCheck({ askingPrice: car.askingPrice, mileage: car.mileage, year: car.year }, comps);
   return {
     car,
-    price: priceCheck({ askingPrice: car.askingPrice, mileage: car.mileage, year: car.year }, comps),
+    price,
+    farBelow: priceFarBelowSimilar(car.askingPrice, price),
     repairEstimate: saved.repairEstimate ?? null,
     possibleScam: !!saved.possibleScam,
     problemAreas: areas.slice(0, 3).map(complaintGroupLabel),
@@ -101,11 +105,18 @@ export default function CompareScreen() {
       label: 'Asking price',
       render: (c) => <AppText variant="bodyStrong">{c.car.askingPrice != null ? money(c.car.askingPrice, region) : '—'}</AppText>,
     },
-    { label: 'Price vs similar', render: (c) => <AppText variant="label">{PRICE_LABEL[c.price.position]}</AppText> },
+    {
+      label: 'Price vs similar',
+      render: (c) => (
+        <AppText variant="label" tone={c.farBelow ? 'warn' : 'ink'}>
+          {c.farBelow ? 'Far below typical' : PRICE_LABEL[c.price.position]}
+        </AppText>
+      ),
+    },
     {
       label: 'Mileage',
       render: (c) => (
-        <AppText variant="label">{c.car.mileage != null ? `${c.car.mileage.toLocaleString('en-US')} ${c.car.mileageUnit}` : '—'}</AppText>
+        <AppText variant="label">{c.car.mileage != null ? `${formatNumber(c.car.mileage)} ${c.car.mileageUnit}` : '—'}</AppText>
       ),
     },
     { label: 'Year', render: (c) => <AppText variant="label">{c.car.year ?? '—'}</AppText> },

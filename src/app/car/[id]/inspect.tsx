@@ -3,7 +3,7 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Image } from 'expo-image';
 import { router, Stack, useLocalSearchParams } from 'expo-router';
-import { Fragment, useMemo, useRef, useState, type ComponentRef } from 'react';
+import { Fragment, useEffect, useMemo, useRef, useState, type ComponentRef } from 'react';
 import { ActivityIndicator, Alert, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -28,6 +28,7 @@ import { useInspection } from '@/hooks/useInspection';
 import { usePremium } from '@/hooks/usePremium';
 import { capturePhoto, PhotoPermissionError, type PhotoSource } from '@/media/photos';
 import { tr } from '@/core/i18n/i18n';
+import { formatNumber } from '@/core/region';
 
 type Inspection = ReturnType<typeof useInspection>;
 
@@ -164,7 +165,7 @@ function PhotoResults({
             ) : null}
             {trx.odometer_value != null ? (
               <AppText variant="label">
-                AI read the odometer: {trx.odometer_value.toLocaleString('en-US')} {trx.odometer_unit ?? ''}
+                AI read the odometer: {formatNumber(trx.odometer_value)} {trx.odometer_unit ?? ''}
               </AppText>
             ) : null}
             {trx.dot_code ? <AppText variant="label">AI read the tire date code: {trx.dot_code}</AppText> : null}
@@ -210,6 +211,16 @@ function ItemCard({
   const { item } = entry;
   const [noteOpen, setNoteOpen] = useState(!!record?.note);
   const [noteText, setNoteText] = useState(record?.note ?? '');
+  // Save the note when leaving the item too: tapping Next/Back with the keyboard still open doesn't always blur
+  // the field first, and the card is replaced right away.
+  const unsavedNote = useRef<string | null>(null);
+  const saveNote = inspection.note.mutate;
+  useEffect(
+    () => () => {
+      if (unsavedNote.current !== null) saveNote({ itemId: item.id, text: unsavedNote.current });
+    },
+    [item.id, saveNote],
+  );
   const busy = inspection.photo.isPending && inspection.photo.variables?.itemId === item.id;
   const premium = usePremium();
   const applicable = useMemo(() => new Set(inspection.entries.map((e) => e.item.id)), [inspection.entries]);
@@ -360,8 +371,14 @@ function ItemCard({
       {noteOpen ? (
         <TextInput
           value={noteText}
-          onChangeText={setNoteText}
-          onBlur={() => inspection.note.mutate({ itemId: item.id, text: noteText })}
+          onChangeText={(v) => {
+            setNoteText(v);
+            unsavedNote.current = v;
+          }}
+          onBlur={() => {
+            inspection.note.mutate({ itemId: item.id, text: noteText });
+            unsavedNote.current = null;
+          }}
           placeholder={tr('What did you notice?')}
           placeholderTextColor={t.faint}
           multiline
@@ -496,7 +513,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: space.xs,
     paddingHorizontal: space.md,
-    minHeight: 36,
+    minHeight: minTouch,
     borderRadius: radius.pill,
     borderWidth: 1,
   },
