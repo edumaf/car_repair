@@ -1,6 +1,7 @@
 // Every reviewed data string shown in the app has a Romanian translation (data/i18n/ro.json).
 import learn from '../../../content/learn.json';
 import roData from '../../../data/i18n/ro.json';
+import { OBD_CODES, SYMPTOMS } from '../data/knowledge';
 import { CHECKLIST_ITEMS, FIELD_FLAGS, LISTING_FLAGS, SECTIONS } from '../data/seed';
 
 const ro = roData as Record<string, string>;
@@ -14,6 +15,25 @@ describe('Romanian data translations', () => {
 
   it('listing warning signs', () => {
     expect(missing([...LISTING_FLAGS, ...FIELD_FLAGS].flatMap((f) => [f.explanation, f.ask_seller]))).toEqual([]);
+  });
+
+  it('Diagnose: OBD codes', () => {
+    expect(
+      missing(OBD_CODES.flatMap((c) => [c.title, c.system, c.notes, ...c.causes.flatMap((x) => [x.text, x.diy_check])])),
+    ).toEqual([]);
+  });
+
+  it('Diagnose: symptom flows', () => {
+    expect(
+      missing(
+        SYMPTOMS.flatMap((s) => [
+          s.title,
+          s.category,
+          ...s.questions.flatMap((q) => [q.text, ...q.options.map((o) => o.label)]),
+          ...s.outcomes.flatMap((o) => [o.title, ...o.see_mechanic_if, ...o.causes.flatMap((x) => [x.text, x.diy_check])]),
+        ]),
+      ),
+    ).toEqual([]);
   });
 
   it('Learn guides', () => {

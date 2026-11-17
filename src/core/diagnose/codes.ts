@@ -1,6 +1,7 @@
 // OBD-II code lookup for the Diagnose tab (CLAUDE.md §20). Generic codes come from data/obd_codes.json;
 // manufacturer-specific codes get an honest "look it up for your make" answer.
 import { OBD_CODES } from '../data/knowledge';
+import { tr } from '../i18n/i18n';
 import type { ObdCode } from '../data/knowledgeSchema';
 
 export const CODE_PATTERN = /^[PCBU][0-3][0-9A-F]{3}$/;
@@ -44,9 +45,17 @@ export function searchCodes(query: string, codes: readonly ObdCode[] = OBD_CODES
     const byCode = codes.filter((c) => c.code.startsWith(asCode));
     if (byCode.length) return byCode.slice(0, limit);
   }
-  const words = q.toLowerCase().split(/\s+/).filter(Boolean);
-  return codes.filter((c) => words.every((w) => `${c.title} ${c.system}`.toLowerCase().includes(w))).slice(0, limit);
+  // Words match the English text and, in Romanian, the translation too; accents don't matter ("rateu" = "rateu").
+  const words = fold(q).split(/\s+/).filter(Boolean);
+  const haystack = (c: ObdCode) => fold(`${c.title} ${c.system} ${tr(c.title)} ${tr(c.system)}`);
+  return codes.filter((c) => words.every((w) => haystack(c).includes(w))).slice(0, limit);
 }
+
+const fold = (s: string) =>
+  s
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
 
 const LIKELIHOOD_ORDER = { common: 0, possible: 1, rare: 2 } as const;
 export const sortCauses = <T extends { likelihood: keyof typeof LIKELIHOOD_ORDER }>(causes: readonly T[]): T[] =>

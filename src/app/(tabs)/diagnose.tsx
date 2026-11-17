@@ -81,7 +81,7 @@ export default function DiagnoseScreen() {
           {results.map((c, i) => (
             <Fragment key={c.code}>
               {i > 0 ? <Divider /> : null}
-              <Row title={`${c.code} · ${c.title}`} subtitle={c.system} onPress={() => openCode(c.code)} />
+              <Row title={`${c.code} · ${tr(c.title)}`} subtitle={c.system} onPress={() => openCode(c.code)} />
             </Fragment>
           ))}
           {!results.length && !CODE_PATTERN.test(exact) ? (

@@ -1,3 +1,4 @@
+import { setLang } from '../i18n/i18n';
 import { lookupCode, normalizeCode, searchCodes, sortCauses } from './codes';
 
 describe('normalizeCode', () => {
@@ -35,6 +36,18 @@ describe('searchCodes', () => {
     expect(searchCodes('catalytic').map((c) => c.code)).toEqual(expect.arrayContaining(['P0420', 'P0430']));
     expect(searchCodes('oil pressure').some((c) => c.code === 'P0524')).toBe(true);
     expect(searchCodes('')).toEqual([]);
+  });
+
+  it('in Romanian, also finds codes by Romanian words, with or without diacritics', () => {
+    setLang('ro');
+    try {
+      expect(searchCodes('rateuri').some((c) => c.code === 'P0301')).toBe(true);
+      expect(searchCodes('catalizatorului').map((c) => c.code)).toEqual(expect.arrayContaining(['P0420']));
+      expect(searchCodes('presiunea uleiului').some((c) => c.code === 'P0524')).toBe(true);
+      expect(searchCodes('supraincalzeste').some((c) => c.code === 'P0217')).toBe(true);
+    } finally {
+      setLang('en');
+    }
   });
 });
 
