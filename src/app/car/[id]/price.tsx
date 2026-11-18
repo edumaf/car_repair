@@ -3,7 +3,7 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useLocalSearchParams } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
-import { Alert, KeyboardAvoidingView, Linking, Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Alert, Linking, Pressable, StyleSheet, View } from 'react-native';
 
 import { listingClient } from '@/core/api/clients';
 import { aiIsSample } from '@/core/api/mode';
@@ -14,6 +14,7 @@ import { formatNumber, money, type Region } from '@/core/region';
 import type { PricePosition } from '@/core/types';
 import { carTitle } from '@/db/carsRepository';
 import { AppText } from '@/design/components/AppText';
+import { FormScroll } from '@/design/components/FormScroll';
 import { Button } from '@/design/components/Button';
 import { Card } from '@/design/components/Card';
 import { Divider } from '@/design/components/Row';
@@ -115,164 +116,161 @@ export default function PriceCheckScreen() {
   const pos = POSITION[result?.position ?? 'unknown'];
 
   return (
-    <KeyboardAvoidingView style={{ flex: 1, backgroundColor: t.bg }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-      <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled"
-        keyboardDismissMode="on-drag">
-        <AppText variant="overline" tone="muted">
-          Price check
-        </AppText>
-        <AppText variant="title">{carTitle(c)}</AppText>
-        <AppText tone="muted">
-          {[
-            c.askingPrice != null ? tr('Asking {price}', { price: money(c.askingPrice, region) }) : null,
-            c.mileage != null ? `${formatNumber(c.mileage)} ${unit}` : null,
-          ]
-            .filter(Boolean)
-            .join(' · ') || 'Add the asking price and mileage to compare.'}
-        </AppText>
+    <FormScroll contentContainerStyle={styles.content}>
+      <AppText variant="overline" tone="muted">
+        Price check
+      </AppText>
+      <AppText variant="title">{carTitle(c)}</AppText>
+      <AppText tone="muted">
+        {[
+          c.askingPrice != null ? tr('Asking {price}', { price: money(c.askingPrice, region) }) : null,
+          c.mileage != null ? `${formatNumber(c.mileage)} ${unit}` : null,
+        ]
+          .filter(Boolean)
+          .join(' · ') || 'Add the asking price and mileage to compare.'}
+      </AppText>
 
-        {c.askingPrice == null ? (
-          <Card>
-            <TextField
-              label="Asking price"
-              keyboardType="number-pad"
-              value={asking}
-              onChangeText={setAsking}
-              placeholder={tr('e.g. 8500')}
-            />
-            <Button
-              label="Save"
-              kind="secondary"
-              disabled={!parseNumber(asking)}
-              onPress={() => update.mutate({ askingPrice: parseNumber(asking) })}
-            />
-          </Card>
-        ) : null}
-
+      {c.askingPrice == null ? (
         <Card>
-          <AppText variant="overline" tone="muted">
-            Result
-          </AppText>
-          <Tag label={farBelow ? 'Far below typical' : pos.label} color={farBelow ? 'warn' : pos.color} />
-          {result?.fairRange ? (
-            <>
-              <AppText variant="number">
-                {money(result.fairRange.low, region)}–{money(result.fairRange.high, region)}
-              </AppText>
-              <AppText variant="label" tone="muted">
-                Estimated fair range at {c.mileage != null ? formatNumber(c.mileage) : ''} {unit}, from {result.compsUsed} similar listings.
-              </AppText>
-              {pos.text ? <AppText variant="label">{pos.text}</AppText> : null}
-            </>
-          ) : result?.stats ? (
-            <>
-              <AppText variant="label">
-                Similar listings: lowest {money(result.stats.min, region)}, middle {money(result.stats.median, region)}, highest{' '}
-                {money(result.stats.max, region)}.
-              </AppText>
-              <AppText variant="caption" tone="muted">
-                {result.note === 'need_mileage'
-                  ? 'Add this car’s mileage for a fair range.'
-                  : 'Add at least 3 listings with mileage for a fair range.'}
-              </AppText>
-            </>
-          ) : (
-            <AppText variant="label" tone="muted">
-              Find 3 to 6 similar cars for sale (same model, ±1 year) and add their price and mileage below.
-            </AppText>
-          )}
-          {farBelow ? (
-            <View style={{ gap: space.xs }}>
-              <Divider />
-              <Tag label="Ask why it’s so cheap" color="warn" icon="alert-circle" />
-              <AppText variant="label">{farBelow.explanation}</AppText>
-              <AppText variant="label" tone="brand">
-                {tr('Ask: {question}', { question: tr(farBelow.ask_seller) })}
-              </AppText>
-            </View>
-          ) : null}
-          <AppText variant="caption" tone="muted">
-            Based only on the listings you entered. Asking prices aren’t sale prices.
-          </AppText>
-        </Card>
-
-        <Card>
-          <AppText variant="overline" tone="muted">
-            Similar listings ({comps.data?.length ?? 0})
-          </AppText>
-          {(comps.data ?? []).map((x, i) => (
-            <View key={x.id} style={{ gap: space.xs }}>
-              {i > 0 ? <Divider /> : null}
-              <View style={styles.compRow}>
-                <View style={{ flex: 1 }}>
-                  <AppText variant="bodyStrong">{money(x.price, region)}</AppText>
-                  <AppText variant="caption" tone="muted">
-                    {[x.mileage != null ? `${formatNumber(x.mileage)} ${unit}` : tr('mileage ?'), x.year, x.note]
-                      .filter(Boolean)
-                      .join(' · ')}
-                  </AppText>
-                </View>
-                <Pressable
-                  accessibilityRole="button"
-                  accessibilityLabel={tr('Remove this listing')}
-                  onPress={() => remove.mutate(x.id)}
-                  hitSlop={10}>
-                  <Ionicons name="trash-outline" size={20} color={t.muted} />
-                </Pressable>
-              </View>
-            </View>
-          ))}
-          <Divider />
-          <Button label="Fill in from a screenshot" icon="images-outline" kind="ghost" loading={reading} onPress={readScreenshot} />
-          {readFrom ? (
-            <AppText variant="caption" tone={readFrom === 'sample' ? 'caution' : 'muted'}>
-              {readFrom === 'sample'
-                ? 'Sample numbers: reading screenshots needs our server, which isn’t switched on yet.'
-                : 'Read by AI from your screenshot (then deleted). Check the numbers, then add the listing.'}
-            </AppText>
-          ) : null}
           <TextField
-            label="Price"
+            label="Asking price"
             keyboardType="number-pad"
-            value={form.price}
-            onChangeText={(v) => setForm({ ...form, price: v })}
-            placeholder={tr('e.g. 7900')}
+            value={asking}
+            onChangeText={setAsking}
+            placeholder={tr('e.g. 8500')}
           />
-          <View style={styles.twoCols}>
-            <View style={{ flex: 1 }}>
-              <TextField
-                label="Mileage"
-                suffix={unit}
-                keyboardType="number-pad"
-                value={form.mileage}
-                onChangeText={(v) => setForm({ ...form, mileage: v })}
-              />
-            </View>
-            <View style={{ flex: 1 }}>
-              <TextField label="Year" keyboardType="number-pad" value={form.year} onChangeText={(v) => setForm({ ...form, year: v })} />
+          <Button
+            label="Save"
+            kind="secondary"
+            disabled={!parseNumber(asking)}
+            onPress={() => update.mutate({ askingPrice: parseNumber(asking) })}
+          />
+        </Card>
+      ) : null}
+
+      <Card>
+        <AppText variant="overline" tone="muted">
+          Result
+        </AppText>
+        <Tag label={farBelow ? 'Far below typical' : pos.label} color={farBelow ? 'warn' : pos.color} />
+        {result?.fairRange ? (
+          <>
+            <AppText variant="number">
+              {money(result.fairRange.low, region)}–{money(result.fairRange.high, region)}
+            </AppText>
+            <AppText variant="label" tone="muted">
+              Estimated fair range at {c.mileage != null ? formatNumber(c.mileage) : ''} {unit}, from {result.compsUsed} similar listings.
+            </AppText>
+            {pos.text ? <AppText variant="label">{pos.text}</AppText> : null}
+          </>
+        ) : result?.stats ? (
+          <>
+            <AppText variant="label">
+              Similar listings: lowest {money(result.stats.min, region)}, middle {money(result.stats.median, region)}, highest{' '}
+              {money(result.stats.max, region)}.
+            </AppText>
+            <AppText variant="caption" tone="muted">
+              {result.note === 'need_mileage'
+                ? 'Add this car’s mileage for a fair range.'
+                : 'Add at least 3 listings with mileage for a fair range.'}
+            </AppText>
+          </>
+        ) : (
+          <AppText variant="label" tone="muted">
+            Find 3 to 6 similar cars for sale (same model, ±1 year) and add their price and mileage below.
+          </AppText>
+        )}
+        {farBelow ? (
+          <View style={{ gap: space.xs }}>
+            <Divider />
+            <Tag label="Ask why it’s so cheap" color="warn" icon="alert-circle" />
+            <AppText variant="label">{farBelow.explanation}</AppText>
+            <AppText variant="label" tone="brand">
+              {tr('Ask: {question}', { question: tr(farBelow.ask_seller) })}
+            </AppText>
+          </View>
+        ) : null}
+        <AppText variant="caption" tone="muted">
+          Based only on the listings you entered. Asking prices aren’t sale prices.
+        </AppText>
+      </Card>
+
+      <Card>
+        <AppText variant="overline" tone="muted">
+          Similar listings ({comps.data?.length ?? 0})
+        </AppText>
+        {(comps.data ?? []).map((x, i) => (
+          <View key={x.id} style={{ gap: space.xs }}>
+            {i > 0 ? <Divider /> : null}
+            <View style={styles.compRow}>
+              <View style={{ flex: 1 }}>
+                <AppText variant="bodyStrong">{money(x.price, region)}</AppText>
+                <AppText variant="caption" tone="muted">
+                  {[x.mileage != null ? `${formatNumber(x.mileage)} ${unit}` : tr('mileage ?'), x.year, x.note]
+                    .filter(Boolean)
+                    .join(' · ')}
+                </AppText>
+              </View>
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel={tr('Remove this listing')}
+                onPress={() => remove.mutate(x.id)}
+                hitSlop={10}>
+                <Ionicons name="trash-outline" size={20} color={t.muted} />
+              </Pressable>
             </View>
           </View>
-          <TextField
-            label="Note (optional)"
-            value={form.note}
-            onChangeText={(v) => setForm({ ...form, note: v })}
-            placeholder={tr('Where you saw it')}
-          />
-          <Button label="Add listing" icon="add" kind="secondary" disabled={!price} onPress={addComp} />
-        </Card>
-
-        {SITES[region].length ? (
-          <Card>
-            <AppText variant="overline" tone="muted">
-              Find similar cars
-            </AppText>
-            {SITES[region].map((s) => (
-              <Button key={s.url} label={s.label} kind="ghost" icon="open-outline" onPress={() => Linking.openURL(s.url)} />
-            ))}
-          </Card>
+        ))}
+        <Divider />
+        <Button label="Fill in from a screenshot" icon="images-outline" kind="ghost" loading={reading} onPress={readScreenshot} />
+        {readFrom ? (
+          <AppText variant="caption" tone={readFrom === 'sample' ? 'caution' : 'muted'}>
+            {readFrom === 'sample'
+              ? 'Sample numbers: reading screenshots needs our server, which isn’t switched on yet.'
+              : 'Read by AI from your screenshot (then deleted). Check the numbers, then add the listing.'}
+          </AppText>
         ) : null}
-      </ScrollView>
-    </KeyboardAvoidingView>
+        <TextField
+          label="Price"
+          keyboardType="number-pad"
+          value={form.price}
+          onChangeText={(v) => setForm({ ...form, price: v })}
+          placeholder={tr('e.g. 7900')}
+        />
+        <View style={styles.twoCols}>
+          <View style={{ flex: 1 }}>
+            <TextField
+              label="Mileage"
+              suffix={unit}
+              keyboardType="number-pad"
+              value={form.mileage}
+              onChangeText={(v) => setForm({ ...form, mileage: v })}
+            />
+          </View>
+          <View style={{ flex: 1 }}>
+            <TextField label="Year" keyboardType="number-pad" value={form.year} onChangeText={(v) => setForm({ ...form, year: v })} />
+          </View>
+        </View>
+        <TextField
+          label="Note (optional)"
+          value={form.note}
+          onChangeText={(v) => setForm({ ...form, note: v })}
+          placeholder={tr('Where you saw it')}
+        />
+        <Button label="Add listing" icon="add" kind="secondary" disabled={!price} onPress={addComp} />
+      </Card>
+
+      {SITES[region].length ? (
+        <Card>
+          <AppText variant="overline" tone="muted">
+            Find similar cars
+          </AppText>
+          {SITES[region].map((s) => (
+            <Button key={s.url} label={s.label} kind="ghost" icon="open-outline" onPress={() => Linking.openURL(s.url)} />
+          ))}
+        </Card>
+      ) : null}
+    </FormScroll>
   );
 }
 

@@ -165,6 +165,7 @@ export function extract(): { found: Found[]; dynamic: Found[] } {
           !NOT_UI.test(file) &&
           looksLikeText(n.text) &&
           !ts.isImportDeclaration(n.parent) &&
+          !ts.isExpressionStatement(n.parent) && // directives such as 'use no memo'
           !ts.isNewExpression(n.parent) &&
           !(ts.isCallExpression(n.parent) && SKIP_CALLS.test(n.parent.expression.getText(src)))
         ) {

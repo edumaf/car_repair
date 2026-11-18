@@ -4,13 +4,14 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useMemo, useState } from 'react';
-import { FlatList, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, TextInput, View } from 'react-native';
+import { FlatList, Pressable, ScrollView, StyleSheet, TextInput, View } from 'react-native';
 
 import type { CarModel, Engine } from '@/core/data/knowledgeSchema';
 import { manualReport } from '@/core/models/manualReport';
 import { findModelsByVin, listMakes, modelsForMake } from '@/core/models/matchModels';
 import type { Powertrain } from '@/core/types';
 import { AppText } from '@/design/components/AppText';
+import { FormScroll } from '@/design/components/FormScroll';
 import { Button } from '@/design/components/Button';
 import { CarHeader } from '@/design/components/CarHeader';
 import { ChoiceChips } from '@/design/components/ChoiceChips';
@@ -334,65 +335,59 @@ export default function PickModel() {
   if (step === 'manual') {
     const canSave = manual.make.trim() && manual.model.trim();
     return (
-      <KeyboardAvoidingView style={{ flex: 1, backgroundColor: t.bg }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-        <ScrollView contentContainerStyle={styles.list} keyboardShouldPersistTaps="handled"
-        keyboardDismissMode="on-drag">
-          {header('Tell us about the car', 'Not in our list')}
-          <AppText variant="label" tone="muted">
-            You’ll still get the full inspection and verdict. We just won’t have model-specific problems for it yet.
-          </AppText>
-          <TextField
-            label="Make"
-            value={manual.make}
-            onChangeText={(v) => setManual({ ...manual, make: v })}
-            placeholder={tr('e.g. Lada')}
-          />
-          <TextField
-            label="Model"
-            value={manual.model}
-            onChangeText={(v) => setManual({ ...manual, model: v })}
-            placeholder={tr('e.g. Niva')}
-          />
-          <TextField
-            label="Year"
-            keyboardType="number-pad"
-            value={manual.year}
-            onChangeText={(v) => setManual({ ...manual, year: v })}
-            placeholder={tr('e.g. 2012')}
-          />
-          <ChoiceChips label="Fuel" choices={FUELS} value={manual.fuel} onChange={(fuel) => setManual({ ...manual, fuel })} />
-          <CarDetailsForm value={details} onChange={setDetails} />
-          <Button
-            label="Save and see the report"
-            icon="arrow-forward"
-            disabled={!canSave}
-            loading={create.isPending}
-            onPress={saveManual}
-          />
-        </ScrollView>
-      </KeyboardAvoidingView>
+      <FormScroll contentContainerStyle={styles.list}>
+        {header('Tell us about the car', 'Not in our list')}
+        <AppText variant="label" tone="muted">
+          You’ll still get the full inspection and verdict. We just won’t have model-specific problems for it yet.
+        </AppText>
+        <TextField
+          label="Make"
+          value={manual.make}
+          onChangeText={(v) => setManual({ ...manual, make: v })}
+          placeholder={tr('e.g. Lada')}
+        />
+        <TextField
+          label="Model"
+          value={manual.model}
+          onChangeText={(v) => setManual({ ...manual, model: v })}
+          placeholder={tr('e.g. Niva')}
+        />
+        <TextField
+          label="Year"
+          keyboardType="number-pad"
+          value={manual.year}
+          onChangeText={(v) => setManual({ ...manual, year: v })}
+          placeholder={tr('e.g. 2012')}
+        />
+        <ChoiceChips label="Fuel" choices={FUELS} value={manual.fuel} onChange={(fuel) => setManual({ ...manual, fuel })} />
+        <CarDetailsForm value={details} onChange={setDetails} />
+        <Button
+          label="Save and see the report"
+          icon="arrow-forward"
+          disabled={!canSave}
+          loading={create.isPending}
+          onPress={saveManual}
+        />
+      </FormScroll>
     );
   }
 
   if (step === 'save' && model) {
     return (
-      <KeyboardAvoidingView style={{ flex: 1, backgroundColor: t.bg }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-        <ScrollView contentContainerStyle={styles.list} keyboardShouldPersistTaps="handled"
-        keyboardDismissMode="on-drag">
-          <CarHeader
-            overline="Your car"
-            title={[year, model.make, model.model].filter(Boolean).join(' ')}
-            trim={model.generation}
-            engineDesc={engine?.name ?? 'Engine not chosen'}
-            powertrain={engine?.fuel ?? model.engines[0].fuel}
-            vin={p.vin ?? null}
-            kind={bodyKind(model.body[0])}
-          />
-          <Button label="Change" kind="ghost" onPress={() => setStep('engine')} />
-          <CarDetailsForm value={details} onChange={setDetails} />
-          <Button label="Save and see the report" icon="arrow-forward" loading={create.isPending} onPress={save} />
-        </ScrollView>
-      </KeyboardAvoidingView>
+      <FormScroll contentContainerStyle={styles.list}>
+        <CarHeader
+          overline="Your car"
+          title={[year, model.make, model.model].filter(Boolean).join(' ')}
+          trim={model.generation}
+          engineDesc={engine?.name ?? 'Engine not chosen'}
+          powertrain={engine?.fuel ?? model.engines[0].fuel}
+          vin={p.vin ?? null}
+          kind={bodyKind(model.body[0])}
+        />
+        <Button label="Change" kind="ghost" onPress={() => setStep('engine')} />
+        <CarDetailsForm value={details} onChange={setDetails} />
+        <Button label="Save and see the report" icon="arrow-forward" loading={create.isPending} onPress={save} />
+      </FormScroll>
     );
   }
 

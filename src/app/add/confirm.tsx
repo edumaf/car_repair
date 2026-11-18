@@ -2,7 +2,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { vehicleClient } from '@/core/api/clients';
 import { ApiError, type VehicleLookup } from '@/core/api/types';
@@ -10,6 +10,7 @@ import { engineFromDecode, findModelsByName } from '@/core/models/matchModels';
 import type { Powertrain } from '@/core/types';
 import { carTitle } from '@/db/carsRepository';
 import { AppText } from '@/design/components/AppText';
+import { FormScroll } from '@/design/components/FormScroll';
 import { Button } from '@/design/components/Button';
 import { Card } from '@/design/components/Card';
 import { CarHeader } from '@/design/components/CarHeader';
@@ -116,54 +117,51 @@ export default function ConfirmCar() {
   };
 
   return (
-    <KeyboardAvoidingView style={{ flex: 1, backgroundColor: t.bg }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-      <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled"
-        keyboardDismissMode="on-drag">
-        <CarHeader
-          overline="We found"
-          title={carTitle(d)}
-          trim={d.trim}
-          engineDesc={d.engineDesc}
-          drive={d.drive}
-          powertrain={powertrain}
-          vin={d.vin}
-          kind={bodyKind(d.body)}
-        />
-        {d.decodeWarnings.length > 0 && p.vin ? (
-          <AppText variant="caption" tone="caution">
-            NHTSA flagged parts of this VIN as unusual. Compare it with the door sticker and the title.
-          </AppText>
-        ) : null}
-        <Card>
-          <AppText variant="label">
-            {r.recalls === null
-              ? 'Recalls unavailable right now'
-              : plural(r.recalls.length, '{n} recall', '{n} recalls', '{n} de rechemări')}{' '}
-            ·{' '}
-            {r.complaints === null
-              ? 'complaints unavailable'
-              : plural(r.complaints.total, '{n} owner complaint', '{n} owner complaints', '{n} de reclamații de la proprietari')}
-          </AppText>
-          <AppText variant="caption" tone="muted">
-            Full details on the next screen.
-          </AppText>
-        </Card>
-
-        {existing ? (
-          <Card>
-            <AppText variant="bodyStrong">This car is already in your garage.</AppText>
-            <Button label="Open it" kind="secondary" onPress={() => openCar(existing.id)} />
-          </Card>
-        ) : null}
-
-        <CarDetailsForm value={details} onChange={setDetails} />
-
-        <Button label="Save and see the report" icon="arrow-forward" loading={create.isPending} onPress={save} />
-        <AppText variant="caption" tone="muted" align="center">
-          Data: U.S. National Highway Traffic Safety Administration (NHTSA). Not affiliated with NHTSA or any manufacturer.
+    <FormScroll contentContainerStyle={styles.content}>
+      <CarHeader
+        overline="We found"
+        title={carTitle(d)}
+        trim={d.trim}
+        engineDesc={d.engineDesc}
+        drive={d.drive}
+        powertrain={powertrain}
+        vin={d.vin}
+        kind={bodyKind(d.body)}
+      />
+      {d.decodeWarnings.length > 0 && p.vin ? (
+        <AppText variant="caption" tone="caution">
+          NHTSA flagged parts of this VIN as unusual. Compare it with the door sticker and the title.
         </AppText>
-      </ScrollView>
-    </KeyboardAvoidingView>
+      ) : null}
+      <Card>
+        <AppText variant="label">
+          {r.recalls === null
+            ? 'Recalls unavailable right now'
+            : plural(r.recalls.length, '{n} recall', '{n} recalls', '{n} de rechemări')}{' '}
+          ·{' '}
+          {r.complaints === null
+            ? 'complaints unavailable'
+            : plural(r.complaints.total, '{n} owner complaint', '{n} owner complaints', '{n} de reclamații de la proprietari')}
+        </AppText>
+        <AppText variant="caption" tone="muted">
+          Full details on the next screen.
+        </AppText>
+      </Card>
+
+      {existing ? (
+        <Card>
+          <AppText variant="bodyStrong">This car is already in your garage.</AppText>
+          <Button label="Open it" kind="secondary" onPress={() => openCar(existing.id)} />
+        </Card>
+      ) : null}
+
+      <CarDetailsForm value={details} onChange={setDetails} />
+
+      <Button label="Save and see the report" icon="arrow-forward" loading={create.isPending} onPress={save} />
+      <AppText variant="caption" tone="muted" align="center">
+        Data: U.S. National Highway Traffic Safety Administration (NHTSA). Not affiliated with NHTSA or any manufacturer.
+      </AppText>
+    </FormScroll>
   );
 }
 

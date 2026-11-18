@@ -25,6 +25,10 @@ const queryClient = new QueryClient({ defaultOptions: { queries: { staleTime: In
 const seedProblems = __DEV__ ? validateSeed(rawSeed) : [];
 
 export default function RootLayout() {
+  // The React Compiler would cache tr('Back'), tr('Inspection')… from the first render forever (it can't see that
+  // tr() reads the current language), so screen headers kept the starting language. This component sits above the
+  // language-keyed Stack and never remounts, so it opts out. Tested in core/i18n/compilerSafety.test.ts.
+  'use no memo';
   const t = useTheme();
   // Changing the language remounts the screens so every string is drawn again in the new language.
   const lang = useLang();
