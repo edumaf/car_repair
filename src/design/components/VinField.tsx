@@ -10,7 +10,18 @@ import { fonts } from '../typography';
 import { AppText } from './AppText';
 import { tr } from '@/core/i18n/i18n';
 
-export function VinField({ value, onChange, autoFocus }: { value: string; onChange: (v: string) => void; autoFocus?: boolean }) {
+export function VinField({
+  value,
+  onChange,
+  autoFocus,
+  onSubmit,
+}: {
+  value: string;
+  onChange: (v: string) => void;
+  autoFocus?: boolean;
+  /** Enter on the keyboard: look the VIN up (the field closes the keyboard either way). */
+  onSubmit?: () => void;
+}) {
   const t = useTheme();
   const input = useRef<ComponentRef<typeof TextInput>>(null);
   const check = checkVin(value);
@@ -65,6 +76,9 @@ export function VinField({ value, onChange, autoFocus }: { value: string; onChan
           autoComplete="off"
           spellCheck={false}
           autoFocus={autoFocus}
+          returnKeyType="search"
+          submitBehavior="blurAndSubmit"
+          onSubmitEditing={onSubmit}
           maxLength={VIN_LENGTH + 2}
           accessibilityLabel={tr('VIN, 17 characters')}
           accessibilityHint={message ?? undefined}

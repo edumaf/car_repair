@@ -68,6 +68,7 @@ export default function DiagnoseScreen() {
             autoCapitalize="none"
             autoCorrect={false}
             returnKeyType="search"
+            submitBehavior="blurAndSubmit"
             onSubmitEditing={() => CODE_PATTERN.test(exact) && openCode(exact)}
             accessibilityLabel={tr('Search error codes')}
             style={[type.mono, { flex: 1, color: t.onNight, paddingVertical: space.md }]}

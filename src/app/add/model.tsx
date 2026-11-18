@@ -146,6 +146,8 @@ export default function PickModel() {
     <View style={[styles.search, { backgroundColor: t.surface, borderColor: t.border }]}>
       <Ionicons name="search" size={18} color={t.muted} />
       <TextInput
+        returnKeyType="search"
+        submitBehavior="blurAndSubmit"
         value={search}
         onChangeText={setSearch}
         placeholder={tr(placeholder)}
@@ -176,6 +178,7 @@ export default function PickModel() {
         style={{ backgroundColor: t.bg }}
         contentContainerStyle={styles.list}
         keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="on-drag"
         ListHeaderComponent={
           <View style={{ gap: space.md }}>
             {header('Which make?', attaching ? 'Choose the model' : 'Add a car')}
@@ -210,6 +213,7 @@ export default function PickModel() {
         style={{ backgroundColor: t.bg }}
         contentContainerStyle={styles.list}
         keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="on-drag"
         ListHeaderComponent={
           <View style={{ gap: space.md }}>
             {header('Which model?', make)}
@@ -331,7 +335,8 @@ export default function PickModel() {
     const canSave = manual.make.trim() && manual.model.trim();
     return (
       <KeyboardAvoidingView style={{ flex: 1, backgroundColor: t.bg }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-        <ScrollView contentContainerStyle={styles.list} keyboardShouldPersistTaps="handled">
+        <ScrollView contentContainerStyle={styles.list} keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="on-drag">
           {header('Tell us about the car', 'Not in our list')}
           <AppText variant="label" tone="muted">
             You’ll still get the full inspection and verdict. We just won’t have model-specific problems for it yet.
@@ -372,7 +377,8 @@ export default function PickModel() {
   if (step === 'save' && model) {
     return (
       <KeyboardAvoidingView style={{ flex: 1, backgroundColor: t.bg }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-        <ScrollView contentContainerStyle={styles.list} keyboardShouldPersistTaps="handled">
+        <ScrollView contentContainerStyle={styles.list} keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="on-drag">
           <CarHeader
             overline="Your car"
             title={[year, model.make, model.model].filter(Boolean).join(' ')}

@@ -1,8 +1,10 @@
+import { useId } from 'react';
 import { StyleSheet, TextInput, View, type TextInputProps } from 'react-native';
 
 import { minTouch, radius, space, useTheme } from '../tokens';
 import { type } from '../typography';
 import { AppText } from './AppText';
+import { KeyboardDone, needsDoneBar } from './KeyboardDone';
 import { tr } from '@/core/i18n/i18n';
 
 interface TextFieldProps extends Omit<TextInputProps, 'style'> {
@@ -15,12 +17,18 @@ interface TextFieldProps extends Omit<TextInputProps, 'style'> {
 
 export function TextField({ label, prefix, suffix, hint, multiline, ...rest }: TextFieldProps) {
   const t = useTheme();
+  // Every keyboard can be closed: Enter closes it (also in multi-line boxes), number pads get a Done bar.
+  const doneId = useId();
+  const doneBar = needsDoneBar(rest.keyboardType);
   return (
     <View style={styles.wrap}>
       <AppText variant="label">{label}</AppText>
       <View style={[styles.box, { backgroundColor: t.surface, borderColor: t.border }, multiline && styles.multi]}>
         {prefix ? <AppText tone="muted">{prefix}</AppText> : null}
         <TextInput
+          returnKeyType="done"
+          submitBehavior="blurAndSubmit"
+          inputAccessoryViewID={doneBar ? doneId : undefined}
           {...rest}
           placeholder={rest.placeholder ? tr(rest.placeholder) : undefined}
           multiline={multiline}
@@ -30,6 +38,7 @@ export function TextField({ label, prefix, suffix, hint, multiline, ...rest }: T
         />
         {suffix ? <AppText tone="muted">{suffix}</AppText> : null}
       </View>
+      {doneBar ? <KeyboardDone id={doneId} /> : null}
       {hint ? (
         <AppText variant="caption" tone="muted">
           {hint}

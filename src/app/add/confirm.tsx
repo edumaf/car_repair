@@ -117,7 +117,8 @@ export default function ConfirmCar() {
 
   return (
     <KeyboardAvoidingView style={{ flex: 1, backgroundColor: t.bg }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-      <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
+      <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="on-drag">
         <CarHeader
           overline="We found"
           title={carTitle(d)}

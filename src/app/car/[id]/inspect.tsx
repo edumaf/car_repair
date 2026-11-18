@@ -388,6 +388,8 @@ function ItemCard({
           placeholder={tr('What did you notice?')}
           placeholderTextColor={t.faint}
           multiline
+          returnKeyType="done"
+          submitBehavior="blurAndSubmit"
           accessibilityLabel={tr('Note')}
           style={[type.body, styles.note, { color: t.ink, borderColor: t.border, backgroundColor: t.surface }]}
         />
@@ -468,7 +470,8 @@ export default function Inspect() {
         />
         <OverallBar checked={p.checked} total={p.total} />
       </View>
-      <ScrollView ref={scroll} contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
+      <ScrollView ref={scroll} contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="on-drag">
         <Fragment key={entry.item.id}>
           <ItemCard
             entry={entry}

@@ -51,6 +51,8 @@ function SearchBox({ value, onChange, placeholder }: { value: string; onChange: 
     <View style={[styles.search, { backgroundColor: t.surface, borderColor: t.border }]}>
       <Ionicons name="search" size={18} color={t.muted} />
       <TextInput
+        returnKeyType="search"
+        submitBehavior="blurAndSubmit"
         value={value}
         onChangeText={onChange}
         placeholder={tr(placeholder)}
@@ -173,6 +175,7 @@ export default function PickYmm() {
       style={{ backgroundColor: t.bg }}
       contentContainerStyle={styles.list}
       keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="on-drag"
       ListHeaderComponent={
         <View style={{ gap: space.md }}>
           {header}

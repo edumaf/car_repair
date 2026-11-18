@@ -132,7 +132,8 @@ export default function VerdictScreen() {
 
   return (
     <KeyboardAvoidingView style={{ flex: 1, backgroundColor: t.bg }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-      <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
+      <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="on-drag">
         <VerdictSignal key={signature ?? ''} verdict={result.verdict} possibleScam={result.possibleScam} reveal />
         <AppText variant="label" tone="muted">
           Based on {checked} of {inspection.entries.length} checks{car.listingText ? ' and the listing text' : ''}.

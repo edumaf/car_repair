@@ -116,7 +116,8 @@ export default function PriceCheckScreen() {
 
   return (
     <KeyboardAvoidingView style={{ flex: 1, backgroundColor: t.bg }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-      <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
+      <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="on-drag">
         <AppText variant="overline" tone="muted">
           Price check
         </AppText>

@@ -527,6 +527,8 @@ export default function CarReport() {
       <ScrollView
         ref={scroll}
         contentContainerStyle={styles.content}
+        keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="on-drag"
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={refresh} />}>
         <CarHeader
           overline="Vehicle report"
