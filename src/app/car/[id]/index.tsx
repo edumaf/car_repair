@@ -15,7 +15,7 @@ import type { PriceCheckResult } from '@/core/price/priceCheck';
 import { formatNumber, historyLinks, money } from '@/core/region';
 import { complaintGroupLabel, recallComponentLabel } from '@/core/vehicle/labels';
 import type { ComplaintGroupStat, Recall, VehicleReport } from '@/core/vehicle/types';
-import { carTitle, type CarRecord } from '@/db/carsRepository';
+import { carTitle, getCar, type CarRecord } from '@/db/carsRepository';
 import { AppText } from '@/design/components/AppText';
 import { Button } from '@/design/components/Button';
 import { Card } from '@/design/components/Card';
@@ -614,7 +614,9 @@ export default function CarReport() {
             // Free tier: one inspected car (lifetime); others need Premium (CLAUDE.md §9).
             const freeId = await getMeta(getDb(), META.freeInspectionCarId);
             if (!premium && !canInspectFree(freeId, c.id)) {
-              router.push({ pathname: '/paywall', params: { placement: 'second_inspection' } });
+              // Say which car has the free inspection, so the paywall isn't a surprise.
+              const freeCar = freeId ? await getCar(getDb(), freeId) : null;
+              router.push({ pathname: '/paywall', params: { placement: 'second_inspection', freeCar: freeCar ? carTitle(freeCar) : '' } });
               return;
             }
             if (!freeId && !premium) await setMeta(getDb(), META.freeInspectionCarId, c.id);

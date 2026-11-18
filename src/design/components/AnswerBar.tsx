@@ -26,6 +26,9 @@ export function AnswerBar({ value, onChange }: { value: Answer | null; onChange:
       {OPTIONS.map((o) => {
         const on = value === o.value;
         const color = o.color === 'caution' && t.scheme === 'light' ? '#B45309' : t[o.color];
+        // Always in its own color; the chosen one fills in solid so it's obvious the answer was saved.
+        const solid = t[o.color];
+        const onSolid = o.color === 'caution' ? t.night : '#FFFFFF';
         return (
           <Pressable
             key={o.value}
@@ -38,11 +41,11 @@ export function AnswerBar({ value, onChange }: { value: Answer | null; onChange:
             }}
             style={({ pressed }) => [
               styles.btn,
-              { borderColor: on ? color : t.border, backgroundColor: on ? t.tint[o.color] : t.surface },
-              pressed && { transform: [{ scale: 0.97 }] },
+              { borderColor: on ? solid : t.tint[o.color], backgroundColor: on ? solid : t.tint[o.color] },
+              (pressed || on) && { transform: [{ scale: pressed ? 0.96 : 1.02 }] },
             ]}>
-            <Ionicons name={on ? o.icon : (`${o.icon}-outline` as never)} size={22} color={on ? color : t.muted} />
-            <AppText variant="label" style={{ color: on ? color : t.ink, fontSize: 12 }} numberOfLines={1}>
+            <Ionicons name={on ? o.icon : (`${o.icon}-outline` as never)} size={22} color={on ? onSolid : color} />
+            <AppText variant="label" style={{ color: on ? onSolid : color, fontSize: 12, fontWeight: '600' }} numberOfLines={1}>
               {o.label}
             </AppText>
           </Pressable>

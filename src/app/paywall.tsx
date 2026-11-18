@@ -55,7 +55,11 @@ const REASON: Record<PaywallPlacement, string | null> = {
 
 export default function Paywall() {
   const t = useTheme();
-  const { placement = 'first_report' } = useLocalSearchParams<{ placement?: PaywallPlacement }>();
+  const { placement = 'first_report', freeCar } = useLocalSearchParams<{ placement?: PaywallPlacement; freeCar?: string }>();
+  const reason =
+    placement === 'second_inspection' && freeCar
+      ? tr('Your free inspection is on the {car}.', { car: freeCar })
+      : REASON[placement as PaywallPlacement];
   const [plan, setPlan] = useState<(typeof PLANS)[number]['id']>('car_hunt_pass_30d');
   const answers = useQuery({
     queryKey: ['meta', 'onboarding'],
@@ -104,7 +108,7 @@ export default function Paywall() {
           </SafeAreaView>
           <View style={styles.heroText}>
             <AppText variant="overline" tone="lane">
-              {REASON[placement as PaywallPlacement] ?? 'Used Car Check Premium'}
+              {reason ?? 'Used Car Check Premium'}
             </AppText>
             <AppText variant="hero" tone="onNight" accessibilityRole="header" style={styles.headline}>
               {paywallHeadline(answers.data?.worry)}

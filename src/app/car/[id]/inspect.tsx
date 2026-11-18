@@ -426,6 +426,7 @@ export default function Inspect() {
   const inSection = section.entries.findIndex((e) => e.item.id === entry.item.id);
   const p = progress(entries, answers);
   const isLast = index === entries.length - 1;
+  const current = answers[entry.item.id] ?? null;
 
   const goTo = (i: number) => {
     setChosen(Math.max(0, Math.min(entries.length - 1, i)));
@@ -480,7 +481,14 @@ export default function Inspect() {
         </Fragment>
       </ScrollView>
       <SafeAreaView edges={['bottom']} style={[styles.bottom, { backgroundColor: t.surface, borderTopColor: t.border }]}>
-        <AnswerBar value={answers[entry.item.id] ?? null} onChange={onAnswer} />
+        {current === 'problem' || current === 'not_sure' ? (
+          <AppText variant="caption" tone="muted" align="center">
+            {current === 'problem'
+              ? 'Saved as a problem. Add a photo or a note above if you like, then go on.'
+              : 'Saved as not sure. Add a note if you like, then go on.'}
+          </AppText>
+        ) : null}
+        <AnswerBar value={current} onChange={onAnswer} />
         <View style={styles.nav}>
           <Pressable
             accessibilityRole="button"
@@ -494,6 +502,11 @@ export default function Inspect() {
           {isLast || p.checked === p.total ? (
             <View style={{ flex: 1 }}>
               <Button label="See the verdict" icon="arrow-forward" onPress={toVerdict} />
+            </View>
+          ) : current === 'problem' || current === 'not_sure' ? (
+            // We stay on this item after Problem / Not sure (for a photo or note): make the way on unmissable.
+            <View style={{ flex: 1 }}>
+              <Button label="Next item" icon="arrow-forward" onPress={() => goTo(index + 1)} />
             </View>
           ) : (
             <Pressable
