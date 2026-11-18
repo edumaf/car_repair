@@ -30,6 +30,7 @@ import { canInspectFree } from '@/core/limits';
 import { META, getMeta, setMeta } from '@/db/appMeta';
 import { getDb, saveFlag } from '@/db/db';
 import { ModelCard } from '@/features/model/ModelCard';
+import { useKeyboardShown } from '@/hooks/useKeyboardShown';
 import { usePremium } from '@/hooks/usePremium';
 import { usePriceCheck } from '@/hooks/usePriceCheck';
 import { PhotoPermissionError, deleteTempImages, pickScreenshots } from '@/media/photos';
@@ -262,8 +263,10 @@ function ListingCard({
       if (car.mileage == null && r.fields.mileage) fill.mileage = r.fields.mileage;
       if (Object.keys(fill).length) onFill(fill);
     } catch (e) {
-      if (e instanceof PhotoPermissionError) Alert.alert('Permission needed', tr('{message} Turn it on in the iPhone Settings app.', { message: tr(e.message) }));
-      else if (e instanceof ApiError && e.code === 'quota_exceeded') router.push({ pathname: '/paywall', params: { placement: 'premium_feature' } });
+      if (e instanceof PhotoPermissionError)
+        Alert.alert('Permission needed', tr('{message} Turn it on in the iPhone Settings app.', { message: tr(e.message) }));
+      else if (e instanceof ApiError && e.code === 'quota_exceeded')
+        router.push({ pathname: '/paywall', params: { placement: 'premium_feature' } });
       else Alert.alert('Couldn’t read the screenshots', tr((e as Error).message));
     } finally {
       deleteTempImages(uris);
@@ -373,7 +376,7 @@ function OtherMarketCard() {
   );
 }
 
-type Anchor = 'recalls' | 'complaints' | 'model' | 'safety';
+type Anchor = 'recalls' | 'complaints' | 'model' | 'safety' | 'listing';
 
 /** The four numbers people look for first, as tiles; each one jumps to its section. */
 function GlanceTiles({ car, report, onJump }: { car: CarRecord; report: VehicleReport | null; onJump: (a: Anchor) => void }) {
@@ -382,16 +385,30 @@ function GlanceTiles({ car, report, onJump }: { car: CarRecord; report: VehicleR
   const recalls = report?.recalls ?? null;
   const complaints = report?.complaints ?? null;
   const model = car.modelId ? getModel(car.modelId) : undefined;
-  const engine = model?.engines.find((e) => e.id === car.engineId) ?? (model ? engineFromDecode(model, car.powertrain, car.engineDesc) : null);
+  const engine =
+    model?.engines.find((e) => e.id === car.engineId) ?? (model ? engineFromDecode(model, car.powertrain, car.engineDesc) : null);
   const known = model ? problemsFor(model, engine?.id ?? null, car.year).relevant : null;
   const topGroup = complaints?.groups[0]?.group;
-  const tiles: { anchor: Anchor; icon: ComponentProps<typeof Ionicons>['name']; label: string; value: string; sub: string; color: SignalColor }[] = [
+  const tiles: {
+    anchor: Anchor;
+    icon: ComponentProps<typeof Ionicons>['name'];
+    label: string;
+    value: string;
+    sub: string;
+    color: SignalColor;
+  }[] = [
     {
       anchor: 'recalls',
       icon: 'alert-circle-outline',
       label: 'Recalls',
       value: us && recalls ? String(recalls.length) : '—',
-      sub: !us ? tr('Not available here') : recalls === null ? tr('Couldn’t load') : recalls.length ? tr('Ask for proof') : tr('None found'),
+      sub: !us
+        ? tr('Not available here')
+        : recalls === null
+          ? tr('Couldn’t load')
+          : recalls.length
+            ? tr('Ask for proof')
+            : tr('None found'),
       color: !us || recalls === null ? 'slate' : recalls.some((r) => r.parkIt || r.parkOutside) ? 'stop' : recalls.length ? 'warn' : 'go',
     },
     {
@@ -434,7 +451,9 @@ function GlanceTiles({ car, report, onJump }: { car: CarRecord; report: VehicleR
               {x.label}
             </AppText>
           </View>
-          <AppText variant="number" style={{ color: x.color === 'slate' ? t.ink : x.color === 'caution' && t.scheme === 'light' ? '#B45309' : t[x.color] }}>
+          <AppText
+            variant="number"
+            style={{ color: x.color === 'slate' ? t.ink : x.color === 'caution' && t.scheme === 'light' ? '#B45309' : t[x.color] }}>
             {x.value}
           </AppText>
           <AppText variant="caption" tone="muted" numberOfLines={1}>
@@ -460,6 +479,8 @@ export default function CarReport() {
   const mark = (a: Anchor) => (e: LayoutChangeEvent) => {
     anchors.current[a] = e.nativeEvent.layout.y;
   };
+  // Typing in the listing box: hide the bottom button and bring the listing card above the keyboard.
+  const typing = useKeyboardShown(() => jump('listing'));
   const jump = (a: Anchor) => {
     const y = anchors.current[a];
     if (y !== undefined) scroll.current?.scrollTo({ y: Math.max(0, y - space.md), animated: true });
@@ -529,6 +550,7 @@ export default function CarReport() {
         contentContainerStyle={styles.content}
         keyboardShouldPersistTaps="handled"
         keyboardDismissMode="on-drag"
+        automaticallyAdjustKeyboardInsets
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={refresh} />}>
         <CarHeader
           overline="Vehicle report"
@@ -568,13 +590,15 @@ export default function CarReport() {
             <View onLayout={mark('recalls')}>
               <OtherMarketCard />
             </View>
-            <ListingCard
-              car={c}
-              priceResult={priceResult}
-              premium={premium}
-              onSave={(text) => update.mutate({ listingText: text })}
-              onFill={(fields) => update.mutate(fields)}
-            />
+            <View onLayout={mark('listing')}>
+              <ListingCard
+                car={c}
+                priceResult={priceResult}
+                premium={premium}
+                onSave={(text) => update.mutate({ listingText: text })}
+                onFill={(fields) => update.mutate(fields)}
+              />
+            </View>
           </>
         ) : report ? (
           <>
@@ -590,13 +614,15 @@ export default function CarReport() {
             <View onLayout={mark('safety')}>
               <SafetyCard report={report} />
             </View>
-            <ListingCard
-              car={c}
-              priceResult={priceResult}
-              premium={premium}
-              onSave={(text) => update.mutate({ listingText: text })}
-              onFill={(fields) => update.mutate(fields)}
-            />
+            <View onLayout={mark('listing')}>
+              <ListingCard
+                car={c}
+                priceResult={priceResult}
+                premium={premium}
+                onSave={(text) => update.mutate({ listingText: text })}
+                onFill={(fields) => update.mutate(fields)}
+              />
+            </View>
             <AppText variant="caption" tone="muted">
               Recall, complaint and rating data: U.S. National Highway Traffic Safety Administration (NHTSA), as of{' '}
               {new Date(report.fetchedAt).toLocaleDateString('en-US')}. Not a vehicle history report. Not affiliated with NHTSA or any
@@ -608,25 +634,30 @@ export default function CarReport() {
         )}
         <Button label="Remove from garage" kind="ghost" onPress={confirmDelete} />
       </ScrollView>
-      <SafeAreaView edges={['bottom']} style={[styles.cta, { backgroundColor: t.surface, borderTopColor: t.border }]}>
-        <Button
-          label={c.verdict ? 'Continue the inspection' : 'Start the inspection'}
-          icon="clipboard-outline"
-          onPress={async () => {
-            // Free tier: one inspected car (lifetime); others need Premium (CLAUDE.md §9).
-            const freeId = await getMeta(getDb(), META.freeInspectionCarId);
-            if (!premium && !canInspectFree(freeId, c.id)) {
-              // Say which car has the free inspection, so the paywall isn't a surprise.
-              const freeCar = freeId ? await getCar(getDb(), freeId) : null;
-              router.push({ pathname: '/paywall', params: { placement: 'second_inspection', freeCar: freeCar ? carTitle(freeCar) : '' } });
-              return;
-            }
-            if (!freeId && !premium) await setMeta(getDb(), META.freeInspectionCarId, c.id);
-            if (!c.verdict) track('inspection_started', {});
-            router.push({ pathname: '/car/[id]/inspect', params: { id: c.id } });
-          }}
-        />
-      </SafeAreaView>
+      {typing ? null : (
+        <SafeAreaView edges={['bottom']} style={[styles.cta, { backgroundColor: t.surface, borderTopColor: t.border }]}>
+          <Button
+            label={c.verdict ? 'Continue the inspection' : 'Start the inspection'}
+            icon="clipboard-outline"
+            onPress={async () => {
+              // Free tier: one inspected car (lifetime); others need Premium (CLAUDE.md §9).
+              const freeId = await getMeta(getDb(), META.freeInspectionCarId);
+              if (!premium && !canInspectFree(freeId, c.id)) {
+                // Say which car has the free inspection, so the paywall isn't a surprise.
+                const freeCar = freeId ? await getCar(getDb(), freeId) : null;
+                router.push({
+                  pathname: '/paywall',
+                  params: { placement: 'second_inspection', freeCar: freeCar ? carTitle(freeCar) : '' },
+                });
+                return;
+              }
+              if (!freeId && !premium) await setMeta(getDb(), META.freeInspectionCarId, c.id);
+              if (!c.verdict) track('inspection_started', {});
+              router.push({ pathname: '/car/[id]/inspect', params: { id: c.id } });
+            }}
+          />
+        </SafeAreaView>
+      )}
     </View>
   );
 }

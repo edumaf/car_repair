@@ -33,12 +33,17 @@ full Romanian, release prep, bug hunt, design round 2; **owner to test**).
 - PR edumaf/car_repair#3 (branch `claude/vibrant-cori-kyx5fo`) is **built on top of #2**: merge #2 first, then #3.
 - **Test from branch `claude/vibrant-cori-kyx5fo`** (it has everything in #2 plus this session's work).
 
-**Phone test progress (tests A–L in "How to test on the phone"):**
-- ✅ A onboarding · ✅ B language · ✅ C region/data source · ✅ D US car by VIN.
-- ⏸ **E (European VIN) — resume here**: `WVWZZZ1KZBW123456` → the engine step now shows **"From your VIN: Volkswagen
-  Golf Mk6"** at the top → pick an engine → Save → "About this model" (tap a problem) and the RAR button (region Romania).
-- ⏳ F–L, then the **new things from this session** (list "New since the last phone test" below).
-- The owner said the new night-road look is good from the preview; check it on the phone.
+**Phone test progress (2026-11-18, owner at home, on branch `claude/vibrant-cori-kyx5fo`):**
+- ✅ A onboarding (new night version) · ✅ B language · ✅ C region · ✅ D US car by VIN · ✅ E European VIN (Golf Mk6,
+  model card, RAR) · ✅ F pick make and model (Duster).
+- 🟡 **G inspection — in progress.** Owner feedback, all fixed and pushed (needs a re-check on the phone):
+  answer buttons always colored and solid when chosen; after Problem/Not sure a hint + big **Next item** button;
+  **Enter closes every keyboard**, number pads get a **Done** bar, scrolling closes the keyboard; the note box is no
+  longer hidden behind the keyboard (the answer bar hides while typing). Same keyboard fix on the car report's
+  listing box. The "free inspection used" paywall now names the car (the owner hit it: free inspection was on an
+  older test car → use Settings → Developer → Simulate Premium for testing).
+- ⏳ H–Q not done yet.
+- Merge plan (owner asked): **test first, then merge #2, then #3** (PR #3 contains #2).
 
 **The 4 fixes from the phone test are done** (offline fallback, 44 pt engine buttons, engine picked from the VIN,
 clear VIN model match).
@@ -103,6 +108,9 @@ products; Expo/EAS account → dev build; app name + bundle ID; privacy/terms UR
 - **Design round 2**: `RoadProgress`, `VinScanDemo`, `WalkaroundMap` (top view built from plain shapes, no SVG),
   `GlanceTiles`, garage `NextStep` + `answerSummaries`/`checklistProgress` (tested), `VerdictSignal reveal`.
   Also fixed "12 rechemares" (recall plural) and an untranslated photo-permission message.
+- **Phone-test fixes (2026-11-18)**: colored answer bar, Next item after Problem/Not sure, keyboards close on Enter
+  everywhere (`TextField` defaults, `KeyboardDone` bar for number pads, `keyboardDismissMode="on-drag"`),
+  `useKeyboardShown` hides bottom bars while typing and scrolls the field into view (inspection, car report).
 - **Bug hunt** (browser click-through of every flow, EN + RO, light + dark, iPhone SE size; code review):
   - **Crash**: picking a year in "US car not in our list?" crashed (FlatList numColumns change). Fixed.
   - Notes typed in the inspection were lost when tapping Next with the keyboard open. Fixed.

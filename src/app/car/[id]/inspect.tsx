@@ -4,7 +4,18 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { Image } from 'expo-image';
 import { router, Stack, useLocalSearchParams } from 'expo-router';
 import { Fragment, useEffect, useMemo, useRef, useState, type ComponentRef } from 'react';
-import { ActivityIndicator, Alert, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, TextInput, View } from 'react-native';
+import {
+  ActivityIndicator,
+  Alert,
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  TextInput,
+  View,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { progress, type ChecklistEntry } from '@/core/checklist/buildChecklist';
@@ -26,6 +37,7 @@ import { type } from '@/design/typography';
 import { ApiError } from '@/core/api/types';
 import { canRunPhotoCheck } from '@/core/limits';
 import { useInspection } from '@/hooks/useInspection';
+import { useKeyboardShown } from '@/hooks/useKeyboardShown';
 import { usePremium } from '@/hooks/usePremium';
 import { capturePhoto, PhotoPermissionError, type PhotoSource } from '@/media/photos';
 import { tr } from '@/core/i18n/i18n';
@@ -414,6 +426,8 @@ export default function Inspect() {
   const answers = confirmedAnswers(records);
   const [chosen, setChosen] = useState<number | null>(null);
   const scroll = useRef<ComponentRef<typeof ScrollView>>(null);
+  // While typing a note: hide the answer bar (it would cover the note) and bring the note up above the keyboard.
+  const typing = useKeyboardShown(() => scroll.current?.scrollToEnd({ animated: true }));
 
   // Until the user moves, show the first unanswered item.
   const firstOpen = entries.findIndex((e) => !answers[e.item.id]);
@@ -470,8 +484,7 @@ export default function Inspect() {
         />
         <OverallBar checked={p.checked} total={p.total} />
       </View>
-      <ScrollView ref={scroll} contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled"
-        keyboardDismissMode="on-drag">
+      <ScrollView ref={scroll} contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled" keyboardDismissMode="on-drag">
         <Fragment key={entry.item.id}>
           <ItemCard
             entry={entry}
@@ -483,46 +496,48 @@ export default function Inspect() {
           />
         </Fragment>
       </ScrollView>
-      <SafeAreaView edges={['bottom']} style={[styles.bottom, { backgroundColor: t.surface, borderTopColor: t.border }]}>
-        {current === 'problem' || current === 'not_sure' ? (
-          <AppText variant="caption" tone="muted" align="center">
-            {current === 'problem'
-              ? 'Saved as a problem. Add a photo or a note above if you like, then go on.'
-              : 'Saved as not sure. Add a note if you like, then go on.'}
-          </AppText>
-        ) : null}
-        <AnswerBar value={current} onChange={onAnswer} />
-        <View style={styles.nav}>
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel={tr('Previous item')}
-            disabled={index === 0}
-            onPress={() => goTo(index - 1)}
-            style={[styles.navBtn, { opacity: index === 0 ? 0.3 : 1 }]}>
-            <Ionicons name="chevron-back" size={22} color={t.ink} />
-            <AppText variant="label">Back</AppText>
-          </Pressable>
-          {isLast || p.checked === p.total ? (
-            <View style={{ flex: 1 }}>
-              <Button label="See the verdict" icon="arrow-forward" onPress={toVerdict} />
-            </View>
-          ) : current === 'problem' || current === 'not_sure' ? (
-            // We stay on this item after Problem / Not sure (for a photo or note): make the way on unmissable.
-            <View style={{ flex: 1 }}>
-              <Button label="Next item" icon="arrow-forward" onPress={() => goTo(index + 1)} />
-            </View>
-          ) : (
+      {typing ? null : (
+        <SafeAreaView edges={['bottom']} style={[styles.bottom, { backgroundColor: t.surface, borderTopColor: t.border }]}>
+          {current === 'problem' || current === 'not_sure' ? (
+            <AppText variant="caption" tone="muted" align="center">
+              {current === 'problem'
+                ? 'Saved as a problem. Add a photo or a note above if you like, then go on.'
+                : 'Saved as not sure. Add a note if you like, then go on.'}
+            </AppText>
+          ) : null}
+          <AnswerBar value={current} onChange={onAnswer} />
+          <View style={styles.nav}>
             <Pressable
               accessibilityRole="button"
-              accessibilityLabel={tr('Next item')}
-              onPress={() => goTo(index + 1)}
-              style={styles.navBtn}>
-              <AppText variant="label">Next</AppText>
-              <Ionicons name="chevron-forward" size={22} color={t.ink} />
+              accessibilityLabel={tr('Previous item')}
+              disabled={index === 0}
+              onPress={() => goTo(index - 1)}
+              style={[styles.navBtn, { opacity: index === 0 ? 0.3 : 1 }]}>
+              <Ionicons name="chevron-back" size={22} color={t.ink} />
+              <AppText variant="label">Back</AppText>
             </Pressable>
-          )}
-        </View>
-      </SafeAreaView>
+            {isLast || p.checked === p.total ? (
+              <View style={{ flex: 1 }}>
+                <Button label="See the verdict" icon="arrow-forward" onPress={toVerdict} />
+              </View>
+            ) : current === 'problem' || current === 'not_sure' ? (
+              // We stay on this item after Problem / Not sure (for a photo or note): make the way on unmissable.
+              <View style={{ flex: 1 }}>
+                <Button label="Next item" icon="arrow-forward" onPress={() => goTo(index + 1)} />
+              </View>
+            ) : (
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel={tr('Next item')}
+                onPress={() => goTo(index + 1)}
+                style={styles.navBtn}>
+                <AppText variant="label">Next</AppText>
+                <Ionicons name="chevron-forward" size={22} color={t.ink} />
+              </Pressable>
+            )}
+          </View>
+        </SafeAreaView>
+      )}
     </KeyboardAvoidingView>
   );
 }
