@@ -29,6 +29,7 @@ import { AnswerBar } from '@/design/components/AnswerBar';
 import { AppText } from '@/design/components/AppText';
 import { SECTION_ZONE, WalkaroundMap } from '@/design/components/WalkaroundMap';
 import { Button } from '@/design/components/Button';
+import { MiniSignal } from '@/design/components/MiniSignal';
 import { PhotoFindingChip } from '@/design/components/PhotoFindingChip';
 import { ErrorState, LoadingState } from '@/design/components/States';
 import { SeverityTag, Tag } from '@/design/components/Tag';
@@ -468,7 +469,14 @@ export default function Inspect() {
       <Stack.Screen
         options={{
           headerRight: () => (
-            <Pressable accessibilityRole="button" onPress={toVerdict} hitSlop={10}>
+            // A small traffic light makes the way to the verdict easy to spot (owner, phone test 2026-11-19).
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={tr('See the verdict')}
+              onPress={toVerdict}
+              hitSlop={10}
+              style={styles.verdictBtn}>
+              <MiniSignal />
               <AppText variant="bodyStrong" tone="brand">
                 Verdict
               </AppText>
@@ -546,6 +554,7 @@ export default function Inspect() {
 }
 
 const styles = StyleSheet.create({
+  verdictBtn: { flexDirection: 'row', alignItems: 'center', gap: space.xs, minHeight: minTouch, paddingHorizontal: space.xs },
   top: { borderBottomWidth: hairline, paddingBottom: space.sm },
   chips: { paddingHorizontal: space.lg, paddingVertical: space.sm, gap: space.sm },
   chip: {
