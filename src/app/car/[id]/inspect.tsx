@@ -443,6 +443,7 @@ export default function Inspect() {
   const p = progress(entries, answers);
   const isLast = index === entries.length - 1;
   const current = answers[entry.item.id] ?? null;
+  const answeredHere = current === 'ok' || current === 'problem' || current === 'not_sure';
 
   const goTo = (i: number) => {
     setChosen(Math.max(0, Math.min(entries.length - 1, i)));
@@ -454,9 +455,9 @@ export default function Inspect() {
     const same = answers[entry.item.id] === a;
     setChosen(index); // stay on this item even though it's no longer the first unanswered one
     inspection.answer.mutate({ itemId: entry.item.id, value: same ? null : a });
-    // Tapping the selected answer again clears it. "Looks OK" and "Skip" move on after a short beat; after
-    // "Problem" or "Not sure" we stay, so the user can add a note or a photo.
-    if (!same && !isLast && (a === 'ok' || a === 'skip')) setTimeout(() => goTo(index + 1), 220);
+    // Tapping the selected answer again clears it. Only "Skip" moves on by itself; after any other answer we stay,
+    // so the user can still add a note or a photo (owner, phone test 2026-11-19), and Next item is the way on.
+    if (!same && !isLast && a === 'skip') setTimeout(() => goTo(index + 1), 220);
   };
 
   return (
@@ -498,11 +499,13 @@ export default function Inspect() {
       </ScrollView>
       {typing ? null : (
         <SafeAreaView edges={['bottom']} style={[styles.bottom, { backgroundColor: t.surface, borderTopColor: t.border }]}>
-          {current === 'problem' || current === 'not_sure' ? (
+          {answeredHere ? (
             <AppText variant="caption" tone="muted" align="center">
               {current === 'problem'
                 ? 'Saved as a problem. Add a photo or a note above if you like, then go on.'
-                : 'Saved as not sure. Add a note if you like, then go on.'}
+                : current === 'not_sure'
+                  ? 'Saved as not sure. Add a note if you like, then go on.'
+                  : 'Saved as OK. Add a note if you like, then go on.'}
             </AppText>
           ) : null}
           <AnswerBar value={current} onChange={onAnswer} />
@@ -520,8 +523,8 @@ export default function Inspect() {
               <View style={{ flex: 1 }}>
                 <Button label="See the verdict" icon="arrow-forward" onPress={toVerdict} />
               </View>
-            ) : current === 'problem' || current === 'not_sure' ? (
-              // We stay on this item after Problem / Not sure (for a photo or note): make the way on unmissable.
+            ) : answeredHere ? (
+              // We stay on this item after an answer (for a photo or note): make the way on unmissable.
               <View style={{ flex: 1 }}>
                 <Button label="Next item" icon="arrow-forward" onPress={() => goTo(index + 1)} />
               </View>
