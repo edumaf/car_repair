@@ -3,6 +3,7 @@ import {
   derivePowertrain,
   displayMake,
   groupsForComponents,
+  modelWithClass,
   normalizeDecode,
   normalizeRecalls,
   normalizeSafety,
@@ -37,6 +38,26 @@ describe('displayMake', () => {
     ['BMW', 'BMW'],
     ['GMC', 'GMC'],
   ])('%s → %s', (input, out) => expect(displayMake(input)).toBe(out));
+});
+
+describe('modelWithClass', () => {
+  it.each([
+    ['Silverado', '1500', 'Silverado 1500'],
+    ['Sierra', '2500HD', 'Sierra 2500HD'],
+    ['Silverado', '3500 HD', 'Silverado 3500 HD'],
+    ['1500', '1500', '1500'], // Ram: already the model
+    ['F-150', 'XLT', 'F-150'], // not a load class
+    ['Civic', null, 'Civic'],
+    [null, '1500', null],
+  ])('%s + %s → %s', (model, series, out) => expect(modelWithClass(model, series)).toBe(out));
+
+  it('decodes a Silverado 1500 VIN as "Silverado 1500" with the trim kept', () => {
+    const d = normalizeDecode({ ModelYear: '2016', Make: 'CHEVROLET', Model: 'Silverado', Series: '1500', Trim: 'LT' }, null);
+    expect(d.model).toBe('Silverado 1500');
+    expect(d.trim).toBe('LT');
+    const noTrim = normalizeDecode({ ModelYear: '2016', Make: 'CHEVROLET', Model: 'Silverado', Series: '1500', Trim: '' }, null);
+    expect(noTrim.trim).toBeNull();
+  });
 });
 
 describe('normalizeDecode', () => {
@@ -75,7 +96,17 @@ describe('normalizeDecode', () => {
   });
 
   it('handles EVs, missing fields and error codes', () => {
-    const d = normalizeDecode({ ModelYear: '', Make: 'TESLA', ElectrificationLevel: 'BEV (Battery Electric Vehicle)', DriveType: '4x2', ErrorCode: '1,6', Series: 'Long Range' }, null);
+    const d = normalizeDecode(
+      {
+        ModelYear: '',
+        Make: 'TESLA',
+        ElectrificationLevel: 'BEV (Battery Electric Vehicle)',
+        DriveType: '4x2',
+        ErrorCode: '1,6',
+        Series: 'Long Range',
+      },
+      null,
+    );
     expect(d.year).toBeNull();
     expect(d.powertrain).toBe('ev');
     expect(d.engineDesc).toBe('Electric motor');
@@ -113,7 +144,10 @@ describe('recalls', () => {
 describe('complaints', () => {
   it('maps component strings to groups by substring', () => {
     expect(groupsForComponents('POWER TRAIN', COMPLAINT_KEYWORD_GROUPS)).toEqual(['transmission']);
-    expect(groupsForComponents('ENGINE AND ENGINE COOLING,ELECTRICAL SYSTEM', COMPLAINT_KEYWORD_GROUPS).sort()).toEqual(['electrical', 'engine']);
+    expect(groupsForComponents('ENGINE AND ENGINE COOLING,ELECTRICAL SYSTEM', COMPLAINT_KEYWORD_GROUPS).sort()).toEqual([
+      'electrical',
+      'engine',
+    ]);
     expect(groupsForComponents('UNKNOWN OR OTHER', COMPLAINT_KEYWORD_GROUPS)).toEqual([]);
     expect(groupsForComponents('', COMPLAINT_KEYWORD_GROUPS)).toEqual([]);
   });
@@ -147,7 +181,10 @@ describe('complaints', () => {
 
 describe('normalizeSafety', () => {
   it('reads star ratings and treats "Not Rated" as null', () => {
-    expect(normalizeSafety({ OverallRating: '5', VehicleDescription: '2018 Honda Civic 4 DR FWD' })).toEqual({ overall: 5, vehicleDescription: '2018 Honda Civic 4 DR FWD' });
+    expect(normalizeSafety({ OverallRating: '5', VehicleDescription: '2018 Honda Civic 4 DR FWD' })).toEqual({
+      overall: 5,
+      vehicleDescription: '2018 Honda Civic 4 DR FWD',
+    });
     expect(normalizeSafety({ OverallRating: 'Not Rated', VehicleDescription: 'x' })?.overall).toBeNull();
     expect(normalizeSafety(undefined)).toBeNull();
   });

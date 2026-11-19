@@ -1,0 +1,2619 @@
+{
+ "_meta": {
+  "version": 1,
+  "note": "Guided symptom flows drafted by AI from general automotive knowledge, 2026-11-16. Not a diagnosis. A mechanic must review before launch. Safety: brakes, steering, airbags, fuel leaks and high-voltage parts always say 'see a mechanic'."
+ },
+ "symptoms": [
+  {
+   "id": "check_engine_light",
+   "title": "Check-engine light is on",
+   "category": "Warning lights",
+   "questions": [
+    {
+     "id": "flashing",
+     "text": "Is the light flashing or steady?",
+     "options": [
+      {
+       "label": "Flashing",
+       "outcome": "misfire_severe"
+      },
+      {
+       "label": "Steady",
+       "next": "feel"
+      }
+     ]
+    },
+    {
+     "id": "feel",
+     "text": "Does the car drive differently?",
+     "options": [
+      {
+       "label": "Shakes, stutters or feels weak",
+       "outcome": "misfire"
+      },
+      {
+       "label": "Drives normally",
+       "next": "fuelcap"
+      }
+     ]
+    },
+    {
+     "id": "fuelcap",
+     "text": "Did the light come on soon after refuelling?",
+     "options": [
+      {
+       "label": "Yes",
+       "outcome": "fuel_cap"
+      },
+      {
+       "label": "No / not sure",
+       "outcome": "read_code"
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    {
+     "id": "misfire_severe",
+     "title": "Severe misfire: unburned fuel is reaching the exhaust",
+     "urgency": "stop_now",
+     "causes": [
+      {
+       "text": "Failed ignition coil or spark plug",
+       "likelihood": "common",
+       "repair_cost_id": "spark_plugs_coils"
+      },
+      {
+       "text": "Injector fault",
+       "likelihood": "possible",
+       "repair_cost_id": "fuel_injectors"
+      }
+     ],
+     "see_mechanic_if": [
+      "Always: a flashing light can destroy the catalytic converter within minutes"
+     ]
+    },
+    {
+     "id": "misfire",
+     "title": "Likely misfire or sensor fault",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Worn spark plugs or a failed coil",
+       "likelihood": "common",
+       "diy_check": "Read the code: P0300-P0308 point to misfires",
+       "repair_cost_id": "spark_plugs_coils"
+      },
+      {
+       "text": "Air leak or dirty MAF sensor",
+       "likelihood": "possible",
+       "repair_cost_id": "vacuum_leak"
+      },
+      {
+       "text": "Turbo or boost problem (limp mode)",
+       "likelihood": "possible",
+       "repair_cost_id": "turbo"
+      }
+     ],
+     "see_mechanic_if": [
+      "The shaking gets worse",
+      "The light starts flashing"
+     ]
+    },
+    {
+     "id": "fuel_cap",
+     "title": "Probably the fuel cap",
+     "urgency": "monitor",
+     "causes": [
+      {
+       "text": "Fuel cap loose or seal worn",
+       "likelihood": "common",
+       "diy_check": "Tighten the cap until it clicks. The light can take a few days of driving to go off"
+      },
+      {
+       "text": "Small EVAP leak",
+       "likelihood": "possible",
+       "repair_cost_id": "evap_leak"
+      }
+     ],
+     "see_mechanic_if": [
+      "The light is still on after a week"
+     ]
+    },
+    {
+     "id": "read_code",
+     "title": "Read the code to know more",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Many possible causes: sensors, emissions parts, small leaks",
+       "likelihood": "common",
+       "diy_check": "Read the code with a cheap OBD2 reader (plugs in under the dashboard) or at a parts store/mechanic, then look it up in the Codes section"
+      }
+     ],
+     "see_mechanic_if": [
+      "The car starts to drive differently"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "oil_light",
+   "title": "Red oil-pressure light (oil can symbol)",
+   "category": "Warning lights",
+   "questions": [
+    {
+     "id": "when",
+     "text": "When does it come on?",
+     "options": [
+      {
+       "label": "Stays on while driving",
+       "outcome": "oil_stop"
+      },
+      {
+       "label": "Flickers at idle when the engine is hot",
+       "outcome": "oil_flicker"
+      },
+      {
+       "label": "Only for a moment at start",
+       "outcome": "oil_normal"
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    {
+     "id": "oil_stop",
+     "title": "Low oil pressure: stop now",
+     "urgency": "stop_now",
+     "causes": [
+      {
+       "text": "Very low oil level",
+       "likelihood": "common",
+       "diy_check": "Stop, switch off, wait 5 minutes on level ground, then check the dipstick"
+      },
+      {
+       "text": "Oil pump or engine bearing failure",
+       "likelihood": "possible",
+       "repair_cost_id": "engine_replacement"
+      },
+      {
+       "text": "Faulty oil pressure sensor",
+       "likelihood": "possible"
+      }
+     ],
+     "see_mechanic_if": [
+      "The oil level is fine but the light stays on: do not drive, have it towed"
+     ]
+    },
+    {
+     "id": "oil_flicker",
+     "title": "Oil pressure is marginal at idle",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Low oil level or very thin/old oil",
+       "likelihood": "common",
+       "diy_check": "Check the oil level and when it was last changed",
+       "repair_cost_id": "oil_change_overdue"
+      },
+      {
+       "text": "Worn engine or oil pump",
+       "likelihood": "possible",
+       "repair_cost_id": "engine_replacement"
+      },
+      {
+       "text": "Faulty sensor",
+       "likelihood": "possible"
+      }
+     ],
+     "see_mechanic_if": [
+      "It also comes on while driving"
+     ]
+    },
+    {
+     "id": "oil_normal",
+     "title": "Normal start-up check",
+     "urgency": "monitor",
+     "causes": [
+      {
+       "text": "The light briefly comes on at every start as a bulb check",
+       "likelihood": "common"
+      }
+     ],
+     "see_mechanic_if": []
+    }
+   ],
+   "urgency_hint": "stop_now"
+  },
+  {
+   "id": "temp_high",
+   "title": "Engine temperature high / overheating",
+   "category": "Warning lights",
+   "questions": [
+    {
+     "id": "steam",
+     "text": "Is there steam or a sweet smell from the engine?",
+     "options": [
+      {
+       "label": "Yes",
+       "outcome": "overheat_leak"
+      },
+      {
+       "label": "No",
+       "next": "traffic"
+      }
+     ]
+    },
+    {
+     "id": "traffic",
+     "text": "When does the temperature rise?",
+     "options": [
+      {
+       "label": "In traffic or at idle",
+       "outcome": "fan"
+      },
+      {
+       "label": "On the open road / under load",
+       "outcome": "overheat_flow"
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    {
+     "id": "overheat_leak",
+     "title": "Coolant is escaping",
+     "urgency": "stop_now",
+     "causes": [
+      {
+       "text": "Burst hose or radiator leak",
+       "likelihood": "common",
+       "repair_cost_id": "coolant_leak_minor"
+      },
+      {
+       "text": "Water pump leak",
+       "likelihood": "possible",
+       "repair_cost_id": "water_pump"
+      },
+      {
+       "text": "Head gasket failure",
+       "likelihood": "possible",
+       "repair_cost_id": "head_gasket"
+      }
+     ],
+     "see_mechanic_if": [
+      "Always. Never open the radiator cap when hot: boiling coolant can burn you"
+     ]
+    },
+    {
+     "id": "fan",
+     "title": "Cooling fan probably not working",
+     "urgency": "stop_now",
+     "causes": [
+      {
+       "text": "Failed fan relay, fuse or motor",
+       "likelihood": "common",
+       "diy_check": "With a hot engine at idle the fan should run; check the fan fuse"
+      },
+      {
+       "text": "Low coolant",
+       "likelihood": "possible",
+       "diy_check": "Check the level with the engine COLD",
+       "repair_cost_id": "coolant_leak_minor"
+      }
+     ],
+     "see_mechanic_if": [
+      "The gauge goes into the red"
+     ]
+    },
+    {
+     "id": "overheat_flow",
+     "title": "Coolant not flowing well",
+     "urgency": "stop_now",
+     "causes": [
+      {
+       "text": "Thermostat stuck closed",
+       "likelihood": "common",
+       "repair_cost_id": "thermostat"
+      },
+      {
+       "text": "Clogged radiator",
+       "likelihood": "possible",
+       "repair_cost_id": "radiator"
+      },
+      {
+       "text": "Failing water pump",
+       "likelihood": "possible",
+       "repair_cost_id": "water_pump"
+      },
+      {
+       "text": "Head gasket failure",
+       "likelihood": "rare",
+       "repair_cost_id": "head_gasket"
+      }
+     ],
+     "see_mechanic_if": [
+      "Always: overheating can destroy the engine"
+     ]
+    }
+   ],
+   "urgency_hint": "stop_now"
+  },
+  {
+   "id": "battery_light",
+   "title": "Battery / charging light is on",
+   "category": "Warning lights",
+   "questions": [
+    {
+     "id": "when",
+     "text": "When is it on?",
+     "options": [
+      {
+       "label": "While driving",
+       "next": "belt"
+      },
+      {
+       "label": "Only for a moment at start",
+       "outcome": "batt_normal"
+      }
+     ]
+    },
+    {
+     "id": "belt",
+     "text": "Any squeal from the engine, or does the steering feel heavy?",
+     "options": [
+      {
+       "label": "Yes",
+       "outcome": "belt"
+      },
+      {
+       "label": "No",
+       "outcome": "alternator"
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    {
+     "id": "belt",
+     "title": "Drive belt slipping or broken",
+     "urgency": "stop_now",
+     "causes": [
+      {
+       "text": "Worn or broken auxiliary belt",
+       "likelihood": "common",
+       "diy_check": "With the engine OFF, look at the belt for cracks or if it is missing"
+      },
+      {
+       "text": "Failed belt tensioner",
+       "likelihood": "possible"
+      }
+     ],
+     "see_mechanic_if": [
+      "Always: on many cars the same belt drives the water pump"
+     ]
+    },
+    {
+     "id": "alternator",
+     "title": "The battery is not charging",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Failing alternator",
+       "likelihood": "common",
+       "repair_cost_id": "alternator"
+      },
+      {
+       "text": "Loose or corroded battery cables",
+       "likelihood": "common",
+       "diy_check": "Check the battery terminals are tight and clean"
+      }
+     ],
+     "see_mechanic_if": [
+      "Lights dim or the car stalls"
+     ]
+    },
+    {
+     "id": "batt_normal",
+     "title": "Normal start-up check",
+     "urgency": "monitor",
+     "causes": [
+      {
+       "text": "The light briefly comes on at every start as a bulb check",
+       "likelihood": "common"
+      }
+     ],
+     "see_mechanic_if": []
+    }
+   ]
+  },
+  {
+   "id": "abs_light",
+   "title": "ABS or stability-control light is on",
+   "category": "Warning lights",
+   "questions": [
+    {
+     "id": "brake",
+     "text": "Is the red BRAKE light also on?",
+     "options": [
+      {
+       "label": "Yes",
+       "outcome": "brake_system"
+      },
+      {
+       "label": "No, only ABS/ESP",
+       "outcome": "abs_only"
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    {
+     "id": "brake_system",
+     "title": "Brake system warning",
+     "urgency": "stop_now",
+     "causes": [
+      {
+       "text": "Low brake fluid (worn pads or a leak)",
+       "likelihood": "common",
+       "diy_check": "Look at the brake fluid reservoir level only; do not drive if it is low"
+      },
+      {
+       "text": "Brake hydraulic fault",
+       "likelihood": "possible",
+       "repair_cost_id": "brake_caliper"
+      }
+     ],
+     "see_mechanic_if": [
+      "Always: brakes are not a DIY job"
+     ]
+    },
+    {
+     "id": "abs_only",
+     "title": "ABS / stability control is off",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Faulty wheel speed sensor or its wire",
+       "likelihood": "common",
+       "repair_cost_id": "abs_module"
+      },
+      {
+       "text": "ABS module fault",
+       "likelihood": "possible",
+       "repair_cost_id": "abs_module"
+      },
+      {
+       "text": "Low battery voltage",
+       "likelihood": "possible",
+       "repair_cost_id": "battery_12v"
+      }
+     ],
+     "see_mechanic_if": [
+      "Normal brakes still work, but brake earlier on wet roads and get it checked soon"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "airbag_light",
+   "title": "Airbag light is on",
+   "category": "Warning lights",
+   "questions": [
+    {
+     "id": "seat",
+     "text": "Were the seats recently moved, removed or the battery disconnected?",
+     "options": [
+      {
+       "label": "Yes",
+       "outcome": "airbag_connector"
+      },
+      {
+       "label": "No",
+       "outcome": "airbag_fault"
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    {
+     "id": "airbag_connector",
+     "title": "Probably a loose connector under a seat",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Seat-belt or seat airbag connector loosened",
+       "likelihood": "common",
+       "repair_cost_id": "airbag_srs"
+      }
+     ],
+     "see_mechanic_if": [
+      "Always: airbag systems must be checked by a mechanic; do not unplug or probe airbag parts yourself"
+     ]
+    },
+    {
+     "id": "airbag_fault",
+     "title": "Airbag system fault",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Clock spring in the steering wheel",
+       "likelihood": "common",
+       "repair_cost_id": "airbag_srs"
+      },
+      {
+       "text": "Seat-belt pretensioner or sensor fault",
+       "likelihood": "possible",
+       "repair_cost_id": "airbag_srs"
+      },
+      {
+       "text": "Crash damage not repaired properly",
+       "likelihood": "possible",
+       "repair_cost_id": "airbag_srs"
+      }
+     ],
+     "see_mechanic_if": [
+      "Always: the airbags may not work in a crash"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "tpms_light",
+   "title": "Tire pressure light is on",
+   "category": "Warning lights",
+   "questions": [
+    {
+     "id": "flash",
+     "text": "Is the light steady, or does it flash for about a minute then stay on?",
+     "options": [
+      {
+       "label": "Steady",
+       "outcome": "tpms_low"
+      },
+      {
+       "label": "Flashes, then stays on",
+       "outcome": "tpms_sensor"
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    {
+     "id": "tpms_low",
+     "title": "A tire is probably low",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Low pressure (slow puncture, cold weather)",
+       "likelihood": "common",
+       "diy_check": "Check all four tires with a gauge (the right pressure is on the driver door sticker) and look for nails"
+      }
+     ],
+     "see_mechanic_if": [
+      "A tire keeps losing pressure"
+     ]
+    },
+    {
+     "id": "tpms_sensor",
+     "title": "Tire pressure sensor fault",
+     "urgency": "monitor",
+     "causes": [
+      {
+       "text": "Dead sensor battery or missing sensor (e.g. after new wheels)",
+       "likelihood": "common",
+       "diy_check": "Check the pressures manually until it is fixed"
+      }
+     ],
+     "see_mechanic_if": []
+    }
+   ]
+  },
+  {
+   "id": "shakes_idle",
+   "title": "Engine shakes or runs rough at idle",
+   "category": "Shaking & vibration",
+   "questions": [
+    {
+     "id": "cel",
+     "text": "Is the check-engine light on?",
+     "options": [
+      {
+       "label": "Yes, flashing",
+       "outcome": "rough_severe"
+      },
+      {
+       "label": "Yes, steady",
+       "outcome": "rough_misfire"
+      },
+      {
+       "label": "No",
+       "next": "cold"
+      }
+     ]
+    },
+    {
+     "id": "cold",
+     "text": "When is it worst?",
+     "options": [
+      {
+       "label": "Only when cold",
+       "outcome": "rough_cold"
+      },
+      {
+       "label": "All the time",
+       "outcome": "rough_mounts"
+      },
+      {
+       "label": "With A/C on",
+       "outcome": "rough_ac"
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    {
+     "id": "rough_severe",
+     "title": "Severe misfire",
+     "urgency": "stop_now",
+     "causes": [
+      {
+       "text": "Failed ignition coil or spark plug",
+       "likelihood": "common",
+       "repair_cost_id": "spark_plugs_coils"
+      },
+      {
+       "text": "Injector fault",
+       "likelihood": "possible",
+       "repair_cost_id": "fuel_injectors"
+      }
+     ],
+     "see_mechanic_if": [
+      "Always"
+     ]
+    },
+    {
+     "id": "rough_misfire",
+     "title": "Likely misfire",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Worn spark plugs or failed coil",
+       "likelihood": "common",
+       "diy_check": "Read the code: a P030x number tells you which cylinder",
+       "repair_cost_id": "spark_plugs_coils"
+      },
+      {
+       "text": "Vacuum leak",
+       "likelihood": "possible",
+       "diy_check": "Listen for a hiss at idle",
+       "repair_cost_id": "vacuum_leak"
+      },
+      {
+       "text": "Clogged injector",
+       "likelihood": "possible",
+       "repair_cost_id": "fuel_injectors"
+      }
+     ],
+     "see_mechanic_if": [
+      "It gets worse"
+     ]
+    },
+    {
+     "id": "rough_cold",
+     "title": "Cold-start roughness",
+     "urgency": "monitor",
+     "causes": [
+      {
+       "text": "Carbon on intake valves (direct-injection engines)",
+       "likelihood": "common",
+       "repair_cost_id": "intake_carbon_cleaning"
+      },
+      {
+       "text": "Weak spark plugs or coils",
+       "likelihood": "possible",
+       "repair_cost_id": "spark_plugs_coils"
+      },
+      {
+       "text": "Faulty coolant temperature sensor",
+       "likelihood": "possible"
+      }
+     ],
+     "see_mechanic_if": [
+      "It also happens when warm"
+     ]
+    },
+    {
+     "id": "rough_mounts",
+     "title": "Worn engine mounts or dirty throttle body",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Worn engine/gearbox mounts",
+       "likelihood": "common",
+       "diy_check": "With the engine running and the car in Park, ask someone to watch the engine rock when you blip the throttle",
+       "repair_cost_id": "engine_mounts"
+      },
+      {
+       "text": "Dirty throttle body / idle control",
+       "likelihood": "possible",
+       "repair_cost_id": "throttle_body"
+      },
+      {
+       "text": "Vacuum leak",
+       "likelihood": "possible",
+       "repair_cost_id": "vacuum_leak"
+      }
+     ],
+     "see_mechanic_if": []
+    },
+    {
+     "id": "rough_ac",
+     "title": "Idle struggles with the A/C load",
+     "urgency": "monitor",
+     "causes": [
+      {
+       "text": "Dirty throttle body / idle control",
+       "likelihood": "common",
+       "repair_cost_id": "throttle_body"
+      },
+      {
+       "text": "Worn engine mounts",
+       "likelihood": "possible",
+       "repair_cost_id": "engine_mounts"
+      },
+      {
+       "text": "A/C compressor dragging",
+       "likelihood": "rare",
+       "repair_cost_id": "ac_compressor"
+      }
+     ],
+     "see_mechanic_if": []
+    }
+   ]
+  },
+  {
+   "id": "shake_driving",
+   "title": "Vibration while driving",
+   "category": "Shaking & vibration",
+   "questions": [
+    {
+     "id": "when",
+     "text": "When do you feel it?",
+     "options": [
+      {
+       "label": "At a certain speed (e.g. 90-120 km/h)",
+       "outcome": "vib_speed"
+      },
+      {
+       "label": "When braking",
+       "outcome": "vib_brake"
+      },
+      {
+       "label": "When accelerating",
+       "outcome": "vib_accel"
+      },
+      {
+       "label": "All the time, getting worse",
+       "outcome": "vib_tire"
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    {
+     "id": "vib_speed",
+     "title": "Most likely wheel balance",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Wheels out of balance",
+       "likelihood": "common",
+       "diy_check": "Look for missing wheel weights; have the wheels balanced",
+       "repair_cost_id": "alignment"
+      },
+      {
+       "text": "Bent rim or damaged tire",
+       "likelihood": "possible",
+       "diy_check": "Look for bulges on the tire sidewalls",
+       "repair_cost_id": "tires_pair"
+      }
+     ],
+     "see_mechanic_if": []
+    },
+    {
+     "id": "vib_brake",
+     "title": "Brake discs are likely warped or worn",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Warped or worn brake discs (rotors)",
+       "likelihood": "common",
+       "repair_cost_id": "brake_pads_rotors_axle"
+      },
+      {
+       "text": "Sticking brake caliper",
+       "likelihood": "possible",
+       "repair_cost_id": "brake_caliper"
+      }
+     ],
+     "see_mechanic_if": [
+      "Always: brakes are a job for a mechanic"
+     ]
+    },
+    {
+     "id": "vib_accel",
+     "title": "Drivetrain vibration",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Worn CV joint / drive shaft",
+       "likelihood": "common",
+       "repair_cost_id": "cv_axle"
+      },
+      {
+       "text": "Worn engine or gearbox mounts",
+       "likelihood": "common",
+       "repair_cost_id": "engine_mounts"
+      },
+      {
+       "text": "Propshaft (rear/4x4 cars)",
+       "likelihood": "possible"
+      }
+     ],
+     "see_mechanic_if": []
+    },
+    {
+     "id": "vib_tire",
+     "title": "A tire may be failing",
+     "urgency": "stop_now",
+     "causes": [
+      {
+       "text": "Tire with a bulge or separated tread",
+       "likelihood": "common",
+       "diy_check": "Stop and look at all tires for bulges or uneven wear",
+       "repair_cost_id": "tires_pair"
+      },
+      {
+       "text": "Loose wheel nuts",
+       "likelihood": "possible",
+       "diy_check": "Check the wheel nuts are tight"
+      }
+     ],
+     "see_mechanic_if": [
+      "You cannot find the cause: do not keep driving"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "noise_brakes",
+   "title": "Noise when braking",
+   "category": "Noises",
+   "questions": [
+    {
+     "id": "type",
+     "text": "What kind of noise?",
+     "options": [
+      {
+       "label": "High squeal",
+       "outcome": "brake_squeal"
+      },
+      {
+       "label": "Metal grinding",
+       "outcome": "brake_grind"
+      },
+      {
+       "label": "Clunk when braking",
+       "outcome": "brake_clunk"
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    {
+     "id": "brake_squeal",
+     "title": "Worn pads or squeal from dust",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Brake pads near the end (wear indicator)",
+       "likelihood": "common",
+       "repair_cost_id": "brake_pads_axle"
+      },
+      {
+       "text": "Dust or glazing",
+       "likelihood": "possible"
+      }
+     ],
+     "see_mechanic_if": [
+      "Always have brakes checked by a mechanic"
+     ]
+    },
+    {
+     "id": "brake_grind",
+     "title": "Pads worn to the metal",
+     "urgency": "stop_now",
+     "causes": [
+      {
+       "text": "Pads completely worn, metal on disc",
+       "likelihood": "common",
+       "repair_cost_id": "brake_pads_rotors_axle"
+      }
+     ],
+     "see_mechanic_if": [
+      "Always: braking power is reduced"
+     ]
+    },
+    {
+     "id": "brake_clunk",
+     "title": "Loose brake or suspension part",
+     "urgency": "stop_now",
+     "causes": [
+      {
+       "text": "Loose caliper or worn suspension bushes",
+       "likelihood": "common",
+       "repair_cost_id": "control_arm_bushings"
+      }
+     ],
+     "see_mechanic_if": [
+      "Always"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "noise_turning",
+   "title": "Noise when turning",
+   "category": "Noises",
+   "questions": [
+    {
+     "id": "type",
+     "text": "What kind of noise?",
+     "options": [
+      {
+       "label": "Clicking when turning at full lock",
+       "outcome": "cv_click"
+      },
+      {
+       "label": "Whine that changes with steering",
+       "outcome": "ps_whine"
+      },
+      {
+       "label": "Creak or groan over bumps while turning",
+       "outcome": "susp_creak"
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    {
+     "id": "cv_click",
+     "title": "Worn CV joint",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Worn outer CV joint (often a torn rubber boot first)",
+       "likelihood": "common",
+       "diy_check": "Look behind the front wheels for a torn rubber boot and grease spray",
+       "repair_cost_id": "cv_axle"
+      }
+     ],
+     "see_mechanic_if": []
+    },
+    {
+     "id": "ps_whine",
+     "title": "Power steering",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Low power steering fluid (hydraulic systems)",
+       "likelihood": "common",
+       "diy_check": "Check the power steering reservoir level, if your car has one"
+      },
+      {
+       "text": "Failing power steering pump",
+       "likelihood": "possible",
+       "repair_cost_id": "power_steering"
+      }
+     ],
+     "see_mechanic_if": [
+      "Steering gets heavy: steering is not a DIY job"
+     ]
+    },
+    {
+     "id": "susp_creak",
+     "title": "Worn suspension parts",
+     "urgency": "monitor",
+     "causes": [
+      {
+       "text": "Worn strut top mounts or bushings",
+       "likelihood": "common",
+       "repair_cost_id": "control_arm_bushings"
+      },
+      {
+       "text": "Dry ball joints",
+       "likelihood": "possible",
+       "repair_cost_id": "control_arm_bushings"
+      }
+     ],
+     "see_mechanic_if": []
+    }
+   ]
+  },
+  {
+   "id": "noise_bumps",
+   "title": "Knocking or clunking over bumps",
+   "category": "Noises",
+   "questions": [
+    {
+     "id": "where",
+     "text": "Where does it come from?",
+     "options": [
+      {
+       "label": "Front",
+       "outcome": "knock_front"
+      },
+      {
+       "label": "Rear",
+       "outcome": "knock_rear"
+      },
+      {
+       "label": "Not sure",
+       "outcome": "knock_front"
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    {
+     "id": "knock_front",
+     "title": "Worn front suspension parts",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Worn sway bar (stabilizer) links",
+       "likelihood": "common",
+       "repair_cost_id": "sway_bar_links"
+      },
+      {
+       "text": "Worn control arm bushings or ball joints",
+       "likelihood": "common",
+       "repair_cost_id": "control_arm_bushings"
+      },
+      {
+       "text": "Worn shock absorbers or top mounts",
+       "likelihood": "possible",
+       "repair_cost_id": "shocks_struts_pair"
+      }
+     ],
+     "see_mechanic_if": [
+      "The steering feels loose or the car wanders"
+     ]
+    },
+    {
+     "id": "knock_rear",
+     "title": "Worn rear suspension parts",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Worn shock absorbers",
+       "likelihood": "common",
+       "repair_cost_id": "shocks_struts_pair"
+      },
+      {
+       "text": "Worn bushings or links",
+       "likelihood": "possible",
+       "repair_cost_id": "control_arm_bushings"
+      },
+      {
+       "text": "Something loose in the boot or exhaust hanger",
+       "likelihood": "possible",
+       "diy_check": "Empty the boot and check the exhaust hangers"
+      }
+     ],
+     "see_mechanic_if": []
+    }
+   ]
+  },
+  {
+   "id": "noise_hum",
+   "title": "Humming or droning that rises with speed",
+   "category": "Noises",
+   "questions": [
+    {
+     "id": "turn",
+     "text": "Does it change when you steer gently left and right at speed?",
+     "options": [
+      {
+       "label": "Yes",
+       "outcome": "bearing"
+      },
+      {
+       "label": "No",
+       "outcome": "tire_noise"
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    {
+     "id": "bearing",
+     "title": "Likely a worn wheel bearing",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Worn wheel bearing (louder when turning away from the bad side)",
+       "likelihood": "common",
+       "repair_cost_id": "wheel_bearing"
+      }
+     ],
+     "see_mechanic_if": [
+      "The noise gets loud or turns into grinding"
+     ]
+    },
+    {
+     "id": "tire_noise",
+     "title": "Tire noise or wheel bearing",
+     "urgency": "monitor",
+     "causes": [
+      {
+       "text": "Uneven tire wear (cupping)",
+       "likelihood": "common",
+       "diy_check": "Run your hand over the tread: wavy, uneven tread is cupping",
+       "repair_cost_id": "tires_pair"
+      },
+      {
+       "text": "Wheel bearing",
+       "likelihood": "possible",
+       "repair_cost_id": "wheel_bearing"
+      }
+     ],
+     "see_mechanic_if": []
+    }
+   ]
+  },
+  {
+   "id": "noise_engine",
+   "title": "Noise from the engine",
+   "category": "Noises",
+   "questions": [
+    {
+     "id": "type",
+     "text": "What kind of noise?",
+     "options": [
+      {
+       "label": "Rattle for a few seconds at cold start",
+       "outcome": "chain_rattle"
+      },
+      {
+       "label": "Squeal, especially at start or with A/C",
+       "outcome": "belt_squeal"
+      },
+      {
+       "label": "Ticking that follows engine speed",
+       "outcome": "tick"
+      },
+      {
+       "label": "Deep knocking from inside the engine",
+       "outcome": "knock_deep"
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    {
+     "id": "chain_rattle",
+     "title": "Possible timing chain stretch",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Stretched timing chain or weak tensioner",
+       "likelihood": "common",
+       "repair_cost_id": "timing_chain"
+      },
+      {
+       "text": "Loose heat shield",
+       "likelihood": "possible"
+      }
+     ],
+     "see_mechanic_if": [
+      "Always ask a mechanic soon: a failed chain can destroy the engine"
+     ]
+    },
+    {
+     "id": "belt_squeal",
+     "title": "Slipping auxiliary belt",
+     "urgency": "monitor",
+     "causes": [
+      {
+       "text": "Worn or loose drive belt",
+       "likelihood": "common",
+       "diy_check": "With the engine OFF, look for cracks and glazing on the belt"
+      },
+      {
+       "text": "Worn tensioner or pulley",
+       "likelihood": "possible"
+      }
+     ],
+     "see_mechanic_if": [
+      "The battery light comes on or the steering gets heavy"
+     ]
+    },
+    {
+     "id": "tick",
+     "title": "Valve or injector ticking",
+     "urgency": "monitor",
+     "causes": [
+      {
+       "text": "Low oil level",
+       "likelihood": "common",
+       "diy_check": "Check the oil level"
+      },
+      {
+       "text": "Noisy injectors (normal on many direct-injection engines)",
+       "likelihood": "possible"
+      },
+      {
+       "text": "Small exhaust manifold leak",
+       "likelihood": "possible",
+       "repair_cost_id": "exhaust_leak"
+      }
+     ],
+     "see_mechanic_if": [
+      "The ticking gets louder"
+     ]
+    },
+    {
+     "id": "knock_deep",
+     "title": "Possible engine bearing damage",
+     "urgency": "stop_now",
+     "causes": [
+      {
+       "text": "Worn engine bearings (often after low oil)",
+       "likelihood": "common",
+       "diy_check": "Check the oil level",
+       "repair_cost_id": "engine_replacement"
+      }
+     ],
+     "see_mechanic_if": [
+      "Always: continuing to drive can wreck the engine"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "smoke",
+   "title": "Smoke from the exhaust",
+   "category": "Smoke & smells",
+   "questions": [
+    {
+     "id": "color",
+     "text": "What color is the smoke?",
+     "options": [
+      {
+       "label": "Blue / grey",
+       "outcome": "smoke_blue"
+      },
+      {
+       "label": "Thick white, sweet smell",
+       "outcome": "smoke_white"
+      },
+      {
+       "label": "Black",
+       "outcome": "smoke_black"
+      },
+      {
+       "label": "Thin white only when cold, then disappears",
+       "outcome": "smoke_normal"
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    {
+     "id": "smoke_blue",
+     "title": "The engine is burning oil",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Worn piston rings or valve seals",
+       "likelihood": "common",
+       "diy_check": "Check how fast the oil level drops",
+       "repair_cost_id": "oil_consumption_repair"
+      },
+      {
+       "text": "Leaking turbo seals",
+       "likelihood": "possible",
+       "repair_cost_id": "turbo"
+      },
+      {
+       "text": "Blocked PCV / breather",
+       "likelihood": "possible",
+       "repair_cost_id": "pcv_valve"
+      }
+     ],
+     "see_mechanic_if": [
+      "The oil level drops more than ~1 L per 1,000 km"
+     ]
+    },
+    {
+     "id": "smoke_white",
+     "title": "Coolant is burning",
+     "urgency": "stop_now",
+     "causes": [
+      {
+       "text": "Head gasket failure",
+       "likelihood": "common",
+       "diy_check": "Check the coolant level with the engine COLD",
+       "repair_cost_id": "head_gasket"
+      },
+      {
+       "text": "Leaking EGR cooler (diesels)",
+       "likelihood": "possible",
+       "repair_cost_id": "egr_valve"
+      },
+      {
+       "text": "Cracked cylinder head",
+       "likelihood": "rare",
+       "repair_cost_id": "head_gasket"
+      }
+     ],
+     "see_mechanic_if": [
+      "Always: the engine can overheat"
+     ]
+    },
+    {
+     "id": "smoke_black",
+     "title": "Too much fuel / soot",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Clogged air filter",
+       "likelihood": "common",
+       "diy_check": "Look at the air filter"
+      },
+      {
+       "text": "Faulty injector or EGR (diesels)",
+       "likelihood": "common",
+       "repair_cost_id": "fuel_injectors"
+      },
+      {
+       "text": "Turbo or boost leak",
+       "likelihood": "possible",
+       "repair_cost_id": "turbo"
+      }
+     ],
+     "see_mechanic_if": []
+    },
+    {
+     "id": "smoke_normal",
+     "title": "Probably condensation (normal)",
+     "urgency": "monitor",
+     "causes": [
+      {
+       "text": "Water vapour from a cold exhaust",
+       "likelihood": "common"
+      }
+     ],
+     "see_mechanic_if": [
+      "It continues once the engine is warm"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "smell",
+   "title": "Strange smell",
+   "category": "Smoke & smells",
+   "questions": [
+    {
+     "id": "type",
+     "text": "What does it smell like?",
+     "options": [
+      {
+       "label": "Fuel / petrol / diesel",
+       "outcome": "smell_fuel"
+      },
+      {
+       "label": "Sweet, like syrup",
+       "outcome": "smell_coolant"
+      },
+      {
+       "label": "Burning plastic or electrical",
+       "outcome": "smell_electrical"
+      },
+      {
+       "label": "Burning oil",
+       "outcome": "smell_oil"
+      },
+      {
+       "label": "Rotten eggs",
+       "outcome": "smell_eggs"
+      },
+      {
+       "label": "Musty / damp inside",
+       "outcome": "smell_damp"
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    {
+     "id": "smell_fuel",
+     "title": "Possible fuel leak",
+     "urgency": "stop_now",
+     "causes": [
+      {
+       "text": "Leaking fuel line, injector seal or fuel cap",
+       "likelihood": "common",
+       "diy_check": "Look under the car for drips; do not smoke or run the engine if the smell is strong",
+       "repair_cost_id": "fuel_injectors"
+      }
+     ],
+     "see_mechanic_if": [
+      "Always: fuel leaks are a fire risk"
+     ]
+    },
+    {
+     "id": "smell_coolant",
+     "title": "Coolant leak",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Leaking hose, radiator or heater core",
+       "likelihood": "common",
+       "diy_check": "Check the coolant level when cold; look for pink/green crust",
+       "repair_cost_id": "coolant_leak_minor"
+      },
+      {
+       "text": "Heater core leak (smell inside, misty windows)",
+       "likelihood": "possible",
+       "repair_cost_id": "heater_core"
+      }
+     ],
+     "see_mechanic_if": [
+      "The level keeps dropping or the engine overheats"
+     ]
+    },
+    {
+     "id": "smell_electrical",
+     "title": "Possible electrical fault",
+     "urgency": "stop_now",
+     "causes": [
+      {
+       "text": "Overheating wiring or a failing component",
+       "likelihood": "common",
+       "repair_cost_id": "electrical_diagnosis"
+      }
+     ],
+     "see_mechanic_if": [
+      "Always: stop, switch off and get out if you see smoke"
+     ]
+    },
+    {
+     "id": "smell_oil",
+     "title": "Oil dripping on hot parts",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Leaking valve cover gasket",
+       "likelihood": "common",
+       "diy_check": "Look for wet oil on top of the engine and the exhaust",
+       "repair_cost_id": "oil_leak_minor"
+      },
+      {
+       "text": "Oil spilled during an oil change",
+       "likelihood": "possible"
+      }
+     ],
+     "see_mechanic_if": []
+    },
+    {
+     "id": "smell_eggs",
+     "title": "Catalytic converter working too hard",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Engine running rich",
+       "likelihood": "common",
+       "repair_cost_id": "o2_sensor"
+      },
+      {
+       "text": "Failing catalytic converter",
+       "likelihood": "possible",
+       "repair_cost_id": "catalytic_converter"
+      }
+     ],
+     "see_mechanic_if": []
+    },
+    {
+     "id": "smell_damp",
+     "title": "Water getting inside",
+     "urgency": "monitor",
+     "causes": [
+      {
+       "text": "Blocked sunroof or door drains",
+       "likelihood": "common",
+       "diy_check": "Check carpets and the spare-wheel well for water",
+       "repair_cost_id": "sunroof_drains"
+      },
+      {
+       "text": "Leaking door or windshield seal",
+       "likelihood": "possible"
+      },
+      {
+       "text": "Heater core leak",
+       "likelihood": "rare",
+       "repair_cost_id": "heater_core"
+      }
+     ],
+     "see_mechanic_if": []
+    }
+   ]
+  },
+  {
+   "id": "leak",
+   "title": "Fluid under the car",
+   "category": "Leaks",
+   "questions": [
+    {
+     "id": "color",
+     "text": "What does the fluid look like?",
+     "options": [
+      {
+       "label": "Clear water, no smell, near the front",
+       "outcome": "leak_water"
+      },
+      {
+       "label": "Green, pink or orange, sweet smell",
+       "outcome": "leak_coolant"
+      },
+      {
+       "label": "Brown or black, oily",
+       "outcome": "leak_oil"
+      },
+      {
+       "label": "Red, oily",
+       "outcome": "leak_red"
+      },
+      {
+       "label": "Light, slippery, near a wheel",
+       "outcome": "leak_brake"
+      },
+      {
+       "label": "Smells of fuel",
+       "outcome": "leak_fuel"
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    {
+     "id": "leak_water",
+     "title": "Normal A/C condensation",
+     "urgency": "monitor",
+     "causes": [
+      {
+       "text": "Water from the air-conditioning",
+       "likelihood": "common"
+      }
+     ],
+     "see_mechanic_if": []
+    },
+    {
+     "id": "leak_coolant",
+     "title": "Coolant leak",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Leaking hose, radiator or water pump",
+       "likelihood": "common",
+       "diy_check": "Check the coolant level when cold",
+       "repair_cost_id": "coolant_leak_minor"
+      }
+     ],
+     "see_mechanic_if": [
+      "The temperature gauge rises"
+     ]
+    },
+    {
+     "id": "leak_oil",
+     "title": "Engine oil leak",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Oil filter, drain plug or valve cover gasket",
+       "likelihood": "common",
+       "diy_check": "Check the oil level",
+       "repair_cost_id": "oil_leak_minor"
+      },
+      {
+       "text": "Oil pan or rear main seal",
+       "likelihood": "possible",
+       "repair_cost_id": "oil_leak_major"
+      }
+     ],
+     "see_mechanic_if": [
+      "It drips a lot or the oil light comes on"
+     ]
+    },
+    {
+     "id": "leak_red",
+     "title": "Transmission or power steering fluid",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Leaking transmission seal or line",
+       "likelihood": "common",
+       "repair_cost_id": "transmission_service"
+      },
+      {
+       "text": "Power steering leak",
+       "likelihood": "possible",
+       "repair_cost_id": "power_steering"
+      }
+     ],
+     "see_mechanic_if": [
+      "Gear changes or steering feel different"
+     ]
+    },
+    {
+     "id": "leak_brake",
+     "title": "Possible brake fluid leak",
+     "urgency": "stop_now",
+     "causes": [
+      {
+       "text": "Leaking brake line or caliper",
+       "likelihood": "common",
+       "repair_cost_id": "brake_caliper"
+      }
+     ],
+     "see_mechanic_if": [
+      "Always: do not drive, braking can fail"
+     ]
+    },
+    {
+     "id": "leak_fuel",
+     "title": "Fuel leak",
+     "urgency": "stop_now",
+     "causes": [
+      {
+       "text": "Leaking fuel line or tank",
+       "likelihood": "common"
+      }
+     ],
+     "see_mechanic_if": [
+      "Always: fire risk"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "wont_start",
+   "title": "The car will not start",
+   "category": "Starting",
+   "questions": [
+    {
+     "id": "key",
+     "text": "What happens when you turn the key / press start?",
+     "options": [
+      {
+       "label": "Nothing, or just a click",
+       "next": "lights"
+      },
+      {
+       "label": "The engine turns over but does not start",
+       "next": "fuel"
+      },
+      {
+       "label": "Starts, then dies",
+       "outcome": "start_dies"
+      }
+     ]
+    },
+    {
+     "id": "lights",
+     "text": "Are the dashboard lights dim or flickering?",
+     "options": [
+      {
+       "label": "Yes",
+       "outcome": "battery_flat"
+      },
+      {
+       "label": "No, they are bright",
+       "outcome": "starter"
+      }
+     ]
+    },
+    {
+     "id": "fuel",
+     "text": "Is there fuel in the tank?",
+     "options": [
+      {
+       "label": "Yes",
+       "outcome": "no_fire"
+      },
+      {
+       "label": "Not sure / low",
+       "outcome": "no_fuel"
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    {
+     "id": "battery_flat",
+     "title": "Flat battery",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Weak or flat battery",
+       "likelihood": "common",
+       "diy_check": "Jump-start or charge it; have the battery and alternator tested",
+       "repair_cost_id": "battery_12v"
+      },
+      {
+       "text": "Corroded battery terminals",
+       "likelihood": "possible",
+       "diy_check": "Check terminals for white/green crust"
+      }
+     ],
+     "see_mechanic_if": [
+      "It keeps going flat"
+     ]
+    },
+    {
+     "id": "starter",
+     "title": "Starter motor or connection",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Failing starter motor",
+       "likelihood": "common",
+       "repair_cost_id": "starter"
+      },
+      {
+       "text": "Loose battery cable",
+       "likelihood": "possible",
+       "diy_check": "Check the battery terminals are tight"
+      },
+      {
+       "text": "Automatic: not fully in Park / clutch not fully pressed",
+       "likelihood": "possible",
+       "diy_check": "Try again in Park (or Neutral), clutch fully pressed"
+      }
+     ],
+     "see_mechanic_if": []
+    },
+    {
+     "id": "no_fire",
+     "title": "Fuel or ignition problem",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Failed fuel pump or relay",
+       "likelihood": "common",
+       "diy_check": "Listen for a short hum from the rear when you switch the ignition on"
+      },
+      {
+       "text": "Crankshaft sensor",
+       "likelihood": "possible",
+       "repair_cost_id": "camshaft_sensor"
+      },
+      {
+       "text": "Immobiliser not recognising the key",
+       "likelihood": "possible",
+       "diy_check": "Try the spare key"
+      },
+      {
+       "text": "Diesel: glow plugs (in cold weather)",
+       "likelihood": "possible",
+       "repair_cost_id": "glow_plugs"
+      }
+     ],
+     "see_mechanic_if": []
+    },
+    {
+     "id": "no_fuel",
+     "title": "Possibly out of fuel",
+     "urgency": "monitor",
+     "causes": [
+      {
+       "text": "Empty tank or wrong fuel gauge reading",
+       "likelihood": "common",
+       "diy_check": "Add a few litres of fuel and try again"
+      }
+     ],
+     "see_mechanic_if": [
+      "It still does not start"
+     ]
+    },
+    {
+     "id": "start_dies",
+     "title": "Starts but stalls",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Immobiliser cutting the engine",
+       "likelihood": "common",
+       "diy_check": "Look for a flashing key/immobiliser light; try the spare key"
+      },
+      {
+       "text": "Fuel pressure or pump problem",
+       "likelihood": "possible"
+      },
+      {
+       "text": "Dirty throttle body or air leak",
+       "likelihood": "possible",
+       "repair_cost_id": "throttle_body"
+      }
+     ],
+     "see_mechanic_if": []
+    }
+   ]
+  },
+  {
+   "id": "loss_of_power",
+   "title": "Loss of power / limp mode",
+   "category": "Driving",
+   "questions": [
+    {
+     "id": "fuel",
+     "text": "What fuel does the car use?",
+     "options": [
+      {
+       "label": "Diesel",
+       "next": "dpf"
+      },
+      {
+       "label": "Petrol / gasoline",
+       "outcome": "power_petrol"
+      },
+      {
+       "label": "Hybrid / electric",
+       "outcome": "power_hybrid"
+      }
+     ]
+    },
+    {
+     "id": "dpf",
+     "text": "Is a DPF (soot filter) or engine light on?",
+     "options": [
+      {
+       "label": "DPF light",
+       "outcome": "power_dpf"
+      },
+      {
+       "label": "Engine light",
+       "outcome": "power_turbo"
+      },
+      {
+       "label": "No lights",
+       "outcome": "power_turbo"
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    {
+     "id": "power_dpf",
+     "title": "Soot filter (DPF) is full",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Too many short trips",
+       "likelihood": "common",
+       "diy_check": "A 20-30 minute drive at steady motorway speed may clear it",
+       "repair_cost_id": "dpf_clean"
+      },
+      {
+       "text": "Faulty DPF pressure sensor",
+       "likelihood": "possible"
+      }
+     ],
+     "see_mechanic_if": [
+      "The light stays on after a long drive"
+     ]
+    },
+    {
+     "id": "power_turbo",
+     "title": "Turbo or boost problem",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Split intercooler hose / boost leak",
+       "likelihood": "common",
+       "diy_check": "With the engine OFF, check the big hoses around the turbo for oil or splits",
+       "repair_cost_id": "vacuum_leak"
+      },
+      {
+       "text": "Sticking turbo vanes or actuator",
+       "likelihood": "common",
+       "repair_cost_id": "turbo"
+      },
+      {
+       "text": "Clogged EGR valve",
+       "likelihood": "possible",
+       "repair_cost_id": "egr_valve"
+      },
+      {
+       "text": "Fuel filter clogged",
+       "likelihood": "possible"
+      }
+     ],
+     "see_mechanic_if": [
+      "Blue smoke or whistling from the turbo"
+     ]
+    },
+    {
+     "id": "power_petrol",
+     "title": "Misfire, sensor or fuel supply",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Misfire (coil or plugs)",
+       "likelihood": "common",
+       "diy_check": "Read the code",
+       "repair_cost_id": "spark_plugs_coils"
+      },
+      {
+       "text": "Throttle body fault (limp mode)",
+       "likelihood": "possible",
+       "repair_cost_id": "throttle_body"
+      },
+      {
+       "text": "Clogged catalytic converter",
+       "likelihood": "rare",
+       "repair_cost_id": "catalytic_converter"
+      }
+     ],
+     "see_mechanic_if": []
+    },
+    {
+     "id": "power_hybrid",
+     "title": "Hybrid or battery system protecting itself",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Hybrid battery or inverter fault",
+       "likelihood": "common",
+       "repair_cost_id": "hybrid_battery"
+      }
+     ],
+     "see_mechanic_if": [
+      "Always: high-voltage systems are not DIY"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pulls_side",
+   "title": "The car pulls to one side",
+   "category": "Driving",
+   "questions": [
+    {
+     "id": "when",
+     "text": "When does it pull?",
+     "options": [
+      {
+       "label": "Only when braking",
+       "outcome": "pull_brake"
+      },
+      {
+       "label": "All the time",
+       "outcome": "pull_always"
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    {
+     "id": "pull_brake",
+     "title": "Brake problem on one side",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Sticking brake caliper",
+       "likelihood": "common",
+       "diy_check": "After a drive, carefully feel near (not on) each wheel: one much hotter than the others",
+       "repair_cost_id": "brake_caliper"
+      },
+      {
+       "text": "Contaminated brake pad",
+       "likelihood": "possible",
+       "repair_cost_id": "brake_pads_axle"
+      }
+     ],
+     "see_mechanic_if": [
+      "Always: brakes are a mechanic job"
+     ]
+    },
+    {
+     "id": "pull_always",
+     "title": "Tire pressure or alignment",
+     "urgency": "monitor",
+     "causes": [
+      {
+       "text": "Uneven tire pressure",
+       "likelihood": "common",
+       "diy_check": "Check all four pressures"
+      },
+      {
+       "text": "Wheel alignment out",
+       "likelihood": "common",
+       "repair_cost_id": "alignment"
+      },
+      {
+       "text": "Worn suspension parts",
+       "likelihood": "possible",
+       "repair_cost_id": "control_arm_bushings"
+      }
+     ],
+     "see_mechanic_if": []
+    }
+   ]
+  },
+  {
+   "id": "high_fuel_use",
+   "title": "Uses more fuel than before",
+   "category": "Driving",
+   "questions": [
+    {
+     "id": "cel",
+     "text": "Is the check-engine light on?",
+     "options": [
+      {
+       "label": "Yes",
+       "outcome": "fuel_sensor"
+      },
+      {
+       "label": "No",
+       "outcome": "fuel_basic"
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    {
+     "id": "fuel_sensor",
+     "title": "A sensor or misfire is affecting fuel use",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Thermostat stuck open (engine stays cold)",
+       "likelihood": "common",
+       "diy_check": "Does the temperature gauge stay low?",
+       "repair_cost_id": "thermostat"
+      },
+      {
+       "text": "Faulty oxygen or MAF sensor",
+       "likelihood": "common",
+       "diy_check": "Read the code",
+       "repair_cost_id": "o2_sensor"
+      },
+      {
+       "text": "Misfire",
+       "likelihood": "possible",
+       "repair_cost_id": "spark_plugs_coils"
+      }
+     ],
+     "see_mechanic_if": []
+    },
+    {
+     "id": "fuel_basic",
+     "title": "Usually simple causes",
+     "urgency": "monitor",
+     "causes": [
+      {
+       "text": "Low tire pressure",
+       "likelihood": "common",
+       "diy_check": "Check pressures"
+      },
+      {
+       "text": "Dirty air filter",
+       "likelihood": "possible",
+       "diy_check": "Look at the filter"
+      },
+      {
+       "text": "Dragging brake",
+       "likelihood": "possible",
+       "repair_cost_id": "brake_caliper"
+      },
+      {
+       "text": "Winter weather and short trips",
+       "likelihood": "common"
+      }
+     ],
+     "see_mechanic_if": []
+    }
+   ]
+  },
+  {
+   "id": "steering_feel",
+   "title": "Steering feels heavy, loose or shakes",
+   "category": "Driving",
+   "questions": [
+    {
+     "id": "type",
+     "text": "What do you notice?",
+     "options": [
+      {
+       "label": "Suddenly heavy",
+       "outcome": "steer_heavy"
+      },
+      {
+       "label": "Loose / play in the wheel",
+       "outcome": "steer_loose"
+      },
+      {
+       "label": "Steering wheel shakes",
+       "outcome": "steer_shake"
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    {
+     "id": "steer_heavy",
+     "title": "Power steering assistance lost",
+     "urgency": "stop_now",
+     "causes": [
+      {
+       "text": "Power steering failure (pump, fluid or electric motor)",
+       "likelihood": "common",
+       "repair_cost_id": "power_steering"
+      },
+      {
+       "text": "Broken auxiliary belt",
+       "likelihood": "possible"
+      }
+     ],
+     "see_mechanic_if": [
+      "Always: steering is a mechanic job"
+     ]
+    },
+    {
+     "id": "steer_loose",
+     "title": "Worn steering or suspension joints",
+     "urgency": "stop_now",
+     "causes": [
+      {
+       "text": "Worn tie rod ends or ball joints",
+       "likelihood": "common",
+       "repair_cost_id": "tie_rod_ends"
+      },
+      {
+       "text": "Worn steering rack",
+       "likelihood": "possible",
+       "repair_cost_id": "power_steering"
+      }
+     ],
+     "see_mechanic_if": [
+      "Always"
+     ]
+    },
+    {
+     "id": "steer_shake",
+     "title": "Wheel balance or brake discs",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Front wheels out of balance",
+       "likelihood": "common",
+       "repair_cost_id": "alignment"
+      },
+      {
+       "text": "Warped front brake discs (shakes when braking)",
+       "likelihood": "possible",
+       "repair_cost_id": "brake_pads_rotors_axle"
+      }
+     ],
+     "see_mechanic_if": [
+      "It shakes when braking"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gearbox_auto",
+   "title": "Automatic gearbox problems",
+   "category": "Gearbox",
+   "questions": [
+    {
+     "id": "type",
+     "text": "What happens?",
+     "options": [
+      {
+       "label": "Slips: revs rise but the car does not speed up",
+       "outcome": "auto_slip"
+      },
+      {
+       "label": "Harsh or delayed shifts",
+       "outcome": "auto_harsh"
+      },
+      {
+       "label": "Jerks or shudders pulling away (dual-clutch / DSG)",
+       "outcome": "auto_dsg"
+      },
+      {
+       "label": "Stuck in one gear (limp mode)",
+       "outcome": "auto_limp"
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    {
+     "id": "auto_slip",
+     "title": "Transmission slipping",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Worn clutches inside the gearbox",
+       "likelihood": "common",
+       "repair_cost_id": "transmission_repair"
+      },
+      {
+       "text": "Low or burnt fluid",
+       "likelihood": "common",
+       "repair_cost_id": "transmission_service"
+      }
+     ],
+     "see_mechanic_if": [
+      "Always: slipping gets worse quickly"
+     ]
+    },
+    {
+     "id": "auto_harsh",
+     "title": "Fluid or control problem",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Old or low transmission fluid",
+       "likelihood": "common",
+       "repair_cost_id": "transmission_service"
+      },
+      {
+       "text": "Solenoid or valve body fault",
+       "likelihood": "possible",
+       "repair_cost_id": "transmission_repair"
+      },
+      {
+       "text": "Software needs an update/adaptation",
+       "likelihood": "possible"
+      }
+     ],
+     "see_mechanic_if": []
+    },
+    {
+     "id": "auto_dsg",
+     "title": "Dual-clutch (DSG) clutch or mechatronic",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Worn dual clutch or mechatronic unit",
+       "likelihood": "common",
+       "repair_cost_id": "dsg_mechatronic"
+      },
+      {
+       "text": "Needs clutch adaptation / software update",
+       "likelihood": "possible"
+      }
+     ],
+     "see_mechanic_if": []
+    },
+    {
+     "id": "auto_limp",
+     "title": "Gearbox in limp mode",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Sensor or solenoid fault",
+       "likelihood": "common",
+       "diy_check": "Read the codes (the gearbox has its own computer)",
+       "repair_cost_id": "transmission_repair"
+      },
+      {
+       "text": "Low fluid",
+       "likelihood": "possible",
+       "repair_cost_id": "transmission_service"
+      }
+     ],
+     "see_mechanic_if": [
+      "Always"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "clutch",
+   "title": "Clutch problems (manual)",
+   "category": "Gearbox",
+   "questions": [
+    {
+     "id": "type",
+     "text": "What do you notice?",
+     "options": [
+      {
+       "label": "Revs rise but speed does not (slipping)",
+       "outcome": "clutch_slip"
+      },
+      {
+       "label": "Bites very high / hard to get in gear",
+       "outcome": "clutch_high"
+      },
+      {
+       "label": "Rattle at idle that stops when pressing the clutch",
+       "outcome": "clutch_dmf"
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    {
+     "id": "clutch_slip",
+     "title": "Worn clutch",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Clutch worn out",
+       "likelihood": "common",
+       "repair_cost_id": "clutch"
+      },
+      {
+       "text": "Oil contamination from a leaking seal",
+       "likelihood": "possible",
+       "repair_cost_id": "clutch"
+      }
+     ],
+     "see_mechanic_if": []
+    },
+    {
+     "id": "clutch_high",
+     "title": "Worn clutch or hydraulic problem",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Worn clutch",
+       "likelihood": "common",
+       "repair_cost_id": "clutch"
+      },
+      {
+       "text": "Low clutch fluid / air in the system",
+       "likelihood": "possible",
+       "diy_check": "Check the clutch fluid reservoir (often shared with the brake fluid)"
+      }
+     ],
+     "see_mechanic_if": []
+    },
+    {
+     "id": "clutch_dmf",
+     "title": "Dual-mass flywheel wear",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Worn dual-mass flywheel",
+       "likelihood": "common",
+       "repair_cost_id": "dual_mass_flywheel"
+      }
+     ],
+     "see_mechanic_if": []
+    }
+   ]
+  },
+  {
+   "id": "ac_not_cold",
+   "title": "Air conditioning does not cool",
+   "category": "Climate & electrical",
+   "questions": [
+    {
+     "id": "fan",
+     "text": "Does air come out of the vents?",
+     "options": [
+      {
+       "label": "Yes, but warm",
+       "next": "compressor"
+      },
+      {
+       "label": "Little or no air",
+       "outcome": "ac_blower"
+      }
+     ]
+    },
+    {
+     "id": "compressor",
+     "text": "With A/C on and the engine running, do you hear a click from the engine bay?",
+     "options": [
+      {
+       "label": "Yes",
+       "outcome": "ac_low"
+      },
+      {
+       "label": "No",
+       "outcome": "ac_comp"
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    {
+     "id": "ac_low",
+     "title": "Low refrigerant",
+     "urgency": "monitor",
+     "causes": [
+      {
+       "text": "Small refrigerant leak",
+       "likelihood": "common",
+       "repair_cost_id": "ac_recharge"
+      },
+      {
+       "text": "Blocked condenser (front of the car)",
+       "likelihood": "possible",
+       "diy_check": "Look for leaves or dirt in front of the radiator",
+       "repair_cost_id": "ac_condenser"
+      }
+     ],
+     "see_mechanic_if": []
+    },
+    {
+     "id": "ac_comp",
+     "title": "Compressor not engaging",
+     "urgency": "monitor",
+     "causes": [
+      {
+       "text": "Very low refrigerant (system protects itself)",
+       "likelihood": "common",
+       "repair_cost_id": "ac_recharge"
+      },
+      {
+       "text": "Blown A/C fuse or relay",
+       "likelihood": "possible",
+       "diy_check": "Check the A/C fuse"
+      },
+      {
+       "text": "Failed compressor",
+       "likelihood": "possible",
+       "repair_cost_id": "ac_compressor"
+      }
+     ],
+     "see_mechanic_if": []
+    },
+    {
+     "id": "ac_blower",
+     "title": "Blower or cabin filter",
+     "urgency": "monitor",
+     "causes": [
+      {
+       "text": "Clogged cabin (pollen) filter",
+       "likelihood": "common",
+       "diy_check": "Replace the cabin filter (often behind the glovebox)"
+      },
+      {
+       "text": "Failed blower motor or resistor",
+       "likelihood": "possible",
+       "repair_cost_id": "electrical_diagnosis"
+      }
+     ],
+     "see_mechanic_if": []
+    }
+   ]
+  },
+  {
+   "id": "electrical",
+   "title": "Electrical things not working",
+   "category": "Climate & electrical",
+   "questions": [
+    {
+     "id": "what",
+     "text": "What stopped working?",
+     "options": [
+      {
+       "label": "Several things at once",
+       "outcome": "elec_battery"
+      },
+      {
+       "label": "One window",
+       "outcome": "elec_window"
+      },
+      {
+       "label": "Central locking / one door",
+       "outcome": "elec_lock"
+      },
+      {
+       "label": "Lights",
+       "outcome": "elec_lights"
+      }
+     ]
+    }
+   ],
+   "outcomes": [
+    {
+     "id": "elec_battery",
+     "title": "Battery, earth or fuse problem",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Weak battery or poor earth connection",
+       "likelihood": "common",
+       "diy_check": "Check battery terminals and have the battery tested",
+       "repair_cost_id": "battery_12v"
+      },
+      {
+       "text": "Blown fuse",
+       "likelihood": "possible",
+       "diy_check": "Check the fuse box (diagram in the owner manual)"
+      },
+      {
+       "text": "Water in a connector or module",
+       "likelihood": "possible",
+       "repair_cost_id": "electrical_diagnosis"
+      }
+     ],
+     "see_mechanic_if": []
+    },
+    {
+     "id": "elec_window",
+     "title": "Window regulator or motor",
+     "urgency": "monitor",
+     "causes": [
+      {
+       "text": "Broken window regulator",
+       "likelihood": "common",
+       "repair_cost_id": "window_regulator"
+      },
+      {
+       "text": "Faulty switch",
+       "likelihood": "possible",
+       "diy_check": "Try the window from the driver switch and its own switch"
+      }
+     ],
+     "see_mechanic_if": []
+    },
+    {
+     "id": "elec_lock",
+     "title": "Door lock actuator",
+     "urgency": "monitor",
+     "causes": [
+      {
+       "text": "Failed door lock actuator",
+       "likelihood": "common",
+       "repair_cost_id": "door_lock_actuator"
+      },
+      {
+       "text": "Weak key fob battery",
+       "likelihood": "possible",
+       "diy_check": "Replace the key fob battery"
+      }
+     ],
+     "see_mechanic_if": []
+    },
+    {
+     "id": "elec_lights",
+     "title": "Bulb, fuse or connector",
+     "urgency": "soon",
+     "causes": [
+      {
+       "text": "Blown bulb",
+       "likelihood": "common",
+       "diy_check": "Replace the bulb"
+      },
+      {
+       "text": "Blown fuse",
+       "likelihood": "possible",
+       "diy_check": "Check the fuse"
+      },
+      {
+       "text": "Corroded connector",
+       "likelihood": "possible"
+      }
+     ],
+     "see_mechanic_if": [
+      "Brake lights or headlights do not work: fix before driving at night"
+     ]
+    }
+   ]
+  }
+ ]
+}

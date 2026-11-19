@@ -1,0 +1,15 @@
+# Minimal Supabase CLI config. The project ref is passed on the command line (see README).
+project_id = "used-car-check"
+
+# Each function verifies the user's JWT itself (works with legacy and new API keys).
+[functions.vehicle]
+verify_jwt = false
+
+[functions.photo-check]
+verify_jwt = false
+
+[functions.listing-check]
+verify_jwt = false
+
+[functions.quota]
+verify_jwt = false

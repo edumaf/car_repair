@@ -46,15 +46,29 @@ export const mockVehicleClient: VehicleClient = {
     }
     return { ...report, fetchedAt: Date.now() };
   },
+  async listMakes(year) {
+    await latency();
+    return [...new Set(index.filter((c) => c.year === year).map((c) => c.make.toUpperCase()))].sort();
+  },
+  async listModels(year, make) {
+    await latency();
+    return index.filter((c) => c.year === year && norm(c.make) === norm(make)).map((c) => c.model.toUpperCase());
+  },
 };
 
 const CANNED: Partial<Record<PhotoCheckRequest['photoType'], Partial<PhotoCheckResult>>> = {
   tire: {
-    findings: [{ code: 'uneven_wear_inner', confidence: 'medium', description: 'The inner edge of the tread looks more worn than the outer edge.' }],
+    findings: [
+      { code: 'uneven_wear_inner', confidence: 'medium', description: 'The inner edge of the tread looks more worn than the outer edge.' },
+    ],
     transcriptions: { dot_code: '4519' },
   },
   dashboard_lights: { lights: ['check_engine', 'tpms'], transcriptions: { odometer_value: 84213, odometer_unit: 'mi' } },
-  rust: { findings: [{ code: 'bubbling_paint', confidence: 'high', description: 'Paint is bubbling along the lower edge of the rear wheel arch.' }] },
+  rust: {
+    findings: [
+      { code: 'bubbling_paint', confidence: 'high', description: 'Paint is bubbling along the lower edge of the rear wheel arch.' },
+    ],
+  },
   vin_plate: { transcriptions: { vin_text: '2HGFC2F78JH900001' } },
   odometer: { transcriptions: { odometer_value: 84213, odometer_unit: 'mi' } },
 };
@@ -68,7 +82,7 @@ export const mockPhotoCheckClient: PhotoCheckClient = {
       findings: [],
       lights: [],
       transcriptions: {},
-      notes_for_user: 'Sample result (mock mode).',
+      notes_for_user: 'Sample result: real AI photo checks need the backend.',
       ...canned,
     };
   },
@@ -101,5 +115,8 @@ export const mockQuotaClient: QuotaClient = {
   async getStatus() {
     await latency();
     return { premium: false, passExpiresAt: null, freeInspectionUsed: false, photoChecksLeft: 10 };
+  },
+  async deleteServerData() {
+    await latency();
   },
 };

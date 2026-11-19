@@ -65,6 +65,11 @@ export interface VehicleReport {
   recalls: Recall[] | null;
   complaints: ComplaintSummary | null;
   safety: SafetyRating | null;
+  /**
+   * Where recall/complaint data could come from: "nhtsa" (US-market car) or "none" (other markets: no official
+   * source yet, so those sections show "not available for this car's market" instead of "couldn't load").
+   */
+  coverage?: 'nhtsa' | 'none';
   /** Epoch ms. */
   fetchedAt: number;
 }

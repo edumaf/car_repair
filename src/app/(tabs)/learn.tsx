@@ -1,33 +1,58 @@
+// Learn (CLAUDE.md §6.9): short offline guides.
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { router } from 'expo-router';
+import type { ComponentProps } from 'react';
 import { Fragment } from 'react';
+import { StyleSheet, View } from 'react-native';
 
-import { Card } from '@/design/components/Card';
+import { GUIDES } from '@/core/data/learn';
 import { AppText } from '@/design/components/AppText';
+import { Card } from '@/design/components/Card';
 import { Divider, Row } from '@/design/components/Row';
+import { NightPanel } from '@/design/components/NightPanel';
 import { Screen } from '@/design/components/Screen';
+import { CarArt } from '@/design/components/CarArt';
+import { space, useTheme } from '@/design/tokens';
+import { tr } from '@/core/i18n/i18n';
 
-// Learn: short offline guides, written in Milestone 6 (CLAUDE.md §6.9). Titles only for now.
-const GUIDES = [
-  { icon: 'calendar-outline', title: 'Read a tire’s date code' },
-  { icon: 'cash-outline', title: 'The penny tread test' },
-  { icon: 'construct-outline', title: 'What a pre-purchase inspection is' },
-  { icon: 'document-text-outline', title: 'Title brands explained' },
-  { icon: 'shield-outline', title: 'Common used-car scams' },
-  { icon: 'navigate-outline', title: 'Plan your test-drive route' },
-  { icon: 'hardware-chip-outline', title: 'Use a $20 OBD2 reader' },
-] as const;
+type IconName = ComponentProps<typeof Ionicons>['name'];
 
 export default function LearnScreen() {
+  const t = useTheme();
   return (
-    <Screen overline="Learn" title="Buy smarter">
-      <AppText tone="muted">Short guides you can read before you go. Coming soon.</AppText>
+    <Screen>
+      <NightPanel style={styles.hero}>
+        <View style={styles.art}>
+          <CarArt kind="coupe" width={130} color={t.onNight} />
+          <View style={[styles.lane, { backgroundColor: t.lane }]} />
+        </View>
+        <AppText variant="overline" tone="lane">
+          Learn
+        </AppText>
+        <AppText variant="hero" tone="onNight" accessibilityRole="header">
+          Buy smarter
+        </AppText>
+        <AppText tone="onNightMuted">Short guides you can read before you go. They work offline.</AppText>
+      </NightPanel>
       <Card>
         {GUIDES.map((g, i) => (
-          <Fragment key={g.title}>
+          <Fragment key={g.id}>
             {i > 0 ? <Divider /> : null}
-            <Row icon={g.icon} title={g.title} disabled />
+            <Row
+              icon={g.icon as IconName}
+              title={g.title}
+              subtitle={tr('{n} min read', { n: g.minutes })}
+              onPress={() => router.push({ pathname: '/learn/[id]', params: { id: g.id } })}
+            />
           </Fragment>
         ))}
       </Card>
     </Screen>
   );
 }
+
+const styles = StyleSheet.create({
+  hero: { gap: space.xs },
+  art: { alignSelf: 'flex-end', marginBottom: space.xs },
+  lane: { height: 3, borderRadius: 2, marginHorizontal: space.sm, marginTop: 2 },
+});

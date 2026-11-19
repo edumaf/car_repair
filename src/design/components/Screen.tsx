@@ -31,7 +31,7 @@ export function Screen({ title, overline, children, scroll = true }: ScreenProps
   return (
     <SafeAreaView edges={['top']} style={[styles.root, { backgroundColor: t.bg }]}>
       {scroll ? (
-        <ScrollView contentContainerStyle={styles.content}>
+        <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled" keyboardDismissMode="on-drag">
           {header}
           {children}
         </ScrollView>

@@ -63,9 +63,20 @@ export const listingFlagSchema = z.object({
   ask_seller: z.string().min(1),
 });
 
+/** Flags raised from numbers instead of phrases (CLAUDE.md §6.6 "field-based flags"). */
+export const FIELD_FLAG_TRIGGERS = ['price_far_below_similar', 'mileage_missing'] as const;
+export const fieldFlagSchema = z.object({
+  id,
+  when: z.enum(FIELD_FLAG_TRIGGERS),
+  severity: z.enum(FLAG_SEVERITIES),
+  explanation: z.string().min(1),
+  ask_seller: z.string().min(1),
+});
+
 export const listingFlagsFileSchema = z.object({
-  _meta: z.object({ version: z.number().int(), note: z.string() }),
+  _meta: z.object({ version: z.number().int(), note: z.string() }).passthrough(),
   flags: z.array(listingFlagSchema).min(1),
+  field_flags: z.array(fieldFlagSchema).default([]),
 });
 
 export type Section = z.infer<typeof sectionSchema>;
@@ -74,6 +85,7 @@ export type ChecklistFile = z.infer<typeof checklistFileSchema>;
 export type RepairCost = z.infer<typeof repairCostSchema>;
 export type RepairCostsFile = z.infer<typeof repairCostsFileSchema>;
 export type ListingFlag = z.infer<typeof listingFlagSchema>;
+export type FieldFlag = z.infer<typeof fieldFlagSchema>;
 export type ListingFlagsFile = z.infer<typeof listingFlagsFileSchema>;
 
 function duplicates(ids: string[]): string[] {
@@ -114,7 +126,7 @@ export function validateSeed(raw: { checklist: unknown; repairCosts: unknown; li
   for (const d of duplicates(c.sections.map((s) => String(s.order)))) problems.push(`duplicate section order: ${d}`);
   for (const d of duplicates(c.items.map((i) => i.id))) problems.push(`duplicate checklist item id: ${d}`);
   for (const d of duplicates(costs.data.costs.map((x) => x.id))) problems.push(`duplicate repair cost id: ${d}`);
-  for (const d of duplicates(flags.data.flags.map((f) => f.id))) problems.push(`duplicate listing flag id: ${d}`);
+  for (const d of duplicates([...flags.data.flags, ...flags.data.field_flags].map((f) => f.id))) problems.push(`duplicate listing flag id: ${d}`);
 
   for (const item of c.items) {
     if (!sectionIds.has(item.section)) problems.push(`item ${item.id}: unknown section "${item.section}"`);

@@ -1,0 +1,4247 @@
+{
+ "_meta": {
+  "version": 1,
+  "note": "Generic OBD-II codes (SAE J2012). Meanings follow the standard; causes and likelihoods are drafted by AI from general automotive knowledge, 2026-11-16, and need a mechanic's review. Manufacturer-specific codes are not listed."
+ },
+ "codes": [
+  {
+   "code": "C0035",
+   "title": "Wheel speed sensor, left front",
+   "system": "ABS",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Dirty or damaged wheel speed sensor",
+     "likelihood": "common",
+     "repair_cost_id": "abs_module"
+    },
+    {
+     "text": "Damaged sensor wire (near the wheel)",
+     "likelihood": "common",
+     "repair_cost_id": "abs_module"
+    },
+    {
+     "text": "Worn wheel bearing / damaged reluctor ring",
+     "likelihood": "possible",
+     "repair_cost_id": "wheel_bearing"
+    }
+   ],
+   "notes": "ABS and stability control may be off: brake earlier, especially on wet roads. Brake work belongs at a mechanic."
+  },
+  {
+   "code": "C0040",
+   "title": "Wheel speed sensor, right front",
+   "system": "ABS",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Dirty or damaged wheel speed sensor",
+     "likelihood": "common",
+     "repair_cost_id": "abs_module"
+    },
+    {
+     "text": "Damaged sensor wire (near the wheel)",
+     "likelihood": "common",
+     "repair_cost_id": "abs_module"
+    },
+    {
+     "text": "Worn wheel bearing / damaged reluctor ring",
+     "likelihood": "possible",
+     "repair_cost_id": "wheel_bearing"
+    }
+   ],
+   "notes": "ABS and stability control may be off: brake earlier, especially on wet roads. Brake work belongs at a mechanic."
+  },
+  {
+   "code": "C0045",
+   "title": "Wheel speed sensor, left rear",
+   "system": "ABS",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Dirty or damaged wheel speed sensor",
+     "likelihood": "common",
+     "repair_cost_id": "abs_module"
+    },
+    {
+     "text": "Damaged sensor wire (near the wheel)",
+     "likelihood": "common",
+     "repair_cost_id": "abs_module"
+    },
+    {
+     "text": "Worn wheel bearing / damaged reluctor ring",
+     "likelihood": "possible",
+     "repair_cost_id": "wheel_bearing"
+    }
+   ],
+   "notes": "ABS and stability control may be off: brake earlier, especially on wet roads. Brake work belongs at a mechanic."
+  },
+  {
+   "code": "C0050",
+   "title": "Wheel speed sensor, right rear",
+   "system": "ABS",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Dirty or damaged wheel speed sensor",
+     "likelihood": "common",
+     "repair_cost_id": "abs_module"
+    },
+    {
+     "text": "Damaged sensor wire (near the wheel)",
+     "likelihood": "common",
+     "repair_cost_id": "abs_module"
+    },
+    {
+     "text": "Worn wheel bearing / damaged reluctor ring",
+     "likelihood": "possible",
+     "repair_cost_id": "wheel_bearing"
+    }
+   ],
+   "notes": "ABS and stability control may be off: brake earlier, especially on wet roads. Brake work belongs at a mechanic."
+  },
+  {
+   "code": "P0008",
+   "title": "Engine position system performance (bank 1)",
+   "system": "Engine",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Stretched timing chain",
+     "likelihood": "common",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "text": "Faulty cam phaser / oil control valve",
+     "likelihood": "possible",
+     "repair_cost_id": "cam_phasers"
+    },
+    {
+     "text": "Low or dirty oil",
+     "likelihood": "possible",
+     "diy_check": "Check the oil level"
+    }
+   ],
+   "notes": "Common on some GM V6 engines (timing chain stretch)."
+  },
+  {
+   "code": "P0010",
+   "title": "Camshaft timing actuator circuit (bank 1)",
+   "system": "Engine",
+   "severity": "minor",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty oil control (VVT) solenoid",
+     "likelihood": "common",
+     "repair_cost_id": "cam_phasers"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0011",
+   "title": "Camshaft timing over-advanced (bank 1)",
+   "system": "Engine",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Low, old or wrong oil",
+     "likelihood": "common",
+     "diy_check": "Check the oil level and when it was changed"
+    },
+    {
+     "text": "Sticking VVT solenoid",
+     "likelihood": "common",
+     "repair_cost_id": "cam_phasers"
+    },
+    {
+     "text": "Stretched timing chain",
+     "likelihood": "possible",
+     "repair_cost_id": "timing_chain"
+    }
+   ]
+  },
+  {
+   "code": "P0012",
+   "title": "Camshaft timing over-retarded (bank 1)",
+   "system": "Engine",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Low or old oil",
+     "likelihood": "common",
+     "diy_check": "Check the oil level"
+    },
+    {
+     "text": "Sticking VVT solenoid",
+     "likelihood": "common",
+     "repair_cost_id": "cam_phasers"
+    },
+    {
+     "text": "Stretched timing chain",
+     "likelihood": "possible",
+     "repair_cost_id": "timing_chain"
+    }
+   ]
+  },
+  {
+   "code": "P0014",
+   "title": "Exhaust camshaft timing over-advanced (bank 1)",
+   "system": "Engine",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Low or old oil",
+     "likelihood": "common",
+     "diy_check": "Check the oil level"
+    },
+    {
+     "text": "Sticking VVT solenoid",
+     "likelihood": "common",
+     "repair_cost_id": "cam_phasers"
+    },
+    {
+     "text": "Stretched timing chain",
+     "likelihood": "possible",
+     "repair_cost_id": "timing_chain"
+    }
+   ]
+  },
+  {
+   "code": "P0016",
+   "title": "Crankshaft/camshaft position correlation (bank 1, intake)",
+   "system": "Engine",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Stretched timing chain or jumped belt",
+     "likelihood": "common",
+     "diy_check": "Listen for rattle at cold start",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "text": "Faulty cam or crank sensor",
+     "likelihood": "possible",
+     "repair_cost_id": "camshaft_sensor"
+    },
+    {
+     "text": "VVT solenoid / phaser fault",
+     "likelihood": "possible",
+     "repair_cost_id": "cam_phasers"
+    }
+   ],
+   "notes": "Do not ignore: a failing timing chain can destroy the engine."
+  },
+  {
+   "code": "P0017",
+   "title": "Crankshaft/camshaft position correlation (bank 1, exhaust)",
+   "system": "Engine",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Stretched timing chain",
+     "likelihood": "common",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "text": "Faulty sensor",
+     "likelihood": "possible",
+     "repair_cost_id": "camshaft_sensor"
+    },
+    {
+     "text": "VVT fault",
+     "likelihood": "possible",
+     "repair_cost_id": "cam_phasers"
+    }
+   ],
+   "notes": "Do not ignore: a failing timing chain can destroy the engine."
+  },
+  {
+   "code": "P0030",
+   "title": "Oxygen sensor heater control circuit (bank 1 sensor 1)",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Failed sensor heater",
+     "likelihood": "common",
+     "repair_cost_id": "o2_sensor"
+    },
+    {
+     "text": "Fuse or wiring fault",
+     "likelihood": "possible",
+     "diy_check": "Check the fuse"
+    }
+   ]
+  },
+  {
+   "code": "P0036",
+   "title": "Oxygen sensor heater control circuit (bank 1 sensor 2)",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Failed sensor heater",
+     "likelihood": "common",
+     "repair_cost_id": "o2_sensor"
+    },
+    {
+     "text": "Fuse or wiring fault",
+     "likelihood": "possible",
+     "diy_check": "Check the fuse"
+    }
+   ]
+  },
+  {
+   "code": "P0068",
+   "title": "Manifold pressure / throttle position correlation",
+   "system": "Air intake",
+   "severity": "minor",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Vacuum leak",
+     "likelihood": "common",
+     "repair_cost_id": "vacuum_leak"
+    },
+    {
+     "text": "Dirty throttle body",
+     "likelihood": "possible",
+     "repair_cost_id": "throttle_body"
+    },
+    {
+     "text": "Faulty MAP or MAF sensor",
+     "likelihood": "possible",
+     "repair_cost_id": "maf_sensor"
+    }
+   ]
+  },
+  {
+   "code": "P0069",
+   "title": "Manifold pressure / barometric pressure correlation",
+   "system": "Air intake",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Faulty MAP or barometric sensor",
+     "likelihood": "common"
+    },
+    {
+     "text": "Blocked sensor port",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0087",
+   "title": "Fuel rail pressure too low",
+   "system": "Fuel",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Clogged fuel filter",
+     "likelihood": "common"
+    },
+    {
+     "text": "Weak low-pressure fuel pump",
+     "likelihood": "common"
+    },
+    {
+     "text": "Worn high-pressure fuel pump (direct injection / diesel)",
+     "likelihood": "possible",
+     "repair_cost_id": "high_pressure_fuel_pump"
+    },
+    {
+     "text": "Faulty rail pressure sensor",
+     "likelihood": "possible"
+    }
+   ],
+   "notes": "Can cause stalling or loss of power. Diesels: never run the tank empty."
+  },
+  {
+   "code": "P0088",
+   "title": "Fuel rail pressure too high",
+   "system": "Fuel",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty fuel pressure regulator / control valve",
+     "likelihood": "common"
+    },
+    {
+     "text": "Faulty rail pressure sensor",
+     "likelihood": "possible"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "rare"
+    }
+   ]
+  },
+  {
+   "code": "P0089",
+   "title": "Fuel pressure regulator performance",
+   "system": "Fuel",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty pressure regulator or metering valve",
+     "likelihood": "common"
+    },
+    {
+     "text": "Air in the fuel system or low fuel",
+     "likelihood": "possible",
+     "diy_check": "Make sure the tank is not nearly empty"
+    },
+    {
+     "text": "Worn high-pressure pump",
+     "likelihood": "possible",
+     "repair_cost_id": "high_pressure_fuel_pump"
+    }
+   ]
+  },
+  {
+   "code": "P0093",
+   "title": "Large fuel leak detected",
+   "system": "Fuel",
+   "severity": "critical",
+   "drive": "stop",
+   "causes": [
+    {
+     "text": "Leaking high-pressure fuel line or injector seal",
+     "likelihood": "common",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "text": "Faulty rail pressure sensor reading",
+     "likelihood": "possible"
+    }
+   ],
+   "notes": "Fuel leaks are a fire risk. Do not drive; do not try to fix it yourself."
+  },
+  {
+   "code": "P0100",
+   "title": "Mass air flow (MAF) sensor circuit",
+   "system": "Air intake",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Unplugged or corroded MAF connector",
+     "likelihood": "common",
+     "diy_check": "Check the MAF connector is clicked in and clean"
+    },
+    {
+     "text": "Faulty MAF sensor",
+     "likelihood": "common",
+     "repair_cost_id": "maf_sensor"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0101",
+   "title": "Mass air flow (MAF) sensor range/performance",
+   "system": "Air intake",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Dirty MAF sensor",
+     "likelihood": "common",
+     "diy_check": "Clean only with dedicated MAF cleaner spray",
+     "repair_cost_id": "maf_sensor"
+    },
+    {
+     "text": "Air leak after the MAF (cracked intake hose)",
+     "likelihood": "common",
+     "diy_check": "Look for cracked rubber hoses between the air box and the engine",
+     "repair_cost_id": "vacuum_leak"
+    },
+    {
+     "text": "Clogged air filter",
+     "likelihood": "possible",
+     "diy_check": "Look at the air filter"
+    }
+   ]
+  },
+  {
+   "code": "P0102",
+   "title": "Mass air flow (MAF) sensor signal low",
+   "system": "Air intake",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Dirty or failed MAF sensor",
+     "likelihood": "common",
+     "repair_cost_id": "maf_sensor"
+    },
+    {
+     "text": "Damaged wiring or connector",
+     "likelihood": "possible",
+     "diy_check": "Check the connector"
+    },
+    {
+     "text": "Air leak around the MAF",
+     "likelihood": "possible",
+     "repair_cost_id": "vacuum_leak"
+    }
+   ]
+  },
+  {
+   "code": "P0103",
+   "title": "Mass air flow (MAF) sensor signal high",
+   "system": "Air intake",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Faulty MAF sensor",
+     "likelihood": "common",
+     "repair_cost_id": "maf_sensor"
+    },
+    {
+     "text": "Wiring short",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0106",
+   "title": "Manifold pressure (MAP) sensor range/performance",
+   "system": "Air intake",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Faulty MAP sensor",
+     "likelihood": "common"
+    },
+    {
+     "text": "Cracked or loose vacuum hose to the sensor",
+     "likelihood": "common",
+     "diy_check": "Check the small hose to the MAP sensor",
+     "repair_cost_id": "vacuum_leak"
+    },
+    {
+     "text": "Boost leak (turbo engines)",
+     "likelihood": "possible",
+     "repair_cost_id": "vacuum_leak"
+    }
+   ]
+  },
+  {
+   "code": "P0107",
+   "title": "Manifold pressure (MAP) sensor signal low",
+   "system": "Air intake",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Faulty MAP sensor",
+     "likelihood": "common"
+    },
+    {
+     "text": "Connector or wiring fault",
+     "likelihood": "common",
+     "diy_check": "Check the connector"
+    }
+   ]
+  },
+  {
+   "code": "P0108",
+   "title": "Manifold pressure (MAP) sensor signal high",
+   "system": "Air intake",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Faulty MAP sensor",
+     "likelihood": "common"
+    },
+    {
+     "text": "Wiring short",
+     "likelihood": "possible"
+    },
+    {
+     "text": "Disconnected vacuum hose",
+     "likelihood": "possible",
+     "repair_cost_id": "vacuum_leak"
+    }
+   ]
+  },
+  {
+   "code": "P0110",
+   "title": "Intake air temperature sensor circuit",
+   "system": "Air intake",
+   "severity": "info",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Unplugged or faulty sensor (often built into the MAF)",
+     "likelihood": "common",
+     "diy_check": "Check the connector"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0112",
+   "title": "Intake air temperature sensor signal low",
+   "system": "Air intake",
+   "severity": "info",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Faulty sensor",
+     "likelihood": "common"
+    },
+    {
+     "text": "Wiring short to ground",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0113",
+   "title": "Intake air temperature sensor signal high",
+   "system": "Air intake",
+   "severity": "info",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Unplugged connector or open circuit",
+     "likelihood": "common",
+     "diy_check": "Check the connector"
+    },
+    {
+     "text": "Faulty sensor",
+     "likelihood": "common"
+    }
+   ]
+  },
+  {
+   "code": "P0115",
+   "title": "Engine coolant temperature sensor circuit",
+   "system": "Cooling",
+   "severity": "minor",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty coolant temperature sensor",
+     "likelihood": "common"
+    },
+    {
+     "text": "Corroded connector",
+     "likelihood": "common",
+     "diy_check": "Check the connector"
+    }
+   ],
+   "notes": "The temperature gauge may be wrong. Watch for real overheating."
+  },
+  {
+   "code": "P0116",
+   "title": "Coolant temperature sensor range/performance",
+   "system": "Cooling",
+   "severity": "minor",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty coolant temperature sensor",
+     "likelihood": "common"
+    },
+    {
+     "text": "Thermostat stuck open",
+     "likelihood": "possible",
+     "repair_cost_id": "thermostat"
+    },
+    {
+     "text": "Low coolant",
+     "likelihood": "possible",
+     "diy_check": "Check the coolant level with the engine COLD"
+    }
+   ]
+  },
+  {
+   "code": "P0117",
+   "title": "Coolant temperature sensor signal low",
+   "system": "Cooling",
+   "severity": "minor",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty sensor",
+     "likelihood": "common"
+    },
+    {
+     "text": "Wiring short",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0118",
+   "title": "Coolant temperature sensor signal high",
+   "system": "Cooling",
+   "severity": "minor",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Unplugged connector or broken wire",
+     "likelihood": "common",
+     "diy_check": "Check the connector"
+    },
+    {
+     "text": "Faulty sensor",
+     "likelihood": "common"
+    }
+   ]
+  },
+  {
+   "code": "P0120",
+   "title": "Throttle position sensor circuit",
+   "system": "Throttle",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty throttle body / position sensor",
+     "likelihood": "common",
+     "repair_cost_id": "throttle_body"
+    },
+    {
+     "text": "Wiring or connector fault",
+     "likelihood": "possible",
+     "diy_check": "Check the throttle body connector"
+    }
+   ],
+   "notes": "May cause limp mode (low power)."
+  },
+  {
+   "code": "P0121",
+   "title": "Throttle position sensor range/performance",
+   "system": "Throttle",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Dirty or worn throttle body",
+     "likelihood": "common",
+     "repair_cost_id": "throttle_body"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0122",
+   "title": "Throttle position sensor signal low",
+   "system": "Throttle",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty throttle position sensor",
+     "likelihood": "common",
+     "repair_cost_id": "throttle_body"
+    },
+    {
+     "text": "Wiring short",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0123",
+   "title": "Throttle position sensor signal high",
+   "system": "Throttle",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty throttle position sensor",
+     "likelihood": "common",
+     "repair_cost_id": "throttle_body"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0125",
+   "title": "Engine takes too long to warm up for fuel control",
+   "system": "Cooling",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Thermostat stuck open",
+     "likelihood": "common",
+     "diy_check": "Does the temperature gauge stay low on a drive?",
+     "repair_cost_id": "thermostat"
+    },
+    {
+     "text": "Low coolant",
+     "likelihood": "possible",
+     "diy_check": "Check coolant level when cold"
+    },
+    {
+     "text": "Faulty coolant temperature sensor",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0128",
+   "title": "Coolant below thermostat temperature",
+   "system": "Cooling",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Thermostat stuck open",
+     "likelihood": "common",
+     "diy_check": "Heater slow to get warm and gauge stays low",
+     "repair_cost_id": "thermostat"
+    },
+    {
+     "text": "Faulty coolant temperature sensor",
+     "likelihood": "possible"
+    }
+   ],
+   "notes": "Usually not urgent, but fuel use goes up and the heater works poorly."
+  },
+  {
+   "code": "P0130",
+   "title": "Upstream oxygen sensor circuit (bank 1)",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Worn oxygen sensor",
+     "likelihood": "common",
+     "repair_cost_id": "o2_sensor"
+    },
+    {
+     "text": "Exhaust leak near the sensor",
+     "likelihood": "possible",
+     "repair_cost_id": "exhaust_leak"
+    },
+    {
+     "text": "Wiring or connector damage",
+     "likelihood": "possible",
+     "diy_check": "Look for melted or chafed wires near the exhaust"
+    }
+   ]
+  },
+  {
+   "code": "P0131",
+   "title": "Upstream oxygen sensor low voltage (bank 1)",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Worn oxygen sensor",
+     "likelihood": "common",
+     "repair_cost_id": "o2_sensor"
+    },
+    {
+     "text": "Exhaust leak near the sensor",
+     "likelihood": "possible",
+     "repair_cost_id": "exhaust_leak"
+    },
+    {
+     "text": "Wiring or connector damage",
+     "likelihood": "possible",
+     "diy_check": "Look for melted or chafed wires near the exhaust"
+    }
+   ]
+  },
+  {
+   "code": "P0133",
+   "title": "Upstream oxygen sensor slow response (bank 1)",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Worn oxygen sensor",
+     "likelihood": "common",
+     "repair_cost_id": "o2_sensor"
+    },
+    {
+     "text": "Exhaust leak near the sensor",
+     "likelihood": "possible",
+     "repair_cost_id": "exhaust_leak"
+    },
+    {
+     "text": "Wiring or connector damage",
+     "likelihood": "possible",
+     "diy_check": "Look for melted or chafed wires near the exhaust"
+    }
+   ]
+  },
+  {
+   "code": "P0135",
+   "title": "Upstream oxygen sensor heater circuit (bank 1)",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Failed oxygen sensor heater",
+     "likelihood": "common",
+     "repair_cost_id": "o2_sensor"
+    },
+    {
+     "text": "Blown fuse or wiring fault",
+     "likelihood": "possible",
+     "diy_check": "Check the fuse for the O2 sensor heaters"
+    }
+   ]
+  },
+  {
+   "code": "P0136",
+   "title": "Downstream oxygen sensor circuit (bank 1)",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Worn oxygen sensor",
+     "likelihood": "common",
+     "repair_cost_id": "o2_sensor"
+    },
+    {
+     "text": "Exhaust leak",
+     "likelihood": "possible",
+     "repair_cost_id": "exhaust_leak"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0137",
+   "title": "Downstream oxygen sensor low voltage (bank 1)",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Worn oxygen sensor",
+     "likelihood": "common",
+     "repair_cost_id": "o2_sensor"
+    },
+    {
+     "text": "Exhaust leak",
+     "likelihood": "possible",
+     "repair_cost_id": "exhaust_leak"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0138",
+   "title": "Downstream oxygen sensor high voltage (bank 1)",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Worn oxygen sensor",
+     "likelihood": "common",
+     "repair_cost_id": "o2_sensor"
+    },
+    {
+     "text": "Exhaust leak",
+     "likelihood": "possible",
+     "repair_cost_id": "exhaust_leak"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0141",
+   "title": "Downstream oxygen sensor heater circuit (bank 1)",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Failed sensor heater",
+     "likelihood": "common",
+     "repair_cost_id": "o2_sensor"
+    },
+    {
+     "text": "Fuse or wiring fault",
+     "likelihood": "possible",
+     "diy_check": "Check the fuse"
+    }
+   ]
+  },
+  {
+   "code": "P0171",
+   "title": "System too lean (bank 1)",
+   "system": "Fuel/air mixture",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Vacuum or intake air leak (cracked hose, intake gasket)",
+     "likelihood": "common",
+     "diy_check": "Listen for a hiss around the engine at idle",
+     "repair_cost_id": "vacuum_leak"
+    },
+    {
+     "text": "Dirty or faulty mass air flow (MAF) sensor",
+     "likelihood": "common",
+     "diy_check": "Check the air filter and the MAF connector",
+     "repair_cost_id": "maf_sensor"
+    },
+    {
+     "text": "Weak fuel pump or clogged fuel filter",
+     "likelihood": "possible"
+    },
+    {
+     "text": "Leaking PCV valve / crankcase breather",
+     "likelihood": "possible",
+     "diy_check": "Remove the oil cap at idle: strong suction or whistling points to it",
+     "repair_cost_id": "pcv_valve"
+    },
+    {
+     "text": "Exhaust leak before the oxygen sensor",
+     "likelihood": "rare",
+     "repair_cost_id": "exhaust_leak"
+    }
+   ],
+   "notes": "Fix it soon: running lean for long can damage the engine and catalytic converter."
+  },
+  {
+   "code": "P0172",
+   "title": "System too rich (bank 1)",
+   "system": "Fuel/air mixture",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Leaking or stuck-open injector",
+     "likelihood": "possible",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "text": "Faulty MAF or oxygen sensor reading wrong",
+     "likelihood": "common",
+     "repair_cost_id": "maf_sensor"
+    },
+    {
+     "text": "Fuel pressure too high (regulator)",
+     "likelihood": "possible"
+    },
+    {
+     "text": "Very dirty air filter",
+     "likelihood": "common",
+     "diy_check": "Look at the air filter"
+    }
+   ]
+  },
+  {
+   "code": "P0174",
+   "title": "System too lean (bank 2)",
+   "system": "Fuel/air mixture",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Vacuum or intake air leak (cracked hose, intake gasket)",
+     "likelihood": "common",
+     "diy_check": "Listen for a hiss around the engine at idle",
+     "repair_cost_id": "vacuum_leak"
+    },
+    {
+     "text": "Dirty or faulty mass air flow (MAF) sensor",
+     "likelihood": "common",
+     "diy_check": "Check the air filter and the MAF connector",
+     "repair_cost_id": "maf_sensor"
+    },
+    {
+     "text": "Weak fuel pump or clogged fuel filter",
+     "likelihood": "possible"
+    },
+    {
+     "text": "Leaking PCV valve / crankcase breather",
+     "likelihood": "possible",
+     "diy_check": "Remove the oil cap at idle: strong suction or whistling points to it",
+     "repair_cost_id": "pcv_valve"
+    },
+    {
+     "text": "Exhaust leak before the oxygen sensor",
+     "likelihood": "rare",
+     "repair_cost_id": "exhaust_leak"
+    }
+   ],
+   "notes": "If both P0171 and P0174 appear, a single air leak or MAF fault is most likely."
+  },
+  {
+   "code": "P0175",
+   "title": "System too rich (bank 2)",
+   "system": "Fuel/air mixture",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Leaking or stuck-open injector",
+     "likelihood": "possible",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "text": "Faulty MAF or oxygen sensor reading wrong",
+     "likelihood": "common",
+     "repair_cost_id": "maf_sensor"
+    },
+    {
+     "text": "Fuel pressure too high (regulator)",
+     "likelihood": "possible"
+    },
+    {
+     "text": "Very dirty air filter",
+     "likelihood": "common",
+     "diy_check": "Look at the air filter"
+    }
+   ]
+  },
+  {
+   "code": "P0191",
+   "title": "Fuel rail pressure sensor range/performance",
+   "system": "Fuel",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty rail pressure sensor",
+     "likelihood": "common"
+    },
+    {
+     "text": "Fuel pressure actually wrong (pump or regulator)",
+     "likelihood": "possible",
+     "repair_cost_id": "high_pressure_fuel_pump"
+    }
+   ]
+  },
+  {
+   "code": "P0201",
+   "title": "Injector circuit, cylinder 1",
+   "system": "Fuel",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty injector",
+     "likelihood": "common",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "text": "Damaged injector wiring or connector",
+     "likelihood": "common",
+     "diy_check": "Check the injector connector"
+    }
+   ],
+   "notes": "Usually comes with a misfire on cylinder 1."
+  },
+  {
+   "code": "P0202",
+   "title": "Injector circuit, cylinder 2",
+   "system": "Fuel",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty injector",
+     "likelihood": "common",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "text": "Damaged injector wiring or connector",
+     "likelihood": "common",
+     "diy_check": "Check the injector connector"
+    }
+   ],
+   "notes": "Usually comes with a misfire on cylinder 2."
+  },
+  {
+   "code": "P0203",
+   "title": "Injector circuit, cylinder 3",
+   "system": "Fuel",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty injector",
+     "likelihood": "common",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "text": "Damaged injector wiring or connector",
+     "likelihood": "common",
+     "diy_check": "Check the injector connector"
+    }
+   ],
+   "notes": "Usually comes with a misfire on cylinder 3."
+  },
+  {
+   "code": "P0204",
+   "title": "Injector circuit, cylinder 4",
+   "system": "Fuel",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty injector",
+     "likelihood": "common",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "text": "Damaged injector wiring or connector",
+     "likelihood": "common",
+     "diy_check": "Check the injector connector"
+    }
+   ],
+   "notes": "Usually comes with a misfire on cylinder 4."
+  },
+  {
+   "code": "P0205",
+   "title": "Injector circuit, cylinder 5",
+   "system": "Fuel",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty injector",
+     "likelihood": "common",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "text": "Damaged injector wiring or connector",
+     "likelihood": "common",
+     "diy_check": "Check the injector connector"
+    }
+   ],
+   "notes": "Usually comes with a misfire on cylinder 5."
+  },
+  {
+   "code": "P0206",
+   "title": "Injector circuit, cylinder 6",
+   "system": "Fuel",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty injector",
+     "likelihood": "common",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "text": "Damaged injector wiring or connector",
+     "likelihood": "common",
+     "diy_check": "Check the injector connector"
+    }
+   ],
+   "notes": "Usually comes with a misfire on cylinder 6."
+  },
+  {
+   "code": "P0217",
+   "title": "Engine overheating",
+   "system": "Cooling",
+   "severity": "critical",
+   "drive": "stop",
+   "causes": [
+    {
+     "text": "Low coolant / leak",
+     "likelihood": "common",
+     "diy_check": "When the engine is COLD, check the coolant level. Never open a hot radiator cap",
+     "repair_cost_id": "coolant_leak_minor"
+    },
+    {
+     "text": "Cooling fan not working",
+     "likelihood": "common",
+     "diy_check": "With the engine hot and idling, the radiator fan should switch on"
+    },
+    {
+     "text": "Stuck thermostat",
+     "likelihood": "possible",
+     "repair_cost_id": "thermostat"
+    },
+    {
+     "text": "Failed water pump",
+     "likelihood": "possible",
+     "repair_cost_id": "water_pump"
+    },
+    {
+     "text": "Head gasket failure",
+     "likelihood": "rare",
+     "repair_cost_id": "head_gasket"
+    }
+   ],
+   "notes": "Stop as soon as it is safe and switch the engine off. Driving while overheating can destroy the engine."
+  },
+  {
+   "code": "P0230",
+   "title": "Fuel pump primary circuit",
+   "system": "Fuel",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Fuel pump relay or fuse",
+     "likelihood": "common",
+     "diy_check": "Check the fuel pump fuse"
+    },
+    {
+     "text": "Failing fuel pump",
+     "likelihood": "possible"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ],
+   "notes": "Can cause the engine to stall or not start."
+  },
+  {
+   "code": "P0234",
+   "title": "Turbo overboost",
+   "system": "Turbo",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Stuck wastegate or boost control valve",
+     "likelihood": "common",
+     "repair_cost_id": "turbo"
+    },
+    {
+     "text": "Faulty boost pressure sensor",
+     "likelihood": "possible"
+    },
+    {
+     "text": "Vacuum hose to the wastegate split",
+     "likelihood": "possible",
+     "diy_check": "Check small vacuum hoses around the turbo",
+     "repair_cost_id": "vacuum_leak"
+    }
+   ],
+   "notes": "Drive gently; avoid hard acceleration."
+  },
+  {
+   "code": "P0236",
+   "title": "Boost pressure sensor range/performance",
+   "system": "Turbo",
+   "severity": "minor",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Dirty or faulty boost pressure sensor",
+     "likelihood": "common"
+    },
+    {
+     "text": "Boost leak",
+     "likelihood": "possible",
+     "repair_cost_id": "vacuum_leak"
+    }
+   ]
+  },
+  {
+   "code": "P0237",
+   "title": "Boost pressure sensor signal low",
+   "system": "Turbo",
+   "severity": "minor",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty sensor",
+     "likelihood": "common"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible",
+     "diy_check": "Check the connector"
+    }
+   ]
+  },
+  {
+   "code": "P0238",
+   "title": "Boost pressure sensor signal high",
+   "system": "Turbo",
+   "severity": "minor",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty sensor",
+     "likelihood": "common"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0243",
+   "title": "Turbo wastegate solenoid circuit",
+   "system": "Turbo",
+   "severity": "minor",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty wastegate / boost control solenoid",
+     "likelihood": "common"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0299",
+   "title": "Turbo underboost",
+   "system": "Turbo",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Boost leak (split intercooler hose, loose clamp)",
+     "likelihood": "common",
+     "diy_check": "With the engine OFF, check intercooler hoses for oil, splits or loose clamps",
+     "repair_cost_id": "vacuum_leak"
+    },
+    {
+     "text": "Sticking turbo vanes or wastegate",
+     "likelihood": "common",
+     "repair_cost_id": "turbo"
+    },
+    {
+     "text": "Faulty boost control valve",
+     "likelihood": "possible"
+    },
+    {
+     "text": "Worn turbo",
+     "likelihood": "possible",
+     "repair_cost_id": "turbo"
+    }
+   ],
+   "notes": "Often causes limp mode (low power). Common on diesels."
+  },
+  {
+   "code": "P0300",
+   "title": "Random / multiple cylinder misfire",
+   "system": "Ignition",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Worn spark plugs",
+     "likelihood": "common",
+     "diy_check": "Check when the plugs were last changed",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "text": "Air leak",
+     "likelihood": "common",
+     "repair_cost_id": "vacuum_leak"
+    },
+    {
+     "text": "Low fuel pressure",
+     "likelihood": "possible"
+    },
+    {
+     "text": "Ignition coil(s)",
+     "likelihood": "possible",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "text": "Timing chain/belt issue",
+     "likelihood": "rare",
+     "repair_cost_id": "timing_chain"
+    }
+   ],
+   "notes": "If the check-engine light FLASHES, stop driving: unburned fuel can destroy the catalytic converter."
+  },
+  {
+   "code": "P0301",
+   "title": "Cylinder 1 misfire",
+   "system": "Ignition",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Worn spark plug",
+     "likelihood": "common",
+     "diy_check": "Check when the plugs were last changed",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "text": "Failed ignition coil",
+     "likelihood": "common",
+     "diy_check": "With the engine OFF and cold, swap this coil with another cylinder: if the misfire moves, the coil is bad",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "text": "Faulty or clogged injector",
+     "likelihood": "possible",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "text": "Air leak near that cylinder",
+     "likelihood": "possible",
+     "repair_cost_id": "vacuum_leak"
+    },
+    {
+     "text": "Low compression (worn valves, head gasket)",
+     "likelihood": "rare",
+     "repair_cost_id": "head_gasket"
+    }
+   ],
+   "notes": "If the check-engine light FLASHES, stop driving: unburned fuel can destroy the catalytic converter."
+  },
+  {
+   "code": "P0302",
+   "title": "Cylinder 2 misfire",
+   "system": "Ignition",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Worn spark plug",
+     "likelihood": "common",
+     "diy_check": "Check when the plugs were last changed",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "text": "Failed ignition coil",
+     "likelihood": "common",
+     "diy_check": "With the engine OFF and cold, swap this coil with another cylinder: if the misfire moves, the coil is bad",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "text": "Faulty or clogged injector",
+     "likelihood": "possible",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "text": "Air leak near that cylinder",
+     "likelihood": "possible",
+     "repair_cost_id": "vacuum_leak"
+    },
+    {
+     "text": "Low compression (worn valves, head gasket)",
+     "likelihood": "rare",
+     "repair_cost_id": "head_gasket"
+    }
+   ],
+   "notes": "If the check-engine light FLASHES, stop driving: unburned fuel can destroy the catalytic converter."
+  },
+  {
+   "code": "P0303",
+   "title": "Cylinder 3 misfire",
+   "system": "Ignition",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Worn spark plug",
+     "likelihood": "common",
+     "diy_check": "Check when the plugs were last changed",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "text": "Failed ignition coil",
+     "likelihood": "common",
+     "diy_check": "With the engine OFF and cold, swap this coil with another cylinder: if the misfire moves, the coil is bad",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "text": "Faulty or clogged injector",
+     "likelihood": "possible",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "text": "Air leak near that cylinder",
+     "likelihood": "possible",
+     "repair_cost_id": "vacuum_leak"
+    },
+    {
+     "text": "Low compression (worn valves, head gasket)",
+     "likelihood": "rare",
+     "repair_cost_id": "head_gasket"
+    }
+   ],
+   "notes": "If the check-engine light FLASHES, stop driving: unburned fuel can destroy the catalytic converter."
+  },
+  {
+   "code": "P0304",
+   "title": "Cylinder 4 misfire",
+   "system": "Ignition",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Worn spark plug",
+     "likelihood": "common",
+     "diy_check": "Check when the plugs were last changed",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "text": "Failed ignition coil",
+     "likelihood": "common",
+     "diy_check": "With the engine OFF and cold, swap this coil with another cylinder: if the misfire moves, the coil is bad",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "text": "Faulty or clogged injector",
+     "likelihood": "possible",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "text": "Air leak near that cylinder",
+     "likelihood": "possible",
+     "repair_cost_id": "vacuum_leak"
+    },
+    {
+     "text": "Low compression (worn valves, head gasket)",
+     "likelihood": "rare",
+     "repair_cost_id": "head_gasket"
+    }
+   ],
+   "notes": "If the check-engine light FLASHES, stop driving: unburned fuel can destroy the catalytic converter."
+  },
+  {
+   "code": "P0305",
+   "title": "Cylinder 5 misfire",
+   "system": "Ignition",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Worn spark plug",
+     "likelihood": "common",
+     "diy_check": "Check when the plugs were last changed",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "text": "Failed ignition coil",
+     "likelihood": "common",
+     "diy_check": "With the engine OFF and cold, swap this coil with another cylinder: if the misfire moves, the coil is bad",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "text": "Faulty or clogged injector",
+     "likelihood": "possible",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "text": "Air leak near that cylinder",
+     "likelihood": "possible",
+     "repair_cost_id": "vacuum_leak"
+    },
+    {
+     "text": "Low compression (worn valves, head gasket)",
+     "likelihood": "rare",
+     "repair_cost_id": "head_gasket"
+    }
+   ],
+   "notes": "If the check-engine light FLASHES, stop driving: unburned fuel can destroy the catalytic converter."
+  },
+  {
+   "code": "P0306",
+   "title": "Cylinder 6 misfire",
+   "system": "Ignition",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Worn spark plug",
+     "likelihood": "common",
+     "diy_check": "Check when the plugs were last changed",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "text": "Failed ignition coil",
+     "likelihood": "common",
+     "diy_check": "With the engine OFF and cold, swap this coil with another cylinder: if the misfire moves, the coil is bad",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "text": "Faulty or clogged injector",
+     "likelihood": "possible",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "text": "Air leak near that cylinder",
+     "likelihood": "possible",
+     "repair_cost_id": "vacuum_leak"
+    },
+    {
+     "text": "Low compression (worn valves, head gasket)",
+     "likelihood": "rare",
+     "repair_cost_id": "head_gasket"
+    }
+   ],
+   "notes": "If the check-engine light FLASHES, stop driving: unburned fuel can destroy the catalytic converter."
+  },
+  {
+   "code": "P0307",
+   "title": "Cylinder 7 misfire",
+   "system": "Ignition",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Worn spark plug",
+     "likelihood": "common",
+     "diy_check": "Check when the plugs were last changed",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "text": "Failed ignition coil",
+     "likelihood": "common",
+     "diy_check": "With the engine OFF and cold, swap this coil with another cylinder: if the misfire moves, the coil is bad",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "text": "Faulty or clogged injector",
+     "likelihood": "possible",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "text": "Air leak near that cylinder",
+     "likelihood": "possible",
+     "repair_cost_id": "vacuum_leak"
+    },
+    {
+     "text": "Low compression (worn valves, head gasket)",
+     "likelihood": "rare",
+     "repair_cost_id": "head_gasket"
+    }
+   ],
+   "notes": "If the check-engine light FLASHES, stop driving: unburned fuel can destroy the catalytic converter."
+  },
+  {
+   "code": "P0308",
+   "title": "Cylinder 8 misfire",
+   "system": "Ignition",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Worn spark plug",
+     "likelihood": "common",
+     "diy_check": "Check when the plugs were last changed",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "text": "Failed ignition coil",
+     "likelihood": "common",
+     "diy_check": "With the engine OFF and cold, swap this coil with another cylinder: if the misfire moves, the coil is bad",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "text": "Faulty or clogged injector",
+     "likelihood": "possible",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "text": "Air leak near that cylinder",
+     "likelihood": "possible",
+     "repair_cost_id": "vacuum_leak"
+    },
+    {
+     "text": "Low compression (worn valves, head gasket)",
+     "likelihood": "rare",
+     "repair_cost_id": "head_gasket"
+    }
+   ],
+   "notes": "If the check-engine light FLASHES, stop driving: unburned fuel can destroy the catalytic converter."
+  },
+  {
+   "code": "P0313",
+   "title": "Misfire with low fuel",
+   "system": "Ignition",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Running with the tank nearly empty",
+     "likelihood": "common",
+     "diy_check": "Fill the tank and clear the code"
+    },
+    {
+     "text": "Weak fuel pump",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0325",
+   "title": "Knock sensor circuit (bank 1)",
+   "system": "Ignition",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Faulty knock sensor",
+     "likelihood": "common"
+    },
+    {
+     "text": "Wiring / connector fault",
+     "likelihood": "common"
+    }
+   ],
+   "notes": "The engine may run with less power to protect itself."
+  },
+  {
+   "code": "P0327",
+   "title": "Knock sensor signal low (bank 1)",
+   "system": "Ignition",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Faulty knock sensor or wiring",
+     "likelihood": "common"
+    }
+   ]
+  },
+  {
+   "code": "P0328",
+   "title": "Knock sensor signal high (bank 1)",
+   "system": "Ignition",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Faulty knock sensor or wiring",
+     "likelihood": "common"
+    },
+    {
+     "text": "Real engine knock (poor fuel, carbon)",
+     "likelihood": "possible",
+     "diy_check": "Use the fuel grade the maker recommends"
+    }
+   ]
+  },
+  {
+   "code": "P0335",
+   "title": "Crankshaft position sensor circuit",
+   "system": "Engine",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Failed crankshaft sensor",
+     "likelihood": "common",
+     "repair_cost_id": "camshaft_sensor"
+    },
+    {
+     "text": "Wiring / connector fault",
+     "likelihood": "possible"
+    }
+   ],
+   "notes": "The engine can stall suddenly or not start."
+  },
+  {
+   "code": "P0336",
+   "title": "Crankshaft position sensor range/performance",
+   "system": "Engine",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Failing crankshaft sensor",
+     "likelihood": "common",
+     "repair_cost_id": "camshaft_sensor"
+    },
+    {
+     "text": "Damaged reluctor ring",
+     "likelihood": "rare"
+    }
+   ]
+  },
+  {
+   "code": "P0340",
+   "title": "Camshaft position sensor circuit",
+   "system": "Engine",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Failed camshaft sensor",
+     "likelihood": "common",
+     "repair_cost_id": "camshaft_sensor"
+    },
+    {
+     "text": "Wiring / connector fault",
+     "likelihood": "possible",
+     "diy_check": "Check the sensor connector"
+    },
+    {
+     "text": "Timing chain/belt stretched or jumped",
+     "likelihood": "rare",
+     "repair_cost_id": "timing_chain"
+    }
+   ],
+   "notes": "Can cause hard starting or stalling."
+  },
+  {
+   "code": "P0341",
+   "title": "Camshaft position sensor range/performance",
+   "system": "Engine",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Failing camshaft sensor",
+     "likelihood": "common",
+     "repair_cost_id": "camshaft_sensor"
+    },
+    {
+     "text": "Stretched timing chain/belt",
+     "likelihood": "possible",
+     "repair_cost_id": "timing_chain"
+    }
+   ]
+  },
+  {
+   "code": "P0351",
+   "title": "Ignition coil A circuit",
+   "system": "Ignition",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Failed ignition coil",
+     "likelihood": "common",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "text": "Coil connector or wiring",
+     "likelihood": "possible",
+     "diy_check": "Check the coil connector is clicked in"
+    }
+   ],
+   "notes": "Usually comes with a misfire."
+  },
+  {
+   "code": "P0352",
+   "title": "Ignition coil B circuit",
+   "system": "Ignition",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Failed ignition coil",
+     "likelihood": "common",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "text": "Coil connector or wiring",
+     "likelihood": "possible",
+     "diy_check": "Check the coil connector is clicked in"
+    }
+   ],
+   "notes": "Usually comes with a misfire."
+  },
+  {
+   "code": "P0353",
+   "title": "Ignition coil C circuit",
+   "system": "Ignition",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Failed ignition coil",
+     "likelihood": "common",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "text": "Coil connector or wiring",
+     "likelihood": "possible",
+     "diy_check": "Check the coil connector is clicked in"
+    }
+   ],
+   "notes": "Usually comes with a misfire."
+  },
+  {
+   "code": "P0354",
+   "title": "Ignition coil D circuit",
+   "system": "Ignition",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Failed ignition coil",
+     "likelihood": "common",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "text": "Coil connector or wiring",
+     "likelihood": "possible",
+     "diy_check": "Check the coil connector is clicked in"
+    }
+   ],
+   "notes": "Usually comes with a misfire."
+  },
+  {
+   "code": "P0365",
+   "title": "Camshaft position sensor B circuit",
+   "system": "Engine",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Failed camshaft sensor",
+     "likelihood": "common",
+     "repair_cost_id": "camshaft_sensor"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0366",
+   "title": "Camshaft position sensor B range/performance",
+   "system": "Engine",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Failing sensor",
+     "likelihood": "common",
+     "repair_cost_id": "camshaft_sensor"
+    },
+    {
+     "text": "Timing chain stretch",
+     "likelihood": "possible",
+     "repair_cost_id": "timing_chain"
+    }
+   ]
+  },
+  {
+   "code": "P0380",
+   "title": "Glow plug circuit",
+   "system": "Diesel",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Failed glow plug(s)",
+     "likelihood": "common",
+     "repair_cost_id": "glow_plugs"
+    },
+    {
+     "text": "Glow plug control module or relay",
+     "likelihood": "possible"
+    }
+   ],
+   "notes": "Hard starting in cold weather."
+  },
+  {
+   "code": "P0381",
+   "title": "Glow plug warning lamp circuit",
+   "system": "Diesel",
+   "severity": "info",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Bulb / instrument fault",
+     "likelihood": "common"
+    }
+   ]
+  },
+  {
+   "code": "P0400",
+   "title": "EGR flow",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Clogged or sticking EGR valve",
+     "likelihood": "common",
+     "repair_cost_id": "egr_valve"
+    },
+    {
+     "text": "Blocked EGR passages",
+     "likelihood": "possible",
+     "repair_cost_id": "egr_valve"
+    }
+   ]
+  },
+  {
+   "code": "P0401",
+   "title": "EGR flow insufficient",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Carbon-clogged EGR valve or passages",
+     "likelihood": "common",
+     "repair_cost_id": "egr_valve"
+    },
+    {
+     "text": "Faulty EGR position sensor",
+     "likelihood": "possible"
+    },
+    {
+     "text": "Split vacuum hose to the EGR",
+     "likelihood": "possible",
+     "diy_check": "Check small vacuum hoses",
+     "repair_cost_id": "vacuum_leak"
+    }
+   ]
+  },
+  {
+   "code": "P0402",
+   "title": "EGR flow excessive",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "EGR valve stuck open",
+     "likelihood": "common",
+     "repair_cost_id": "egr_valve"
+    }
+   ],
+   "notes": "Can cause rough idle and stalling."
+  },
+  {
+   "code": "P0403",
+   "title": "EGR control circuit",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Faulty EGR valve motor/solenoid",
+     "likelihood": "common",
+     "repair_cost_id": "egr_valve"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0404",
+   "title": "EGR range/performance",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Sticking EGR valve",
+     "likelihood": "common",
+     "repair_cost_id": "egr_valve"
+    }
+   ]
+  },
+  {
+   "code": "P0410",
+   "title": "Secondary air injection system",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Failed secondary air pump",
+     "likelihood": "common"
+    },
+    {
+     "text": "Stuck check valve",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0411",
+   "title": "Secondary air injection incorrect flow",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Failed pump or check valve",
+     "likelihood": "common"
+    },
+    {
+     "text": "Blocked air passages",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0420",
+   "title": "Catalytic converter efficiency below threshold (bank 1)",
+   "system": "Emissions",
+   "severity": "major",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Worn-out catalytic converter",
+     "likelihood": "common",
+     "repair_cost_id": "catalytic_converter"
+    },
+    {
+     "text": "Faulty rear oxygen sensor",
+     "likelihood": "common",
+     "repair_cost_id": "o2_sensor"
+    },
+    {
+     "text": "Exhaust leak",
+     "likelihood": "possible",
+     "repair_cost_id": "exhaust_leak"
+    },
+    {
+     "text": "Engine misfires that damaged the catalyst",
+     "likelihood": "possible",
+     "repair_cost_id": "spark_plugs_coils"
+    }
+   ],
+   "notes": "Not urgent to drive, but it will fail an emissions inspection. A catalytic converter is expensive: check the cheap causes first."
+  },
+  {
+   "code": "P0430",
+   "title": "Catalytic converter efficiency below threshold (bank 2)",
+   "system": "Emissions",
+   "severity": "major",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Worn-out catalytic converter",
+     "likelihood": "common",
+     "repair_cost_id": "catalytic_converter"
+    },
+    {
+     "text": "Faulty rear oxygen sensor",
+     "likelihood": "common",
+     "repair_cost_id": "o2_sensor"
+    },
+    {
+     "text": "Exhaust leak",
+     "likelihood": "possible",
+     "repair_cost_id": "exhaust_leak"
+    }
+   ]
+  },
+  {
+   "code": "P0440",
+   "title": "Evaporative emission (EVAP) system",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Loose, damaged or wrong fuel cap",
+     "likelihood": "common",
+     "diy_check": "Check the fuel cap clicks shut and its seal is not cracked"
+    },
+    {
+     "text": "Cracked EVAP hose",
+     "likelihood": "common",
+     "repair_cost_id": "evap_leak"
+    },
+    {
+     "text": "Leaking purge or vent valve",
+     "likelihood": "possible",
+     "repair_cost_id": "evap_leak"
+    }
+   ]
+  },
+  {
+   "code": "P0441",
+   "title": "EVAP incorrect purge flow",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Faulty purge valve",
+     "likelihood": "common",
+     "repair_cost_id": "evap_leak"
+    },
+    {
+     "text": "Blocked or split hose",
+     "likelihood": "possible",
+     "repair_cost_id": "evap_leak"
+    }
+   ]
+  },
+  {
+   "code": "P0442",
+   "title": "EVAP small leak detected",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Loose, damaged or wrong fuel cap",
+     "likelihood": "common",
+     "diy_check": "Check the fuel cap clicks shut and its seal is not cracked"
+    },
+    {
+     "text": "Cracked EVAP hose",
+     "likelihood": "common",
+     "repair_cost_id": "evap_leak"
+    },
+    {
+     "text": "Leaking purge or vent valve",
+     "likelihood": "possible",
+     "repair_cost_id": "evap_leak"
+    }
+   ],
+   "notes": "Not urgent. Start with the fuel cap."
+  },
+  {
+   "code": "P0443",
+   "title": "EVAP purge valve circuit",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Faulty purge valve",
+     "likelihood": "common",
+     "repair_cost_id": "evap_leak"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0446",
+   "title": "EVAP vent control circuit",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Faulty vent valve (often near the fuel tank)",
+     "likelihood": "common",
+     "repair_cost_id": "evap_leak"
+    },
+    {
+     "text": "Blocked vent filter",
+     "likelihood": "possible",
+     "repair_cost_id": "evap_leak"
+    }
+   ]
+  },
+  {
+   "code": "P0449",
+   "title": "EVAP vent valve circuit",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Faulty vent valve",
+     "likelihood": "common",
+     "repair_cost_id": "evap_leak"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0455",
+   "title": "EVAP large leak detected",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Fuel cap missing or not closed",
+     "likelihood": "common",
+     "diy_check": "Check the fuel cap"
+    },
+    {
+     "text": "Disconnected or split EVAP hose",
+     "likelihood": "common",
+     "repair_cost_id": "evap_leak"
+    },
+    {
+     "text": "Faulty purge or vent valve",
+     "likelihood": "possible",
+     "repair_cost_id": "evap_leak"
+    }
+   ],
+   "notes": "If you smell fuel, have it checked straight away."
+  },
+  {
+   "code": "P0456",
+   "title": "EVAP very small leak detected",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Loose, damaged or wrong fuel cap",
+     "likelihood": "common",
+     "diy_check": "Check the fuel cap clicks shut and its seal is not cracked"
+    },
+    {
+     "text": "Cracked EVAP hose",
+     "likelihood": "common",
+     "repair_cost_id": "evap_leak"
+    },
+    {
+     "text": "Leaking purge or vent valve",
+     "likelihood": "possible",
+     "repair_cost_id": "evap_leak"
+    }
+   ],
+   "notes": "Not urgent. Start with the fuel cap."
+  },
+  {
+   "code": "P0457",
+   "title": "EVAP leak: fuel cap loose or off",
+   "system": "Emissions",
+   "severity": "info",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Fuel cap not tightened",
+     "likelihood": "common",
+     "diy_check": "Tighten the cap until it clicks; the light can take a few days to go off"
+    },
+    {
+     "text": "Worn fuel cap seal",
+     "likelihood": "possible",
+     "diy_check": "Replace the fuel cap"
+    }
+   ]
+  },
+  {
+   "code": "P0461",
+   "title": "Fuel level sensor range/performance",
+   "system": "Fuel",
+   "severity": "info",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Faulty fuel level sender",
+     "likelihood": "common"
+    }
+   ],
+   "notes": "The fuel gauge may be wrong: do not rely on it."
+  },
+  {
+   "code": "P0462",
+   "title": "Fuel level sensor signal low",
+   "system": "Fuel",
+   "severity": "info",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Faulty fuel level sender or wiring",
+     "likelihood": "common"
+    }
+   ],
+   "notes": "The fuel gauge may be wrong."
+  },
+  {
+   "code": "P0463",
+   "title": "Fuel level sensor signal high",
+   "system": "Fuel",
+   "severity": "info",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Faulty fuel level sender or wiring",
+     "likelihood": "common"
+    }
+   ],
+   "notes": "The fuel gauge may be wrong."
+  },
+  {
+   "code": "P0480",
+   "title": "Cooling fan 1 control circuit",
+   "system": "Cooling",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Failed fan relay or fuse",
+     "likelihood": "common",
+     "diy_check": "Check the fan fuse"
+    },
+    {
+     "text": "Failed fan motor or control module",
+     "likelihood": "possible",
+     "repair_cost_id": "radiator"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ],
+   "notes": "Watch the temperature gauge, especially in traffic. Stop if it overheats."
+  },
+  {
+   "code": "P0481",
+   "title": "Cooling fan 2 control circuit",
+   "system": "Cooling",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Failed fan relay or fuse",
+     "likelihood": "common",
+     "diy_check": "Check the fan fuse"
+    },
+    {
+     "text": "Failed fan motor",
+     "likelihood": "possible",
+     "repair_cost_id": "radiator"
+    }
+   ],
+   "notes": "Watch the temperature gauge."
+  },
+  {
+   "code": "P0496",
+   "title": "EVAP flow during a non-purge condition",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Purge valve stuck open",
+     "likelihood": "common",
+     "repair_cost_id": "evap_leak"
+    }
+   ],
+   "notes": "Can cause hard starting just after refuelling."
+  },
+  {
+   "code": "P0497",
+   "title": "EVAP low purge flow",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Blocked purge valve or hose",
+     "likelihood": "common",
+     "repair_cost_id": "evap_leak"
+    }
+   ]
+  },
+  {
+   "code": "P0500",
+   "title": "Vehicle speed sensor",
+   "system": "Drivetrain",
+   "severity": "minor",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty speed sensor",
+     "likelihood": "common"
+    },
+    {
+     "text": "ABS wheel speed sensor fault",
+     "likelihood": "possible",
+     "repair_cost_id": "abs_module"
+    }
+   ],
+   "notes": "The speedometer and cruise control may not work."
+  },
+  {
+   "code": "P0505",
+   "title": "Idle air control system",
+   "system": "Throttle",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Dirty throttle body or idle valve",
+     "likelihood": "common",
+     "repair_cost_id": "throttle_body"
+    },
+    {
+     "text": "Vacuum leak",
+     "likelihood": "possible",
+     "repair_cost_id": "vacuum_leak"
+    }
+   ]
+  },
+  {
+   "code": "P0506",
+   "title": "Idle speed lower than expected",
+   "system": "Throttle",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Dirty throttle body",
+     "likelihood": "common",
+     "repair_cost_id": "throttle_body"
+    },
+    {
+     "text": "Restricted air intake",
+     "likelihood": "possible",
+     "diy_check": "Check the air filter"
+    }
+   ]
+  },
+  {
+   "code": "P0507",
+   "title": "Idle speed higher than expected",
+   "system": "Throttle",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Vacuum leak",
+     "likelihood": "common",
+     "repair_cost_id": "vacuum_leak"
+    },
+    {
+     "text": "Dirty or faulty throttle body",
+     "likelihood": "possible",
+     "repair_cost_id": "throttle_body"
+    }
+   ]
+  },
+  {
+   "code": "P0520",
+   "title": "Oil pressure sensor/switch circuit",
+   "system": "Lubrication",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty oil pressure sensor (often leaking)",
+     "likelihood": "common"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ],
+   "notes": "Check the oil level. If the red oil light comes on, stop the engine."
+  },
+  {
+   "code": "P0521",
+   "title": "Oil pressure sensor range/performance",
+   "system": "Lubrication",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Low or wrong oil",
+     "likelihood": "common",
+     "diy_check": "Check the oil level"
+    },
+    {
+     "text": "Faulty sensor",
+     "likelihood": "common"
+    },
+    {
+     "text": "Worn oil pump or engine bearings",
+     "likelihood": "rare",
+     "repair_cost_id": "engine_replacement"
+    }
+   ]
+  },
+  {
+   "code": "P0522",
+   "title": "Oil pressure sensor signal low",
+   "system": "Lubrication",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty sensor or wiring",
+     "likelihood": "common"
+    },
+    {
+     "text": "Low oil level",
+     "likelihood": "possible",
+     "diy_check": "Check the oil level"
+    }
+   ]
+  },
+  {
+   "code": "P0523",
+   "title": "Oil pressure sensor signal high",
+   "system": "Lubrication",
+   "severity": "minor",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty sensor or wiring",
+     "likelihood": "common"
+    }
+   ]
+  },
+  {
+   "code": "P0524",
+   "title": "Engine oil pressure too low",
+   "system": "Lubrication",
+   "severity": "critical",
+   "drive": "stop",
+   "causes": [
+    {
+     "text": "Low oil level",
+     "likelihood": "common",
+     "diy_check": "Check the oil level with the engine off on level ground"
+    },
+    {
+     "text": "Failing oil pump or blocked pickup",
+     "likelihood": "possible",
+     "repair_cost_id": "engine_replacement"
+    },
+    {
+     "text": "Worn engine bearings",
+     "likelihood": "possible",
+     "repair_cost_id": "engine_replacement"
+    },
+    {
+     "text": "Faulty sensor",
+     "likelihood": "possible"
+    }
+   ],
+   "notes": "Stop the engine. Driving without oil pressure destroys an engine in minutes."
+  },
+  {
+   "code": "P0530",
+   "title": "A/C refrigerant pressure sensor circuit",
+   "system": "Climate",
+   "severity": "info",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Faulty pressure sensor",
+     "likelihood": "common"
+    },
+    {
+     "text": "Low refrigerant",
+     "likelihood": "possible",
+     "repair_cost_id": "ac_recharge"
+    }
+   ],
+   "notes": "A/C may not work; the car is fine to drive."
+  },
+  {
+   "code": "P0560",
+   "title": "System voltage",
+   "system": "Electrical",
+   "severity": "minor",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Weak battery",
+     "likelihood": "common",
+     "diy_check": "Have the battery tested (free at many parts stores)",
+     "repair_cost_id": "battery_12v"
+    },
+    {
+     "text": "Failing alternator",
+     "likelihood": "possible",
+     "repair_cost_id": "alternator"
+    },
+    {
+     "text": "Corroded battery terminals",
+     "likelihood": "common",
+     "diy_check": "Check terminals for white/green crust"
+    }
+   ]
+  },
+  {
+   "code": "P0562",
+   "title": "System voltage low",
+   "system": "Electrical",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Failing alternator",
+     "likelihood": "common",
+     "repair_cost_id": "alternator"
+    },
+    {
+     "text": "Weak battery",
+     "likelihood": "common",
+     "diy_check": "Have the battery and charging tested",
+     "repair_cost_id": "battery_12v"
+    },
+    {
+     "text": "Loose or corroded battery cables",
+     "likelihood": "possible",
+     "diy_check": "Check the battery terminals are tight"
+    }
+   ],
+   "notes": "The car may stall if the battery runs flat while driving."
+  },
+  {
+   "code": "P0563",
+   "title": "System voltage high",
+   "system": "Electrical",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty alternator voltage regulator",
+     "likelihood": "common",
+     "repair_cost_id": "alternator"
+    }
+   ],
+   "notes": "Overcharging can damage the battery and electronics."
+  },
+  {
+   "code": "P0571",
+   "title": "Brake switch circuit",
+   "system": "Electrical",
+   "severity": "minor",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty brake light switch",
+     "likelihood": "common",
+     "diy_check": "Ask someone to check the brake lights work"
+    }
+   ],
+   "notes": "Brake lights or cruise control may not work: get it fixed soon."
+  },
+  {
+   "code": "P0601",
+   "title": "Engine control module memory error",
+   "system": "Electronics",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Engine computer fault",
+     "likelihood": "common",
+     "repair_cost_id": "electrical_diagnosis"
+    },
+    {
+     "text": "Bad software update / tuning",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0603",
+   "title": "Engine control module keep-alive memory error",
+   "system": "Electronics",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Battery was recently disconnected",
+     "likelihood": "common",
+     "diy_check": "Clear the code and see if it returns"
+    },
+    {
+     "text": "Weak battery / poor ground",
+     "likelihood": "possible",
+     "repair_cost_id": "battery_12v"
+    }
+   ]
+  },
+  {
+   "code": "P0606",
+   "title": "Engine control module processor fault",
+   "system": "Electronics",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Engine computer fault",
+     "likelihood": "common",
+     "repair_cost_id": "electrical_diagnosis"
+    },
+    {
+     "text": "Low system voltage",
+     "likelihood": "possible",
+     "diy_check": "Check the battery",
+     "repair_cost_id": "battery_12v"
+    }
+   ]
+  },
+  {
+   "code": "P0620",
+   "title": "Generator (alternator) control circuit",
+   "system": "Electrical",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Failing alternator",
+     "likelihood": "common",
+     "repair_cost_id": "alternator"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ],
+   "notes": "The battery may stop charging."
+  },
+  {
+   "code": "P0627",
+   "title": "Fuel pump control circuit open",
+   "system": "Fuel",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Fuel pump control module or relay",
+     "likelihood": "common"
+    },
+    {
+     "text": "Wiring / connector fault",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0700",
+   "title": "Transmission control system: check transmission codes",
+   "system": "Transmission",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "A fault stored in the transmission computer",
+     "likelihood": "common",
+     "diy_check": "Read the transmission computer with a better scanner or at a mechanic"
+    }
+   ],
+   "notes": "This code only says \"look at the transmission\". The real fault is in the transmission computer."
+  },
+  {
+   "code": "P0705",
+   "title": "Transmission range sensor circuit",
+   "system": "Transmission",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty range (PRNDL) sensor or adjustment",
+     "likelihood": "common"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ],
+   "notes": "The car may not start in Park or show the wrong gear."
+  },
+  {
+   "code": "P0715",
+   "title": "Transmission input speed sensor circuit",
+   "system": "Transmission",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty input speed sensor",
+     "likelihood": "common"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ],
+   "notes": "Harsh or wrong shifts; possible limp mode."
+  },
+  {
+   "code": "P0717",
+   "title": "Transmission input speed sensor no signal",
+   "system": "Transmission",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty input speed sensor",
+     "likelihood": "common"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0720",
+   "title": "Transmission output speed sensor circuit",
+   "system": "Transmission",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty output speed sensor",
+     "likelihood": "common"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0725",
+   "title": "Engine speed input to transmission",
+   "system": "Transmission",
+   "severity": "minor",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Crankshaft sensor signal problem",
+     "likelihood": "common",
+     "repair_cost_id": "camshaft_sensor"
+    }
+   ]
+  },
+  {
+   "code": "P0730",
+   "title": "Incorrect gear ratio",
+   "system": "Transmission",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Transmission slipping (worn clutches)",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "text": "Low fluid",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_service"
+    },
+    {
+     "text": "Faulty solenoid",
+     "likelihood": "possible",
+     "repair_cost_id": "transmission_repair"
+    }
+   ],
+   "notes": "Drive gently and have it checked: slipping gets worse quickly."
+  },
+  {
+   "code": "P0731",
+   "title": "Gear 1 incorrect ratio",
+   "system": "Transmission",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Worn clutch pack for that gear",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "text": "Low or burnt fluid",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_service"
+    },
+    {
+     "text": "Solenoid fault",
+     "likelihood": "possible",
+     "repair_cost_id": "transmission_repair"
+    }
+   ],
+   "notes": "Drive gently and have it checked."
+  },
+  {
+   "code": "P0732",
+   "title": "Gear 2 incorrect ratio",
+   "system": "Transmission",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Worn clutch pack for that gear",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "text": "Low or burnt fluid",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_service"
+    },
+    {
+     "text": "Solenoid fault",
+     "likelihood": "possible",
+     "repair_cost_id": "transmission_repair"
+    }
+   ],
+   "notes": "Drive gently and have it checked."
+  },
+  {
+   "code": "P0733",
+   "title": "Gear 3 incorrect ratio",
+   "system": "Transmission",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Worn clutch pack for that gear",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "text": "Low or burnt fluid",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_service"
+    },
+    {
+     "text": "Solenoid fault",
+     "likelihood": "possible",
+     "repair_cost_id": "transmission_repair"
+    }
+   ],
+   "notes": "Drive gently and have it checked."
+  },
+  {
+   "code": "P0734",
+   "title": "Gear 4 incorrect ratio",
+   "system": "Transmission",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Worn clutch pack for that gear",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "text": "Low or burnt fluid",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_service"
+    },
+    {
+     "text": "Solenoid fault",
+     "likelihood": "possible",
+     "repair_cost_id": "transmission_repair"
+    }
+   ],
+   "notes": "Drive gently and have it checked."
+  },
+  {
+   "code": "P0740",
+   "title": "Torque converter clutch circuit",
+   "system": "Transmission",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Low or old transmission fluid",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_service"
+    },
+    {
+     "text": "Faulty solenoid or valve body",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "text": "Wiring / connector fault",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0741",
+   "title": "Torque converter clutch stuck off",
+   "system": "Transmission",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Worn torque converter clutch",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "text": "Low or old fluid",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_service"
+    },
+    {
+     "text": "Faulty TCC solenoid",
+     "likelihood": "possible",
+     "repair_cost_id": "transmission_repair"
+    }
+   ],
+   "notes": "Fuel use goes up; vibration at steady speed."
+  },
+  {
+   "code": "P0743",
+   "title": "Torque converter clutch electrical",
+   "system": "Transmission",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Low or old transmission fluid",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_service"
+    },
+    {
+     "text": "Faulty solenoid or valve body",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "text": "Wiring / connector fault",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0750",
+   "title": "Shift solenoid A circuit",
+   "system": "Transmission",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Low or old transmission fluid",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_service"
+    },
+    {
+     "text": "Faulty solenoid or valve body",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "text": "Wiring / connector fault",
+     "likelihood": "possible"
+    }
+   ],
+   "notes": "May be stuck in one gear (limp mode)."
+  },
+  {
+   "code": "P0755",
+   "title": "Shift solenoid B circuit",
+   "system": "Transmission",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Low or old transmission fluid",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_service"
+    },
+    {
+     "text": "Faulty solenoid or valve body",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "text": "Wiring / connector fault",
+     "likelihood": "possible"
+    }
+   ],
+   "notes": "May be stuck in one gear (limp mode)."
+  },
+  {
+   "code": "P0760",
+   "title": "Shift solenoid C circuit",
+   "system": "Transmission",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Low or old transmission fluid",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_service"
+    },
+    {
+     "text": "Faulty solenoid or valve body",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "text": "Wiring / connector fault",
+     "likelihood": "possible"
+    }
+   ],
+   "notes": "May be stuck in one gear (limp mode)."
+  },
+  {
+   "code": "P0765",
+   "title": "Shift solenoid D circuit",
+   "system": "Transmission",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Low or old transmission fluid",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_service"
+    },
+    {
+     "text": "Faulty solenoid or valve body",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "text": "Wiring / connector fault",
+     "likelihood": "possible"
+    }
+   ],
+   "notes": "May be stuck in one gear (limp mode)."
+  },
+  {
+   "code": "P0776",
+   "title": "Pressure control solenoid B performance",
+   "system": "Transmission",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Low or old transmission fluid",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_service"
+    },
+    {
+     "text": "Faulty solenoid or valve body",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "text": "Wiring / connector fault",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0841",
+   "title": "Transmission fluid pressure sensor/switch A",
+   "system": "Transmission",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Low or old transmission fluid",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_service"
+    },
+    {
+     "text": "Faulty solenoid or valve body",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "text": "Wiring / connector fault",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P0868",
+   "title": "Transmission fluid pressure low",
+   "system": "Transmission",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Low fluid / leak",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_service"
+    },
+    {
+     "text": "Worn pump or valve body",
+     "likelihood": "possible",
+     "repair_cost_id": "transmission_repair"
+    }
+   ]
+  },
+  {
+   "code": "P0894",
+   "title": "Transmission component slipping",
+   "system": "Transmission",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Worn clutches or bands",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "text": "Low or burnt fluid",
+     "likelihood": "common",
+     "repair_cost_id": "transmission_service"
+    }
+   ],
+   "notes": "Drive gently: slipping gets worse quickly."
+  },
+  {
+   "code": "P0A7F",
+   "title": "Hybrid battery pack deterioration",
+   "system": "Hybrid",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Aged hybrid battery",
+     "likelihood": "common",
+     "repair_cost_id": "hybrid_battery"
+    },
+    {
+     "text": "Blocked battery cooling",
+     "likelihood": "possible",
+     "diy_check": "Check the battery cooling vent is not blocked"
+    }
+   ],
+   "notes": "High-voltage parts: never open the battery yourself."
+  },
+  {
+   "code": "P0A80",
+   "title": "Replace hybrid battery pack",
+   "system": "Hybrid",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Worn hybrid battery cells",
+     "likelihood": "common",
+     "repair_cost_id": "hybrid_battery"
+    },
+    {
+     "text": "Battery cooling fan blocked by dust",
+     "likelihood": "possible",
+     "diy_check": "Check the battery cooling vent (often near the rear seat) is not blocked"
+    }
+   ],
+   "notes": "High-voltage parts: never open the battery yourself."
+  },
+  {
+   "code": "P0AA6",
+   "title": "Hybrid battery voltage system isolation fault",
+   "system": "Hybrid",
+   "severity": "critical",
+   "drive": "stop",
+   "causes": [
+    {
+     "text": "High-voltage insulation fault (cable, inverter, A/C compressor)",
+     "likelihood": "common",
+     "repair_cost_id": "electrical_diagnosis"
+    }
+   ],
+   "notes": "High-voltage safety fault. Do not touch orange cables; have it checked by a hybrid-trained mechanic."
+  },
+  {
+   "code": "P2002",
+   "title": "Diesel particulate filter efficiency below threshold",
+   "system": "Diesel",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Damaged or removed DPF",
+     "likelihood": "common",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "text": "Faulty DPF pressure sensor or hoses",
+     "likelihood": "possible"
+    }
+   ],
+   "notes": "A missing (removed) DPF is illegal on public roads in many countries."
+  },
+  {
+   "code": "P2004",
+   "title": "Intake manifold runner stuck open (bank 1)",
+   "system": "Air intake",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Sticking intake flaps (carbon)",
+     "likelihood": "common",
+     "repair_cost_id": "vacuum_leak"
+    },
+    {
+     "text": "Broken flap actuator or linkage",
+     "likelihood": "possible"
+    }
+   ],
+   "notes": "Common on some diesels and direct-injection petrols."
+  },
+  {
+   "code": "P2015",
+   "title": "Intake manifold runner position sensor range",
+   "system": "Air intake",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Worn intake manifold flap linkage or sensor",
+     "likelihood": "common"
+    }
+   ],
+   "notes": "Common on VW/Audi/Ford engines; often needs a new intake manifold or a repair kit."
+  },
+  {
+   "code": "P203F",
+   "title": "AdBlue (DEF) level too low",
+   "system": "Diesel",
+   "severity": "minor",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "AdBlue tank nearly empty",
+     "likelihood": "common",
+     "diy_check": "Top up AdBlue (sold at fuel stations)"
+    },
+    {
+     "text": "Faulty level sensor",
+     "likelihood": "possible",
+     "repair_cost_id": "adblue_system"
+    }
+   ],
+   "notes": "If ignored, the car may not restart."
+  },
+  {
+   "code": "P2088",
+   "title": "Camshaft timing solenoid circuit low (bank 1)",
+   "system": "Engine",
+   "severity": "minor",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty VVT solenoid",
+     "likelihood": "common",
+     "repair_cost_id": "cam_phasers"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P2089",
+   "title": "Camshaft timing solenoid circuit high (bank 1)",
+   "system": "Engine",
+   "severity": "minor",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty VVT solenoid",
+     "likelihood": "common",
+     "repair_cost_id": "cam_phasers"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P2096",
+   "title": "Post-catalyst fuel trim too lean (bank 1)",
+   "system": "Fuel/air mixture",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Exhaust leak before the rear oxygen sensor",
+     "likelihood": "common",
+     "repair_cost_id": "exhaust_leak"
+    },
+    {
+     "text": "Worn oxygen sensor",
+     "likelihood": "possible",
+     "repair_cost_id": "o2_sensor"
+    },
+    {
+     "text": "Air leak",
+     "likelihood": "possible",
+     "repair_cost_id": "vacuum_leak"
+    }
+   ]
+  },
+  {
+   "code": "P2097",
+   "title": "Post-catalyst fuel trim too rich (bank 1)",
+   "system": "Fuel/air mixture",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Worn oxygen sensor",
+     "likelihood": "common",
+     "repair_cost_id": "o2_sensor"
+    },
+    {
+     "text": "Worn catalytic converter",
+     "likelihood": "possible",
+     "repair_cost_id": "catalytic_converter"
+    }
+   ]
+  },
+  {
+   "code": "P20E8",
+   "title": "AdBlue (DEF) pressure too low",
+   "system": "Diesel",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Failed AdBlue pump or heater",
+     "likelihood": "common",
+     "repair_cost_id": "adblue_system"
+    },
+    {
+     "text": "Crystallised or frozen AdBlue line",
+     "likelihood": "possible",
+     "repair_cost_id": "adblue_system"
+    },
+    {
+     "text": "Low AdBlue level",
+     "likelihood": "possible",
+     "diy_check": "Top up AdBlue"
+    }
+   ]
+  },
+  {
+   "code": "P20EE",
+   "title": "SCR NOx catalyst efficiency below threshold",
+   "system": "Diesel",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Poor-quality or contaminated AdBlue (DEF)",
+     "likelihood": "common",
+     "repair_cost_id": "adblue_system"
+    },
+    {
+     "text": "Faulty NOx sensor",
+     "likelihood": "common"
+    },
+    {
+     "text": "Clogged AdBlue injector",
+     "likelihood": "possible",
+     "repair_cost_id": "adblue_system"
+    }
+   ],
+   "notes": "Many cars start a countdown and will not restart after a set distance."
+  },
+  {
+   "code": "P2101",
+   "title": "Throttle actuator control motor range/performance",
+   "system": "Throttle",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Dirty or failing throttle body",
+     "likelihood": "common",
+     "repair_cost_id": "throttle_body"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ],
+   "notes": "Often causes limp mode."
+  },
+  {
+   "code": "P2111",
+   "title": "Throttle actuator stuck open",
+   "system": "Throttle",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Dirty or failing throttle body",
+     "likelihood": "common",
+     "repair_cost_id": "throttle_body"
+    }
+   ],
+   "notes": "Often causes limp mode."
+  },
+  {
+   "code": "P2112",
+   "title": "Throttle actuator stuck closed",
+   "system": "Throttle",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Dirty or failing throttle body",
+     "likelihood": "common",
+     "repair_cost_id": "throttle_body"
+    }
+   ],
+   "notes": "Often causes limp mode."
+  },
+  {
+   "code": "P2122",
+   "title": "Accelerator pedal sensor D signal low",
+   "system": "Throttle",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty pedal sensor",
+     "likelihood": "common",
+     "repair_cost_id": "throttle_body"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ],
+   "notes": "Often causes limp mode."
+  },
+  {
+   "code": "P2123",
+   "title": "Accelerator pedal sensor D signal high",
+   "system": "Throttle",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty pedal sensor",
+     "likelihood": "common",
+     "repair_cost_id": "throttle_body"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P2135",
+   "title": "Throttle position sensor A/B correlation",
+   "system": "Throttle",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty throttle body",
+     "likelihood": "common",
+     "repair_cost_id": "throttle_body"
+    },
+    {
+     "text": "Wiring / connector fault",
+     "likelihood": "common",
+     "diy_check": "Check the throttle body connector"
+    }
+   ],
+   "notes": "Often causes limp mode."
+  },
+  {
+   "code": "P2138",
+   "title": "Accelerator pedal sensor D/E correlation",
+   "system": "Throttle",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty pedal sensor",
+     "likelihood": "common",
+     "repair_cost_id": "throttle_body"
+    },
+    {
+     "text": "Wiring fault",
+     "likelihood": "possible"
+    }
+   ],
+   "notes": "Often causes limp mode."
+  },
+  {
+   "code": "P2181",
+   "title": "Cooling system performance",
+   "system": "Cooling",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Thermostat stuck open or closed",
+     "likelihood": "common",
+     "repair_cost_id": "thermostat"
+    },
+    {
+     "text": "Low coolant",
+     "likelihood": "common",
+     "diy_check": "Check coolant level with the engine COLD",
+     "repair_cost_id": "coolant_leak_minor"
+    },
+    {
+     "text": "Faulty temperature sensor",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P2187",
+   "title": "System too lean at idle (bank 1)",
+   "system": "Fuel/air mixture",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Vacuum or intake air leak (cracked hose, intake gasket)",
+     "likelihood": "common",
+     "diy_check": "Listen for a hiss around the engine at idle",
+     "repair_cost_id": "vacuum_leak"
+    },
+    {
+     "text": "Leaking PCV valve / crankcase breather",
+     "likelihood": "possible",
+     "diy_check": "Remove the oil cap at idle: strong suction or whistling points to it",
+     "repair_cost_id": "pcv_valve"
+    },
+    {
+     "text": "Dirty or faulty mass air flow (MAF) sensor",
+     "likelihood": "common",
+     "diy_check": "Check the air filter and the MAF connector",
+     "repair_cost_id": "maf_sensor"
+    }
+   ]
+  },
+  {
+   "code": "P2188",
+   "title": "System too rich at idle (bank 1)",
+   "system": "Fuel/air mixture",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Leaking or stuck-open injector",
+     "likelihood": "possible",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "text": "Faulty MAF or oxygen sensor reading wrong",
+     "likelihood": "common",
+     "repair_cost_id": "maf_sensor"
+    },
+    {
+     "text": "Fuel pressure too high (regulator)",
+     "likelihood": "possible"
+    },
+    {
+     "text": "Very dirty air filter",
+     "likelihood": "common",
+     "diy_check": "Look at the air filter"
+    }
+   ]
+  },
+  {
+   "code": "P2195",
+   "title": "Oxygen sensor stuck lean (bank 1)",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Worn oxygen sensor",
+     "likelihood": "common",
+     "repair_cost_id": "o2_sensor"
+    },
+    {
+     "text": "Air or exhaust leak",
+     "likelihood": "possible",
+     "repair_cost_id": "vacuum_leak"
+    }
+   ]
+  },
+  {
+   "code": "P2196",
+   "title": "Oxygen sensor stuck rich (bank 1)",
+   "system": "Emissions",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Worn oxygen sensor",
+     "likelihood": "common",
+     "repair_cost_id": "o2_sensor"
+    },
+    {
+     "text": "Leaking injector",
+     "likelihood": "possible",
+     "repair_cost_id": "fuel_injectors"
+    }
+   ]
+  },
+  {
+   "code": "P2263",
+   "title": "Turbo boost system performance",
+   "system": "Turbo",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Boost leak",
+     "likelihood": "common",
+     "diy_check": "Check intercooler hoses with the engine off",
+     "repair_cost_id": "vacuum_leak"
+    },
+    {
+     "text": "Sticking turbo vanes / actuator",
+     "likelihood": "common",
+     "repair_cost_id": "turbo"
+    },
+    {
+     "text": "Faulty boost sensor",
+     "likelihood": "possible"
+    }
+   ]
+  },
+  {
+   "code": "P2279",
+   "title": "Intake air system leak",
+   "system": "Air intake",
+   "severity": "minor",
+   "drive": "ok",
+   "causes": [
+    {
+     "text": "Cracked intake hose or loose clamp",
+     "likelihood": "common",
+     "diy_check": "Look for cracked hoses between the air filter and the engine",
+     "repair_cost_id": "vacuum_leak"
+    },
+    {
+     "text": "Leaking PCV / breather",
+     "likelihood": "common",
+     "repair_cost_id": "pcv_valve"
+    },
+    {
+     "text": "Intake manifold gasket",
+     "likelihood": "possible",
+     "repair_cost_id": "vacuum_leak"
+    }
+   ]
+  },
+  {
+   "code": "P242F",
+   "title": "Diesel particulate filter restriction: ash build-up",
+   "system": "Diesel",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "DPF full of ash (high mileage)",
+     "likelihood": "common",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "text": "Wrong engine oil (not low-ash)",
+     "likelihood": "possible",
+     "diy_check": "Use the oil spec the maker requires"
+    }
+   ]
+  },
+  {
+   "code": "P2453",
+   "title": "DPF pressure sensor range/performance",
+   "system": "Diesel",
+   "severity": "minor",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Faulty DPF pressure sensor",
+     "likelihood": "common"
+    },
+    {
+     "text": "Split or blocked sensor hoses",
+     "likelihood": "common",
+     "diy_check": "Check the two small hoses from the DPF to the sensor"
+    }
+   ]
+  },
+  {
+   "code": "P2463",
+   "title": "Diesel particulate filter soot build-up",
+   "system": "Diesel",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Too many short trips (DPF cannot regenerate)",
+     "likelihood": "common",
+     "diy_check": "A 20-30 minute drive at steady motorway speed may let it regenerate",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "text": "Faulty EGR valve or injectors making extra soot",
+     "likelihood": "possible",
+     "repair_cost_id": "egr_valve"
+    },
+    {
+     "text": "Faulty DPF sensor",
+     "likelihood": "possible"
+    }
+   ],
+   "notes": "Left too long, a forced regeneration or a new DPF may be needed."
+  },
+  {
+   "code": "P2BAD",
+   "title": "NOx exceedance: root cause unknown",
+   "system": "Diesel",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "AdBlue quality or dosing fault",
+     "likelihood": "common",
+     "repair_cost_id": "adblue_system"
+    },
+    {
+     "text": "Faulty NOx sensor",
+     "likelihood": "common"
+    },
+    {
+     "text": "EGR fault",
+     "likelihood": "possible",
+     "repair_cost_id": "egr_valve"
+    }
+   ]
+  },
+  {
+   "code": "U0073",
+   "title": "Control module communication bus off",
+   "system": "Network",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Wiring or connector fault on the CAN bus",
+     "likelihood": "common",
+     "repair_cost_id": "electrical_diagnosis"
+    },
+    {
+     "text": "Faulty control module",
+     "likelihood": "possible",
+     "repair_cost_id": "electrical_diagnosis"
+    },
+    {
+     "text": "Low battery voltage",
+     "likelihood": "possible",
+     "diy_check": "Check the battery",
+     "repair_cost_id": "battery_12v"
+    }
+   ]
+  },
+  {
+   "code": "U0100",
+   "title": "Lost communication with the engine computer (ECM)",
+   "system": "Network",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Low battery voltage",
+     "likelihood": "common",
+     "diy_check": "Have the battery tested",
+     "repair_cost_id": "battery_12v"
+    },
+    {
+     "text": "Wiring / connector fault",
+     "likelihood": "common",
+     "repair_cost_id": "electrical_diagnosis"
+    },
+    {
+     "text": "Faulty module",
+     "likelihood": "possible",
+     "repair_cost_id": "electrical_diagnosis"
+    }
+   ],
+   "notes": "The car may not start or may stall."
+  },
+  {
+   "code": "U0101",
+   "title": "Lost communication with the transmission computer (TCM)",
+   "system": "Network",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Low battery voltage",
+     "likelihood": "common",
+     "diy_check": "Have the battery tested",
+     "repair_cost_id": "battery_12v"
+    },
+    {
+     "text": "Wiring / connector fault",
+     "likelihood": "common",
+     "repair_cost_id": "electrical_diagnosis"
+    },
+    {
+     "text": "Faulty module",
+     "likelihood": "possible",
+     "repair_cost_id": "electrical_diagnosis"
+    }
+   ],
+   "notes": "The gearbox may go into limp mode."
+  },
+  {
+   "code": "U0121",
+   "title": "Lost communication with the ABS module",
+   "system": "Network",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Low battery voltage",
+     "likelihood": "common",
+     "diy_check": "Have the battery tested",
+     "repair_cost_id": "battery_12v"
+    },
+    {
+     "text": "Wiring / connector fault",
+     "likelihood": "common",
+     "repair_cost_id": "electrical_diagnosis"
+    },
+    {
+     "text": "Faulty module",
+     "likelihood": "possible",
+     "repair_cost_id": "electrical_diagnosis"
+    }
+   ],
+   "notes": "ABS and stability control may be off: brake earlier."
+  },
+  {
+   "code": "U0140",
+   "title": "Lost communication with the body control module",
+   "system": "Network",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Low battery voltage",
+     "likelihood": "common",
+     "diy_check": "Have the battery tested",
+     "repair_cost_id": "battery_12v"
+    },
+    {
+     "text": "Wiring / connector fault",
+     "likelihood": "common",
+     "repair_cost_id": "electrical_diagnosis"
+    },
+    {
+     "text": "Faulty module",
+     "likelihood": "possible",
+     "repair_cost_id": "electrical_diagnosis"
+    }
+   ],
+   "notes": "Lights, locks or wipers may misbehave."
+  },
+  {
+   "code": "U0151",
+   "title": "Lost communication with the airbag (restraints) module",
+   "system": "Network",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Low battery voltage",
+     "likelihood": "common",
+     "diy_check": "Have the battery tested",
+     "repair_cost_id": "battery_12v"
+    },
+    {
+     "text": "Wiring / connector fault",
+     "likelihood": "common",
+     "repair_cost_id": "electrical_diagnosis"
+    },
+    {
+     "text": "Faulty module",
+     "likelihood": "possible",
+     "repair_cost_id": "electrical_diagnosis"
+    }
+   ],
+   "notes": "The airbags may not work. Have it checked; do not work on airbags yourself."
+  },
+  {
+   "code": "U0155",
+   "title": "Lost communication with the instrument cluster",
+   "system": "Network",
+   "severity": "major",
+   "drive": "caution",
+   "causes": [
+    {
+     "text": "Low battery voltage",
+     "likelihood": "common",
+     "diy_check": "Have the battery tested",
+     "repair_cost_id": "battery_12v"
+    },
+    {
+     "text": "Wiring / connector fault",
+     "likelihood": "common",
+     "repair_cost_id": "electrical_diagnosis"
+    },
+    {
+     "text": "Faulty module",
+     "likelihood": "possible",
+     "repair_cost_id": "electrical_diagnosis"
+    }
+   ],
+   "notes": "Gauges and warnings may not show."
+  }
+ ]
+}

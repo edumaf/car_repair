@@ -5,8 +5,19 @@ export const META = {
   dataVersion: 'data_version',
   onboardingDone: 'onboarding_done',
   onboardingAnswers: 'onboarding_answers',
+  /** '1' once the paywall was shown after the first vehicle report (CLAUDE.md §9 placements). */
+  firstPaywallShown: 'first_paywall_shown',
+  /** Id of the car whose inspection is the free one (CLAUDE.md §9). */
+  freeInspectionCarId: 'free_inspection_car_id',
   /** Dev-only: '1' = pretend the user has Premium (CLAUDE.md §9). */
   simulatePremium: 'dev_simulate_premium',
+  /** Dev-only: API mode picked in Settings (mock / direct / live). */
+  apiMode: 'dev_api_mode',
+  /** Region picked in Settings (us / uk / ro / eu / other); otherwise detected from the phone. */
+  region: 'region',
+  /** '1' = the user turned off anonymous usage stats (Settings). */
+  analyticsOff: 'analytics_off',
+  lang: 'lang',
 } as const;
 
 export async function getMeta(db: SqlDb, key: string): Promise<string | null> {
