@@ -2,7 +2,15 @@ import type { PhotoCheckRequest, PhotoCheckResult } from '../photoCheck/types';
 import type { Powertrain } from '../types';
 import type { VehicleReport } from '../vehicle/types';
 
-export type ApiErrorCode = 'network' | 'timeout' | 'not_found' | 'quota_exceeded' | 'invalid_response' | 'not_configured' | 'server';
+export type ApiErrorCode =
+  | 'network'
+  | 'timeout'
+  | 'not_found'
+  | 'quota_exceeded'
+  | 'daily_limit'
+  | 'invalid_response'
+  | 'not_configured'
+  | 'server';
 
 export class ApiError extends Error {
   constructor(
@@ -41,6 +49,10 @@ export interface QuotaStatus {
 
 export interface VehicleClient {
   getReport(lookup: VehicleLookup): Promise<VehicleReport>;
+  /** Makes with NHTSA records for a model year, as NHTSA writes them (e.g. "HONDA"). */
+  listMakes(year: number): Promise<string[]>;
+  /** Model names for a make/year, as NHTSA writes them (e.g. "CR-V"). */
+  listModels(year: number, make: string): Promise<string[]>;
 }
 export interface PhotoCheckClient {
   check(req: PhotoCheckRequest): Promise<PhotoCheckResult>;
@@ -51,4 +63,6 @@ export interface ListingClient {
 }
 export interface QuotaClient {
   getStatus(): Promise<QuotaStatus>;
+  /** Deletes the server-side usage rows and the anonymous account ("Delete all my data"). */
+  deleteServerData(): Promise<void>;
 }

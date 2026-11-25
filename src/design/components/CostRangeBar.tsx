@@ -5,6 +5,7 @@ import type { CostRange } from '@/core/types';
 
 import { radius, space, useTheme } from '../tokens';
 import { AppText } from './AppText';
+import { tr } from '@/core/i18n/i18n';
 
 export const usd = (n: number) => '$' + Math.round(n).toLocaleString('en-US');
 
@@ -13,7 +14,10 @@ export function CostRangeBar({ range, scaleMax }: { range: CostRange; scaleMax: 
   const left = Math.min(1, range.low / scaleMax);
   const width = Math.max(0.03, Math.min(1, range.high / scaleMax) - left);
   return (
-    <View style={styles.wrap} accessible accessibilityLabel={`Typical range ${usd(range.low)} to ${usd(range.high)}`}>
+    <View
+      style={styles.wrap}
+      accessible
+      accessibilityLabel={tr('Typical range {low} to {high}', { low: usd(range.low), high: usd(range.high) })}>
       <AppText variant="number">
         {usd(range.low)}–{usd(range.high)}
       </AppText>

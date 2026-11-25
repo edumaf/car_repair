@@ -1,0 +1,6397 @@
+{
+ "_meta": {
+  "version": 1,
+  "note": "Drafted by AI from general automotive knowledge (commonly reported issues), 2026-11-16. NOT a diagnosis and not exhaustive. A mechanic must review before launch. VIN model codes (positions 7-8) are pre-fill hints only; the user always confirms the model."
+ },
+ "models": [
+  {
+   "id": "ford_focus_2",
+   "make": "Ford",
+   "model": "Focus",
+   "generation": "Mk2 (incl. C-Max)",
+   "years": [
+    2004,
+    2011
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback",
+    "estate",
+    "sedan",
+    "mpv",
+    "convertible"
+   ],
+   "engines": [
+    {
+     "id": "tivct16",
+     "name": "1.4/1.6 Ti-VCT petrol (80-115 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "duratec18",
+     "name": "1.8/2.0 Duratec (125-145 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "tdci16",
+     "name": "1.6 TDCi (90-109 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "tdci18",
+     "name": "1.8 TDCi (115 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "tdci20",
+     "name": "2.0 TDCi (136 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "st25",
+     "name": "2.5 turbo ST/RS",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Very good handling",
+    "Cheap parts",
+    "Petrol engines are robust"
+   ],
+   "problems": [
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "tivct16",
+      "tdci16",
+      "tdci18",
+      "tdci20"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "tdci16_seals_turbo",
+     "title": "Injector seal leaks and turbo oil-starvation failures (1.6 TDCi)",
+     "engines": [
+      "tdci16"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Diesel smell, black carbon around injectors",
+      "Turbo whistle, smoke"
+     ],
+     "what_to_check": [
+      "Look at the injectors for black deposits",
+      "Check for blue smoke"
+     ],
+     "years": [
+      2004,
+      2011
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "turbo"
+    },
+    {
+     "id": "dual_mass_flywheel",
+     "title": "Dual-mass flywheel wear (manual)",
+     "engines": [
+      "tdci18",
+      "tdci20"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at idle that stops with the clutch pressed",
+      "Judder pulling away"
+     ],
+     "what_to_check": [
+      "Listen at idle with the clutch released, then pressed"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dual_mass_flywheel"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "tdci16",
+      "tdci20"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "focus2_ignition",
+     "title": "Ignition coil and lock barrel faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Misfire",
+      "Key hard to turn"
+     ],
+     "what_to_check": [
+      "Check for a smooth idle; turn the key several times"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "spark_plugs_coils"
+    },
+    {
+     "id": "focus2_rust",
+     "title": "Rust on rear wheel arches and sills (older cars)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Bubbling paint"
+     ],
+     "what_to_check": [
+      "Check rear arches and sills"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    }
+   ],
+   "buying_tips": [
+    "The 1.6 petrol is the simplest choice"
+   ],
+   "vin": {
+    "wmi": [
+     "WF0",
+     "WF1"
+    ]
+   }
+  },
+  {
+   "id": "ford_focus_3",
+   "make": "Ford",
+   "model": "Focus",
+   "generation": "Mk3 (incl. C-Max, US Focus)",
+   "years": [
+    2010,
+    2018
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "hatchback",
+    "estate",
+    "sedan",
+    "mpv"
+   ],
+   "engines": [
+    {
+     "id": "eb10",
+     "name": "1.0 EcoBoost (100-125 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "eb16",
+     "name": "1.5/1.6 EcoBoost (150-182 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "tivct16",
+     "name": "1.6 Ti-VCT (85-125 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "gdi20",
+     "name": "2.0 GDI (US, 160 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "tdci15",
+     "name": "1.5/1.6 TDCi (95-120 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "tdci20",
+     "name": "2.0 TDCi (115-185 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "ev",
+     "name": "Focus Electric",
+     "fuel": "ev"
+    }
+   ],
+   "strengths": [
+    "Great to drive",
+    "Lots of choice"
+   ],
+   "problems": [
+    {
+     "id": "ecoboost10_coolant",
+     "title": "Coolant loss and overheating (1.0 EcoBoost); later engines: oil-bath timing belt wear",
+     "engines": [
+      "eb10"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Coolant level drops",
+      "Overheating warning",
+      "Low oil pressure warning (belt debris)"
+     ],
+     "what_to_check": [
+      "Check the coolant level and for leaks",
+      "Ask for coolant hose / belt replacement records"
+     ],
+     "years": [
+      2012,
+      2018
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "head_gasket"
+    },
+    {
+     "id": "eb16_overheat",
+     "title": "Overheating / coolant problems (1.6 EcoBoost; recall for fire risk)",
+     "engines": [
+      "eb16"
+     ],
+     "frequency": "occasional",
+     "severity": "critical",
+     "symptoms": [
+      "Overheating warning"
+     ],
+     "what_to_check": [
+      "Check the recall was done; check coolant"
+     ],
+     "years": [
+      2010,
+      2015
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "head_gasket"
+    },
+    {
+     "id": "powershift_dct",
+     "title": "PowerShift dual-clutch automatic: shudder, slipping, control module failure",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Shudder when pulling away",
+      "Jerky low-speed shifts",
+      "Loss of drive"
+     ],
+     "what_to_check": [
+      "Test drive in stop-and-go traffic",
+      "Ask for clutch and module replacements"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dsg_mechatronic"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "tdci15",
+      "tdci20"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "dual_mass_flywheel",
+     "title": "Dual-mass flywheel wear (manual)",
+     "engines": [
+      "tdci15",
+      "tdci20"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at idle that stops with the clutch pressed",
+      "Judder pulling away"
+     ],
+     "what_to_check": [
+      "Listen at idle with the clutch released, then pressed"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dual_mass_flywheel"
+    },
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "tivct16",
+      "tdci15"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "focus3_door_latch",
+     "title": "Door latch failures (door will not latch; recall)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Door bounces open"
+     ],
+     "what_to_check": [
+      "Open and close every door firmly"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "door_lock_actuator"
+    }
+   ],
+   "buying_tips": [
+    "Avoid PowerShift automatics without proof of clutch/module repairs",
+    "Manual 1.6/2.0 petrol is the safest"
+   ],
+   "vin": {
+    "wmi": [
+     "WF0",
+     "WF1",
+     "1FA",
+     "1FM",
+     "1FT",
+     "3FA",
+     "2FM",
+     "1FD"
+    ]
+   }
+  },
+  {
+   "id": "ford_focus_4",
+   "make": "Ford",
+   "model": "Focus",
+   "generation": "Mk4",
+   "years": [
+    2018,
+    2025
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "eb10",
+     "name": "1.0 EcoBoost / mHEV (85-155 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "eb15",
+     "name": "1.5 EcoBoost (150-182 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "ecoblue",
+     "name": "1.5/2.0 EcoBlue diesel",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Excellent handling",
+    "Efficient"
+   ],
+   "problems": [
+    {
+     "id": "ecoboost10_coolant",
+     "title": "Coolant loss and overheating (1.0 EcoBoost); later engines: oil-bath timing belt wear",
+     "engines": [
+      "eb10"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Coolant level drops",
+      "Overheating warning",
+      "Low oil pressure warning (belt debris)"
+     ],
+     "what_to_check": [
+      "Check the coolant level and for leaks",
+      "Ask for coolant hose / belt replacement records"
+     ],
+     "years": [
+      2018,
+      2025
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "head_gasket"
+    },
+    {
+     "id": "adblue",
+     "title": "AdBlue (DEF) system faults",
+     "engines": [
+      "ecoblue"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning with a countdown to no-start"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    },
+    {
+     "id": "focus4_sync",
+     "title": "SYNC 3 infotainment glitches",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Screen freezes"
+     ],
+     "what_to_check": [
+      "Test the screen"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "infotainment"
+    }
+   ],
+   "buying_tips": [
+    "For the 1.0 EcoBoost, ask about the oil-bath timing belt condition and the oil used"
+   ],
+   "vin": {
+    "wmi": [
+     "WF0",
+     "WF1"
+    ]
+   }
+  },
+  {
+   "id": "ford_fiesta_6",
+   "make": "Ford",
+   "model": "Fiesta",
+   "generation": "Mk6",
+   "years": [
+    2002,
+    2008
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback"
+   ],
+   "engines": [
+    {
+     "id": "zetec",
+     "name": "1.25/1.4/1.6 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "tdci14",
+     "name": "1.4/1.6 TDCi",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Cheap and fun"
+   ],
+   "problems": [
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "zetec",
+      "tdci14"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "fiesta6_rust",
+     "title": "Rust (sills, arches)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Bubbling paint"
+     ],
+     "what_to_check": [
+      "Check sills and arches"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    },
+    {
+     "id": "fiesta6_durashift",
+     "title": "Durashift automated gearbox faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Jerky shifts"
+     ],
+     "what_to_check": [
+      "Test drive"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "clutch"
+    },
+    {
+     "id": "fiesta6_coil",
+     "title": "Ignition coil failure",
+     "engines": [
+      "zetec"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Misfire"
+     ],
+     "what_to_check": [
+      "Check for a smooth idle"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "spark_plugs_coils"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WF0",
+     "WF1"
+    ]
+   }
+  },
+  {
+   "id": "ford_fiesta_7",
+   "make": "Ford",
+   "model": "Fiesta",
+   "generation": "Mk7 (incl. US Fiesta)",
+   "years": [
+    2008,
+    2017
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "hatchback",
+    "sedan"
+   ],
+   "engines": [
+    {
+     "id": "duratec",
+     "name": "1.25/1.4/1.6 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "eb10",
+     "name": "1.0 EcoBoost (100-140 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "tdci",
+     "name": "1.4/1.5/1.6 TDCi",
+     "fuel": "diesel"
+    },
+    {
+     "id": "st16",
+     "name": "1.6 EcoBoost ST",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Fun to drive",
+    "Cheap to run"
+   ],
+   "problems": [
+    {
+     "id": "ecoboost10_coolant",
+     "title": "Coolant loss and overheating (1.0 EcoBoost); later engines: oil-bath timing belt wear",
+     "engines": [
+      "eb10"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Coolant level drops",
+      "Overheating warning",
+      "Low oil pressure warning (belt debris)"
+     ],
+     "what_to_check": [
+      "Check the coolant level and for leaks",
+      "Ask for coolant hose / belt replacement records"
+     ],
+     "years": [
+      2012,
+      2017
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "head_gasket"
+    },
+    {
+     "id": "powershift_dct",
+     "title": "PowerShift dual-clutch automatic: shudder, slipping, control module failure",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Shudder when pulling away",
+      "Jerky low-speed shifts",
+      "Loss of drive"
+     ],
+     "what_to_check": [
+      "Test drive in stop-and-go traffic",
+      "Ask for clutch and module replacements"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dsg_mechatronic"
+    },
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "duratec",
+      "tdci"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "tdci"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "fiesta7_ac",
+     "title": "A/C condenser and compressor failures",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "A/C not cold"
+     ],
+     "what_to_check": [
+      "Test the A/C"
+     ],
+     "complaint_group": "climate",
+     "repair_cost_id": "ac_compressor"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WF0",
+     "WF1",
+     "1FA",
+     "1FM",
+     "1FT",
+     "3FA",
+     "2FM",
+     "1FD"
+    ]
+   }
+  },
+  {
+   "id": "ford_mondeo_4",
+   "make": "Ford",
+   "model": "Mondeo",
+   "generation": "Mk4 (incl. S-Max/Galaxy)",
+   "years": [
+    2007,
+    2015
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback",
+    "estate",
+    "sedan",
+    "mpv"
+   ],
+   "engines": [
+    {
+     "id": "duratec",
+     "name": "1.6/2.0/2.3 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "eb20",
+     "name": "2.0 EcoBoost (203-240 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "tdci18",
+     "name": "1.8 TDCi (100-125 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "tdci20",
+     "name": "2.0/2.2 TDCi (115-200 hp)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Roomy and comfortable",
+    "Great value"
+   ],
+   "problems": [
+    {
+     "id": "tdci18_injectors",
+     "title": "Injector and fuel pump wear (1.8 TDCi)",
+     "engines": [
+      "tdci18"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Hard starting, smoke"
+     ],
+     "what_to_check": [
+      "Check for a clean start"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "id": "dual_mass_flywheel",
+     "title": "Dual-mass flywheel wear (manual)",
+     "engines": [
+      "tdci18",
+      "tdci20"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at idle that stops with the clutch pressed",
+      "Judder pulling away"
+     ],
+     "what_to_check": [
+      "Listen at idle with the clutch released, then pressed"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dual_mass_flywheel"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "tdci20"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "duratec",
+      "tdci18",
+      "tdci20"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "mondeo4_powershift",
+     "title": "PowerShift (wet clutch) gearbox: generally sound but needs oil changes",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Harsh shifts"
+     ],
+     "what_to_check": [
+      "Ask for gearbox oil changes"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_service"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WF0",
+     "WF1"
+    ]
+   }
+  },
+  {
+   "id": "ford_mondeo_5",
+   "make": "Ford",
+   "model": "Mondeo / Fusion",
+   "generation": "Mk5 (US: Fusion 2013-2020)",
+   "years": [
+    2013,
+    2022
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "sedan",
+    "hatchback",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "eb15",
+     "name": "1.5/1.6 EcoBoost (150-180 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "eb20",
+     "name": "2.0 EcoBoost (240 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "gas25",
+     "name": "2.5 (US, 175 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "tdci20",
+     "name": "2.0 TDCi/EcoBlue",
+     "fuel": "diesel"
+    },
+    {
+     "id": "hybrid",
+     "name": "Hybrid / Energi plug-in",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Comfortable, quiet",
+    "Hybrids are very economical"
+   ],
+   "problems": [
+    {
+     "id": "eb15_coolant",
+     "title": "Coolant leaking into the cylinders (1.5 EcoBoost)",
+     "engines": [
+      "eb15"
+     ],
+     "frequency": "occasional",
+     "severity": "critical",
+     "symptoms": [
+      "Coolant loss, misfire, white smoke"
+     ],
+     "what_to_check": [
+      "Check coolant level; ask about the engine history"
+     ],
+     "years": [
+      2014,
+      2019
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "head_gasket"
+    },
+    {
+     "id": "fusion_shifter",
+     "title": "Rotary gear shifter / shift-to-park recall",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Car rolls when \"in Park\""
+     ],
+     "what_to_check": [
+      "Ask if the recall was done"
+     ],
+     "years": [
+      2016,
+      2020
+     ],
+     "complaint_group": "transmission"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "tdci20"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "adblue",
+     "title": "AdBlue (DEF) system faults",
+     "engines": [
+      "tdci20"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning with a countdown to no-start"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    },
+    {
+     "id": "fusion_6f35",
+     "title": "6-speed automatic harsh shifts",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Harsh or late shifts"
+     ],
+     "what_to_check": [
+      "Test drive"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_service"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WF0",
+     "WF1",
+     "1FA",
+     "1FM",
+     "1FT",
+     "3FA",
+     "2FM",
+     "1FD"
+    ]
+   }
+  },
+  {
+   "id": "ford_kuga_2",
+   "make": "Ford",
+   "model": "Kuga / Escape",
+   "generation": "Mk2 (US: Escape 2013-2019)",
+   "years": [
+    2012,
+    2019
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "eb15",
+     "name": "1.5/1.6 EcoBoost (150-182 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "eb20",
+     "name": "2.0 EcoBoost (US)",
+     "fuel": "gas"
+    },
+    {
+     "id": "gas25",
+     "name": "2.5 (US)",
+     "fuel": "gas"
+    },
+    {
+     "id": "tdci20",
+     "name": "2.0 TDCi (120-180 hp)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Good to drive",
+    "Practical"
+   ],
+   "problems": [
+    {
+     "id": "eb16_kuga",
+     "title": "Overheating / coolant problems (1.5/1.6 EcoBoost; fire-risk recall)",
+     "engines": [
+      "eb15"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Overheating, coolant loss"
+     ],
+     "what_to_check": [
+      "Check the recall; check coolant"
+     ],
+     "years": [
+      2012,
+      2019
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "head_gasket"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "tdci20"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "dual_mass_flywheel",
+     "title": "Dual-mass flywheel wear (manual)",
+     "engines": [
+      "tdci20"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at idle that stops with the clutch pressed",
+      "Judder pulling away"
+     ],
+     "what_to_check": [
+      "Listen at idle with the clutch released, then pressed"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dual_mass_flywheel"
+    },
+    {
+     "id": "kuga_ptu",
+     "title": "AWD rear drive / transfer unit (PTU) leaks",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Burning smell, whine"
+     ],
+     "what_to_check": [
+      "Look for oil on the transfer unit"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_repair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WF0",
+     "WF1",
+     "1FA",
+     "1FM",
+     "1FT",
+     "3FA",
+     "2FM",
+     "1FD"
+    ]
+   }
+  },
+  {
+   "id": "ford_transit_custom",
+   "make": "Ford",
+   "model": "Transit Custom",
+   "generation": "1st gen",
+   "years": [
+    2012,
+    2023
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "van",
+    "mpv"
+   ],
+   "engines": [
+    {
+     "id": "tdci22",
+     "name": "2.2 TDCi (100-155 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "ecoblue",
+     "name": "2.0 EcoBlue (105-185 hp)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Very popular van",
+    "Good to drive"
+   ],
+   "problems": [
+    {
+     "id": "tdci22_injectors",
+     "title": "Injector failures (2.2 TDCi)",
+     "engines": [
+      "tdci22"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rough running, smoke"
+     ],
+     "what_to_check": [
+      "Check for a smooth idle"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "id": "ecoblue_wet_belt",
+     "title": "Oil-bath timing belt and oil pump issues (2.0 EcoBlue)",
+     "engines": [
+      "ecoblue"
+     ],
+     "frequency": "occasional",
+     "severity": "critical",
+     "symptoms": [
+      "Oil-pressure warning"
+     ],
+     "what_to_check": [
+      "Ask about belt condition and oil used"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "dual_mass_flywheel",
+     "title": "Dual-mass flywheel wear (manual)",
+     "engines": [
+      "tdci22",
+      "ecoblue"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at idle that stops with the clutch pressed",
+      "Judder pulling away"
+     ],
+     "what_to_check": [
+      "Listen at idle with the clutch released, then pressed"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dual_mass_flywheel"
+    },
+    {
+     "id": "adblue",
+     "title": "AdBlue (DEF) system faults",
+     "engines": [
+      "ecoblue"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning with a countdown to no-start"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "tdci22",
+      "ecoblue"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WF0",
+     "WF1"
+    ]
+   }
+  },
+  {
+   "id": "ford_f150_12",
+   "make": "Ford",
+   "model": "F-150",
+   "generation": "12th gen",
+   "years": [
+    2009,
+    2014
+   ],
+   "markets": [
+    "us"
+   ],
+   "body": [
+    "pickup"
+   ],
+   "engines": [
+    {
+     "id": "v8_54",
+     "name": "5.4 V8 (310 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "v8_50",
+     "name": "5.0 V8 Coyote (360 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "eb35",
+     "name": "3.5 EcoBoost V6",
+     "fuel": "gas"
+    },
+    {
+     "id": "v6_37",
+     "name": "3.7 V6",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Tough and capable",
+    "Huge parts supply"
+   ],
+   "problems": [
+    {
+     "id": "54_cam_phasers",
+     "title": "Cam phaser and timing chain noise (5.4 V8)",
+     "engines": [
+      "v8_54"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Ticking/knocking at idle"
+     ],
+     "what_to_check": [
+      "Listen at a warm idle"
+     ],
+     "years": [
+      2009,
+      2010
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "cam_phasers"
+    },
+    {
+     "id": "eb35_chain_intercooler",
+     "title": "Timing chain stretch and intercooler condensation misfire (early 3.5 EcoBoost)",
+     "engines": [
+      "eb35"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at start",
+      "Stumble when accelerating hard in humid weather"
+     ],
+     "what_to_check": [
+      "Listen at a cold start",
+      "Ask about chain and intercooler updates"
+     ],
+     "years": [
+      2011,
+      2014
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "f150_rust",
+     "title": "Rust on cab corners, rocker panels and frame",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Bubbling paint, holes"
+     ],
+     "what_to_check": [
+      "Check cab corners, rockers and the frame"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    },
+    {
+     "id": "f150_exhaust_manifold",
+     "title": "Cracked exhaust manifolds / broken studs (V8)",
+     "engines": [
+      "v8_54",
+      "v8_50"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Ticking at cold start"
+     ],
+     "what_to_check": [
+      "Listen at a cold start"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "exhaust_leak"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "1FA",
+     "1FM",
+     "1FT",
+     "3FA",
+     "2FM",
+     "1FD"
+    ]
+   }
+  },
+  {
+   "id": "ford_f150_13",
+   "make": "Ford",
+   "model": "F-150",
+   "generation": "13th gen (aluminium body)",
+   "years": [
+    2015,
+    2020
+   ],
+   "markets": [
+    "us"
+   ],
+   "body": [
+    "pickup"
+   ],
+   "engines": [
+    {
+     "id": "v8_50",
+     "name": "5.0 V8",
+     "fuel": "gas"
+    },
+    {
+     "id": "eb27",
+     "name": "2.7 EcoBoost V6",
+     "fuel": "gas"
+    },
+    {
+     "id": "eb35",
+     "name": "3.5 EcoBoost V6",
+     "fuel": "gas"
+    },
+    {
+     "id": "v6_33",
+     "name": "3.3/3.5 V6",
+     "fuel": "gas"
+    },
+    {
+     "id": "pwrstroke",
+     "name": "3.0 Power Stroke diesel",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Strong engines",
+    "Aluminium body does not rust like steel"
+   ],
+   "problems": [
+    {
+     "id": "eb_cam_phaser",
+     "title": "Cam phaser rattle at cold start (EcoBoost)",
+     "engines": [
+      "eb27",
+      "eb35"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rattle for a few seconds at cold start"
+     ],
+     "what_to_check": [
+      "Listen at a cold start"
+     ],
+     "years": [
+      2017,
+      2020
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "cam_phasers"
+    },
+    {
+     "id": "10r80_shift",
+     "title": "10-speed automatic harsh or erratic shifts",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Harsh 2-3 shift, clunks"
+     ],
+     "what_to_check": [
+      "Test drive; ask for software updates"
+     ],
+     "years": [
+      2017,
+      2020
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_service"
+    },
+    {
+     "id": "50_oil_use",
+     "title": "Oil consumption (some 5.0 V8)",
+     "engines": [
+      "v8_50"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Oil level drops"
+     ],
+     "what_to_check": [
+      "Ask about oil use"
+     ],
+     "years": [
+      2018,
+      2020
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "alu_corrosion",
+     "title": "Aluminium panel corrosion around steel fasteners",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "White bubbling under paint"
+     ],
+     "what_to_check": [
+      "Check door bottoms and hood edges"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "paint_panel"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "1FA",
+     "1FM",
+     "1FT",
+     "3FA",
+     "2FM",
+     "1FD"
+    ]
+   }
+  },
+  {
+   "id": "ford_explorer_5",
+   "make": "Ford",
+   "model": "Explorer",
+   "generation": "5th gen",
+   "years": [
+    2011,
+    2019
+   ],
+   "markets": [
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "v6_35",
+     "name": "3.5 V6",
+     "fuel": "gas"
+    },
+    {
+     "id": "eb35",
+     "name": "3.5 EcoBoost V6",
+     "fuel": "gas"
+    },
+    {
+     "id": "eb20",
+     "name": "2.0/2.3 EcoBoost",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Roomy 3-row SUV"
+   ],
+   "problems": [
+    {
+     "id": "explorer_water_pump",
+     "title": "Internal water pump failure (3.5 V6): coolant can mix with oil",
+     "engines": [
+      "v6_35",
+      "eb35"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Coolant loss with no visible leak",
+      "Sweet smell"
+     ],
+     "what_to_check": [
+      "Check coolant level; ask if the water pump was replaced"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "water_pump"
+    },
+    {
+     "id": "explorer_exhaust_fumes",
+     "title": "Exhaust smell in the cabin (service fix available)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Exhaust smell inside when accelerating"
+     ],
+     "what_to_check": [
+      "Drive with the windows closed and the fan on"
+     ],
+     "complaint_group": "structure"
+    },
+    {
+     "id": "explorer_ptu",
+     "title": "AWD transfer unit (PTU) overheating / leaks",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Burning smell, whine"
+     ],
+     "what_to_check": [
+      "Ask about PTU fluid service"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_repair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "1FA",
+     "1FM",
+     "1FT",
+     "3FA",
+     "2FM",
+     "1FD"
+    ]
+   }
+  },
+  {
+   "id": "bmw_1_e87",
+   "make": "BMW",
+   "model": "1 Series",
+   "generation": "E81/E87/E88",
+   "years": [
+    2004,
+    2011
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback",
+    "coupe",
+    "convertible"
+   ],
+   "engines": [
+    {
+     "id": "n45",
+     "name": "116i/118i/120i petrol (N43/N45/N46)",
+     "fuel": "gas"
+    },
+    {
+     "id": "n47",
+     "name": "118d/120d/123d (N47)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "m47",
+     "name": "118d/120d (M47, to 2007)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Rear-wheel drive handling",
+    "Strong diesels"
+   ],
+   "problems": [
+    {
+     "id": "n47_timing_chain",
+     "title": "Timing chain wear at the back of the engine (N47 2.0 diesel)",
+     "engines": [
+      "n47"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Rattle/whine from the back of the engine, especially at idle"
+     ],
+     "what_to_check": [
+      "Listen at idle with the bonnet open",
+      "Ask for chain replacement invoices"
+     ],
+     "years": [
+      2007,
+      2015
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "n43_oil_use",
+     "title": "High oil consumption and timing chain wear (N43/N46 petrol)",
+     "engines": [
+      "n45"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Oil level drops",
+      "Rattle"
+     ],
+     "what_to_check": [
+      "Ask about oil use"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "oil_filter_housing",
+     "title": "Oil leaks (oil filter housing and valve cover gaskets)",
+     "engines": [
+      "n45",
+      "n47",
+      "m47"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Burning oil smell",
+      "Oil on the engine or under the car"
+     ],
+     "what_to_check": [
+      "Look for oil around the oil filter housing and valve cover"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_leak_minor"
+    },
+    {
+     "id": "swirl_flaps",
+     "title": "Swirl flaps can break into the engine (older M47/M57 diesels)",
+     "engines": [
+      "m47"
+     ],
+     "frequency": "occasional",
+     "severity": "critical",
+     "symptoms": [
+      "None before failure"
+     ],
+     "what_to_check": [
+      "Ask whether the swirl flaps were removed or replaced"
+     ],
+     "years": [
+      2003,
+      2010
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "engine_replacement"
+    },
+    {
+     "id": "dual_mass_flywheel",
+     "title": "Dual-mass flywheel wear (manual)",
+     "engines": [
+      "n47",
+      "m47"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at idle that stops with the clutch pressed",
+      "Judder pulling away"
+     ],
+     "what_to_check": [
+      "Listen at idle with the clutch released, then pressed"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dual_mass_flywheel"
+    }
+   ],
+   "buying_tips": [
+    "A 120d/118d needs proof of timing chain work"
+   ],
+   "vin": {
+    "wmi": [
+     "WBA",
+     "WBS",
+     "WBX",
+     "5UX",
+     "5YM"
+    ]
+   }
+  },
+  {
+   "id": "bmw_1_f20",
+   "make": "BMW",
+   "model": "1 Series",
+   "generation": "F20/F21",
+   "years": [
+    2011,
+    2019
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback"
+   ],
+   "engines": [
+    {
+     "id": "n13",
+     "name": "114i/116i/118i (N13 1.6 turbo)",
+     "fuel": "gas"
+    },
+    {
+     "id": "b38",
+     "name": "116i/118i (B38 3-cyl)",
+     "fuel": "gas"
+    },
+    {
+     "id": "n20",
+     "name": "120i/125i (N20)",
+     "fuel": "gas"
+    },
+    {
+     "id": "n47",
+     "name": "116d-125d (N47, to 2015)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "b47",
+     "name": "116d-125d (B37/B47, 2015+)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Fun rear-wheel drive",
+    "Efficient"
+   ],
+   "problems": [
+    {
+     "id": "n47_timing_chain",
+     "title": "Timing chain wear at the back of the engine (N47 2.0 diesel)",
+     "engines": [
+      "n47"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Rattle/whine from the back of the engine, especially at idle"
+     ],
+     "what_to_check": [
+      "Listen at idle with the bonnet open",
+      "Ask for chain replacement invoices"
+     ],
+     "years": [
+      2007,
+      2015
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "n20_timing_chain",
+     "title": "Timing chain guide failure (N20 2.0 turbo petrol)",
+     "engines": [
+      "n20"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Whine or rattle from the engine"
+     ],
+     "what_to_check": [
+      "Listen at idle; ask for chain/guide replacement"
+     ],
+     "years": [
+      2011,
+      2016
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "n13_chain",
+     "title": "Timing chain and oil leaks (N13 1.6 turbo)",
+     "engines": [
+      "n13"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at start"
+     ],
+     "what_to_check": [
+      "Listen at a cold start"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "oil_filter_housing",
+     "title": "Oil leaks (oil filter housing and valve cover gaskets)",
+     "engines": [
+      "n13",
+      "n20",
+      "n47",
+      "b47"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Burning oil smell",
+      "Oil on the engine or under the car"
+     ],
+     "what_to_check": [
+      "Look for oil around the oil filter housing and valve cover"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_leak_minor"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "n47",
+      "b47"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WBA",
+     "WBS",
+     "WBX",
+     "5UX",
+     "5YM"
+    ]
+   }
+  },
+  {
+   "id": "bmw_3_e90",
+   "make": "BMW",
+   "model": "3 Series",
+   "generation": "E90/E91/E92/E93",
+   "years": [
+    2005,
+    2012
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "sedan",
+    "estate",
+    "coupe",
+    "convertible"
+   ],
+   "engines": [
+    {
+     "id": "n46",
+     "name": "318i/320i (N43/N46)",
+     "fuel": "gas"
+    },
+    {
+     "id": "n52",
+     "name": "325i/328i/330i (N52/N53 six)",
+     "fuel": "gas"
+    },
+    {
+     "id": "n54",
+     "name": "335i (N54 twin turbo)",
+     "fuel": "gas"
+    },
+    {
+     "id": "n47",
+     "name": "318d/320d (N47, 2007+)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "m47",
+     "name": "320d (M47, to 2007)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "m57",
+     "name": "325d/330d/335d (M57)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Superb handling",
+    "Smooth six-cylinder engines"
+   ],
+   "problems": [
+    {
+     "id": "n47_timing_chain",
+     "title": "Timing chain wear at the back of the engine (N47 2.0 diesel)",
+     "engines": [
+      "n47"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Rattle/whine from the back of the engine, especially at idle"
+     ],
+     "what_to_check": [
+      "Listen at idle with the bonnet open",
+      "Ask for chain replacement invoices"
+     ],
+     "years": [
+      2007,
+      2015
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "oil_filter_housing",
+     "title": "Oil leaks (oil filter housing and valve cover gaskets)",
+     "engines": [
+      "n46",
+      "n52",
+      "n54",
+      "n47",
+      "m47",
+      "m57"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Burning oil smell",
+      "Oil on the engine or under the car"
+     ],
+     "what_to_check": [
+      "Look for oil around the oil filter housing and valve cover"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_leak_minor"
+    },
+    {
+     "id": "electric_water_pump",
+     "title": "Electric water pump and thermostat failure",
+     "engines": [
+      "n52",
+      "n54"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Overheating warning",
+      "Coolant warning"
+     ],
+     "what_to_check": [
+      "Ask when the water pump was replaced (often 80,000-120,000 km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "water_pump"
+    },
+    {
+     "id": "n54_hpfp",
+     "title": "High-pressure fuel pump, injector and wastegate faults (335i N54)",
+     "engines": [
+      "n54"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Long crank, limp mode, rattle"
+     ],
+     "what_to_check": [
+      "Ask for HPFP/injector/wastegate repairs"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "high_pressure_fuel_pump"
+    },
+    {
+     "id": "n46_oil",
+     "title": "High oil use and chain wear (N43/N46)",
+     "engines": [
+      "n46"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Oil drops"
+     ],
+     "what_to_check": [
+      "Ask about oil use"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "swirl_flaps",
+     "title": "Swirl flaps can break into the engine (older M47/M57 diesels)",
+     "engines": [
+      "m47",
+      "m57"
+     ],
+     "frequency": "occasional",
+     "severity": "critical",
+     "symptoms": [
+      "None before failure"
+     ],
+     "what_to_check": [
+      "Ask whether the swirl flaps were removed or replaced"
+     ],
+     "years": [
+      2003,
+      2010
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "engine_replacement"
+    },
+    {
+     "id": "e90_runflat",
+     "title": "Run-flat tires: harsh ride and expensive replacement",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "info",
+     "symptoms": [
+      "Harsh ride"
+     ],
+     "what_to_check": [
+      "Check what tires are fitted"
+     ],
+     "complaint_group": "tires_wheels",
+     "repair_cost_id": "tires_set"
+    }
+   ],
+   "buying_tips": [
+    "The 325i/330i (N52) is the most durable petrol",
+    "Avoid N47 diesels without chain records"
+   ],
+   "vin": {
+    "wmi": [
+     "WBA",
+     "WBS",
+     "WBX",
+     "5UX",
+     "5YM"
+    ]
+   }
+  },
+  {
+   "id": "bmw_3_f30",
+   "make": "BMW",
+   "model": "3 Series",
+   "generation": "F30/F31/F34",
+   "years": [
+    2011,
+    2019
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "sedan",
+    "estate",
+    "hatchback"
+   ],
+   "engines": [
+    {
+     "id": "n13",
+     "name": "316i (N13)",
+     "fuel": "gas"
+    },
+    {
+     "id": "n20",
+     "name": "320i/328i (N20, to 2016)",
+     "fuel": "gas"
+    },
+    {
+     "id": "b48",
+     "name": "320i/330i (B48, 2015+)",
+     "fuel": "gas"
+    },
+    {
+     "id": "n55",
+     "name": "335i/340i (N55/B58)",
+     "fuel": "gas"
+    },
+    {
+     "id": "n47",
+     "name": "316d-320d (N47, to 2015)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "b47",
+     "name": "318d-320d (B47, 2015+)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "n57",
+     "name": "330d/335d (N57)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "phev",
+     "name": "330e plug-in",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Very good to drive",
+    "Efficient diesels"
+   ],
+   "problems": [
+    {
+     "id": "n47_timing_chain",
+     "title": "Timing chain wear at the back of the engine (N47 2.0 diesel)",
+     "engines": [
+      "n47"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Rattle/whine from the back of the engine, especially at idle"
+     ],
+     "what_to_check": [
+      "Listen at idle with the bonnet open",
+      "Ask for chain replacement invoices"
+     ],
+     "years": [
+      2007,
+      2015
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "n20_timing_chain",
+     "title": "Timing chain guide failure (N20 2.0 turbo petrol)",
+     "engines": [
+      "n20"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Whine or rattle from the engine"
+     ],
+     "what_to_check": [
+      "Listen at idle; ask for chain/guide replacement"
+     ],
+     "years": [
+      2011,
+      2016
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "oil_filter_housing",
+     "title": "Oil leaks (oil filter housing and valve cover gaskets)",
+     "engines": [
+      "n13",
+      "n20",
+      "b48",
+      "n55",
+      "n47",
+      "b47",
+      "n57"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Burning oil smell",
+      "Oil on the engine or under the car"
+     ],
+     "what_to_check": [
+      "Look for oil around the oil filter housing and valve cover"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_leak_minor"
+    },
+    {
+     "id": "electric_water_pump",
+     "title": "Electric water pump and thermostat failure",
+     "engines": [
+      "n20",
+      "n55"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Overheating warning",
+      "Coolant warning"
+     ],
+     "what_to_check": [
+      "Ask when the water pump was replaced (often 80,000-120,000 km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "water_pump"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "n47",
+      "b47",
+      "n57"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "transfer_case_actuator",
+     "title": "xDrive transfer case actuator / clutch wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "4x4 warning",
+      "Shudder or binding on tight turns"
+     ],
+     "what_to_check": [
+      "Drive slowly in full-lock circles and feel for binding"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_repair"
+    }
+   ],
+   "buying_tips": [
+    "Pick the 2015+ B47 diesel or B48 petrol if you can"
+   ],
+   "vin": {
+    "wmi": [
+     "WBA",
+     "WBS",
+     "WBX",
+     "5UX",
+     "5YM"
+    ]
+   }
+  },
+  {
+   "id": "bmw_3_g20",
+   "make": "BMW",
+   "model": "3 Series",
+   "generation": "G20/G21",
+   "years": [
+    2019,
+    2026
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "sedan",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "b48",
+     "name": "318i/320i/330i (B48)",
+     "fuel": "gas"
+    },
+    {
+     "id": "b58",
+     "name": "M340i (B58)",
+     "fuel": "gas"
+    },
+    {
+     "id": "b47",
+     "name": "318d/320d (B47)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "b57",
+     "name": "330d/M340d (B57)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "phev",
+     "name": "330e plug-in",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Excellent all-rounder",
+    "Robust modern engines"
+   ],
+   "problems": [
+    {
+     "id": "oil_filter_housing",
+     "title": "Oil leaks (oil filter housing and valve cover gaskets)",
+     "engines": [
+      "b48",
+      "b58",
+      "b47",
+      "b57"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Burning oil smell",
+      "Oil on the engine or under the car"
+     ],
+     "what_to_check": [
+      "Look for oil around the oil filter housing and valve cover"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_leak_minor"
+    },
+    {
+     "id": "adblue",
+     "title": "AdBlue (DEF) system faults",
+     "engines": [
+      "b47",
+      "b57"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning with a countdown to no-start"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    },
+    {
+     "id": "g20_electronics",
+     "title": "Software / iDrive glitches",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Screen glitches"
+     ],
+     "what_to_check": [
+      "Test iDrive"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "infotainment"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WBA",
+     "WBS",
+     "WBX",
+     "5UX",
+     "5YM"
+    ]
+   }
+  },
+  {
+   "id": "bmw_5_e60",
+   "make": "BMW",
+   "model": "5 Series",
+   "generation": "E60/E61",
+   "years": [
+    2003,
+    2010
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "sedan",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "n52",
+     "name": "523i-530i (N52/N53)",
+     "fuel": "gas"
+    },
+    {
+     "id": "m57",
+     "name": "525d/530d/535d (M57)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "n47",
+     "name": "520d (N47, 2007+)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "m47",
+     "name": "520d (M47, to 2007)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "v8",
+     "name": "540i/545i/550i V8",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Comfortable and fast",
+    "Strong 6-cyl diesels"
+   ],
+   "problems": [
+    {
+     "id": "swirl_flaps",
+     "title": "Swirl flaps can break into the engine (older M47/M57 diesels)",
+     "engines": [
+      "m57",
+      "m47"
+     ],
+     "frequency": "occasional",
+     "severity": "critical",
+     "symptoms": [
+      "None before failure"
+     ],
+     "what_to_check": [
+      "Ask whether the swirl flaps were removed or replaced"
+     ],
+     "years": [
+      2003,
+      2010
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "engine_replacement"
+    },
+    {
+     "id": "n47_timing_chain",
+     "title": "Timing chain wear at the back of the engine (N47 2.0 diesel)",
+     "engines": [
+      "n47"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Rattle/whine from the back of the engine, especially at idle"
+     ],
+     "what_to_check": [
+      "Listen at idle with the bonnet open",
+      "Ask for chain replacement invoices"
+     ],
+     "years": [
+      2007,
+      2015
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "oil_filter_housing",
+     "title": "Oil leaks (oil filter housing and valve cover gaskets)",
+     "engines": [
+      "n52",
+      "m57",
+      "n47",
+      "m47",
+      "v8"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Burning oil smell",
+      "Oil on the engine or under the car"
+     ],
+     "what_to_check": [
+      "Look for oil around the oil filter housing and valve cover"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_leak_minor"
+    },
+    {
+     "id": "electric_water_pump",
+     "title": "Electric water pump and thermostat failure",
+     "engines": [
+      "n52"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Overheating warning",
+      "Coolant warning"
+     ],
+     "what_to_check": [
+      "Ask when the water pump was replaced (often 80,000-120,000 km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "water_pump"
+    },
+    {
+     "id": "n53_injectors",
+     "title": "Piezo injector misfires (N53 petrol)",
+     "engines": [
+      "n52"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Misfire"
+     ],
+     "what_to_check": [
+      "Check for a smooth idle"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "id": "e61_air_susp",
+     "title": "Rear air suspension leaks (Touring)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Rear sits low after standing"
+     ],
+     "what_to_check": [
+      "Check ride height after standing"
+     ],
+     "complaint_group": "suspension",
+     "repair_cost_id": "shocks_struts_pair"
+    },
+    {
+     "id": "e60_idrive",
+     "title": "iDrive / electrical faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Screen or controls not working"
+     ],
+     "what_to_check": [
+      "Test all electrics"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "infotainment"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WBA",
+     "WBS",
+     "WBX",
+     "5UX",
+     "5YM"
+    ]
+   }
+  },
+  {
+   "id": "bmw_5_f10",
+   "make": "BMW",
+   "model": "5 Series",
+   "generation": "F10/F11",
+   "years": [
+    2010,
+    2017
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "sedan",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "n20",
+     "name": "520i/528i (N20)",
+     "fuel": "gas"
+    },
+    {
+     "id": "n55",
+     "name": "535i (N55)",
+     "fuel": "gas"
+    },
+    {
+     "id": "n47",
+     "name": "518d/520d (N47, to 2014)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "b47",
+     "name": "520d (B47, 2014+)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "n57",
+     "name": "525d/530d/535d (N57)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "n63",
+     "name": "550i V8 (N63)",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Refined and comfortable",
+    "Strong 530d"
+   ],
+   "problems": [
+    {
+     "id": "n47_timing_chain",
+     "title": "Timing chain wear at the back of the engine (N47 2.0 diesel)",
+     "engines": [
+      "n47"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Rattle/whine from the back of the engine, especially at idle"
+     ],
+     "what_to_check": [
+      "Listen at idle with the bonnet open",
+      "Ask for chain replacement invoices"
+     ],
+     "years": [
+      2007,
+      2015
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "n20_timing_chain",
+     "title": "Timing chain guide failure (N20 2.0 turbo petrol)",
+     "engines": [
+      "n20"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Whine or rattle from the engine"
+     ],
+     "what_to_check": [
+      "Listen at idle; ask for chain/guide replacement"
+     ],
+     "years": [
+      2011,
+      2016
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "oil_filter_housing",
+     "title": "Oil leaks (oil filter housing and valve cover gaskets)",
+     "engines": [
+      "n20",
+      "n55",
+      "n47",
+      "b47",
+      "n57",
+      "n63"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Burning oil smell",
+      "Oil on the engine or under the car"
+     ],
+     "what_to_check": [
+      "Look for oil around the oil filter housing and valve cover"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_leak_minor"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "n47",
+      "b47",
+      "n57"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "n63_oil",
+     "title": "Oil burning, turbo and valve-stem seal failures (N63 V8)",
+     "engines": [
+      "n63"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Blue smoke, oil use"
+     ],
+     "what_to_check": [
+      "Avoid unless fully documented"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "f11_air_susp",
+     "title": "Rear air suspension leaks (Touring)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Rear sits low"
+     ],
+     "what_to_check": [
+      "Check ride height"
+     ],
+     "complaint_group": "suspension",
+     "repair_cost_id": "shocks_struts_pair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WBA",
+     "WBS",
+     "WBX",
+     "5UX",
+     "5YM"
+    ]
+   }
+  },
+  {
+   "id": "bmw_5_g30",
+   "make": "BMW",
+   "model": "5 Series",
+   "generation": "G30/G31",
+   "years": [
+    2017,
+    2023
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "sedan",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "b48",
+     "name": "520i/530i (B48)",
+     "fuel": "gas"
+    },
+    {
+     "id": "b47",
+     "name": "520d (B47)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "b57",
+     "name": "530d/540d (B57)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "phev",
+     "name": "530e plug-in",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Excellent long-distance car"
+   ],
+   "problems": [
+    {
+     "id": "oil_filter_housing",
+     "title": "Oil leaks (oil filter housing and valve cover gaskets)",
+     "engines": [
+      "b48",
+      "b47",
+      "b57"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Burning oil smell",
+      "Oil on the engine or under the car"
+     ],
+     "what_to_check": [
+      "Look for oil around the oil filter housing and valve cover"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_leak_minor"
+    },
+    {
+     "id": "adblue",
+     "title": "AdBlue (DEF) system faults",
+     "engines": [
+      "b47",
+      "b57"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning with a countdown to no-start"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    },
+    {
+     "id": "g30_electronics",
+     "title": "Electronics / camera faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Warnings, camera faults"
+     ],
+     "what_to_check": [
+      "Test all assists"
+     ],
+     "complaint_group": "driver_assist",
+     "repair_cost_id": "adas_sensor"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WBA",
+     "WBS",
+     "WBX",
+     "5UX",
+     "5YM"
+    ]
+   }
+  },
+  {
+   "id": "bmw_x1_e84",
+   "make": "BMW",
+   "model": "X1",
+   "generation": "E84",
+   "years": [
+    2009,
+    2015
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "n20",
+     "name": "20i/28i (N20)",
+     "fuel": "gas"
+    },
+    {
+     "id": "n46",
+     "name": "18i (N46)",
+     "fuel": "gas"
+    },
+    {
+     "id": "n47",
+     "name": "16d-25d (N47)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Compact rear/4x4 SUV"
+   ],
+   "problems": [
+    {
+     "id": "n47_timing_chain",
+     "title": "Timing chain wear at the back of the engine (N47 2.0 diesel)",
+     "engines": [
+      "n47"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Rattle/whine from the back of the engine, especially at idle"
+     ],
+     "what_to_check": [
+      "Listen at idle with the bonnet open",
+      "Ask for chain replacement invoices"
+     ],
+     "years": [
+      2007,
+      2015
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "n20_timing_chain",
+     "title": "Timing chain guide failure (N20 2.0 turbo petrol)",
+     "engines": [
+      "n20"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Whine or rattle from the engine"
+     ],
+     "what_to_check": [
+      "Listen at idle; ask for chain/guide replacement"
+     ],
+     "years": [
+      2011,
+      2016
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "oil_filter_housing",
+     "title": "Oil leaks (oil filter housing and valve cover gaskets)",
+     "engines": [
+      "n20",
+      "n46",
+      "n47"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Burning oil smell",
+      "Oil on the engine or under the car"
+     ],
+     "what_to_check": [
+      "Look for oil around the oil filter housing and valve cover"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_leak_minor"
+    },
+    {
+     "id": "transfer_case_actuator",
+     "title": "xDrive transfer case actuator / clutch wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "4x4 warning",
+      "Shudder or binding on tight turns"
+     ],
+     "what_to_check": [
+      "Drive slowly in full-lock circles and feel for binding"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "n47"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WBA",
+     "WBS",
+     "WBX",
+     "5UX",
+     "5YM"
+    ]
+   }
+  },
+  {
+   "id": "bmw_x1_f48",
+   "make": "BMW",
+   "model": "X1",
+   "generation": "F48 (incl. 2 Series Active Tourer)",
+   "years": [
+    2015,
+    2022
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv",
+    "mpv"
+   ],
+   "engines": [
+    {
+     "id": "b38",
+     "name": "16i/18i (B38 3-cyl)",
+     "fuel": "gas"
+    },
+    {
+     "id": "b48",
+     "name": "20i/25i (B48)",
+     "fuel": "gas"
+    },
+    {
+     "id": "b47",
+     "name": "16d-25d (B37/B47)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "phev",
+     "name": "25e plug-in",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Practical, efficient"
+   ],
+   "problems": [
+    {
+     "id": "b38_mounts",
+     "title": "Engine mount and vibration complaints (B38 3-cylinder)",
+     "engines": [
+      "b38"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Vibration at idle"
+     ],
+     "what_to_check": [
+      "Feel for vibration at idle"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "engine_mounts"
+    },
+    {
+     "id": "f48_dct",
+     "title": "7-speed dual-clutch (DCT) jerky at low speed",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Jerky pull-away"
+     ],
+     "what_to_check": [
+      "Test drive in traffic"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dsg_mechatronic"
+    },
+    {
+     "id": "adblue",
+     "title": "AdBlue (DEF) system faults",
+     "engines": [
+      "b47"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning with a countdown to no-start"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    },
+    {
+     "id": "oil_filter_housing",
+     "title": "Oil leaks (oil filter housing and valve cover gaskets)",
+     "engines": [
+      "b38",
+      "b48",
+      "b47"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Burning oil smell",
+      "Oil on the engine or under the car"
+     ],
+     "what_to_check": [
+      "Look for oil around the oil filter housing and valve cover"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_leak_minor"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WBA",
+     "WBS",
+     "WBX",
+     "5UX",
+     "5YM"
+    ]
+   }
+  },
+  {
+   "id": "bmw_x3_e83",
+   "make": "BMW",
+   "model": "X3",
+   "generation": "E83",
+   "years": [
+    2003,
+    2010
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "n52",
+     "name": "2.5i/3.0i/3.0si (M54/N52)",
+     "fuel": "gas"
+    },
+    {
+     "id": "m47",
+     "name": "2.0d (M47/N47)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "m57",
+     "name": "3.0d/3.5d (M57)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Capable 4x4"
+   ],
+   "problems": [
+    {
+     "id": "transfer_case_actuator",
+     "title": "xDrive transfer case actuator / clutch wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "4x4 warning",
+      "Shudder or binding on tight turns"
+     ],
+     "what_to_check": [
+      "Drive slowly in full-lock circles and feel for binding"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "id": "swirl_flaps",
+     "title": "Swirl flaps can break into the engine (older M47/M57 diesels)",
+     "engines": [
+      "m47",
+      "m57"
+     ],
+     "frequency": "occasional",
+     "severity": "critical",
+     "symptoms": [
+      "None before failure"
+     ],
+     "what_to_check": [
+      "Ask whether the swirl flaps were removed or replaced"
+     ],
+     "years": [
+      2003,
+      2010
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "engine_replacement"
+    },
+    {
+     "id": "oil_filter_housing",
+     "title": "Oil leaks (oil filter housing and valve cover gaskets)",
+     "engines": [
+      "n52",
+      "m47",
+      "m57"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Burning oil smell",
+      "Oil on the engine or under the car"
+     ],
+     "what_to_check": [
+      "Look for oil around the oil filter housing and valve cover"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_leak_minor"
+    },
+    {
+     "id": "e83_suspension",
+     "title": "Worn suspension bushings (harsh ride)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Knocks"
+     ],
+     "what_to_check": [
+      "Drive over bumps"
+     ],
+     "complaint_group": "suspension",
+     "repair_cost_id": "control_arm_bushings"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WBA",
+     "WBS",
+     "WBX",
+     "5UX",
+     "5YM"
+    ]
+   }
+  },
+  {
+   "id": "bmw_x3_f25",
+   "make": "BMW",
+   "model": "X3",
+   "generation": "F25",
+   "years": [
+    2010,
+    2017
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "n20",
+     "name": "xDrive20i/28i (N20)",
+     "fuel": "gas"
+    },
+    {
+     "id": "n55",
+     "name": "xDrive35i (N55)",
+     "fuel": "gas"
+    },
+    {
+     "id": "n47",
+     "name": "xDrive20d (N47, to 2014)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "b47",
+     "name": "xDrive20d (B47, 2014+)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "n57",
+     "name": "xDrive30d/35d (N57)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Spacious and capable"
+   ],
+   "problems": [
+    {
+     "id": "transfer_case_actuator",
+     "title": "xDrive transfer case actuator / clutch wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "4x4 warning",
+      "Shudder or binding on tight turns"
+     ],
+     "what_to_check": [
+      "Drive slowly in full-lock circles and feel for binding"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "id": "n47_timing_chain",
+     "title": "Timing chain wear at the back of the engine (N47 2.0 diesel)",
+     "engines": [
+      "n47"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Rattle/whine from the back of the engine, especially at idle"
+     ],
+     "what_to_check": [
+      "Listen at idle with the bonnet open",
+      "Ask for chain replacement invoices"
+     ],
+     "years": [
+      2007,
+      2015
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "n20_timing_chain",
+     "title": "Timing chain guide failure (N20 2.0 turbo petrol)",
+     "engines": [
+      "n20"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Whine or rattle from the engine"
+     ],
+     "what_to_check": [
+      "Listen at idle; ask for chain/guide replacement"
+     ],
+     "years": [
+      2011,
+      2016
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "oil_filter_housing",
+     "title": "Oil leaks (oil filter housing and valve cover gaskets)",
+     "engines": [
+      "n20",
+      "n55",
+      "n47",
+      "b47",
+      "n57"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Burning oil smell",
+      "Oil on the engine or under the car"
+     ],
+     "what_to_check": [
+      "Look for oil around the oil filter housing and valve cover"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_leak_minor"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "n47",
+      "b47",
+      "n57"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WBA",
+     "WBS",
+     "WBX",
+     "5UX",
+     "5YM"
+    ]
+   }
+  },
+  {
+   "id": "bmw_x3_g01",
+   "make": "BMW",
+   "model": "X3",
+   "generation": "G01",
+   "years": [
+    2017,
+    2024
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "b48",
+     "name": "20i/30i (B48)",
+     "fuel": "gas"
+    },
+    {
+     "id": "b47",
+     "name": "20d (B47)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "b57",
+     "name": "30d (B57)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "phev",
+     "name": "30e plug-in",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Modern and comfortable"
+   ],
+   "problems": [
+    {
+     "id": "transfer_case_actuator",
+     "title": "xDrive transfer case actuator / clutch wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "4x4 warning",
+      "Shudder or binding on tight turns"
+     ],
+     "what_to_check": [
+      "Drive slowly in full-lock circles and feel for binding"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "id": "adblue",
+     "title": "AdBlue (DEF) system faults",
+     "engines": [
+      "b47",
+      "b57"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning with a countdown to no-start"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    },
+    {
+     "id": "oil_filter_housing",
+     "title": "Oil leaks (oil filter housing and valve cover gaskets)",
+     "engines": [
+      "b48",
+      "b47",
+      "b57"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Burning oil smell",
+      "Oil on the engine or under the car"
+     ],
+     "what_to_check": [
+      "Look for oil around the oil filter housing and valve cover"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_leak_minor"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WBA",
+     "WBS",
+     "WBX",
+     "5UX",
+     "5YM"
+    ]
+   }
+  },
+  {
+   "id": "bmw_x5_e70",
+   "make": "BMW",
+   "model": "X5",
+   "generation": "E70",
+   "years": [
+    2006,
+    2013
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "n52",
+     "name": "3.0si/xDrive30i (N52)",
+     "fuel": "gas"
+    },
+    {
+     "id": "n55",
+     "name": "xDrive35i (N55)",
+     "fuel": "gas"
+    },
+    {
+     "id": "m57",
+     "name": "3.0d/xDrive30d (M57/N57)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "n63",
+     "name": "xDrive50i V8 (N63)",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Capable and luxurious"
+   ],
+   "problems": [
+    {
+     "id": "transfer_case_actuator",
+     "title": "xDrive transfer case actuator / clutch wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "4x4 warning",
+      "Shudder or binding on tight turns"
+     ],
+     "what_to_check": [
+      "Drive slowly in full-lock circles and feel for binding"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "id": "oil_filter_housing",
+     "title": "Oil leaks (oil filter housing and valve cover gaskets)",
+     "engines": [
+      "n52",
+      "n55",
+      "m57",
+      "n63"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Burning oil smell",
+      "Oil on the engine or under the car"
+     ],
+     "what_to_check": [
+      "Look for oil around the oil filter housing and valve cover"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_leak_minor"
+    },
+    {
+     "id": "electric_water_pump",
+     "title": "Electric water pump and thermostat failure",
+     "engines": [
+      "n52",
+      "n55"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Overheating warning",
+      "Coolant warning"
+     ],
+     "what_to_check": [
+      "Ask when the water pump was replaced (often 80,000-120,000 km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "water_pump"
+    },
+    {
+     "id": "n63_oil_x5",
+     "title": "Oil burning and turbo failures (N63 V8)",
+     "engines": [
+      "n63"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Blue smoke"
+     ],
+     "what_to_check": [
+      "Avoid unless documented"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_consumption_repair"
+    },
+    {
+     "id": "e70_air_susp",
+     "title": "Rear air suspension leaks",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Rear sits low"
+     ],
+     "what_to_check": [
+      "Check ride height"
+     ],
+     "complaint_group": "suspension",
+     "repair_cost_id": "shocks_struts_pair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WBA",
+     "WBS",
+     "WBX",
+     "5UX",
+     "5YM"
+    ]
+   }
+  },
+  {
+   "id": "bmw_x5_f15",
+   "make": "BMW",
+   "model": "X5",
+   "generation": "F15",
+   "years": [
+    2013,
+    2018
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "n55",
+     "name": "xDrive35i (N55)",
+     "fuel": "gas"
+    },
+    {
+     "id": "n57",
+     "name": "xDrive25d-40d (N47/N57/B47)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "phev",
+     "name": "xDrive40e plug-in",
+     "fuel": "hybrid"
+    },
+    {
+     "id": "n63",
+     "name": "xDrive50i V8",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Comfortable, capable"
+   ],
+   "problems": [
+    {
+     "id": "transfer_case_actuator",
+     "title": "xDrive transfer case actuator / clutch wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "4x4 warning",
+      "Shudder or binding on tight turns"
+     ],
+     "what_to_check": [
+      "Drive slowly in full-lock circles and feel for binding"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "id": "oil_filter_housing",
+     "title": "Oil leaks (oil filter housing and valve cover gaskets)",
+     "engines": [
+      "n55",
+      "n57",
+      "n63"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Burning oil smell",
+      "Oil on the engine or under the car"
+     ],
+     "what_to_check": [
+      "Look for oil around the oil filter housing and valve cover"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_leak_minor"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "n57"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "adblue",
+     "title": "AdBlue (DEF) system faults",
+     "engines": [
+      "n57"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning with a countdown to no-start"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WBA",
+     "WBS",
+     "WBX",
+     "5UX",
+     "5YM"
+    ]
+   }
+  },
+  {
+   "id": "mb_a_w169",
+   "make": "Mercedes-Benz",
+   "model": "A-Class",
+   "generation": "W169 (incl. B-Class W245)",
+   "years": [
+    2004,
+    2012
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback",
+    "mpv"
+   ],
+   "engines": [
+    {
+     "id": "m266",
+     "name": "A150-A200 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "om640",
+     "name": "A160-A200 CDI",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Tall, practical, safe"
+   ],
+   "problems": [
+    {
+     "id": "autotronic_cvt",
+     "title": "Autotronic CVT failures",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Slipping, judder, warning"
+     ],
+     "what_to_check": [
+      "Test drive the automatic"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "id": "w169_front_axle",
+     "title": "Front suspension wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Knocks"
+     ],
+     "what_to_check": [
+      "Drive over bumps"
+     ],
+     "complaint_group": "suspension",
+     "repair_cost_id": "control_arm_bushings"
+    },
+    {
+     "id": "w169_ac",
+     "title": "A/C condenser and compressor faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "A/C not cold"
+     ],
+     "what_to_check": [
+      "Test the A/C"
+     ],
+     "complaint_group": "climate",
+     "repair_cost_id": "ac_compressor"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WDD",
+     "WDB",
+     "WDC",
+     "W1K",
+     "W1N",
+     "4JG",
+     "55S",
+     "WDF"
+    ]
+   }
+  },
+  {
+   "id": "mb_a_w176",
+   "make": "Mercedes-Benz",
+   "model": "A-Class",
+   "generation": "W176 (incl. B W246, CLA, GLA)",
+   "years": [
+    2012,
+    2019
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "hatchback",
+    "mpv",
+    "sedan",
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "m270",
+     "name": "A180-A250 petrol (M270 1.6/2.0)",
+     "fuel": "gas"
+    },
+    {
+     "id": "om607",
+     "name": "A180d/B180d (1.5 dCi, Renault)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "om651",
+     "name": "A200d/A220d (2.1/2.2 CDI)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Premium feel",
+    "Economical diesels"
+   ],
+   "problems": [
+    {
+     "id": "7gdct",
+     "title": "7G-DCT dual-clutch: jerky shifts, mechatronic",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Jerky low-speed shifts"
+     ],
+     "what_to_check": [
+      "Test drive in traffic"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dsg_mechatronic"
+    },
+    {
+     "id": "m270_cam",
+     "title": "Camshaft adjuster rattle at cold start (M270)",
+     "engines": [
+      "m270"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Rattle for a second at cold start"
+     ],
+     "what_to_check": [
+      "Listen at a cold start"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "cam_phasers"
+    },
+    {
+     "id": "om607_dci",
+     "title": "Crankshaft bearing / EGR issues (1.5 dCi diesel)",
+     "engines": [
+      "om607"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Knocking, loss of power"
+     ],
+     "what_to_check": [
+      "Ask for oil change records"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "egr_valve"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "om607",
+      "om651"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WDD",
+     "WDB",
+     "WDC",
+     "W1K",
+     "W1N",
+     "4JG",
+     "55S",
+     "WDF"
+    ]
+   }
+  },
+  {
+   "id": "mb_c_w203",
+   "make": "Mercedes-Benz",
+   "model": "C-Class",
+   "generation": "W203",
+   "years": [
+    2000,
+    2007
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "sedan",
+    "estate",
+    "coupe"
+   ],
+   "engines": [
+    {
+     "id": "m271",
+     "name": "C180/C200 Kompressor (M271)",
+     "fuel": "gas"
+    },
+    {
+     "id": "om646",
+     "name": "C200/C220 CDI",
+     "fuel": "diesel"
+    },
+    {
+     "id": "v6",
+     "name": "C240-C350 V6",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Comfortable, durable diesels"
+   ],
+   "problems": [
+    {
+     "id": "rust",
+     "title": "Rust (wheel arches, door bottoms, boot lid and jacking points)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Bubbling paint"
+     ],
+     "what_to_check": [
+      "Check the wheel arches, door bottoms, boot lid and jacking points"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    },
+    {
+     "id": "m271_chain_203",
+     "title": "Timing chain stretch (M271 Kompressor)",
+     "engines": [
+      "m271"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Rattle at start",
+      "Engine light"
+     ],
+     "what_to_check": [
+      "Listen at a cold start"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "om646_injectors",
+     "title": "Injector seal leaks / injectors (CDI)",
+     "engines": [
+      "om646"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Diesel smell, puffing noise"
+     ],
+     "what_to_check": [
+      "Look for black deposits around injectors"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "id": "w203_electrics",
+     "title": "Electrical faults (SAM modules)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Random electrical faults"
+     ],
+     "what_to_check": [
+      "Test all electrics"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "electrical_diagnosis"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WDD",
+     "WDB",
+     "WDC",
+     "W1K",
+     "W1N",
+     "4JG",
+     "55S",
+     "WDF"
+    ]
+   }
+  },
+  {
+   "id": "mb_c_w204",
+   "make": "Mercedes-Benz",
+   "model": "C-Class",
+   "generation": "W204",
+   "years": [
+    2007,
+    2014
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "sedan",
+    "estate",
+    "coupe"
+   ],
+   "engines": [
+    {
+     "id": "m271",
+     "name": "C180/C200/C250 (M271)",
+     "fuel": "gas"
+    },
+    {
+     "id": "cdi22",
+     "name": "C200/C220/C250 CDI (OM646/OM651)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "cdi30",
+     "name": "C320/C350 CDI V6 (OM642)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "v6",
+     "name": "C230-C350 V6 petrol",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Comfortable and solid",
+    "Economical CDI"
+   ],
+   "problems": [
+    {
+     "id": "m271_chain",
+     "title": "Timing chain stretch (M271)",
+     "engines": [
+      "m271"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Rattle at start",
+      "Engine light"
+     ],
+     "what_to_check": [
+      "Listen at a cold start",
+      "Ask for chain kit"
+     ],
+     "years": [
+      2007,
+      2011
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "om651_injectors",
+     "title": "Injector faults and timing chain wear (OM651 2.1/2.2 CDI)",
+     "engines": [
+      "cdi22"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rough idle, smoke, engine light",
+      "Rattle at start"
+     ],
+     "what_to_check": [
+      "Ask about injector recalls/replacements",
+      "Listen at a cold start"
+     ],
+     "years": [
+      2008,
+      2016
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "id": "om642_oil_cooler",
+     "title": "Oil cooler seal leaks (V6 3.0 CDI)",
+     "engines": [
+      "cdi30"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Oil in the engine valley, burning smell"
+     ],
+     "what_to_check": [
+      "Look for oil at the top-center of the engine"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_leak_major"
+    },
+    {
+     "id": "7gtronic_plate",
+     "title": "7G-Tronic automatic: conductor plate / harsh shifts",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Harsh shifts, stuck in one gear (limp mode)"
+     ],
+     "what_to_check": [
+      "Test drive warm; ask for gearbox oil changes"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "id": "rust",
+     "title": "Rust (boot lid, wheel arches and door edges)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Bubbling paint"
+     ],
+     "what_to_check": [
+      "Check the boot lid, wheel arches and door edges"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WDD",
+     "WDB",
+     "WDC",
+     "W1K",
+     "W1N",
+     "4JG",
+     "55S",
+     "WDF"
+    ]
+   }
+  },
+  {
+   "id": "mb_c_w205",
+   "make": "Mercedes-Benz",
+   "model": "C-Class",
+   "generation": "W205",
+   "years": [
+    2014,
+    2021
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "sedan",
+    "estate",
+    "coupe",
+    "convertible"
+   ],
+   "engines": [
+    {
+     "id": "m274",
+     "name": "C180-C300 petrol (M274/M264)",
+     "fuel": "gas"
+    },
+    {
+     "id": "cdi22",
+     "name": "C200d-C250d (OM651)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "om654",
+     "name": "C200d/C220d (OM654, 2018+)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "phev",
+     "name": "C300e/C350e plug-in",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Refined and comfortable"
+   ],
+   "problems": [
+    {
+     "id": "m274_cam",
+     "title": "Camshaft adjuster / timing issues (M274)",
+     "engines": [
+      "m274"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at cold start",
+      "Engine light"
+     ],
+     "what_to_check": [
+      "Listen at a cold start"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "cam_phasers"
+    },
+    {
+     "id": "om651_injectors",
+     "title": "Injector faults and timing chain wear (OM651 2.1/2.2 CDI)",
+     "engines": [
+      "cdi22"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rough idle, smoke, engine light",
+      "Rattle at start"
+     ],
+     "what_to_check": [
+      "Ask about injector recalls/replacements",
+      "Listen at a cold start"
+     ],
+     "years": [
+      2008,
+      2016
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "id": "adblue",
+     "title": "AdBlue (DEF) system faults",
+     "engines": [
+      "cdi22",
+      "om654"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning with a countdown to no-start"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    },
+    {
+     "id": "w205_airmatic",
+     "title": "Air suspension faults (Airmatic)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Sits low"
+     ],
+     "what_to_check": [
+      "Check ride height"
+     ],
+     "complaint_group": "suspension",
+     "repair_cost_id": "shocks_struts_pair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WDD",
+     "WDB",
+     "WDC",
+     "W1K",
+     "W1N",
+     "4JG",
+     "55S",
+     "WDF"
+    ]
+   }
+  },
+  {
+   "id": "mb_e_w211",
+   "make": "Mercedes-Benz",
+   "model": "E-Class",
+   "generation": "W211",
+   "years": [
+    2002,
+    2009
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "sedan",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "om646",
+     "name": "E200/E220 CDI",
+     "fuel": "diesel"
+    },
+    {
+     "id": "cdi30",
+     "name": "E280/E320 CDI V6 (OM642)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "v6",
+     "name": "E200K-E350 petrol",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Very comfortable",
+    "Durable diesels"
+   ],
+   "problems": [
+    {
+     "id": "sbc_brakes",
+     "title": "SBC electro-hydraulic brake unit failure (to ~2006)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "Brake warning, hard pedal"
+     ],
+     "what_to_check": [
+      "Ask if the SBC unit was replaced (recall)"
+     ],
+     "years": [
+      2002,
+      2006
+     ],
+     "complaint_group": "brakes",
+     "repair_cost_id": "abs_module"
+    },
+    {
+     "id": "om642_oil_cooler",
+     "title": "Oil cooler seal leaks (V6 3.0 CDI)",
+     "engines": [
+      "cdi30"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Oil in the engine valley, burning smell"
+     ],
+     "what_to_check": [
+      "Look for oil at the top-center of the engine"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_leak_major"
+    },
+    {
+     "id": "rust",
+     "title": "Rust (wheel arches, door bottoms and boot lid)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Bubbling paint"
+     ],
+     "what_to_check": [
+      "Check the wheel arches, door bottoms and boot lid"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    },
+    {
+     "id": "w211_airmatic",
+     "title": "Airmatic air suspension leaks",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Car sits low"
+     ],
+     "what_to_check": [
+      "Check ride height"
+     ],
+     "complaint_group": "suspension",
+     "repair_cost_id": "shocks_struts_pair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WDD",
+     "WDB",
+     "WDC",
+     "W1K",
+     "W1N",
+     "4JG",
+     "55S",
+     "WDF"
+    ]
+   }
+  },
+  {
+   "id": "mb_e_w212",
+   "make": "Mercedes-Benz",
+   "model": "E-Class",
+   "generation": "W212",
+   "years": [
+    2009,
+    2016
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "sedan",
+    "estate",
+    "coupe",
+    "convertible"
+   ],
+   "engines": [
+    {
+     "id": "cdi22",
+     "name": "E200-E250 CDI (OM651)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "cdi30",
+     "name": "E300/E350 CDI V6 (OM642)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "m274",
+     "name": "E200/E250 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "v6",
+     "name": "E350 V6 petrol",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Very comfortable, durable"
+   ],
+   "problems": [
+    {
+     "id": "om651_injectors",
+     "title": "Injector faults and timing chain wear (OM651 2.1/2.2 CDI)",
+     "engines": [
+      "cdi22"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rough idle, smoke, engine light",
+      "Rattle at start"
+     ],
+     "what_to_check": [
+      "Ask about injector recalls/replacements",
+      "Listen at a cold start"
+     ],
+     "years": [
+      2008,
+      2016
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "id": "om642_oil_cooler",
+     "title": "Oil cooler seal leaks (V6 3.0 CDI)",
+     "engines": [
+      "cdi30"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Oil in the engine valley, burning smell"
+     ],
+     "what_to_check": [
+      "Look for oil at the top-center of the engine"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_leak_major"
+    },
+    {
+     "id": "7gtronic_plate",
+     "title": "7G-Tronic automatic: conductor plate / harsh shifts",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Harsh shifts, stuck in one gear (limp mode)"
+     ],
+     "what_to_check": [
+      "Test drive warm; ask for gearbox oil changes"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "id": "rust",
+     "title": "Rust (door edges and boot lid (minor))",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Bubbling paint"
+     ],
+     "what_to_check": [
+      "Check the door edges and boot lid (minor)"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WDD",
+     "WDB",
+     "WDC",
+     "W1K",
+     "W1N",
+     "4JG",
+     "55S",
+     "WDF"
+    ]
+   }
+  },
+  {
+   "id": "mb_e_w213",
+   "make": "Mercedes-Benz",
+   "model": "E-Class",
+   "generation": "W213",
+   "years": [
+    2016,
+    2023
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "sedan",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "m264",
+     "name": "E200/E300 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "om654",
+     "name": "E200d/E220d (OM654)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "om656",
+     "name": "E350d/E400d (OM656)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "phev",
+     "name": "E300e/E300de plug-in",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Excellent comfort",
+    "Efficient diesels"
+   ],
+   "problems": [
+    {
+     "id": "adblue",
+     "title": "AdBlue (DEF) system faults",
+     "engines": [
+      "om654",
+      "om656"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning with a countdown to no-start"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    },
+    {
+     "id": "w213_electronics",
+     "title": "Electronics / sensor faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Warnings"
+     ],
+     "what_to_check": [
+      "Test all assists"
+     ],
+     "complaint_group": "driver_assist",
+     "repair_cost_id": "adas_sensor"
+    },
+    {
+     "id": "w213_airmatic",
+     "title": "Air suspension faults (if fitted)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Sits low"
+     ],
+     "what_to_check": [
+      "Check ride height"
+     ],
+     "complaint_group": "suspension",
+     "repair_cost_id": "shocks_struts_pair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WDD",
+     "WDB",
+     "WDC",
+     "W1K",
+     "W1N",
+     "4JG",
+     "55S",
+     "WDF"
+    ]
+   }
+  },
+  {
+   "id": "mb_ml_w164",
+   "make": "Mercedes-Benz",
+   "model": "M-Class",
+   "generation": "W164 (incl. GL X164)",
+   "years": [
+    2005,
+    2011
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "cdi30",
+     "name": "ML280/ML320/ML350 CDI (OM642)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "v6",
+     "name": "ML350 V6 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "v8",
+     "name": "ML500 V8",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Capable 4x4, comfortable"
+   ],
+   "problems": [
+    {
+     "id": "om642_oil_cooler",
+     "title": "Oil cooler seal leaks (V6 3.0 CDI)",
+     "engines": [
+      "cdi30"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Oil in the engine valley, burning smell"
+     ],
+     "what_to_check": [
+      "Look for oil at the top-center of the engine"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_leak_major"
+    },
+    {
+     "id": "7gtronic_plate",
+     "title": "7G-Tronic automatic: conductor plate / harsh shifts",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Harsh shifts, stuck in one gear (limp mode)"
+     ],
+     "what_to_check": [
+      "Test drive warm; ask for gearbox oil changes"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_repair"
+    },
+    {
+     "id": "w164_airmatic",
+     "title": "Airmatic leaks",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Sits low"
+     ],
+     "what_to_check": [
+      "Check ride height"
+     ],
+     "complaint_group": "suspension",
+     "repair_cost_id": "shocks_struts_pair"
+    },
+    {
+     "id": "rust",
+     "title": "Rust (tailgate and around the rear number plate)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Bubbling paint"
+     ],
+     "what_to_check": [
+      "Check the tailgate and around the rear number plate"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WDD",
+     "WDB",
+     "WDC",
+     "W1K",
+     "W1N",
+     "4JG",
+     "55S",
+     "WDF"
+    ]
+   }
+  },
+  {
+   "id": "mb_ml_w166",
+   "make": "Mercedes-Benz",
+   "model": "M-Class / GLE",
+   "generation": "W166",
+   "years": [
+    2011,
+    2019
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "cdi22",
+     "name": "ML250 BlueTEC (OM651)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "cdi30",
+     "name": "ML350 BlueTEC (OM642)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "v6",
+     "name": "ML350 / GLE400 petrol",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Comfortable, strong diesels"
+   ],
+   "problems": [
+    {
+     "id": "om651_injectors",
+     "title": "Injector faults and timing chain wear (OM651 2.1/2.2 CDI)",
+     "engines": [
+      "cdi22"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rough idle, smoke, engine light",
+      "Rattle at start"
+     ],
+     "what_to_check": [
+      "Ask about injector recalls/replacements",
+      "Listen at a cold start"
+     ],
+     "years": [
+      2008,
+      2016
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "id": "om642_oil_cooler",
+     "title": "Oil cooler seal leaks (V6 3.0 CDI)",
+     "engines": [
+      "cdi30"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Oil in the engine valley, burning smell"
+     ],
+     "what_to_check": [
+      "Look for oil at the top-center of the engine"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_leak_major"
+    },
+    {
+     "id": "adblue",
+     "title": "AdBlue (DEF) system faults",
+     "engines": [
+      "cdi22",
+      "cdi30"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning with a countdown to no-start"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    },
+    {
+     "id": "w166_airmatic",
+     "title": "Air suspension faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Sits low"
+     ],
+     "what_to_check": [
+      "Check ride height"
+     ],
+     "complaint_group": "suspension",
+     "repair_cost_id": "shocks_struts_pair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WDD",
+     "WDB",
+     "WDC",
+     "W1K",
+     "W1N",
+     "4JG",
+     "55S",
+     "WDF"
+    ]
+   }
+  },
+  {
+   "id": "mb_glc_x253",
+   "make": "Mercedes-Benz",
+   "model": "GLC",
+   "generation": "X253",
+   "years": [
+    2015,
+    2022
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "m274",
+     "name": "GLC 200/250/300 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "cdi22",
+     "name": "GLC 220d/250d (OM651/OM654)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "phev",
+     "name": "GLC 300e/350e plug-in",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Comfortable premium SUV"
+   ],
+   "problems": [
+    {
+     "id": "adblue",
+     "title": "AdBlue (DEF) system faults",
+     "engines": [
+      "cdi22"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning with a countdown to no-start"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    },
+    {
+     "id": "om651_injectors",
+     "title": "Injector faults and timing chain wear (OM651 2.1/2.2 CDI)",
+     "engines": [
+      "cdi22"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rough idle, smoke, engine light",
+      "Rattle at start"
+     ],
+     "what_to_check": [
+      "Ask about injector recalls/replacements",
+      "Listen at a cold start"
+     ],
+     "years": [
+      2008,
+      2016
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "id": "glc_9g",
+     "title": "9G-Tronic harsh shifts (software)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Harsh low-speed shifts"
+     ],
+     "what_to_check": [
+      "Test drive"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_service"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "WDD",
+     "WDB",
+     "WDC",
+     "W1K",
+     "W1N",
+     "4JG",
+     "55S",
+     "WDF"
+    ]
+   }
+  },
+  {
+   "id": "mb_sprinter_906",
+   "make": "Mercedes-Benz",
+   "model": "Sprinter",
+   "generation": "W906 (incl. VW Crafter 2006-2016)",
+   "years": [
+    2006,
+    2018
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "van"
+   ],
+   "engines": [
+    {
+     "id": "cdi22",
+     "name": "2.1/2.2 CDI (OM646/OM651)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "cdi30",
+     "name": "3.0 CDI V6 (OM642)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Huge, versatile van"
+   ],
+   "problems": [
+    {
+     "id": "rust",
+     "title": "Rust (sills, wheel arches, doors and floor)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Bubbling paint"
+     ],
+     "what_to_check": [
+      "Check the sills, wheel arches, doors and floor"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    },
+    {
+     "id": "om651_injectors",
+     "title": "Injector faults and timing chain wear (OM651 2.1/2.2 CDI)",
+     "engines": [
+      "cdi22"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rough idle, smoke, engine light",
+      "Rattle at start"
+     ],
+     "what_to_check": [
+      "Ask about injector recalls/replacements",
+      "Listen at a cold start"
+     ],
+     "years": [
+      2008,
+      2016
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "fuel_injectors"
+    },
+    {
+     "id": "om642_oil_cooler",
+     "title": "Oil cooler seal leaks (V6 3.0 CDI)",
+     "engines": [
+      "cdi30"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Oil in the engine valley, burning smell"
+     ],
+     "what_to_check": [
+      "Look for oil at the top-center of the engine"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "oil_leak_major"
+    },
+    {
+     "id": "dual_mass_flywheel",
+     "title": "Dual-mass flywheel wear (manual)",
+     "engines": [
+      "cdi22"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at idle that stops with the clutch pressed",
+      "Judder pulling away"
+     ],
+     "what_to_check": [
+      "Listen at idle with the clutch released, then pressed"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "dual_mass_flywheel"
+    },
+    {
+     "id": "adblue",
+     "title": "AdBlue (DEF) system faults",
+     "engines": [
+      "cdi22",
+      "cdi30"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning with a countdown to no-start"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    }
+   ],
+   "buying_tips": [
+    "Check how hard it worked: clutch, suspension and rust"
+   ],
+   "vin": {
+    "wmi": [
+     "WDD",
+     "WDB",
+     "WDC",
+     "W1K",
+     "W1N",
+     "4JG",
+     "55S",
+     "WDF",
+     "WV1"
+    ]
+   }
+  },
+  {
+   "id": "fiat_500",
+   "make": "Fiat",
+   "model": "500",
+   "generation": "312 (incl. 500C)",
+   "years": [
+    2007,
+    2024
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "hatchback",
+    "convertible"
+   ],
+   "engines": [
+    {
+     "id": "fire12",
+     "name": "1.2 8v (69 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "twinair",
+     "name": "0.9 TwinAir (80-105 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "fire14",
+     "name": "1.4 16v / Abarth 1.4 T-Jet",
+     "fuel": "gas"
+    },
+    {
+     "id": "mj13",
+     "name": "1.3 Multijet (75-95 hp)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Cheap and charming",
+    "1.2 8v is very simple"
+   ],
+   "problems": [
+    {
+     "id": "eps_column",
+     "title": "Electric power steering column (Dualdrive) failure",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Heavy steering, warning light"
+     ],
+     "what_to_check": [
+      "Check steering assistance at parking speed"
+     ],
+     "complaint_group": "steering",
+     "repair_cost_id": "power_steering"
+    },
+    {
+     "id": "dualogic",
+     "title": "Dualogic automated gearbox: pump/actuator failures",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Will not select gear, warning light"
+     ],
+     "what_to_check": [
+      "Test drive the automatic, select every gear"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "clutch"
+    },
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "fire12",
+      "fire14"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "multijet_chain",
+     "title": "Timing chain stretch (1.3 Multijet)",
+     "engines": [
+      "mj13"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at start"
+     ],
+     "what_to_check": [
+      "Listen at a cold start"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "twinair_oil",
+     "title": "TwinAir: oil use, rough idle, MultiAir actuator faults",
+     "engines": [
+      "twinair"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Rough running, engine light"
+     ],
+     "what_to_check": [
+      "Check smooth idle; ask about the MultiAir unit"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "cam_phasers"
+    },
+    {
+     "id": "500_suspension",
+     "title": "Front suspension and top mount wear",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Knocks"
+     ],
+     "what_to_check": [
+      "Drive over bumps"
+     ],
+     "complaint_group": "suspension",
+     "repair_cost_id": "shocks_struts_pair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "ZFA",
+     "ZFB"
+    ]
+   }
+  },
+  {
+   "id": "fiat_punto",
+   "make": "Fiat",
+   "model": "Punto",
+   "generation": "Grande Punto / Punto Evo / Punto (199)",
+   "years": [
+    2005,
+    2018
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback"
+   ],
+   "engines": [
+    {
+     "id": "fire12",
+     "name": "1.2/1.4 8v (65-77 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "tjet",
+     "name": "1.4 16v / T-Jet / MultiAir",
+     "fuel": "gas"
+    },
+    {
+     "id": "mj13",
+     "name": "1.3 Multijet (75-95 hp)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "mj19",
+     "name": "1.6/1.9 Multijet",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Cheap to buy and fix"
+   ],
+   "problems": [
+    {
+     "id": "eps_column",
+     "title": "Electric power steering column (Dualdrive) failure",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Heavy steering, warning light"
+     ],
+     "what_to_check": [
+      "Check steering assistance at parking speed"
+     ],
+     "complaint_group": "steering",
+     "repair_cost_id": "power_steering"
+    },
+    {
+     "id": "dualogic",
+     "title": "Dualogic automated gearbox: pump/actuator failures",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Will not select gear, warning light"
+     ],
+     "what_to_check": [
+      "Test drive the automatic, select every gear"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "clutch"
+    },
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "fire12",
+      "tjet",
+      "mj19"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "multijet_chain",
+     "title": "Timing chain stretch (1.3 Multijet)",
+     "engines": [
+      "mj13"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at start"
+     ],
+     "what_to_check": [
+      "Listen at a cold start"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "mj13",
+      "mj19"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "ZFA",
+     "ZFB"
+    ]
+   }
+  },
+  {
+   "id": "fiat_panda",
+   "make": "Fiat",
+   "model": "Panda",
+   "generation": "169 and 312/319",
+   "years": [
+    2003,
+    2026
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback"
+   ],
+   "engines": [
+    {
+     "id": "fire12",
+     "name": "1.1/1.2 8v (54-69 hp)",
+     "fuel": "gas"
+    },
+    {
+     "id": "twinair",
+     "name": "0.9 TwinAir",
+     "fuel": "gas"
+    },
+    {
+     "id": "mj13",
+     "name": "1.3 Multijet",
+     "fuel": "diesel"
+    },
+    {
+     "id": "hybrid",
+     "name": "1.0 mild hybrid",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Cheap, simple, tough",
+    "4x4 versions are capable"
+   ],
+   "problems": [
+    {
+     "id": "eps_column",
+     "title": "Electric power steering column (Dualdrive) failure",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Heavy steering, warning light"
+     ],
+     "what_to_check": [
+      "Check steering assistance at parking speed"
+     ],
+     "complaint_group": "steering",
+     "repair_cost_id": "power_steering"
+    },
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "fire12"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    },
+    {
+     "id": "multijet_chain",
+     "title": "Timing chain stretch (1.3 Multijet)",
+     "engines": [
+      "mj13"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Rattle at start"
+     ],
+     "what_to_check": [
+      "Listen at a cold start"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_chain"
+    },
+    {
+     "id": "panda_rust",
+     "title": "Rust on older cars (sills, rear arches, floor)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "Bubbling paint"
+     ],
+     "what_to_check": [
+      "Check sills and floor"
+     ],
+     "complaint_group": "structure",
+     "repair_cost_id": "rust_repair"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "ZFA",
+     "ZFB"
+    ]
+   }
+  },
+  {
+   "id": "fiat_tipo",
+   "make": "Fiat",
+   "model": "Tipo",
+   "generation": "356",
+   "years": [
+    2015,
+    2026
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "sedan",
+    "hatchback",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "fire14",
+     "name": "1.4 16v / 1.4 T-Jet",
+     "fuel": "gas"
+    },
+    {
+     "id": "fire10",
+     "name": "1.0 / 1.5 hybrid",
+     "fuel": "gas"
+    },
+    {
+     "id": "mj16",
+     "name": "1.3/1.6 Multijet",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Lots of car for the money"
+   ],
+   "problems": [
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "mj16"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "tipo_electrics",
+     "title": "Small electrical and infotainment faults",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Screen glitches"
+     ],
+     "what_to_check": [
+      "Test electrics"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "infotainment"
+    },
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "fire14"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "ZFA",
+     "ZFB"
+    ]
+   }
+  },
+  {
+   "id": "volvo_xc60_1",
+   "make": "Volvo",
+   "model": "XC60",
+   "generation": "1st gen (incl. S60/V60 2010-2018)",
+   "years": [
+    2008,
+    2017
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv",
+    "sedan",
+    "estate"
+   ],
+   "engines": [
+    {
+     "id": "d5",
+     "name": "D3/D4/D5 2.4 five-cylinder diesel",
+     "fuel": "diesel"
+    },
+    {
+     "id": "d4vea",
+     "name": "D3/D4 2.0 Drive-E diesel (2014+)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "t5",
+     "name": "T5/T6 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "d2",
+     "name": "D2 1.6 diesel (PSA)",
+     "fuel": "diesel"
+    }
+   ],
+   "strengths": [
+    "Very safe, comfortable",
+    "Durable 5-cylinder diesel"
+   ],
+   "problems": [
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "d5",
+      "d4vea",
+      "d2"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "xc60_aisin",
+     "title": "Automatic gearbox harsh shifts (old fluid)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Harsh shifts, judder"
+     ],
+     "what_to_check": [
+      "Test drive; ask for fluid change"
+     ],
+     "complaint_group": "transmission",
+     "repair_cost_id": "transmission_service"
+    },
+    {
+     "id": "d5_egr_swirl",
+     "title": "EGR and intake swirl flap issues (2.4 D5)",
+     "engines": [
+      "d5"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Engine light"
+     ],
+     "what_to_check": [
+      "Check for warnings"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "egr_valve"
+    },
+    {
+     "id": "volvo_haldex",
+     "title": "AWD (Haldex) coupling not serviced",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "AWD warning"
+     ],
+     "what_to_check": [
+      "Ask for coupling service"
+     ],
+     "complaint_group": "transmission"
+    },
+    {
+     "id": "volvo_pcv",
+     "title": "Crankcase breather (PCV) blockage (5-cyl petrol)",
+     "engines": [
+      "t5"
+     ],
+     "frequency": "occasional",
+     "severity": "minor",
+     "symptoms": [
+      "Oil leaks, whistling"
+     ],
+     "what_to_check": [
+      "Look for oil leaks"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "pcv_valve"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "YV1",
+     "YV4",
+     "LYV"
+    ]
+   }
+  },
+  {
+   "id": "volvo_xc90_2",
+   "make": "Volvo",
+   "model": "XC90",
+   "generation": "2nd gen",
+   "years": [
+    2015,
+    2025
+   ],
+   "markets": [
+    "eu",
+    "us"
+   ],
+   "body": [
+    "suv"
+   ],
+   "engines": [
+    {
+     "id": "d5",
+     "name": "D4/D5 2.0 diesel",
+     "fuel": "diesel"
+    },
+    {
+     "id": "t5",
+     "name": "T5/T6 petrol",
+     "fuel": "gas"
+    },
+    {
+     "id": "t8",
+     "name": "T8 plug-in hybrid",
+     "fuel": "hybrid"
+    }
+   ],
+   "strengths": [
+    "Very safe 7-seater",
+    "Luxurious"
+   ],
+   "problems": [
+    {
+     "id": "xc90_sensus",
+     "title": "Infotainment (Sensus) freezes and electrical glitches",
+     "engines": [
+      "all"
+     ],
+     "frequency": "common",
+     "severity": "minor",
+     "symptoms": [
+      "Screen freezes, warnings"
+     ],
+     "what_to_check": [
+      "Test the screen and all functions"
+     ],
+     "complaint_group": "electrical",
+     "repair_cost_id": "infotainment"
+    },
+    {
+     "id": "xc90_air",
+     "title": "Air suspension faults (if fitted)",
+     "engines": [
+      "all"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Sits low"
+     ],
+     "what_to_check": [
+      "Check ride height"
+     ],
+     "complaint_group": "suspension",
+     "repair_cost_id": "shocks_struts_pair"
+    },
+    {
+     "id": "t8_charging",
+     "title": "Hybrid charging / battery faults (T8)",
+     "engines": [
+      "t8"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Will not charge, hybrid warning"
+     ],
+     "what_to_check": [
+      "Test charging"
+     ],
+     "complaint_group": "hybrid_ev",
+     "repair_cost_id": "ev_charger_port"
+    },
+    {
+     "id": "adblue",
+     "title": "AdBlue (DEF) system faults",
+     "engines": [
+      "d5"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "AdBlue warning with a countdown to no-start"
+     ],
+     "what_to_check": [
+      "Check for AdBlue warnings"
+     ],
+     "complaint_group": "fuel",
+     "repair_cost_id": "adblue_system"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "YV1",
+     "YV4",
+     "LYV"
+    ]
+   }
+  },
+  {
+   "id": "volvo_v40",
+   "make": "Volvo",
+   "model": "V40",
+   "generation": "2nd gen",
+   "years": [
+    2012,
+    2019
+   ],
+   "markets": [
+    "eu"
+   ],
+   "body": [
+    "hatchback"
+   ],
+   "engines": [
+    {
+     "id": "d2",
+     "name": "D2 1.6 diesel (PSA)",
+     "fuel": "diesel"
+    },
+    {
+     "id": "d3",
+     "name": "D3/D4 2.0 diesel",
+     "fuel": "diesel"
+    },
+    {
+     "id": "t3",
+     "name": "T2-T5 petrol",
+     "fuel": "gas"
+    }
+   ],
+   "strengths": [
+    "Safe, comfortable"
+   ],
+   "problems": [
+    {
+     "id": "egr_dpf",
+     "title": "EGR valve and DPF clogging (diesel, short trips)",
+     "engines": [
+      "d2",
+      "d3"
+     ],
+     "frequency": "common",
+     "severity": "major",
+     "symptoms": [
+      "DPF or engine light",
+      "Loss of power"
+     ],
+     "what_to_check": [
+      "Ask how the car was used",
+      "Check for warning lights after a 15-minute drive"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "dpf_clean"
+    },
+    {
+     "id": "v40_d2",
+     "title": "Turbo and injector issues (D2 1.6, PSA engine)",
+     "engines": [
+      "d2"
+     ],
+     "frequency": "occasional",
+     "severity": "major",
+     "symptoms": [
+      "Smoke, loss of power"
+     ],
+     "what_to_check": [
+      "Check for smoke"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "turbo"
+    },
+    {
+     "id": "timing_belt_due",
+     "title": "Timing belt replacement due",
+     "engines": [
+      "d2"
+     ],
+     "frequency": "common",
+     "severity": "critical",
+     "symptoms": [
+      "None until it breaks, then severe engine damage"
+     ],
+     "what_to_check": [
+      "Ask for the last timing belt change (date and km)"
+     ],
+     "complaint_group": "engine",
+     "repair_cost_id": "timing_belt"
+    }
+   ],
+   "buying_tips": [],
+   "vin": {
+    "wmi": [
+     "YV1",
+     "YV4",
+     "LYV"
+    ]
+   }
+  }
+ ]
+}

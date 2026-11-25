@@ -1,16 +1,49 @@
-// Offline listing red-flag matching (CLAUDE.md §6.6). Implemented in Milestone 4.
+// Offline listing red-flag matching (CLAUDE.md §6.6): case-insensitive whole-phrase match against
+// data/listing_red_flags.json. Flags are "common warning signs — ask about it", never accusations (§2.6).
+import { LISTING_FLAGS } from '../data/seed';
 import type { ListingFlag } from '../data/seedSchema';
-import { notImplemented } from '../notImplemented';
 
 export interface ListingFlagMatch {
   flag: ListingFlag;
-  /** The phrases from flag.match that were found. */
+  /** The phrases from flag.match that were found (empty for field-based flags, see fieldFlags.ts). */
   matched: string[];
 }
 
 export type ListingOverall = 'looks_normal' | 'ask_questions' | 'possible_scam';
 
-/** Case-insensitive whole-phrase matching of listing text against listing_red_flags.json. */
-export function matchListingFlags(_text: string, _flags: readonly ListingFlag[]): ListingFlagMatch[] {
-  return notImplemented('matchListingFlags', 'M4');
+const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+/**
+ * Normalizes case, accents, curly quotes and whitespace, so "as‑is" / "as  is" still match and Romanian ads
+ * match with or without diacritics ("plată în avans" = "plata in avans").
+ */
+const clean = (s: string) =>
+  s
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[‘’]/g, "'")
+    .replace(/[‐-―]/g, '-')
+    .replace(/\s+/g, ' ');
+
+const SEVERITY_ORDER = { scam: 0, critical: 1, major: 2, caution: 3 } as const;
+
+export function matchListingFlags(text: string, flags: readonly ListingFlag[] = LISTING_FLAGS): ListingFlagMatch[] {
+  const hay = clean(text);
+  const out: ListingFlagMatch[] = [];
+  for (const flag of flags) {
+    const matched = flag.match.filter((phrase) => new RegExp(`(^|[^a-z0-9])${escape(clean(phrase))}(?=$|[^a-z0-9])`).test(hay));
+    if (matched.length) out.push({ flag, matched });
+  }
+  return sortMatches(out);
+}
+
+/** Most serious first (stable for equal severities). */
+export function sortMatches(matches: ListingFlagMatch[]): ListingFlagMatch[] {
+  return matches.sort((a, b) => SEVERITY_ORDER[a.flag.severity] - SEVERITY_ORDER[b.flag.severity]);
+}
+
+export function listingOverall(matches: readonly ListingFlagMatch[]): ListingOverall {
+  if (matches.some((m) => m.flag.severity === 'scam')) return 'possible_scam';
+  return matches.length ? 'ask_questions' : 'looks_normal';
 }

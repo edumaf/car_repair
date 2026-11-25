@@ -54,11 +54,17 @@ export interface Car {
   drive: string | null;
   askingPrice: number | null;
   mileage: number | null;
+  mileageUnit: MileageUnit;
   sellerType: SellerType;
   listingText: string | null;
   nickname: string | null;
   status: CarStatus;
+  /** Our model database entry (data/models/*.json), if matched or picked. */
+  modelId: string | null;
+  engineId: string | null;
 }
+
+export type MileageUnit = 'mi' | 'km';
 
 /** A US dollar range. Always shown as a range, never a single number (CLAUDE.md §2.4). */
 export interface CostRange {

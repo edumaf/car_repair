@@ -63,4 +63,26 @@ export const MIGRATIONS: readonly string[] = [
     value TEXT NOT NULL
   );
   `,
+  // 2: answers.answer may be NULL (a note or photo saved before the item is answered).
+  `
+  CREATE TABLE answers_v2 (
+    car_id TEXT NOT NULL REFERENCES cars(id) ON DELETE CASCADE,
+    item_id TEXT NOT NULL,
+    answer TEXT CHECK (answer IS NULL OR answer IN ('ok','problem','not_sure','skip')),
+    ai_suggested INTEGER NOT NULL DEFAULT 0,
+    note TEXT,
+    photo_uris_json TEXT NOT NULL DEFAULT '[]',
+    updated_at INTEGER NOT NULL,
+    PRIMARY KEY (car_id, item_id)
+  );
+  INSERT INTO answers_v2 SELECT car_id, item_id, answer, ai_suggested, note, photo_uris_json, updated_at FROM answers;
+  DROP TABLE answers;
+  ALTER TABLE answers_v2 RENAME TO answers;
+  `,
+  // 3: link a car to our model database (CLAUDE.md §20) and remember the mileage unit.
+  `
+  ALTER TABLE cars ADD COLUMN model_id TEXT;
+  ALTER TABLE cars ADD COLUMN engine_id TEXT;
+  ALTER TABLE cars ADD COLUMN mileage_unit TEXT NOT NULL DEFAULT 'mi';
+  `,
 ];

@@ -3,7 +3,16 @@
 import type { PhotoCheckType } from '../types';
 
 export const ALLOWED_FINDINGS: Readonly<Record<PhotoCheckType, readonly string[]>> = {
-  tire: ['tread_low', 'uneven_wear_inner', 'uneven_wear_outer', 'cupping', 'sidewall_bulge', 'sidewall_cracking', 'mismatched_brands', 'dot_code_visible'],
+  tire: [
+    'tread_low',
+    'uneven_wear_inner',
+    'uneven_wear_outer',
+    'cupping',
+    'sidewall_bulge',
+    'sidewall_cracking',
+    'mismatched_brands',
+    'dot_code_visible',
+  ],
   rust: ['surface_rust', 'bubbling_paint', 'perforation', 'fresh_undercoating'],
   paint_panel: ['color_mismatch', 'overspray', 'uneven_gap', 'dent', 'deep_scratch', 'hail_damage'],
   dashboard_lights: [],

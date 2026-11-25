@@ -49,3 +49,4 @@ example
 
 # Supabase CLI local state
 supabase/.temp/
+deno.lock

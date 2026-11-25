@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "version": 1,
+    "version": 2,
     "currency": "USD",
     "market": "US",
-    "note": "Rough typical US repair cost ranges (parts + labor at an independent shop, 2025–2026). Drafted by AI from general industry knowledge — NOT quotes. Have a mechanic or a reputable cost source review before launch. Always display as 'typical range' with the disclaimer that prices vary by model, region and shop. Luxury/European brands often run above the high end.",
+    "note": "Rough typical US repair cost ranges (parts + labor at an independent shop, 2025–2026). Drafted by AI from general industry knowledge — NOT quotes. Have a mechanic or a reputable cost source review before launch. Always display as 'typical range' with the disclaimer that prices vary by model, region and shop. Luxury/European brands often run above the high end. Entries added 2026-11-16 for the model database and Diagnose tab (fuel_injectors … ac_condenser) are also AI-drafted and need the same review.",
     "categories": ["engine", "transmission", "brakes", "suspension_steering", "tires_wheels", "electrical", "cooling", "climate", "exhaust_emissions", "body_glass", "safety_systems", "hybrid_ev", "fluids_service"]
   },
   "costs": [
@@ -63,6 +63,26 @@
     {"id": "ev_battery", "name": "EV high-voltage battery replacement", "category": "hybrid_ev", "low": 6000, "high": 20000},
     {"id": "ev_charger_port", "name": "EV onboard charger / charge port repair", "category": "hybrid_ev", "low": 500, "high": 3000},
     {"id": "frame_damage", "name": "Frame/structural damage repair", "category": "body_glass", "low": 2000, "high": 10000},
-    {"id": "flood_damage", "name": "Flood damage (often not economical to repair)", "category": "electrical", "low": 3000, "high": 15000}
+    {"id": "flood_damage", "name": "Flood damage (often not economical to repair)", "category": "electrical", "low": 3000, "high": 15000},
+    {"id": "fuel_injectors", "name": "Fuel injector(s) replacement", "category": "engine", "low": 400, "high": 2000},
+    {"id": "high_pressure_fuel_pump", "name": "High-pressure fuel pump", "category": "engine", "low": 700, "high": 2200},
+    {"id": "egr_valve", "name": "EGR valve / cooler", "category": "exhaust_emissions", "low": 300, "high": 1200},
+    {"id": "dual_mass_flywheel", "name": "Dual-mass flywheel + clutch", "category": "transmission", "low": 1200, "high": 2800},
+    {"id": "dsg_mechatronic", "name": "DSG / dual-clutch mechatronic unit or clutch pack", "category": "transmission", "low": 1200, "high": 3500},
+    {"id": "glow_plugs", "name": "Glow plugs (diesel)", "category": "engine", "low": 150, "high": 600},
+    {"id": "maf_sensor", "name": "Mass air flow (MAF) sensor", "category": "engine", "low": 120, "high": 450},
+    {"id": "pcv_valve", "name": "PCV valve / crankcase breather", "category": "engine", "low": 100, "high": 500},
+    {"id": "intake_carbon_cleaning", "name": "Intake valve carbon cleaning (direct injection)", "category": "engine", "low": 300, "high": 800},
+    {"id": "coolant_leak_minor", "name": "Minor coolant leak (hose, clamp, expansion tank)", "category": "cooling", "low": 100, "high": 500},
+    {"id": "vacuum_leak", "name": "Vacuum / intake air leak", "category": "engine", "low": 100, "high": 450},
+    {"id": "throttle_body", "name": "Throttle body clean or replacement", "category": "engine", "low": 100, "high": 600},
+    {"id": "adblue_system", "name": "AdBlue / DEF system repair (tank, heater, pump)", "category": "exhaust_emissions", "low": 500, "high": 2000},
+    {"id": "camshaft_sensor", "name": "Camshaft / crankshaft position sensor", "category": "engine", "low": 120, "high": 400},
+    {"id": "cam_phasers", "name": "Cam phasers / variable valve timing repair", "category": "engine", "low": 800, "high": 2500},
+    {"id": "oil_consumption_repair", "name": "Excessive oil consumption repair (rings, valve seals)", "category": "engine", "low": 1500, "high": 4500},
+    {"id": "sway_bar_links", "name": "Sway bar (stabilizer) links, pair", "category": "suspension_steering", "low": 120, "high": 350},
+    {"id": "door_lock_actuator", "name": "Door lock actuator (one)", "category": "electrical", "low": 200, "high": 500},
+    {"id": "sunroof_drains", "name": "Sunroof drain cleaning / water leak repair", "category": "body_glass", "low": 100, "high": 600},
+    {"id": "ac_condenser", "name": "A/C condenser", "category": "climate", "low": 400, "high": 1000}
   ]
 }

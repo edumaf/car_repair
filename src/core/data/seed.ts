@@ -4,9 +4,13 @@
 import checklistJson from '../../../data/inspection_checklist.json';
 import listingFlagsJson from '../../../data/listing_red_flags.json';
 import repairCostsJson from '../../../data/repair_costs.json';
-import type { ChecklistFile, ChecklistItem, ListingFlag, ListingFlagsFile, RepairCost, RepairCostsFile, Section } from './seedSchema';
+import type { ChecklistFile, ChecklistItem, FieldFlag, ListingFlag, ListingFlagsFile, RepairCost, RepairCostsFile, Section } from './seedSchema';
 
-export const rawSeed = { checklist: checklistJson as unknown, repairCosts: repairCostsJson as unknown, listingFlags: listingFlagsJson as unknown };
+export const rawSeed = {
+  checklist: checklistJson as unknown,
+  repairCosts: repairCostsJson as unknown,
+  listingFlags: listingFlagsJson as unknown,
+};
 
 const checklist = checklistJson as unknown as ChecklistFile;
 const repairCosts = repairCostsJson as unknown as RepairCostsFile;
@@ -20,6 +24,7 @@ export const CHECKLIST_ITEMS: readonly ChecklistItem[] = checklist.items;
 export const COMPLAINT_KEYWORD_GROUPS: Readonly<Record<string, readonly string[]>> = checklist._meta.complaint_keyword_groups;
 export const REPAIR_COSTS: readonly RepairCost[] = repairCosts.costs;
 export const LISTING_FLAGS: readonly ListingFlag[] = listingFlags.flags;
+export const FIELD_FLAGS: readonly FieldFlag[] = listingFlags.field_flags ?? [];
 
 const itemsById = new Map(CHECKLIST_ITEMS.map((i) => [i.id, i]));
 const costsById = new Map(REPAIR_COSTS.map((c) => [c.id, c]));
