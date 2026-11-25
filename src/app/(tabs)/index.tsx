@@ -25,6 +25,7 @@ import { minTouch, radius, space, useTheme, verdictColor } from '@/design/tokens
 import { carKeys, useCars } from '@/hooks/useCars';
 import { usePremium } from '@/hooks/usePremium';
 import { plural, tr } from '@/core/i18n/i18n';
+import { openCarStep } from '@/features/car/openCar';
 
 type Progress = { checked: number; total: number };
 
@@ -35,9 +36,9 @@ function NextStep({ car, progress, verdict, verdictLabel }: { car: CarRecord; pr
   const started = progress.checked > 0;
   const go = () =>
     decided
-      ? router.push({ pathname: '/car/[id]/verdict', params: { id: car.id } })
+      ? openCarStep(car.id, 'verdict')
       : started
-        ? router.push({ pathname: '/car/[id]/inspect', params: { id: car.id } })
+        ? openCarStep(car.id, 'inspect')
         : router.push({ pathname: '/car/[id]', params: { id: car.id } }); // the report gates the free inspection
   const action = decided ? 'See the verdict' : started ? 'Continue' : 'Start the inspection';
   return (
@@ -186,7 +187,7 @@ export default function GarageScreen() {
                 label={tr('Continue: {car}', { car: carTitle(resume) })}
                 kind="road"
                 icon="play"
-                onPress={() => router.push({ pathname: '/car/[id]/inspect', params: { id: resume.id } })}
+                onPress={() => openCarStep(resume.id, 'inspect')}
               />
               <Button label="Check another car" kind="roadGhost" icon="add" onPress={() => router.navigate('/check')} />
             </>

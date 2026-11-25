@@ -104,7 +104,8 @@ export default function RootLayout() {
           <Stack.Screen name="diagnose/code/[code]" options={{ ...pushedHeader, title: tr('Error code') }} />
           <Stack.Screen name="diagnose/symptom/[id]" options={{ ...pushedHeader, title: tr('Diagnose') }} />
           <Stack.Screen name="car/[id]/index" options={{ ...pushedHeader, title: '' }} />
-          <Stack.Screen name="car/[id]/inspect" options={{ ...pushedHeader, title: tr('Inspection') }} />
+          {/* The car report is always underneath the inspection (features/car/openCar), so Back says where it goes. */}
+          <Stack.Screen name="car/[id]/inspect" options={{ ...pushedHeader, title: tr('Inspection'), headerBackTitle: tr('Report') }} />
           <Stack.Screen name="car/[id]/verdict" options={{ ...pushedHeader, title: tr('Verdict') }} />
           <Stack.Screen name="car/[id]/price" options={{ ...pushedHeader, title: tr('Price check') }} />
           <Stack.Screen name="compare" options={{ ...pushedHeader, title: tr('Compare') }} />
