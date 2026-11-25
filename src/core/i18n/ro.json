@@ -312,6 +312,7 @@
   "Needs proof": "Cere dovezi",
   "Negotiate": "Negociază",
   "Negotiation script": "Script de negociere",
+  "It appears once you’ve done {need} of the {total} checks ({left} to go).": "Apare după ce faci {need} din cele {total} verificări (mai ai {left}).",
   "Network (communication between modules)": "Rețea (comunicarea între module)",
   "Network error": "Eroare de rețea",
   "Never overpay for a used car": "Nu plăti niciodată prea mult pe o mașină second-hand",

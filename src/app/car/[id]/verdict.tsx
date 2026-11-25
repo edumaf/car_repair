@@ -11,7 +11,7 @@ import { listingFlagsForCar } from '@/core/listing/fieldFlags';
 import { complaintGroupLabel } from '@/core/vehicle/labels';
 import { negotiationScript, sellerQuestions, suggestedOffer, type Tone } from '@/core/verdict/negotiation';
 import { REPAIR_COST_DISCLAIMER, SELF_CHECK_DISCLAIMER } from '@/core/verdict/strings';
-import { computeVerdict } from '@/core/verdict/verdict';
+import { computeVerdict, INCOMPLETE_COVERAGE } from '@/core/verdict/verdict';
 import { confirmedAnswers } from '@/db/answersRepository';
 import { AppText } from '@/design/components/AppText';
 import { FormScroll } from '@/design/components/FormScroll';
@@ -119,6 +119,7 @@ export default function VerdictScreen() {
   });
   const checked = Math.round(result.coverage * inspection.entries.length);
   const showScript = result.problemItems.length > 0 && result.verdict !== 'INCOMPLETE';
+  const scriptNeeds = Math.ceil(INCOMPLETE_COVERAGE * inspection.entries.length);
 
   const copy = async (text: string, what: 'questions' | 'script') => {
     await Clipboard.setStringAsync(text);
@@ -240,6 +241,22 @@ export default function VerdictScreen() {
               copy(script, 'script');
             }}
           />
+        </Card>
+      ) : null}
+
+      {result.verdict === 'INCOMPLETE' && result.problemItems.length > 0 ? (
+        // Say when the script comes, so it isn't a mystery (owner looked for it at 14 of 54 checks).
+        <Card>
+          <AppText variant="overline" tone="muted">
+            Negotiation script
+          </AppText>
+          <AppText tone="muted">
+            {tr('It appears once you’ve done {need} of the {total} checks ({left} to go).', {
+              need: scriptNeeds,
+              total: inspection.entries.length,
+              left: Math.max(1, scriptNeeds - checked),
+            })}
+          </AppText>
         </Card>
       ) : null}
 

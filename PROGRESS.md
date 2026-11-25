@@ -23,8 +23,8 @@
 > - Crystal Check (edumaf/crystal_app) has priority if Apple asks for fixes.
 > ```
 
-Last updated: **2026-11-17, end of session** (phone-test fixes, listing/VIN photo features, data eval, analytics,
-full Romanian, release prep, bug hunt, design round 2; **owner to test**).
+Last updated: **2026-11-25, during the phone test** (round 2, fixes 1–6 below). Before that, 2026-11-17: phone-test
+fixes, listing/VIN photo features, data eval, analytics, full Romanian, release prep, bug hunt, design round 2.
 
 ## ▶ NEXT CHAT: START HERE
 
@@ -33,16 +33,30 @@ full Romanian, release prep, bug hunt, design round 2; **owner to test**).
 - PR edumaf/car_repair#3 (branch `claude/vibrant-cori-kyx5fo`) is **built on top of #2**: merge #2 first, then #3.
 - **Test from branch `claude/vibrant-cori-kyx5fo`** (it has everything in #2 plus this session's work).
 
-**Phone test progress (2026-11-18, owner at home, on branch `claude/vibrant-cori-kyx5fo`):**
-- ✅ A onboarding (new night version) · ✅ B language · ✅ C region · ✅ D US car by VIN · ✅ E European VIN (Golf Mk6,
-  model card, RAR) · ✅ F pick make and model (Duster).
-- 🟡 **G inspection — in progress.** Owner feedback, all fixed and pushed (needs a re-check on the phone):
-  answer buttons always colored and solid when chosen; after Problem/Not sure a hint + big **Next item** button;
-  **Enter closes every keyboard**, number pads get a **Done** bar, scrolling closes the keyboard; the note box is no
-  longer hidden behind the keyboard (the answer bar hides while typing). Same keyboard fix on the car report's
-  listing box. The "free inspection used" paywall now names the car (the owner hit it: free inspection was on an
-  older test car → use Settings → Developer → Simulate Premium for testing).
+**Full phone test, second round (2026-11-18 → 11-25, branch `claude/vibrant-cori-kyx5fo`):**
+- ✅ A onboarding · ✅ B language · ✅ C region · ✅ D US car by VIN · ✅ E European VIN · ✅ F pick make and model.
+- 🟡 **G inspection:** steps 1–7 ✅ (answer colors, Next item, keyboard, notes, photo chip, "Known for this model"
+  box). Step 8 (verdict script) waits for ≥ 40% of the checks (see fix 6).
 - ⏳ H–Q not done yet.
+- **Fixes from this round (all pushed to PR #3):**
+  1. Screen headers stayed in the starting language after switching (React Compiler cached `tr()` in the root
+     layout) → root layout opts out (`'use no memo'`), regression test `core/i18n/compilerSafety.test.ts`. ✅ re-tested
+  2. Price/mileage hidden behind the number pad on Add a car → `FormScroll` (ScrollView with
+     `automaticallyAdjustKeyboardInsets`) on add car, price check, verdict. ✅ re-tested
+  3. "Looks OK" jumped to the next item → only Skip moves on; OK shows a hint + **Next item** (owner wants to add
+     notes after OK). ✅ re-tested
+  4. Verdict button in the inspection was easy to miss → small traffic light next to it (`MiniSignal`). ✅
+  5. No way back to the car report from the inspection → Garage opens inspection/verdict **on top of the report**
+     (`features/car/openCar.ts`, router test), back button says "Report". ✅ re-tested
+  6. Owner couldn't find Friendly/Firm on a "Keep checking" verdict → card says when the script appears
+     ("once you've done 22 of the 54 checks"). Needs a phone check.
+- **Owner decisions this round:** carVertical-style history reports → **after launch**, as an affiliate link
+  ("Check the car's history", clear commission note; owner signs up). **Interface pass after all tests:** the owner
+  finds the car report page "too AI-made" — redesign it (and review the other screens) once A–Q pass.
+- Known, not urgent: `expo lint` shows 11 React Compiler errors (refs read during render in the car report,
+  VerdictSignal, useKeyboardShown; setState in an effect). They predate this round; the compiler skips those
+  components, so they work — clean up during the interface pass. Region change doesn't redraw already-open screens
+  until they reopen (compiler caching, same cause as fix 1).
 - Merge plan (owner asked): **test first, then merge #2, then #3** (PR #3 contains #2).
 
 **The 4 fixes from the phone test are done** (offline fallback, 44 pt engine buttons, engine picked from the VIN,
