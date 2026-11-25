@@ -739,5 +739,14 @@
   "Saved as not sure. Add a note if you like, then go on.": "Salvat ca „nu știu”. Poți adăuga o notă, apoi mergi mai departe.",
   "Saved as OK. Add a note if you like, then go on.": "Salvat ca OK. Poți adăuga o notă, apoi mergi mai departe.",
   "Your free inspection is on the {car}.": "Inspecția gratuită e folosită pentru {car}.",
-  "Done": "Gata"
+  "Done": "Gata",
+  "All checks": "Toate verificările",
+  "All checks, {checked} of {total} checked": "Toate verificările, {checked} din {total} făcute",
+  "Search, e.g. “tire” or “rust”": "Caută, de ex. „anvelope” sau „rugină”",
+  "Search the checks": "Caută în verificări",
+  "Only unanswered ({n})": "Doar fără răspuns ({n})",
+  "Every check has an answer.": "Toate verificările au un răspuns.",
+  "No checks match “{q}”.": "Nicio verificare nu se potrivește cu „{q}”.",
+  "Not answered yet": "Fără răspuns încă",
+  "You’re here": "Ești aici"
 }

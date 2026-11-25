@@ -3,11 +3,10 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Image } from 'expo-image';
 import { router, Stack, useLocalSearchParams } from 'expo-router';
-import { Fragment, useEffect, useMemo, useRef, useState, type ComponentRef } from 'react';
+import { useEffect, useMemo, useRef, useState, type ComponentRef } from 'react';
 import {
   ActivityIndicator,
   Alert,
-  Keyboard,
   KeyboardAvoidingView,
   Platform,
   Pressable,
@@ -16,6 +15,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
+import Animated, { FadeInLeft, FadeInRight } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { progress, type ChecklistEntry } from '@/core/checklist/buildChecklist';
@@ -38,7 +38,10 @@ import { type } from '@/design/typography';
 import { ApiError } from '@/core/api/types';
 import { canRunPhotoCheck } from '@/core/limits';
 import { useInspection } from '@/hooks/useInspection';
+import { useHorizontalSwipe } from '@/hooks/useHorizontalSwipe';
 import { useKeyboardShown } from '@/hooks/useKeyboardShown';
+import { useReduceMotion } from '@/hooks/useReduceMotion';
+import { AllChecksSheet } from '@/features/inspection/AllChecksSheet';
 import { usePremium } from '@/hooks/usePremium';
 import { capturePhoto, PhotoPermissionError, type PhotoSource } from '@/media/photos';
 import { tr } from '@/core/i18n/i18n';
@@ -86,16 +89,28 @@ function SectionChips({
   );
 }
 
-function OverallBar({ checked, total }: { checked: number; total: number }) {
+/** Overall progress, and the way into the "All checks" list (tap it). */
+function OverallBar({ checked, total, onOpenList }: { checked: number; total: number; onOpenList: () => void }) {
   const t = useTheme();
   return (
-    <View style={styles.overall} accessible accessibilityLabel={tr('{checked} of {total} items checked', { checked, total })}>
+    <View style={styles.overall}>
       <View style={[styles.track, { backgroundColor: t.sunken }]}>
         <View style={[styles.fill, { width: `${total ? (checked / total) * 100 : 0}%`, backgroundColor: t.brand }]} />
       </View>
-      <AppText variant="caption" tone="muted" style={{ fontVariant: ['tabular-nums'] }}>
-        {checked}/{total} checked
-      </AppText>
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={tr('All checks, {checked} of {total} checked', { checked, total })}
+        onPress={onOpenList}
+        hitSlop={6}
+        style={({ pressed }) => [styles.allBtn, { borderColor: t.border, backgroundColor: t.surface }, pressed && { opacity: 0.6 }]}>
+        <Ionicons name="list" size={18} color={t.brand} />
+        <AppText variant="label" tone="brand">
+          All checks
+        </AppText>
+        <AppText variant="caption" tone="muted" style={{ fontVariant: ['tabular-nums'] }}>
+          {checked}/{total}
+        </AppText>
+      </Pressable>
     </View>
   );
 }
@@ -433,6 +448,23 @@ export default function Inspect() {
   // Until the user moves, show the first unanswered item.
   const firstOpen = entries.findIndex((e) => !answers[e.item.id]);
   const index = chosen ?? (inspection.answers.isSuccess && entries.length ? (firstOpen === -1 ? 0 : firstOpen) : null);
+  const [listOpen, setListOpen] = useState(false);
+  // Which side the next item slides in from (swipe / Next = from the right, Back = from the left).
+  const [dir, setDir] = useState<1 | -1>(1);
+  const reduceMotion = useReduceMotion();
+
+  const goTo = (i: number) => {
+    const next = Math.max(0, Math.min(entries.length - 1, i));
+    if (index !== null && next === index) return;
+    setDir(index === null || next > index ? 1 : -1);
+    setChosen(next);
+    scroll.current?.scrollTo({ y: 0, animated: false });
+  };
+  // Swipe left = next check, swipe right = previous (owner, phone test 2026-11-25).
+  const swipe = useHorizontalSwipe(
+    () => index !== null && index < entries.length - 1 && goTo(index + 1),
+    () => index !== null && index > 0 && goTo(index - 1),
+  );
 
   if (inspection.car.isPending || inspection.answers.isPending) return <LoadingState label="Building your checklist…" />;
   if (!inspection.car.data) return <ErrorState title="Car not found" message="It may have been removed." />;
@@ -446,10 +478,6 @@ export default function Inspect() {
   const current = answers[entry.item.id] ?? null;
   const answeredHere = current === 'ok' || current === 'problem' || current === 'not_sure';
 
-  const goTo = (i: number) => {
-    setChosen(Math.max(0, Math.min(entries.length - 1, i)));
-    scroll.current?.scrollTo({ y: 0, animated: false });
-  };
   const toVerdict = () => router.push({ pathname: '/car/[id]/verdict', params: { id } });
 
   const onAnswer = (a: Answer) => {
@@ -491,10 +519,13 @@ export default function Inspect() {
           currentSection={section.section.id}
           onJump={(sid) => goTo(entries.findIndex((e) => e.item.section === sid))}
         />
-        <OverallBar checked={p.checked} total={p.total} />
+        <OverallBar checked={p.checked} total={p.total} onOpenList={() => setListOpen(true)} />
       </View>
       <ScrollView ref={scroll} contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled" keyboardDismissMode="on-drag">
-        <Fragment key={entry.item.id}>
+        <Animated.View
+          key={entry.item.id}
+          {...swipe}
+          entering={reduceMotion ? undefined : (dir === 1 ? FadeInRight : FadeInLeft).duration(180)}>
           <ItemCard
             entry={entry}
             record={records[entry.item.id]}
@@ -503,8 +534,19 @@ export default function Inspect() {
             sectionTitle={section.section.title}
             position={tr('{n} of {total}', { n: inSection + 1, total: section.entries.length })}
           />
-        </Fragment>
+        </Animated.View>
       </ScrollView>
+      <AllChecksSheet
+        visible={listOpen}
+        sections={sections}
+        answers={answers}
+        currentItemId={entry.item.id}
+        onPick={(itemId) => {
+          setListOpen(false);
+          goTo(entries.findIndex((e) => e.item.id === itemId));
+        }}
+        onClose={() => setListOpen(false)}
+      />
       {typing ? null : (
         <SafeAreaView edges={['bottom']} style={[styles.bottom, { backgroundColor: t.surface, borderTopColor: t.border }]}>
           {answeredHere ? (
@@ -567,6 +609,15 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   overall: { flexDirection: 'row', alignItems: 'center', gap: space.md, paddingHorizontal: space.lg },
+  allBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: space.xs,
+    minHeight: minTouch,
+    paddingHorizontal: space.md,
+    borderRadius: radius.pill,
+    borderWidth: 1,
+  },
   track: { flex: 1, height: 6, borderRadius: radius.pill, overflow: 'hidden' },
   fill: { height: '100%', borderRadius: radius.pill },
   content: { padding: space.xl, paddingBottom: space.xxxl },

@@ -50,6 +50,11 @@ fixes, listing/VIN photo features, data eval, analytics, full Romanian, release 
      (`features/car/openCar.ts`, router test), back button says "Report". ✅ re-tested
   6. Owner couldn't find Friendly/Firm on a "Keep checking" verdict → card says when the script appears
      ("once you've done 22 of the 54 checks"). Needs a phone check.
+  7. Going through 54 checks with only Back/Next was slow → **All checks** list (tap "All checks 14/54" under the
+     section chips): every check by section with its answer icon, search (accents ignored, RO + EN), "Only
+     unanswered", tap to jump (`features/inspection/AllChecksSheet.tsx`, `core/checklist/checksList.ts`, tested).
+     **Swipe left/right** between checks (`hooks/useHorizontalSwipe.ts`, plain touch events) with a short slide-in
+     (still with Reduce Motion). Needs a phone check.
 - **Owner decisions this round:** carVertical-style history reports → **after launch**, as an affiliate link
   ("Check the car's history", clear commission note; owner signs up). **Interface pass after all tests:** the owner
   finds the car report page "too AI-made" — redesign it (and review the other screens) once A–Q pass.
