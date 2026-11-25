@@ -3,19 +3,22 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Image } from 'expo-image';
 import { router, Stack, useLocalSearchParams } from 'expo-router';
-import { useEffect, useMemo, useRef, useState, type ComponentRef } from 'react';
+import { useEffect, useMemo, useRef, useState, type ComponentRef, type ReactNode } from 'react';
 import {
   ActivityIndicator,
   Alert,
+  FlatList,
+  Keyboard,
   KeyboardAvoidingView,
   Platform,
   Pressable,
   ScrollView,
   StyleSheet,
   TextInput,
+  useWindowDimensions,
   View,
+  type ListViewToken,
 } from 'react-native';
-import Animated, { FadeInLeft, FadeInRight } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { progress, type ChecklistEntry } from '@/core/checklist/buildChecklist';
@@ -38,9 +41,7 @@ import { type } from '@/design/typography';
 import { ApiError } from '@/core/api/types';
 import { canRunPhotoCheck } from '@/core/limits';
 import { useInspection } from '@/hooks/useInspection';
-import { useHorizontalSwipe } from '@/hooks/useHorizontalSwipe';
 import { useKeyboardShown } from '@/hooks/useKeyboardShown';
-import { useReduceMotion } from '@/hooks/useReduceMotion';
 import { AllChecksSheet } from '@/features/inspection/AllChecksSheet';
 import { usePremium } from '@/hooks/usePremium';
 import { capturePhoto, PhotoPermissionError, type PhotoSource } from '@/media/photos';
@@ -433,6 +434,22 @@ function ItemCard({
   );
 }
 
+/** One check's page in the pager: scrolls on its own; while typing a note, the open page brings it above the keyboard. */
+function ItemPage({ width, active, children }: { width: number; active: boolean; children: ReactNode }) {
+  const scroll = useRef<ComponentRef<typeof ScrollView>>(null);
+  useKeyboardShown(active ? () => scroll.current?.scrollToEnd({ animated: true }) : undefined);
+  return (
+    <ScrollView
+      ref={scroll}
+      style={{ width }}
+      contentContainerStyle={styles.content}
+      keyboardShouldPersistTaps="handled"
+      keyboardDismissMode="on-drag">
+      {children}
+    </ScrollView>
+  );
+}
+
 export default function Inspect() {
   const t = useTheme();
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -441,30 +458,35 @@ export default function Inspect() {
   const records = inspection.answers.data ?? {};
   const answers = confirmedAnswers(records);
   const [chosen, setChosen] = useState<number | null>(null);
-  const scroll = useRef<ComponentRef<typeof ScrollView>>(null);
-  // While typing a note: hide the answer bar (it would cover the note) and bring the note up above the keyboard.
-  const typing = useKeyboardShown(() => scroll.current?.scrollToEnd({ animated: true }));
+  // Each check is a page of a sideways-paging list: swipe left/right moves between checks (owner, phone test
+  // 2026-11-25). Native iOS paging, so it plays well with scrolling inside a check and with edge-swipe back.
+  const pager = useRef<FlatList<ChecklistEntry>>(null);
+  const { width } = useWindowDimensions();
+  // While typing a note: hide the answer bar (it would cover the note); the page brings the note up itself.
+  const typing = useKeyboardShown();
 
   // Until the user moves, show the first unanswered item.
   const firstOpen = entries.findIndex((e) => !answers[e.item.id]);
   const index = chosen ?? (inspection.answers.isSuccess && entries.length ? (firstOpen === -1 ? 0 : firstOpen) : null);
   const [listOpen, setListOpen] = useState(false);
-  // Which side the next item slides in from (swipe / Next = from the right, Back = from the left).
-  const [dir, setDir] = useState<1 | -1>(1);
-  const reduceMotion = useReduceMotion();
+  // The check on screen after a swipe settles (more than half visible for a moment) becomes the current one, so
+  // the answer bar always answers the check you see. Must stay the same object for the list's lifetime.
+  const [pageWatch] = useState(() => ({
+    viewabilityConfig: { itemVisiblePercentThreshold: 60, minimumViewTime: 120 },
+    onViewableItemsChanged: ({ viewableItems }: { viewableItems: ListViewToken[] }) => {
+      const shown = viewableItems.find((v) => v.isViewable && v.index != null);
+      if (shown?.index != null) setChosen(shown.index);
+    },
+  }));
 
   const goTo = (i: number) => {
     const next = Math.max(0, Math.min(entries.length - 1, i));
     if (index !== null && next === index) return;
-    setDir(index === null || next > index ? 1 : -1);
+    Keyboard.dismiss(); // saves an open note (on blur) before the page moves away
     setChosen(next);
-    scroll.current?.scrollTo({ y: 0, animated: false });
+    // Neighbours slide like a swipe; a far jump (All checks, section chips) goes straight there.
+    pager.current?.scrollToIndex({ index: next, animated: index !== null && Math.abs(next - index) === 1 });
   };
-  // Swipe left = next check, swipe right = previous (owner, phone test 2026-11-25).
-  const swipe = useHorizontalSwipe(
-    () => index !== null && index < entries.length - 1 && goTo(index + 1),
-    () => index !== null && index > 0 && goTo(index - 1),
-  );
 
   if (inspection.car.isPending || inspection.answers.isPending) return <LoadingState label="Building your checklist…" />;
   if (!inspection.car.data) return <ErrorState title="Car not found" message="It may have been removed." />;
@@ -472,7 +494,6 @@ export default function Inspect() {
 
   const entry = entries[index];
   const section = sections.find((s) => s.entries.some((e) => e.item.id === entry.item.id))!;
-  const inSection = section.entries.findIndex((e) => e.item.id === entry.item.id);
   const p = progress(entries, answers);
   const isLast = index === entries.length - 1;
   const current = answers[entry.item.id] ?? null;
@@ -521,21 +542,42 @@ export default function Inspect() {
         />
         <OverallBar checked={p.checked} total={p.total} onOpenList={() => setListOpen(true)} />
       </View>
-      <ScrollView ref={scroll} contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled" keyboardDismissMode="on-drag">
-        <Animated.View
-          key={entry.item.id}
-          {...swipe}
-          entering={reduceMotion ? undefined : (dir === 1 ? FadeInRight : FadeInLeft).duration(180)}>
-          <ItemCard
-            entry={entry}
-            record={records[entry.item.id]}
-            checks={(inspection.photoChecks.data ?? []).filter((c) => c.itemId === entry.item.id)}
-            inspection={inspection}
-            sectionTitle={section.section.title}
-            position={tr('{n} of {total}', { n: inSection + 1, total: section.entries.length })}
-          />
-        </Animated.View>
-      </ScrollView>
+      <FlatList
+        ref={pager}
+        style={{ flex: 1 }}
+        data={entries}
+        keyExtractor={(e) => e.item.id}
+        horizontal
+        pagingEnabled
+        showsHorizontalScrollIndicator={false}
+        initialScrollIndex={index}
+        getItemLayout={(_, i) => ({ length: width, offset: width * i, index: i })}
+        initialNumToRender={1}
+        windowSize={3}
+        maxToRenderPerBatch={2}
+        // Pages show answers, notes and photo checks: redraw the visible ones when those change.
+        extraData={[index, records, inspection.photoChecks.data, inspection.photo.status]}
+        keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="on-drag"
+        viewabilityConfig={pageWatch.viewabilityConfig}
+        onViewableItemsChanged={pageWatch.onViewableItemsChanged}
+        onScrollToIndexFailed={() => {}}
+        renderItem={({ item: e, index: i }) => {
+          const s = sections.find((x) => x.entries.some((y) => y.item.id === e.item.id))!;
+          return (
+            <ItemPage width={width} active={i === index}>
+              <ItemCard
+                entry={e}
+                record={records[e.item.id]}
+                checks={(inspection.photoChecks.data ?? []).filter((c) => c.itemId === e.item.id)}
+                inspection={inspection}
+                sectionTitle={s.section.title}
+                position={tr('{n} of {total}', { n: s.entries.findIndex((y) => y.item.id === e.item.id) + 1, total: s.entries.length })}
+              />
+            </ItemPage>
+          );
+        }}
+      />
       <AllChecksSheet
         visible={listOpen}
         sections={sections}

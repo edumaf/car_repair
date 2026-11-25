@@ -53,8 +53,10 @@ fixes, listing/VIN photo features, data eval, analytics, full Romanian, release 
   7. Going through 54 checks with only Back/Next was slow → **All checks** list (tap "All checks 14/54" under the
      section chips): every check by section with its answer icon, search (accents ignored, RO + EN), "Only
      unanswered", tap to jump (`features/inspection/AllChecksSheet.tsx`, `core/checklist/checksList.ts`, tested).
-     **Swipe left/right** between checks (`hooks/useHorizontalSwipe.ts`, plain touch events) with a short slide-in
-     (still with Reduce Motion). Needs a phone check.
+     **Swipe left/right** between checks: the first try (plain touch events) didn't work on the iPhone (the scroll
+     view takes the touch). Now each check is a page of a native **horizontal paging list** (like Photos); the
+     visible page becomes the current check (`onViewableItemsChanged`), so answers go to the check on screen.
+     Checked in a browser (touch swipe, Next, All checks jump, answer after swipe). Needs a phone check.
 - **Owner decisions this round:** carVertical-style history reports → **after launch**, as an affiliate link
   ("Check the car's history", clear commission note; owner signs up). **Interface pass after all tests:** the owner
   finds the car report page "too AI-made" — redesign it (and review the other screens) once A–Q pass.
