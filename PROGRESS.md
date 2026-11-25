@@ -56,7 +56,12 @@ fixes, listing/VIN photo features, data eval, analytics, full Romanian, release 
      **Swipe left/right** between checks: the first try (plain touch events) didn't work on the iPhone (the scroll
      view takes the touch). Now each check is a page of a native **horizontal paging list** (like Photos); the
      visible page becomes the current check (`onViewableItemsChanged`), so answers go to the check on screen.
-     Checked in a browser (touch swipe, Next, All checks jump, answer after swipe). Needs a phone check.
+     Checked in a browser (touch swipe, Next, All checks jump, answer after swipe). ✅ re-tested on the phone.
+     Far jumps (All checks, section chips) restart the pager at the target (`key`), because scrolling the
+     virtualized list far in one go left the page blank in the browser check.
+  8. The section chip strip didn't follow the current check (in "Test drive" the lit chip was off screen) → the
+     strip centers the current chip by itself (`core/ui/centerOffset.ts`, tested). Checked in a browser. Needs a
+     phone check.
 - **Owner decisions this round:** carVertical-style history reports → **after launch**, as an affiliate link
   ("Check the car's history", clear commission note; owner signs up). **Interface pass after all tests:** the owner
   finds the car report page "too AI-made" — redesign it (and review the other screens) once A–Q pass.

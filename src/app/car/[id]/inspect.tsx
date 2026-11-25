@@ -47,6 +47,7 @@ import { usePremium } from '@/hooks/usePremium';
 import { capturePhoto, PhotoPermissionError, type PhotoSource } from '@/media/photos';
 import { tr } from '@/core/i18n/i18n';
 import { formatNumber } from '@/core/region';
+import { centerOffset } from '@/core/ui/centerOffset';
 
 type Inspection = ReturnType<typeof useInspection>;
 
@@ -62,8 +63,36 @@ function SectionChips({
   onJump: (sectionId: string) => void;
 }) {
   const t = useTheme();
+  // The strip scrolls by itself so the current section's chip is always in view (owner, phone test 2026-11-25:
+  // in "Test drive" the lit chip was off screen). Layouts are measured as the chips render.
+  const strip = useRef<ComponentRef<typeof ScrollView>>(null);
+  const chipBoxes = useRef(new Map<string, { x: number; width: number }>());
+  const size = useRef({ viewport: 0, content: 0 });
+  const showChip = (sectionId: string, animated: boolean) => {
+    // Needs the chip, the strip and its content measured; whichever arrives last does the scroll.
+    const box = chipBoxes.current.get(sectionId);
+    if (box && size.current.viewport && size.current.content) {
+      strip.current?.scrollTo({ x: centerOffset(box, size.current.viewport, size.current.content), animated });
+    }
+  };
+  useEffect(() => {
+    showChip(currentSection, true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentSection]);
   return (
-    <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chips}>
+    <ScrollView
+      ref={strip}
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      contentContainerStyle={styles.chips}
+      onLayout={(e) => {
+        size.current.viewport = e.nativeEvent.layout.width;
+        showChip(currentSection, false);
+      }}
+      onContentSizeChange={(w) => {
+        size.current.content = w;
+        showChip(currentSection, false);
+      }}>
       {inspection.sections.map((s) => {
         const p = progress(s.entries, answers);
         const on = s.section.id === currentSection;
@@ -75,6 +104,10 @@ function SectionChips({
             accessibilityState={{ selected: on }}
             accessibilityLabel={tr('{section}, {done} of {total} done', { section: tr(s.section.title), done: p.touched, total: p.total })}
             onPress={() => onJump(s.section.id)}
+            onLayout={(e) => {
+              chipBoxes.current.set(s.section.id, { x: e.nativeEvent.layout.x, width: e.nativeEvent.layout.width });
+              if (on) showChip(s.section.id, false); // opening the inspection in a later section
+            }}
             style={[styles.chip, { backgroundColor: on ? t.ink : t.surface, borderColor: on ? t.ink : t.border }]}>
             {done ? <Ionicons name="checkmark-circle" size={14} color={on ? t.bg : t.go} /> : null}
             <AppText variant="label" style={{ color: on ? t.bg : t.ink }}>
@@ -479,13 +512,17 @@ export default function Inspect() {
     },
   }));
 
+  // A far jump (All checks, section chips) restarts the pager at the target page: scrolling a virtualized list far
+  // in one go can leave the new page undrawn (seen in the browser check), while opening at an index is reliable.
+  const [pagerKey, setPagerKey] = useState(0);
+
   const goTo = (i: number) => {
     const next = Math.max(0, Math.min(entries.length - 1, i));
     if (index !== null && next === index) return;
     Keyboard.dismiss(); // saves an open note (on blur) before the page moves away
     setChosen(next);
-    // Neighbours slide like a swipe; a far jump (All checks, section chips) goes straight there.
-    pager.current?.scrollToIndex({ index: next, animated: index !== null && Math.abs(next - index) === 1 });
+    if (index !== null && Math.abs(next - index) === 1) pager.current?.scrollToIndex({ index: next, animated: true });
+    else setPagerKey((k) => k + 1);
   };
 
   if (inspection.car.isPending || inspection.answers.isPending) return <LoadingState label="Building your checklist…" />;
@@ -543,6 +580,7 @@ export default function Inspect() {
         <OverallBar checked={p.checked} total={p.total} onOpenList={() => setListOpen(true)} />
       </View>
       <FlatList
+        key={pagerKey}
         ref={pager}
         style={{ flex: 1 }}
         data={entries}
